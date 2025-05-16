@@ -8,7 +8,7 @@ async function loadEvents() {
         const eventos = await response.json();
         
         const container = document.getElementById('cardseventos');
-        container.innerHTML = '<h1 class="h1 text-center" id="pageHeaderTitle">Eventos Disponíveis</h1>';
+        container.innerHTML = '<h1 class="h1 text-center" id="pageHeaderTitle">PRÓXIMOS EVENTOS</h1>';
 
         eventos.forEach(evento => {
             const card = createEventCard(evento);
@@ -38,10 +38,10 @@ function createEventCard(evento) {
             <div class="postcard__bar"></div>
             <div class="postcard__preview-txt">${evento.descricao}</div>
             <ul class="postcard__tagbox">
-                <li class="tag__item"><i class="fas fa-tag mr-2"></i>${evento.categoria}</li>
-                <li class="tag__item"><i class="fas fa-map-marker-alt mr-2"></i>${evento.local}</li>
+                <li class="tag__item"><i class="fas fa-tag mr-2"></i><span class="me-2"></span>${evento.categoria}</li>
+                <li class="tag__item"><i class="fas fa-map-marker-alt mr-2"></i><span class="me-2"></span${evento.local}</li>
                 <li class="tag__item play red">
-                    <a href="#"><i class="fas fa-info-circle mr-2"></i>Ver Detalhes</a>
+                    <a href="#"><i class="fas fa-info-circle mr-2"></i><span class="me-2"></span>Ver Detalhes</a>
                 </li>
             </ul>
         </div>

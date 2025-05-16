@@ -6,8 +6,8 @@
       "data": "2025-06-15T14:00:00",
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
       "categoria": "Workshop",
-      "local": "Centro Empresarial - BH",
-      "imagem": "https://example.com/workshop-image.jpg",
+      "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
+      "imagem": "/../docs/images/evento-gestao-empresarial.jpg",
       "vagas": 50,
       "preco": 150.00
     },
