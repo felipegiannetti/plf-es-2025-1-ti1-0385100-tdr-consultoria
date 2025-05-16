@@ -37,7 +37,7 @@ function createEventCard(evento) {
             <img class="postcard__img" src="${evento.imagem}" alt="${evento.titulo}" />    
         </a>
         <div class="postcard__text">
-            <h1 class="postcard__title red"><a href="#">${evento.titulo}</a></h1>
+            <h1 class="postcard__title"><a href="#">${evento.titulo}</a></h1>
             <div class="postcard__subtitle small">
                 <time datetime="${evento.data}">
                     <i class="fas fa-calendar-alt mr-2"></i><span class="me-2"></span>${new Date(evento.data).toLocaleDateString('pt-BR')}

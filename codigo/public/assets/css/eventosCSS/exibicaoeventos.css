@@ -11,7 +11,6 @@ body {
     margin-top: 60px;
 }
 
-/*inicio estilo h1*/
 .event-header {
     background: linear-gradient(135deg, #f1d171, #ff5100);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -83,6 +82,14 @@ a, a:hover {
     font-weight: 500;
     line-height: 1.2;
     color: rgb(0, 0, 92);
+}
+
+.postcard__title a {
+    color: black;
+}
+
+.postcard__title a:hover {
+    color: rgb(0, 26, 255);
 }
 
 .postcard__subtitle.small {
