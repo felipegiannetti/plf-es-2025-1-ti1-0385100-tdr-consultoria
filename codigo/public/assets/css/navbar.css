@@ -1,3 +1,7 @@
+.bg-navbar {
+    background: linear-gradient(to right, #ffffff, #FFA500);
+}
+
 .distanciastart {
     margin-left: 70px;
 }
