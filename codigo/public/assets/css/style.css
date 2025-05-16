@@ -1,0 +1,85 @@
+body {
+    font-family: 'Baloo 2', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #424242;
+}
+
+.hero {
+    background: linear-gradient(135deg, #ffa500, #ff5500);
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero .cta-button {
+    background-color: #ff5500;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.hero .cta-button:hover {
+    background-color: #ffa500;
+}
+
+.eventos-section {
+    padding: 50px 0;
+    background-color: #ffffff;
+}
+
+.event-card {
+    background-color: #fe8f58;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+.event-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.event-card .details-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ff5500;
+    text-decoration: none;
+}
+
+.event-card .details-link:hover {
+    color: #ffa500;
+}
+
+.footer {
+    background-color: #424242;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #FFA500;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    color: #FF5500;
+}
+
+.footer p {
+    margin: 0;
+    padding-top: 10px;
+}
