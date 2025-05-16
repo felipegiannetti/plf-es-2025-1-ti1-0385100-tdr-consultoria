@@ -21,7 +21,7 @@ async function loadEvents() {
 
 function createEventCard(evento) {
     const article = document.createElement('article');
-    article.className = 'postcard orangebgcard red';
+    article.className = 'articlehover postcard orangebgcard red';
     article.onclick = () => navigateToEventDetails(evento.id);
 
     article.innerHTML = `
