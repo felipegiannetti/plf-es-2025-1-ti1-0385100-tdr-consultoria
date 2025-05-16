@@ -3,7 +3,7 @@
     {
       "id": 1,
       "titulo": "Workshop de Gestão Empresarial",
-      "data": "2025-06-15T14:00:00",
+      "data": "20/05/2025 - 19:00",
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
@@ -14,26 +14,28 @@
     {
       "id": 2,
       "titulo": "Palestra sobre Liderança",
-      "data": "2025-07-20T19:00:00",
+      "data": "10/06/2025 - 16:00",
       "descricao": "Palestra sobre desenvolvimento de habilidades de liderança no ambiente corporativo moderno.",
       "categoria": "Palestra",
       "local": "Hotel Business Center - BH",
-      "imagem": "https://example.com/leadership-image.jpg",
+      "imagem": "/../docs/images/palestra-empresarial.webp",
       "vagas": 100,
       "preco": 80.00
     },
     {
       "id": 3,
-      "titulo": "Curso de Marketing Digital",
-      "data": "2025-08-10T09:00:00",
+      "titulo": "Hotmart FIRE",
+      "data": "13/06/2025 - 18:00",
       "descricao": "Curso intensivo sobre estratégias de marketing digital e mídias sociais para empresas.",
       "categoria": "Curso",
       "local": "Centro de Convenções - BH",
-      "imagem": "https://example.com/marketing-image.jpg",
+      "imagem": "/../docs/images/hotmart-fire.jpeg",
       "vagas": 30,
       "preco": 299.99
     }
   ],
+  
+
   "usuarios": [
     {
       "id": 1,
