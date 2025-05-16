@@ -49,7 +49,7 @@ function createEventCard(evento) {
                 <li class="tag__item"><i class="fas fa-tag mr-2"></i><span class="me-2"></span>${evento.categoria}</li>
                 <li class="tag__item"><i class="fas fa-map-marker-alt mr-2"></i><span class="me-2"></span>${evento.local}</li>
                 <li class="tag__item play red">
-                    <a href="#"><i class="fas fa-info-circle mr-2"></i><span class="me-2"></span>Ver Detalhes</a>
+                    <a href="#"><i class="fas fa-info-circle mr-2 text-white"></i><span class="me-2"></span>Ver Detalhes</a>
                 </li>
             </ul>
         </div>
