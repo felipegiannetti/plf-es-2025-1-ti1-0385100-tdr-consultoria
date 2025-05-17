@@ -10,7 +10,6 @@ function addStyles() {
     const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
     const basePath = isIndex ? 'public/assets/css/' : '../../assets/css/';
 
-    // Adiciona CSS do Navbar se não existir
     if (!document.querySelector('link[href*="navbar.css"]')) {
         const navbarCss = document.createElement('link');
         navbarCss.rel = 'stylesheet';
@@ -18,7 +17,6 @@ function addStyles() {
         head.appendChild(navbarCss);
     }
 
-    // Adiciona CSS do Footer se não existir
     if (!document.querySelector('link[href*="footer.css"]')) {
         const footerCss = document.createElement('link');
         footerCss.rel = 'stylesheet';
@@ -36,11 +34,26 @@ function implementNavbar() {
 
     const currentPath = window.location.pathname;
     const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
-    const basePath = isIndex ? '' : '../';
+    
+    // Corrigindo os caminhos baseado na localização
+    const paths = {
+        index: {
+            home: '',
+            eventos: 'public/modulos/eventos/exibicaoeventos.html',
+            contato: 'public/modulos/contato/contato.html'
+        },
+        other: {
+            home: '../../../index.html',
+            eventos: 'exibicaoeventos.html',
+            contato: '../contato/contato.html'
+        }
+    };
+
+    const currentPaths = isIndex ? paths.index : paths.other;
 
     navbarContainer.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top">
-            <a class="navbar-brand distanciastart" href="${isIndex ? '' : '../../'}index.html">
+            <a class="navbar-brand distanciastart" href="${currentPaths.home}">
                 TDR<span style="color: orange;">Consultoria</span>
             </a>
             <button class="navbar-toggler me-4" type="button" 
@@ -53,15 +66,14 @@ function implementNavbar() {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav d-flex container justify-content-end distanciaend">
-                    <a class="nav-item nav-link" href="${isIndex ? '' : '../../'}index.html">Home</a>
-                    <a class="nav-item nav-link" href="${isIndex ? 'public/modulos' : '../'}/eventos/exibicaoeventos.html">Eventos</a>
-                    <a class="nav-item nav-link" href="${isIndex ? 'public/modulos' : '../'}/contato/contato.html">Contato</a>
+                    <a class="nav-item nav-link" href="${currentPaths.home}">Home</a>
+                    <a class="nav-item nav-link" href="${currentPaths.eventos}">Eventos</a>
+                    <a class="nav-item nav-link" href="${currentPaths.contato}">Contato</a>
                 </div>
             </div>
         </nav>
     `;
 
-    // Adiciona classe 'active' ao link da página atual
     const currentPage = window.location.pathname;
     const navLinks = navbarContainer.getElementsByClassName('nav-link');
 
@@ -81,9 +93,24 @@ function implementFooter() {
 
     const currentPath = window.location.pathname;
     const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
-    const basePath = isIndex ? '' : '../../';
 
-    footerContainer.innerHTML = `
+    const paths = {
+        index: {
+            home: '',
+            eventos: 'public/modulos/eventos/exibicaoeventos.html',
+            contato: 'public/modulos/contato/contato.html'
+        },
+        other: {
+            home: '../../../index.html',
+            eventos: 'exibicaoeventos.html',
+            contato: '../contato/contato.html'
+        }
+    };
+
+    const currentPaths = isIndex ? paths.index : paths.other;
+
+    // Atualizar os links no footer com os mesmos caminhos
+    const footerHtml = `
         <footer class="bg-footer py-4">
             <div class="container">
                 <div class="row">
@@ -94,9 +121,9 @@ function implementFooter() {
                     <div class="col-md-4 mb-3">
                         <h5 class="mb-3">Links Rápidos</h5>
                         <ul class="list-unstyled">
-                            <li><a href="${basePath}index.html">Home</a></li>
-                            <li><a href="${isIndex ? 'public/modulos' : '../'}/eventos/exibicaoeeventos.html">Eventos</a></li>
-                            <li><a href="${isIndex ? 'public/modulos' : '../'}/contato/contato.html">Contato</a></li>
+                            <li><a href="${currentPaths.home}">Home</a></li>
+                            <li><a href="${currentPaths.eventos}">Eventos</a></li>
+                            <li><a href="${currentPaths.contato}">Contato</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 mb-3">
@@ -115,4 +142,6 @@ function implementFooter() {
             </div>
         </footer>
     `;
+    
+    footerContainer.innerHTML = footerHtml;
 }
