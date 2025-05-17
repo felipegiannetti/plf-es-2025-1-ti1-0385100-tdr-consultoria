@@ -39,25 +39,43 @@
     </script>
 
 <script>
+    
+    const userId = 1; // ID do usuário (ajuste conforme necessário)
     const questions = [
         { title: "Sua opinião importa", question: "Como você avalia nosso produto?", options: ["Excelente", "Bom", "Razoável", "Ruim", "Péssimo"] },
         { title: "Qualidade do Atendimento", question: "Como você avalia nosso atendimento?", options: ["Ótimo", "Bom", "Regular", "Ruim", "Péssimo"] },
         { title: "Recomendaria a Amigos?", question: "Você recomendaria nosso produto para amigos?", options: ["Com certeza", "Provavelmente", "Talvez", "Pouco Provável", "Não"] },
-        { title: "Obrigado!", question: "Agradecemos seu feedback!", options: [] }
+        { title: "Obrigado!", question: "Vamos fornercer sua experiencia personalizada!", options: [] }
     ];
     let currentQuestion = 0;
+    let responses = [];
     function nextQuestion() {
-        currentQuestion++;
-        if (currentQuestion < questions.length) {
-            const q = questions[currentQuestion];
-            document.getElementById("title").textContent = q.title;
-            document.getElementById("question").textContent = q.question;
-            const optionsContainer = document.getElementById("options");
-            optionsContainer.innerHTML = q.options.map(option => `<label><input type="radio" name="option" value="${option}"> ${option}</label>`).join('');
-        } else {
-            document.getElementById("card").innerHTML = "<h2>Obrigado pelo seu feedback!</h2>";
+        const selectedOption = document.querySelector('input[name="option"]:checked');
+        if (selectedOption) {
+            responses.push({
+                question: questions[currentQuestion].question,
+                response: selectedOption.value
+            });
+            currentQuestion++;
+            if (currentQuestion < questions.length - 1) {
+                const q = questions[currentQuestion];
+                document.getElementById("title").textContent = q.title;
+                document.getElementById("question").textContent = q.question;
+                const optionsContainer = document.getElementById("options");
+                optionsContainer.innerHTML = q.options.map(option => `<label><input type="radio" name="option" value="${option}"> ${option}</label>`).join('');
+            } else {
+                document.getElementById("card").innerHTML = "<h2>Obrigado pelo seu feedback!</h2>";
+                fetch(`http://localhost:3000/usuarios/${userId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ respostas: responses })
+                })
+                .then(response => console.log('Respostas enviadas:', response))
+                .catch(error => console.error('Erro ao enviar respostas:', error));
+            }
         }
     }
+    
 </script>
 
 </body>

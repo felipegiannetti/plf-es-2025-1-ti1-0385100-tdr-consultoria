@@ -1,7 +1,7 @@
 {
   "eventos": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Workshop de Gestão Empresarial",
       "data": "2025-05-20T19:00:00.000Z",
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
@@ -9,10 +9,10 @@
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "imagem": "/../docs/images/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
-      "preco": 150.00
+      "preco": 150
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Palestra sobre Liderança",
       "data": "2025-06-10T16:00:00.000Z",
       "descricao": "Palestra sobre desenvolvimento de habilidades de liderança no ambiente corporativo moderno.",
@@ -20,10 +20,10 @@
       "local": "Hotel Business Center - BH",
       "imagem": "/../docs/images/eventos/palestra-empresarial.webp",
       "vagas": 100,
-      "preco": 80.00
+      "preco": 80
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Hotmart FIRE",
       "data": "2025-06-13T18:00:00.000Z",
       "descricao": "Curso intensivo sobre estratégias de marketing digital e mídias sociais para empresas.",
@@ -34,15 +34,35 @@
       "preco": 299.99
     }
   ],
-  
-
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "login": "admin",
       "senha": "123",
       "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "email": "admin@abc.com",
+      "respostas": [
+        {
+          "question": "Como você avalia nosso produto?",
+          "response": "Excelente"
+        },
+        {
+          "question": "Como você avalia nosso atendimento?",
+          "response": "Ótimo"
+        },
+        {
+          "question": "Você recomendaria nosso produto para amigos?",
+          "response": "Com certeza"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "login": "admin2",
+      "senha": "1234",
+      "nome": "Administrador do Sistema2",
+      "email": "admin2@abc.com",
+      "respostas": []
     }
   ]
 }
