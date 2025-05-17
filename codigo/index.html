@@ -10,7 +10,22 @@
     <title>TDR Consultoria - Home</title>
 </head>
 <body>
-    <div id="navbarimplementador"></div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">TDR Consultoria</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="public/assets/js/eventosjs/exibicaoeventos.html">Eventos</a></li>
+                <li><a href="public/assets/js/modulos/login.html">Login</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
     <header class="hero">
         <div class="container">
@@ -23,27 +38,27 @@
     <section class="carousel-section">
         <div class="carousel-container">
             <div class="carousel-slide"><img src="docs/images/eventos/evento-gestao-empresarial.jpg" alt="Hero 1"></div>
-            <div class="carousel-slide"><img src="docs/images/eventos/hotmart-fire.jpeg" alt="Hero 2"></div>
-            <div class="carousel-slide"><img src="docs/images/eventos/palestra-empresarial.webp" alt="Hero 3"></div>
+            <div class="carousel-slide"><img src="docs/images/eventos/palestra-empresarial.webp" alt="Hero 2"></div>
+            <div class="carousel-slide"><img src="docs/images/eventos/hotmart-fire.jpeg" alt="Hero 3"></div>
         </div>
     </section>
 
     <section class="features-section">
         <div class="container">
             <div class="feature">
-                <img src="docs/images/eventos/palestra-empresarial.webp" alt="Feature 1">
+                <img src="docs/images/eventos/evento-gestao-empresarial.jpg" alt="Feature 1">
                 <h2>Gestão Estratégica</h2>
                 <p>Implementamos estratégias para impulsionar seus resultados financeiros.</p>
                 <button class="cta-button">Saiba Mais</button>
             </div>
             <div class="feature">
-                <img src="docs/images/eventos/hotmart-fire.jpeg" alt="Feature 2">
+                <img src="docs/images/eventos/palestra-empresarial.webp" alt="Feature 2">
                 <h2>Consultoria Personalizada</h2>
                 <p>Soluções customizadas para cada desafio empresarial.</p>
                 <button class="cta-button">Saiba Mais</button>
             </div>
             <div class="feature">
-                <img src="docs/images/eventos/evento-gestao-empresarial.jpg" alt="Feature 3">
+                <img src="docs/images/eventos/hotmart-fire.jpeg" alt="Feature 3">
                 <h2>Capacitação Profissional</h2>
                 <p>Workshops, cursos e palestras com foco em liderança e inovação.</p>
                 <button class="cta-button">Saiba Mais</button>
@@ -59,9 +74,42 @@
         <div class="container">
             <p>&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
         </div>
-    </footer>
+        <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h5>Localização</h5>
+                    <p>Belo Horizonte, MG<br>Rua Exemplo, 123<br>CEP: 30123-456</p>
+                </div>
+                <div class="contact-links">
+                    <h5>Links Rápidos</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Eventos</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+                <div class="social-media">
+                    <h5>Siga-nos</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
 
-    <script src="codigo/public/assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
-    <script src="codigo/public/assets/js/eventosjs/exibicaoeventos.js"></script>
+    <script src="public/assets/js/navbarplusfooterimplementador.js"></script>
+    <script src="public/assets/js/exibicaoeventos.js"></script>
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
