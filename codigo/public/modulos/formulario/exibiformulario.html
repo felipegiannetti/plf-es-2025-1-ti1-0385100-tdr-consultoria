@@ -8,6 +8,7 @@
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
+    <script src="../../assets/js/formulariojs/exibicaoformulario.js"></script>
 </head>
 
 <body class ="orangebg">
@@ -18,7 +19,11 @@
 
     </div>
 
+    <div id="cardQuiz">
 
+        <!--Js implementa-->
+
+    </div>
 
     <div id="footerimplementador">
 
@@ -30,6 +35,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous">
+    </script>
+
+    <script>
+        function nextQuestion(current) {
+            const currentCard = document.getElementById(`question-${current}`);
+            const nextCard = document.getElementById(`question-${current + 1}`);
+            currentCard.classList.add('hidden');
+            if (nextCard) {
+                nextCard.classList.remove('hidden');
+            } else {
+                document.getElementById('finish-card').classList.remove('hidden');
+            }
+        }
     </script>
 
 </body>
