@@ -1,33 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    loadEvents();
-});
+const API_URL = 'http://localhost:3000';
 
-async function loadEvents() {
+// Função para carregar eventos
+async function carregarEventos() {
     try {
-        const response = await fetch('http://localhost:3000/eventos');
+        const response = await fetch(`${API_URL}/eventos`);
         const eventos = await response.json();
-        const container = document.getElementById('cardseventos');
-        container.innerHTML = '';
-
+        
+        const featuresSection = document.querySelector('.features-section .container');
+        featuresSection.innerHTML = '';
+        
         eventos.forEach(evento => {
-            const card = createEventCard(evento);
-            container.appendChild(card);
+            featuresSection.innerHTML += `
+                <div class="feature">
+                    <img src="${evento.imagem}" alt="${evento.titulo}">
+                    <h2>${evento.titulo}</h2>
+                    <p>${evento.descricao}</p>
+                    <p>Data: ${new Date(evento.data).toLocaleDateString()}</p>
+                    <p>Preço: R$ ${evento.preco}</p>
+                    <p>Vagas: ${evento.vagas}</p>
+                    <button class="cta-button">Inscrever-se</button>
+                </div>
+            `;
         });
     } catch (error) {
         console.error('Erro ao carregar eventos:', error);
-        container.innerHTML = '<p>Erro ao carregar eventos.</p>';
     }
 }
 
-function createEventCard(evento) {
-    const card = document.createElement('div');
-    card.className = 'event-card';
-    card.innerHTML = `
-        <img src="${evento.imagem}" alt="${evento.titulo}" class="event-img">
-        <h3>${evento.titulo}</h3>
-        <p>${evento.descricao}</p>
-        <span>${new Date(evento.data).toLocaleDateString('pt-BR')}</span>
-        <a href="detalhesevento.html?id=${evento.id}" class="details-link">Ver Detalhes</a>
-    `;
-    return card;
-}
+// Carregar eventos quando a página carregar
+document.addEventListener('DOMContentLoaded', carregarEventos);

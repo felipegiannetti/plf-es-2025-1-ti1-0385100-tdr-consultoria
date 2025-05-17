@@ -6,12 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function addStyles() {
     const head = document.head;
-    
+    const currentPath = window.location.pathname;
+    const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
+    const basePath = isIndex ? 'public/assets/css/' : '../../assets/css/';
+
     // Adiciona CSS do Navbar se não existir
     if (!document.querySelector('link[href*="navbar.css"]')) {
         const navbarCss = document.createElement('link');
         navbarCss.rel = 'stylesheet';
-        navbarCss.href = '../../assets/css/navbar.css';
+        navbarCss.href = `${basePath}navbar.css`;
         head.appendChild(navbarCss);
     }
 
@@ -19,7 +22,7 @@ function addStyles() {
     if (!document.querySelector('link[href*="footer.css"]')) {
         const footerCss = document.createElement('link');
         footerCss.rel = 'stylesheet';
-        footerCss.href = '../../assets/css/footer.css';
+        footerCss.href = `${basePath}footer.css`;
         head.appendChild(footerCss);
     }
 }
@@ -31,9 +34,13 @@ function implementNavbar() {
         return;
     }
 
+    const currentPath = window.location.pathname;
+    const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
+    const basePath = isIndex ? '' : '../';
+
     navbarContainer.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top">
-            <a class="navbar-brand distanciastart" href="../../index.html">
+            <a class="navbar-brand distanciastart" href="${isIndex ? '' : '../../'}index.html">
                 TDR<span style="color: orange;">Consultoria</span>
             </a>
             <button class="navbar-toggler me-4" type="button" 
@@ -46,9 +53,9 @@ function implementNavbar() {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav d-flex container justify-content-end distanciaend">
-                    <a class="nav-item nav-link" href="../../index.html">Home</a>
-                    <a class="nav-item nav-link" href="../eventos/exibicaoeventos.html">Eventos</a>
-                    <a class="nav-item nav-link" href="../contato/contato.html">Contato</a>
+                    <a class="nav-item nav-link" href="${isIndex ? '' : '../../'}index.html">Home</a>
+                    <a class="nav-item nav-link" href="${isIndex ? 'public/modulos' : '../'}/eventos/exibicaoeventos.html">Eventos</a>
+                    <a class="nav-item nav-link" href="${isIndex ? 'public/modulos' : '../'}/contato/contato.html">Contato</a>
                 </div>
             </div>
         </nav>
@@ -57,7 +64,7 @@ function implementNavbar() {
     // Adiciona classe 'active' ao link da página atual
     const currentPage = window.location.pathname;
     const navLinks = navbarContainer.getElementsByClassName('nav-link');
-    
+
     Array.from(navLinks).forEach(link => {
         if (currentPage.includes(link.getAttribute('href'))) {
             link.classList.add('active');
@@ -72,6 +79,10 @@ function implementFooter() {
         return;
     }
 
+    const currentPath = window.location.pathname;
+    const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
+    const basePath = isIndex ? '' : '../../';
+
     footerContainer.innerHTML = `
         <footer class="bg-footer py-4">
             <div class="container">
@@ -83,9 +94,9 @@ function implementFooter() {
                     <div class="col-md-4 mb-3">
                         <h5 class="mb-3">Links Rápidos</h5>
                         <ul class="list-unstyled">
-                            <li><a href="../../index.html">Home</a></li>
-                            <li><a href="../eventos/exibicaoeventos.html">Eventos</a></li>
-                            <li><a href="../contato/contato.html">Contato</a></li>
+                            <li><a href="${basePath}index.html">Home</a></li>
+                            <li><a href="${isIndex ? 'public/modulos' : '../'}/eventos/exibicaoeeventos.html">Eventos</a></li>
+                            <li><a href="${isIndex ? 'public/modulos' : '../'}/contato/contato.html">Contato</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 mb-3">
