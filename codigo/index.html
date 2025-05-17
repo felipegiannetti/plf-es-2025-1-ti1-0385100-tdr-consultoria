@@ -42,6 +42,34 @@
             <div class="carousel-slide"><img src="docs/images/eventos/hotmart-fire.jpeg" alt="Hero 3"></div>
         </div>
     </section>
+    <script src="public/assets/js/navbarplusfooterimplementador.js"></script>
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                slide.style.transform = 'scale(0.85)';
+                slide.style.opacity = '0.6';
+            });
+            slides[currentIndex].classList.add('active');
+            slides[currentIndex].style.transform = 'scale(1.2)';
+            slides[currentIndex].style.opacity = '1';
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }
+
+        setInterval(nextSlide, 3000);
+        updateCarousel();
+    </script>
 
     <section class="midpage-section">
         <div class="container">
