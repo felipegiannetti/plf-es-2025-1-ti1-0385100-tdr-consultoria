@@ -1,0 +1,60 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#cardQuiz{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7rem;
+}
+
+.card {
+    background-color: #fff;
+    color: #333;
+    width: 400px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.card p {
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.options {
+    margin-bottom: 20px;
+}
+.options label {
+    display: block;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: background-color 0.2s, color 0.2s;
+    font-weight: 500;
+}
+.options label:hover {
+    background-color: #f0f0f0;
+    color: #28a745;
+    font-weight: 700;
+}
+.options input[type="radio"] {
+    display: none;
+}
+.options input[type="radio"]:checked + label {
+    background-color: #e0ffe0;
+    color: #28a745;
+    font-weight: 700;
+}
+
+#footerimplementador{
+    margin-top: 5.7rem;
+}
