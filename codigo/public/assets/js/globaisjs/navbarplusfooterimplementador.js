@@ -35,7 +35,7 @@ function implementNavbar() {
     const currentPath = window.location.pathname;
     const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
     
-    // Corrigindo os caminhos baseado na localização
+
     const paths = {
         index: {
             home: '',
@@ -109,7 +109,7 @@ function implementFooter() {
 
     const currentPaths = isIndex ? paths.index : paths.other;
 
-    // Atualizar os links no footer com os mesmos caminhos
+
     const footerHtml = `
         <footer class="bg-footer py-4">
             <div class="container">
