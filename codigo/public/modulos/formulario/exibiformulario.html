@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,16 @@
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../../assets/css/formularioCSS/exibiFormulario.css" rel="stylesheet">
+    <link href="../../assets/css/FAQCSS/FAQ.css" rel="stylesheet">
     <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
     <script src="../../assets/js/formulariojs/exibicaoformulario.js"></script>
+
 </head>
 
-<body class ="orangebg">
-    
+<body class="orangebg">
+
     <div id="navbarimplementador">
-        
+
         <!--JS implementa-->
 
     </div>
@@ -26,6 +29,8 @@
 
     </div>
 
+
+
     <div id="footerimplementador">
 
         <!--JS implementa-->
@@ -34,53 +39,81 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-        crossorigin="anonymous">
-    </script>
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+        </script>
 
-<script>
-    
-    const userId = 1; // ID do usuário (ajuste conforme necessário)
-    const questions = [
-        { title: "Sua opinião importa", question: "Como você avalia nosso produto?", options: ["Excelente", "Bom", "Razoável", "Ruim", "Péssimo"] },
-        { title: "Qualidade do Atendimento", question: "Como você avalia nosso atendimento?", options: ["Ótimo", "Bom", "Regular", "Ruim", "Péssimo"] },
-        { title: "Recomendaria a Amigos?", question: "Você recomendaria nosso produto para amigos?", options: ["Com certeza", "Provavelmente", "Talvez", "Pouco Provável", "Não"] },
-        { title: "Obrigado!", question: "Vamos fornercer sua experiencia personalizada!", options: [] }
-    ];
-    let currentQuestion = 0;
-    let responses = [];
-    function nextQuestion() {
-        const selectedOption = document.querySelector('input[name="option"]:checked');
-        if (selectedOption) {
-            responses.push({
-                question: questions[currentQuestion].question,
-                response: selectedOption.value
-            });
-            currentQuestion++;
-            if (currentQuestion < questions.length - 1) {
-                const q = questions[currentQuestion];
-                document.getElementById("title").textContent = q.title;
-                document.getElementById("question").textContent = q.question;
-                const optionsContainer = document.getElementById("options");
-                optionsContainer.innerHTML = q.options.map(option => `<label><input type="radio" name="option" value="${option}"> ${option}</label>`).join('');
-            } else {
-                document.getElementById("card").innerHTML = "<h2>Obrigado pelo seu feedback!</h2>";
-                fetch(`http://localhost:3000/usuarios/${userId}`, {
-                    method: 'PATCH',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ respostas: responses, formularioFeito: "sim" })
-                })
-                .then(response => console.log('Respostas enviadas:', response))
-                .catch(error => console.error('Erro ao enviar respostas:', error));
+    <script>
+
+
+        /* 
+        Esse sistema que esta implementado para o formulario nao esta completo. Ainda existe melhorias para serem feitas. Sao as seguintes:
+
+        Apos o envio das resposta o site reinicia e nao deixa o usuario ver a tela de obrigado. 
+        O sistema de FAQ ainda esta faltando.
+        O sistema de login ainda esta para ser implementado, entao so e possivel alterar o usuario em que sao cadastradas as respostas pelo userId.
+        As perguntas tem que ser atualizadas para o proposito do site.
+        O sistema de load que e usado para clicar nas options das questao apresenta bugs ocasionais por causa do carregamento da pagina web.
+        O css da pagina precisa ser atualizado.
+        */
+
+        //Id do usuario que futuramente sera pego atravez do login
+        let userId = 1;
+
+        //Lista de perguntas que aparencem no formulario
+        const questions = [
+            { title: "Sua opinião importa", question: "Como você avalia nosso produto?", options: ["Excelente", "Bom", "Razoável", "Ruim", "Péssimo"] },
+            { title: "Qualidade do Atendimento", question: "Como você avalia nosso atendimento?", options: ["Ótimo", "Bom", "Regular", "Ruim", "Péssimo"] },
+            { title: "Recomendaria a Amigos?", question: "Você recomendaria nosso produto para amigos?", options: ["Com certeza", "Provavelmente", "Talvez", "Pouco Provável", "Não"] },
+            { title: "Obrigado!", question: "Vamos fornercer sua experiencia personalizada!", options: [] }
+        ];
+
+        //Sistema para atualizar as perguntas depois de escolher a resposta 
+        let currentQuestion = 0;
+        let responses = [];
+        function nextQuestion() {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            if (selectedOption) {
+                //Mandando a resposta do usuario para a variavel responses
+                responses.push({
+                    question: questions[currentQuestion].question,
+                    response: selectedOption.value
+                });
+                //Sistema de loop das questoes
+                currentQuestion++;
+                if (currentQuestion < questions.length - 1) {
+                    const q = questions[currentQuestion];
+                    document.getElementById("title").textContent = q.title;
+                    document.getElementById("question").textContent = q.question;
+                    const optionsContainer = document.getElementById("options");
+                    optionsContainer.innerHTML = q.options.map(option => `<label><input type="radio" name="option" value="${option}"> ${option}</label>`).join('');
+                } else {
+                    
+                    //Finalizacao do loop das questoes
+                        if (userId == 1){
+                        document.getElementById("card").innerHTML = "<h2>Obrigado pelo seu feedback!</h2>";
+                        //Fetch da api e envio dos dados atravez do method PATCH
+                        //Os dados sao passados para o db.json usuarios/respostas onde sao criadas as perguntas e as respostas
+                        //Tambem e atualizado o formularioFeito para saber se o usuario fez ou nao o formulario
+                        fetch(`http://localhost:3000/usuarios/${userId}`, {
+                            method: 'PATCH',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ respostas: responses, formularioFeito: "sim" })
+                        })
+                            .then(response => console.log('Respostas enviadas:', response))
+                            .catch(error => console.error('Erro ao enviar respostas:', error));
+                    }else {
+                        document.getElementById("card").innerHTML = "<h2>Se registre no sistema para descobrir sua resposta!</h2>";
+                    }
+                }
             }
         }
-    }
 
-    window.addEventListener("load", () => {
+        window.addEventListener("load", () => {
             document.getElementById("options").addEventListener("click", nextQuestion);
-    });
+        });
 
-</script>
+    </script>
 
 </body>
+
 </html>

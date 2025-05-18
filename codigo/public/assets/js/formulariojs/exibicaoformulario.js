@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadEvents();
 });
 
+//Sistema que carrega o card do formulario na pagina exibiformulario.html
 async function loadEvents() {
     try {
         const response = await fetch('http://localhost:3000/usuarios');
