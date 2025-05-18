@@ -32,6 +32,50 @@
       "imagem": "/../docs/images/eventos/hotmart-fire.jpeg",
       "vagas": 30,
       "preco": 299.99
+    },
+    {
+      "id": 4,
+      "titulo": "Finanças para Startups",
+      "data": "2025-07-15T14:00:00.000Z",
+      "descricao": "Workshop prático sobre gestão financeira para startups em crescimento, incluindo captação de investimentos e fluxo de caixa.",
+      "categoria": "Workshop",
+      "local": "San Pedro Valley - Savassi, Belo Horizonte",
+      "imagem": "/../docs/images/eventos/financas-startups.jpg",
+      "vagas": 40,
+      "preco": 180.00
+    },
+    {
+      "id": 5,
+      "titulo": "ESG na Prática Empresarial",
+      "data": "2025-08-22T09:00:00.000Z",
+      "descricao": "Seminário sobre implementação de práticas ESG em empresas, com foco em sustentabilidade e governança corporativa.",
+      "categoria": "Seminário",
+      "local": "CDL-BH - Centro, Belo Horizonte",
+      "imagem": "/../docs/images/eventos/esg-empresas.png",
+      "vagas": 75,
+      "preco": 220.00
+    },
+    {
+      "id": 6,
+      "titulo": "Design Thinking & Inovação",
+      "data": "2025-09-05T13:30:00.000Z",
+      "descricao": "Curso imersivo sobre metodologias ágeis e design thinking para inovação em produtos e serviços.",
+      "categoria": "Curso",
+      "local": "Le Monde Hub - Funcionários, Belo Horizonte",
+      "imagem": "/../docs/images/eventos/design-thinking.jpg",
+      "vagas": 35,
+      "preco": 280.00
+    },
+    {
+      "id": 7,
+      "titulo": "Vendas B2B Avançado",
+      "data": "2025-10-18T15:00:00.000Z",
+      "descricao": "Treinamento intensivo em técnicas avançadas de vendas B2B, negociação e gestão de contas-chave.",
+      "categoria": "Treinamento",
+      "local": "FIEMG - Santa Efigênia, Belo Horizonte",
+      "imagem": "/../docs/images/eventos/vendas-b2b.jpg",
+      "vagas": 45,
+      "preco": 245.00
     }
   ]
 }

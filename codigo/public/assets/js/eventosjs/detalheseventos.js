@@ -28,7 +28,6 @@ async function carregarEventos() {
 
 async function carregarDetalhesEvento() {
     try {
-
         const urlParams = new URLSearchParams(window.location.search);
         const eventoId = urlParams.get('id');
 
@@ -36,23 +35,32 @@ async function carregarDetalhesEvento() {
             throw new Error('ID do evento não fornecido');
         }
 
+        console.log('Buscando evento com ID:', eventoId); // Debug log
+
         const response = await fetch(`${API_URL}/eventos/${eventoId}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const evento = await response.json();
         
+        console.log('Evento carregado:', evento); // Debug log
+
         const container = document.getElementById('evento-detalhes');
         
         container.innerHTML = `
             <div class="card">
                 <div class="row g-0">
                     <div class="col-md-6">
-                        <img src="${evento.imagem}" class="img-fluid rounded-start" alt="${evento.titulo}">
+                        <img src="${evento.imagem}" class="img-fluid rounded-start w-100" alt="${evento.titulo}">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
                             <h2 class="card-title">${evento.titulo}</h2>
                             <p class="card-text">${evento.descricao}</p>
                             <div class="event-details">
-                                <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString()}</p>
+                                <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString('pt-BR')}</p>
                                 <p><i class="fas fa-map-marker-alt"></i> Local: ${evento.local}</p>
                                 <p><i class="fas fa-ticket-alt"></i> Vagas disponíveis: ${evento.vagas}</p>
                                 <p><i class="fas fa-tag"></i> Categoria: ${evento.categoria}</p>
@@ -68,7 +76,8 @@ async function carregarDetalhesEvento() {
         console.error('Erro ao carregar detalhes do evento:', error);
         document.getElementById('evento-detalhes').innerHTML = `
             <div class="alert alert-danger">
-                Erro ao carregar detalhes do evento. Por favor, tente novamente mais tarde.
+                Erro ao carregar detalhes do evento. Por favor, tente novamente mais tarde.<br>
+                Erro: ${error.message}
             </div>
         `;
     }
