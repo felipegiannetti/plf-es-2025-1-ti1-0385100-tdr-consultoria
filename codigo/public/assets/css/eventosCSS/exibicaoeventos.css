@@ -7,6 +7,10 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+a {
+    color: white;
+}
+
 .margemtopo {
     margin-top: 60px;
 }

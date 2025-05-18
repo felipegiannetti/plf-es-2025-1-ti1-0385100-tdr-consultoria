@@ -53,7 +53,7 @@ async function carregarDetalhesEvento() {
             <div class="card">
                 <div class="row g-0">
                     <div class="col-md-6">
-                        <img src="${evento.imagem}" class="img-fluid rounded-start w-100" alt="${evento.titulo}">
+                        <img src="${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">

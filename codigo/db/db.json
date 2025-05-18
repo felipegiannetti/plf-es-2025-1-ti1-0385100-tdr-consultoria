@@ -7,6 +7,7 @@
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
+      "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
       "preco": 150.00
@@ -18,6 +19,7 @@
       "descricao": "Palestra sobre desenvolvimento de habilidades de liderança no ambiente corporativo moderno.",
       "categoria": "Palestra",
       "local": "Hotel Business Center - BH",
+      "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/palestra-empresarial.webp",
       "vagas": 100,
       "preco": 80.00
@@ -29,6 +31,7 @@
       "descricao": "Curso intensivo sobre estratégias de marketing digital e mídias sociais para empresas.",
       "categoria": "Curso",
       "local": "Centro de Convenções - BH",
+      "localmapa": "https://maps.google.com/maps?q=Centro+de+Convencoes+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/hotmart-fire.jpeg",
       "vagas": 30,
       "preco": 299.99
@@ -40,6 +43,7 @@
       "descricao": "Workshop prático sobre gestão financeira para startups em crescimento, incluindo captação de investimentos e fluxo de caixa.",
       "categoria": "Workshop",
       "local": "San Pedro Valley - Savassi, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=San+Pedro+Valley+Savassi+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/financas-startups.jpg",
       "vagas": 40,
       "preco": 180.00
@@ -51,6 +55,7 @@
       "descricao": "Seminário sobre implementação de práticas ESG em empresas, com foco em sustentabilidade e governança corporativa.",
       "categoria": "Seminário",
       "local": "CDL-BH - Centro, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/esg-empresas.png",
       "vagas": 75,
       "preco": 220.00
@@ -62,6 +67,7 @@
       "descricao": "Curso imersivo sobre metodologias ágeis e design thinking para inovação em produtos e serviços.",
       "categoria": "Curso",
       "local": "Le Monde Hub - Funcionários, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=Le+Monde+Hub+Funcionarios+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/design-thinking.jpg",
       "vagas": 35,
       "preco": 280.00
@@ -73,6 +79,7 @@
       "descricao": "Treinamento intensivo em técnicas avançadas de vendas B2B, negociação e gestão de contas-chave.",
       "categoria": "Treinamento",
       "local": "FIEMG - Santa Efigênia, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/vendas-b2b.jpg",
       "vagas": 45,
       "preco": 245.00
