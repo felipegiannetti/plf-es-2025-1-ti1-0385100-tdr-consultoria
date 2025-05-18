@@ -68,14 +68,18 @@
                 fetch(`http://localhost:3000/usuarios/${userId}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ respostas: responses })
+                    body: JSON.stringify({ respostas: responses, formularioFeito: "sim" })
                 })
                 .then(response => console.log('Respostas enviadas:', response))
                 .catch(error => console.error('Erro ao enviar respostas:', error));
             }
         }
     }
-    
+
+    window.addEventListener("load", () => {
+            document.getElementById("options").addEventListener("click", nextQuestion);
+    });
+
 </script>
 
 </body>

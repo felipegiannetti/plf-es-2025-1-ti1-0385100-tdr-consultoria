@@ -10,18 +10,16 @@ async function loadEvents() {
         const container = document.getElementById('cardQuiz');
         container.innerHTML = `
            <div class="card" id="card">
-        <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/document.png" alt="Document Icon">
-        <h2 id="title">Sua opinião importa</h2>
-        <p id="question">Como você avalia nosso produto?</p>
-        <div class="options" id="options">
-            <label><input type="radio" name="option" value="Excelente"> Excelente</label>
-            <label><input type="radio" name="option" value="Bom"> Bom</label>
-            <label><input type="radio" name="option" value="Razoável"> Razoável</label>
-            <label><input type="radio" name="option" value="Ruim"> Ruim</label>
-            <label><input type="radio" name="option" value="Péssimo"> Péssimo</label>
+            <h2 id="title">Sua opinião importa</h2>
+            <p id="question">Como você avalia nosso produto?</p>
+            <div class="options" id="options">
+                <input type="radio" name="option" id="opt1" value="Excelente"><label for="opt1">Excelente</label>
+                <input type="radio" name="option" id="opt2" value="Bom"><label for="opt2">Bom</label>
+                <input type="radio" name="option" id="opt3" value="Razoável"><label for="opt3">Razoável</label>
+                <input type="radio" name="option" id="opt4" value="Ruim"><label for="opt4">Ruim</label>
+                <input type="radio" name="option" id="opt5" value="Péssimo"><label for="opt5">Péssimo</label>
+            </div>
         </div>
-        <button class="submit-btn" onclick="nextQuestion()">PRÓXIMA</button>
-    </div>
         `;
 
     } catch (error) {
