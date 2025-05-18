@@ -9,8 +9,10 @@
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../../assets/css/formularioCSS/exibiFormulario.css" rel="stylesheet">
+    <link href="../../assets/css/FAQCSS/FAQ.css" rel="stylesheet">
     <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
     <script src="../../assets/js/formulariojs/exibicaoformulario.js"></script>
+
 </head>
 
 <body class="orangebg">
@@ -26,6 +28,8 @@
         <!--Js implementa-->
 
     </div>
+
+
 
     <div id="footerimplementador">
 
@@ -53,7 +57,7 @@
         */
 
         //Id do usuario que futuramente sera pego atravez do login
-        const userId = 1;
+        let userId = 1;
 
         //Lista de perguntas que aparencem no formulario
         const questions = [
@@ -83,18 +87,23 @@
                     const optionsContainer = document.getElementById("options");
                     optionsContainer.innerHTML = q.options.map(option => `<label><input type="radio" name="option" value="${option}"> ${option}</label>`).join('');
                 } else {
+                    
                     //Finalizacao do loop das questoes
-                    document.getElementById("card").innerHTML = "<h2>Obrigado pelo seu feedback!</h2>";
-                    //Fetch da api e envio dos dados atravez do method PATCH
-                    //Os dados sao passados para o db.json usuarios/respostas onde sao criadas as perguntas e as respostas
-                    //Tambem e atualizado o formularioFeito para saber se o usuario fez ou nao o formulario
-                    fetch(`http://localhost:3000/usuarios/${userId}`, {
-                        method: 'PATCH',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ respostas: responses, formularioFeito: "sim" })
-                    })
-                        .then(response => console.log('Respostas enviadas:', response))
-                        .catch(error => console.error('Erro ao enviar respostas:', error));
+                        if (userId == 1){
+                        document.getElementById("card").innerHTML = "<h2>Obrigado pelo seu feedback!</h2>";
+                        //Fetch da api e envio dos dados atravez do method PATCH
+                        //Os dados sao passados para o db.json usuarios/respostas onde sao criadas as perguntas e as respostas
+                        //Tambem e atualizado o formularioFeito para saber se o usuario fez ou nao o formulario
+                        fetch(`http://localhost:3000/usuarios/${userId}`, {
+                            method: 'PATCH',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ respostas: responses, formularioFeito: "sim" })
+                        })
+                            .then(response => console.log('Respostas enviadas:', response))
+                            .catch(error => console.error('Erro ao enviar respostas:', error));
+                    }else {
+                        document.getElementById("card").innerHTML = "<h2>Se registre no sistema para descobrir sua resposta!</h2>";
+                    }
                 }
             }
         }
