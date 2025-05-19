@@ -219,3 +219,15 @@ body {
     font-size: 14px;
     color: #555;
 }
+
+#carouselExampleIndicators .carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.carousel-title {
+    color: #fe821c;
+    text-align: center;
+    font-size: 2rem;
+    margin: 40px 0 20px 0;
+}
