@@ -1,0 +1,47 @@
+#eventos-destaque {
+  background-color: #fff9f2;
+  padding: 30px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#eventos-destaque h2 {
+  color: #ff6600;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+#carouselEventos .carousel-inner img {
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+#carouselEventos .carousel-inner img:hover {
+  transform: scale(1.05);
+}
+
+#carouselEventos .carousel-inner {
+  border: 2px solid #ff6600;
+  box-shadow: 0 4px 12px rgb(255 102 0 / 0.3);
+  border-radius: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(44%) sepia(88%) saturate(5125%) hue-rotate(5deg) brightness(100%) contrast(101%);
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 576px) {
+  #carouselEventos .carousel-inner img {
+    max-height: 220px;
+  }
+  #eventos-destaque h2 {
+    font-size: 1.8rem;
+  }
+}

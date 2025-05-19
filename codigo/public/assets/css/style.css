@@ -194,3 +194,28 @@ body {
         align-items: center;
     }
 }
+
+.card-contato {
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 10000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card-contato h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.card-contato p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+}

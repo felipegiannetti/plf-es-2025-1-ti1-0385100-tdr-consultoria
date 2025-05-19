@@ -17,7 +17,6 @@
 <body>
     <div id="navbarimplementador">
         
-        <!--JS implementa-->
 
     </div>
 
@@ -28,6 +27,14 @@
             <button class="cta-button">Saiba Mais</button>
         </div>
     </header>
+
+<div id="card-contato" class="card-contato" style="display: none;">
+    <h3>Informações de Contato</h3>
+    <p><strong>Email:</strong> tdrconsultoria@gmail.com</p>
+    <p><strong>Telefone:</strong> (32) 98431-5193</p>
+    <p><strong>Horário:</strong> Segunda a sexta das 11h às 19h</p>
+</div>
+
 
     <section class="carousel-section">
         <div class="carousel-container">
@@ -102,7 +109,6 @@
 
     <div id="footerimplementador">
 
-        <!--JS implementa-->
 
     </div>
 
@@ -112,4 +118,22 @@
         });
     </script>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const card = document.getElementById("card-contato");
+
+        const botoes = document.querySelectorAll("button, a");
+
+        botoes.forEach(botao => {
+            if (botao.textContent.trim().toLowerCase() === "contato") {
+                botao.addEventListener("click", function (e) {
+                    e.preventDefault(); // Impede redirecionamento se for um <a>
+                    card.style.display = card.style.display === "block" ? "none" : "block";
+                });
+            }
+        });
+    });
+</script>
+
+
 </html>
