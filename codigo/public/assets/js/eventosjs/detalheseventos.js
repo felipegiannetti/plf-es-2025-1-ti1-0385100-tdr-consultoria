@@ -50,26 +50,35 @@ async function carregarDetalhesEvento() {
         const container = document.getElementById('evento-detalhes');
         
         container.innerHTML = `
-            <div class="card">
+            <div class="card mb-4">
                 <div class="row g-0">
                     <div class="col-md-6">
                         <img src="${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
                     </div>
                     <div class="col-md-6">
-                        <div class="card-body">
-                            <h2 class="card-title">${evento.titulo}</h2>
-                            <p class="card-text">${evento.descricao}</p>
-                            <div class="event-details">
-                                <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString('pt-BR')}</p>
-                                <p><i class="fas fa-map-marker-alt"></i> Local: ${evento.local}</p>
-                                <p><i class="fas fa-ticket-alt"></i> Vagas disponíveis: ${evento.vagas}</p>
-                                <p><i class="fas fa-tag"></i> Categoria: ${evento.categoria}</p>
-                                <p><i class="fas fa-dollar-sign"></i> Preço: R$ ${evento.preco.toFixed(2)}</p>
+                        <div class="card-body d-flex flex-column h-100">
+                            <div>
+                                <h2 class="card-title">${evento.titulo}</h2>
+                                <p class="card-text">${evento.descricao}</p>
+                                <div class="event-details">
+                                    <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString('pt-BR')}</p>
+                                    <p><i class="fas fa-map-marker-alt"></i> Local: ${evento.local}</p>
+                                    <p><i class="fas fa-ticket-alt"></i> Vagas disponíveis: ${evento.vagas}</p>
+                                    <p><i class="fas fa-tag"></i> Categoria: ${evento.categoria}</p>
+                                    <p><i class="fas fa-dollar-sign"></i> Preço: R$ ${evento.preco.toFixed(2)}</p>
+                                </div>
                             </div>
-                            <button class="btn btn-primary btn-lg mt-3">Inscrever-se</button>
+                            <div class="mt-auto">
+                                <button class="btn btn-primary btn-lg w-100">Inscrever-se</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-center">
+                <a href="exibicaoeventos.html" class="btn btn-secondary btn-lg w-100">
+                    <i class="fas fa-arrow-left me-2"></i>Voltar para Lista de Eventos
+                </a>
             </div>
         `;
     } catch (error) {

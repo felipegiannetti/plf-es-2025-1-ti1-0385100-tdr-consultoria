@@ -1,8 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadBootstrap();
+    // Wait for Bootstrap to be fully loaded
+    await new Promise(resolve => setTimeout(resolve, 100));
+    addStyles();
     implementNavbar();
     implementFooter();
-    addStyles();
+    
+    // Initialize dropdowns with specific configuration
+    const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+    dropdownElementList.forEach(dropdownToggleEl => {
+        const dropdown = new bootstrap.Dropdown(dropdownToggleEl, {
+            offset: [0, 2],
+            boundary: 'viewport'
+        });
+        
+        // Add click handler
+        dropdownToggleEl.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.toggle();
+        });
+    });
 });
+
+async function loadBootstrap() {
+    // Loads Bootstrap CSS
+    if (!document.querySelector('link[href*="bootstrap.min.css"]')) {
+        const bootstrapCSS = document.createElement('link');
+        bootstrapCSS.rel = 'stylesheet';
+        bootstrapCSS.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css';
+        document.head.appendChild(bootstrapCSS);
+    }
+
+    // Loads Bootstrap JS
+    if (!document.querySelector('script[src*="bootstrap.bundle.min.js"]')) {
+        return new Promise((resolve) => {
+            const bootstrapJS = document.createElement('script');
+            bootstrapJS.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js';
+            bootstrapJS.onload = resolve;
+            document.body.appendChild(bootstrapJS);
+        });
+    }
+}
 
 function addStyles() {
     const head = document.head;
@@ -22,12 +60,6 @@ function addStyles() {
         footerCss.rel = 'stylesheet';
         footerCss.href = `${basePath}footer.css`;
         head.appendChild(footerCss);
-    }
-
-    if (!document.querySelector('script[src*="bootstrap.bundle.min.js"]')) {
-        const bootstrapJS = document.createElement('script');
-        bootstrapJS.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js';
-        document.body.appendChild(bootstrapJS);
     }
 }
 
@@ -61,30 +93,41 @@ function implementNavbar() {
 
     navbarContainer.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top">
-            <a class="navbar-brand distanciastart" href="${currentPaths.home}">
-                TDR<span style="color: orange;">Consultoria</span>
-            </a>
-            <button class="navbar-toggler me-4" type="button" 
-                    data-bs-toggle="collapse" 
-                    data-bs-target="#navbarNavAltMarkup" 
-                    aria-controls="navbarNavAltMarkup" 
-                    aria-expanded="false" 
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav d-flex container justify-content-end distanciaend">
-                    <a class="nav-item nav-link" href="${currentPaths.home}">Home</a>
-                    <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Eventos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
-                            <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
-                        </ul>
-                    </div>
-                    <a class="nav-item nav-link" href="${currentPaths.contato}">Contato</a>
+            <div class="container">
+                <a class="navbar-brand distanciastart" href="${currentPaths.home}">
+                    TDR<span style="color: orange;">Consultoria</span>
+                </a>
+                <button class="navbar-toggler" type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="${currentPaths.home}">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" 
+                               href="#"
+                               id="navbarDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown" 
+                               aria-expanded="false">
+                                Eventos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
+                                <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="toggleContatoCard(true); return false;">Contato</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -98,6 +141,33 @@ function implementNavbar() {
             link.classList.add('active');
         }
     });
+
+    // Add contact card to body if not present
+    if (!document.getElementById('card-contato')) {
+        const contactCard = document.createElement('div');
+        contactCard.id = 'card-contato';
+        contactCard.className = 'card-contato';
+        contactCard.style.display = 'none';
+        contactCard.innerHTML = `
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Informações de Contato</h3>
+                <button type="button" class="btn-close" onclick="toggleContatoCard(false)"></button>
+            </div>
+            <div class="card-body">
+                <p><i class="fas fa-envelope me-2"></i><strong>Email:</strong> tdrconsultoria@gmail.com</p>
+                <p><i class="fas fa-phone me-2"></i><strong>Telefone:</strong> (32) 98431-5193</p>
+                <p><i class="fas fa-clock me-2"></i><strong>Horário:</strong> Segunda a sexta das 11h às 19h</p>
+            </div>
+        `;
+        document.body.appendChild(contactCard);
+
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'overlay';
+        overlay.className = 'overlay';
+        overlay.addEventListener('click', () => toggleContatoCard(false));
+        document.body.appendChild(overlay);
+    }
 }
 
 function implementFooter() {
@@ -160,4 +230,24 @@ function implementFooter() {
     `;
     
     footerContainer.innerHTML = footerHtml;
+}
+
+function toggleContatoCard(show) {
+    const card = document.getElementById('card-contato');
+    const overlay = document.getElementById('overlay');
+    
+    if (!card || !overlay) {
+        console.error('Contact card or overlay not found');
+        return;
+    }
+    
+    if (show) {
+        card.style.display = 'block';
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    } else {
+        card.style.display = 'none';
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }

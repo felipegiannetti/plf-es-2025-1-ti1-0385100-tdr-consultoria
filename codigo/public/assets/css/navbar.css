@@ -59,3 +59,99 @@
 .navbar-brand:hover::after {
     width: 100%;
 }
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1030;
+    padding: 1rem 0;
+}
+
+.nav-item.dropdown:hover .nav-link {
+    outline: none;
+    box-shadow: none;
+}
+
+.nav-link:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1031;
+    min-width: 10rem;
+    margin: 0.125rem 0 0;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 0.25rem;
+}
+
+.dropdown-menu.show {
+    display: block !important;
+}
+
+.nav-item.dropdown {
+    position: relative;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    margin-top: 0;
+}
+
+/* Remove outline on dropdown toggle */
+.dropdown-toggle:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.card-contato {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1050;
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    display: none;
+}
+
+.card-contato .card-header {
+    background-color: #ff4800;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px 8px 0 0;
+}
+
+.card-contato .card-body {
+    padding: 1.5rem;
+}
+
+.card-contato p {
+    margin-bottom: 1rem;
+}
+
+/* Optional: Add hover effect for desktop */
+@media (min-width: 992px) {
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}

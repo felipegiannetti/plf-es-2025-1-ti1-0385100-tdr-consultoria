@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="public/assets/css/style.css">
   <link rel="stylesheet" href="public/assets/css/navbar.css">
   <link rel="stylesheet" href="public/assets/css/footer.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="public/assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
   <title>TDR Consultoria - Home</title>
@@ -19,7 +18,7 @@
     <div class="container">
       <h1 class="hero-title">Consultoria Financeira de Resultados</h1>
       <p class="hero-subtitle">Transforme suas ideias em resultados através de estratégias personalizadas.</p>
-      <button class="cta-button">Saiba Mais</button>
+      <button class="btn btn-light">Saiba Mais</button>
     </div>
   </header>
 
@@ -50,13 +49,6 @@
     </button>
   </div>
 
-  <div id="card-contato" class="card-contato" style="display: none;">
-    <h3>Informações de Contato</h3>
-    <p><strong>Email:</strong> tdrconsultoria@gmail.com</p>
-    <p><strong>Telefone:</strong> (32) 98431-5193</p>
-    <p><strong>Horário:</strong> Segunda a sexta das 11h às 19h</p>
-  </div>
-
   <section class="midpage-section">
     <div class="container">
       <div class="headline-container">
@@ -71,51 +63,36 @@
 
   <section class="features-section">
     <div class="container">
-      <div class="feature">
-        <img src="hotmart-fire.jpeg" alt="Feature 1">
-        <h2>Gestão Estratégica</h2>
-        <p>Implementamos estratégias para impulsionar seus resultados financeiros.</p>
-        <button class="cta-button">Saiba Mais</button>
-      </div>
-      <div class="feature">
-        <img src="hotmart-fire.jpeg" alt="Feature 2">
-        <h2>Consultoria Personalizada</h2>
-        <p>Soluções customizadas para cada desafio empresarial.</p>
-        <button class="cta-button" href="public/modulos/formulario/exibiFormulario.html">Saiba Mais</button>
-      </div>
-      <div class="feature">
-        <img src="hotmart-fire.jpeg" alt="Feature 3">
-        <h2>Capacitação Profissional</h2>
-        <p>Workshops, cursos e palestras com foco em liderança e inovação.</p>
-        <button class="cta-button">Saiba Mais</button>
-      </div>
+        <div class="feature">
+            <div class="feature-content">
+                <img src="hotmart-fire.jpeg" alt="Feature 1">
+                <h2>Gestão Estratégica</h2>
+                <p>Implementamos estratégias para impulsionar seus resultados financeiros.</p>
+            </div>
+            <button class="btn btn-light mt-auto">Saiba Mais</button>
+        </div>
+        <div class="feature">
+            <div class="feature-content">
+                <img src="hotmart-fire.jpeg" alt="Feature 2">
+                <h2>Consultoria Personalizada</h2>
+                <p>Soluções customizadas para cada desafio empresarial.</p>
+            </div>
+            <button class="btn btn-light mt-auto">Saiba Mais</button>
+        </div>
+        <div class="feature">
+            <div class="feature-content">
+                <img src="hotmart-fire.jpeg" alt="Feature 3">
+                <h2>Capacitação Profissional</h2>
+                <p>Workshops, cursos e palestras com foco em liderança e inovação.</p>
+            </div>
+            <button class="btn btn-light mt-auto">Saiba Mais</button>
+        </div>
     </div>
   </section>
 
   <div id="footerimplementador"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12AKC3hX8xHdAXGpP5TJFh9c4IzVZlTgHQPoHJo0ieGizqPL" crossorigin="anonymous"></script>
-  <script>
-    document.getElementById('hamburger')?.addEventListener('click', function () {
-      document.getElementById('nav-links')?.classList.toggle('active');
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const card = document.getElementById("card-contato");
-      const botoes = document.querySelectorAll("button, a");
-
-      botoes.forEach(botao => {
-        if (botao.textContent.trim().toLowerCase() === "contato") {
-          botao.addEventListener("click", function (e) {
-            e.preventDefault();
-            card.style.display = card.style.display === "block" ? "none" : "block";
-          });
-        }
-      });
-    });
-  </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="public/assets/js/indexjs/carrossel.js"></script>
-
+  
+  <script src="public/assets/js/indexjs/carrossel.js"></script>
 </body>
 </html>
