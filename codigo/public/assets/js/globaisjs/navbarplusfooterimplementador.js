@@ -23,6 +23,12 @@ function addStyles() {
         footerCss.href = `${basePath}footer.css`;
         head.appendChild(footerCss);
     }
+
+    if (!document.querySelector('script[src*="bootstrap.bundle.min.js"]')) {
+        const bootstrapJS = document.createElement('script');
+        bootstrapJS.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js';
+        document.body.appendChild(bootstrapJS);
+    }
 }
 
 function implementNavbar() {
