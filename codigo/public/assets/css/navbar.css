@@ -15,7 +15,7 @@
     padding: 5px 15px;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; → REMOVIDO para permitir que o dropdown ultrapasse */
 }
 
 .nav-item:hover {
@@ -43,7 +43,6 @@
 .navbar-brand:hover {
     border-radius: 20px;
     transform: translateY(-2px);
-
 }
 
 .navbar-brand::after {
@@ -77,35 +76,110 @@
     box-shadow: none !important;
 }
 
+/* Dropdown Styling */
 .dropdown-menu {
-    display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    z-index: 1031;
-    min-width: 10rem;
-    margin: 0.125rem 0 0;
-    background-color: #fff;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 0.25rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    z-index: 1050;
+    min-width: 220px;
+    padding: 0.8rem 0;
+    background: linear-gradient(135deg, #ffffff, #fff5e6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(255, 165, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.dropdown-menu.show {
-    display: block !important;
+/* Dropdown arrow indicator */
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 2px;
 }
 
-.nav-item.dropdown {
+/* Dropdown items styling */
+.dropdown-item {
+    padding: 0.75rem 1.8rem;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
     position: relative;
+    white-space: nowrap;
 }
 
-.nav-item.dropdown .dropdown-menu {
-    margin-top: 0;
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+    background: linear-gradient(to right, #FFA500, #ff4800);
+    color: white;
+    padding-left: 2.2rem;
 }
 
-/* Remove outline on dropdown toggle */
-.dropdown-toggle:focus {
-    outline: none !important;
-    box-shadow: none !important;
+/* Active state for dropdown items */
+.dropdown-item:active,
+.dropdown-item:focus {
+    background: #ff4800;
+    color: white;
+}
+
+/* Dropdown toggle arrow animation */
+.dropdown-toggle::after {
+    transition: transform 0.3s ease;
+}
+
+/* Animação suave ao mostrar/esconder */
+@media (min-width: 992px) {
+    .nav-item.dropdown .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-item.dropdown:hover .dropdown-toggle::after {
+        transform: rotate(180deg);
+    }
+}
+
+/* Mobile dropdown adjustments */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin: 0;
+        padding: 0.5rem 0;
+        background: #fff;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .dropdown-menu::before {
+        display: none;
+    }
+
+    .dropdown-item {
+        padding: 0.75rem 1.5rem;
+    }
+
+    .dropdown-item:hover {
+        padding-left: 2rem;
+    }
 }
 
 .card-contato {
@@ -149,7 +223,7 @@
     margin-bottom: 1rem;
 }
 
-/* Optional: Add hover effect for desktop */
+/* Hover automático em telas grandes */
 @media (min-width: 992px) {
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;

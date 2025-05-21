@@ -1,29 +1,33 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await loadBootstrap();
-    // Wait for Bootstrap to be fully loaded
+    // Pequena espera para garantir Bootstrap carregado
     await new Promise(resolve => setTimeout(resolve, 100));
     addStyles();
     implementNavbar();
     implementFooter();
-    
-    // Initialize dropdowns with specific configuration
+
+    // Inicializa dropdowns do Bootstrap normalmente — sem preventDefault
     const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
     dropdownElementList.forEach(dropdownToggleEl => {
-        const dropdown = new bootstrap.Dropdown(dropdownToggleEl, {
+        new bootstrap.Dropdown(dropdownToggleEl, {
             offset: [0, 2],
             boundary: 'viewport'
         });
-        
-        // Add click handler
-        dropdownToggleEl.addEventListener('click', (e) => {
-            e.preventDefault();
-            dropdown.toggle();
+    });
+
+    // Fecha menu colapsado ao clicar em qualquer link (bom UX no mobile)
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) bsCollapse.hide();
+            }
         });
     });
 });
 
 async function loadBootstrap() {
-    // Loads Bootstrap CSS
     if (!document.querySelector('link[href*="bootstrap.min.css"]')) {
         const bootstrapCSS = document.createElement('link');
         bootstrapCSS.rel = 'stylesheet';
@@ -31,9 +35,8 @@ async function loadBootstrap() {
         document.head.appendChild(bootstrapCSS);
     }
 
-    // Loads Bootstrap JS
     if (!document.querySelector('script[src*="bootstrap.bundle.min.js"]')) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             const bootstrapJS = document.createElement('script');
             bootstrapJS.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js';
             bootstrapJS.onload = resolve;
@@ -72,7 +75,6 @@ function implementNavbar() {
 
     const currentPath = window.location.pathname;
     const isIndex = currentPath.includes('index.html') || currentPath.endsWith('/');
-    
 
     const paths = {
         index: {
@@ -110,11 +112,14 @@ function implementNavbar() {
                         <li class="nav-item">
                             <a class="nav-link" href="${currentPaths.home}">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${currentPaths.home}">Quizzes</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" 
-                               href="#"
+                               href="#" 
                                id="navbarDropdown"
-                               role="button"
+                               role="button" 
                                data-bs-toggle="dropdown" 
                                aria-expanded="false">
                                 Eventos
@@ -133,16 +138,16 @@ function implementNavbar() {
         </nav>
     `;
 
+    // Marca a página ativa no menu
     const currentPage = window.location.pathname;
     const navLinks = navbarContainer.getElementsByClassName('nav-link');
-
     Array.from(navLinks).forEach(link => {
-        if (currentPage.includes(link.getAttribute('href'))) {
+        if (currentPage.includes(link.getAttribute('href')) && link.getAttribute('href') !== '#') {
             link.classList.add('active');
         }
     });
 
-    // Add contact card to body if not present
+    // Cria card de contato e overlay se não existir
     if (!document.getElementById('card-contato')) {
         const contactCard = document.createElement('div');
         contactCard.id = 'card-contato';
@@ -161,7 +166,6 @@ function implementNavbar() {
         `;
         document.body.appendChild(contactCard);
 
-        // Create overlay
         const overlay = document.createElement('div');
         overlay.id = 'overlay';
         overlay.className = 'overlay';
@@ -195,7 +199,6 @@ function implementFooter() {
 
     const currentPaths = isIndex ? paths.index : paths.other;
 
-
     const footerHtml = `
         <footer class="bg-footer py-4">
             <div class="container">
@@ -228,19 +231,19 @@ function implementFooter() {
             </div>
         </footer>
     `;
-    
+
     footerContainer.innerHTML = footerHtml;
 }
 
 function toggleContatoCard(show) {
     const card = document.getElementById('card-contato');
     const overlay = document.getElementById('overlay');
-    
+
     if (!card || !overlay) {
         console.error('Contact card or overlay not found');
         return;
     }
-    
+
     if (show) {
         card.style.display = 'block';
         overlay.style.display = 'block';
