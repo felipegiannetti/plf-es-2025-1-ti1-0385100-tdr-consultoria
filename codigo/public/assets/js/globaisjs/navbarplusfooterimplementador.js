@@ -40,11 +40,13 @@ function implementNavbar() {
         index: {
             home: '',
             eventos: 'public/modulos/eventos/exibicaoeventos.html',
+            cadastroEventos: 'public/modulos/eventos/cadastroEventos.html',
             contato: 'public/modulos/contato/contato.html'
         },
         other: {
             home: '../../../index.html',
             eventos: 'exibicaoeventos.html',
+            cadastroEventos: 'cadastroEventos.html',
             contato: '../contato/contato.html'
         }
     };
@@ -67,7 +69,15 @@ function implementNavbar() {
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav d-flex container justify-content-end distanciaend">
                     <a class="nav-item nav-link" href="${currentPaths.home}">Home</a>
-                    <a class="nav-item nav-link" href="${currentPaths.eventos}">Eventos</a>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Eventos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
+                            <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
+                        </ul>
+                    </div>
                     <a class="nav-item nav-link" href="${currentPaths.contato}">Contato</a>
                 </div>
             </div>
