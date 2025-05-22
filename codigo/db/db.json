@@ -156,6 +156,18 @@
             "idevento": 1,
             "comentario": "Evento empolgante."
         }
+    ],
+    "blog": [
+      {
+        "id": 1,
+        "titulo": "Venda de uma das maiores empresas do mundo",
+        "descricao": "Elon musk vende tesla.",
+        "data": "2025-05-22",
+        "hora": "09:30",
+        "publicoAlvo": "Investidores e entusiastas do mercado automotivo",
+        "categoria": "Mercado Financeiro",
+        "noticia": "Em uma surpreendente reviravolta no mercado automotivo, Elon Musk anunciou a venda da Tesla por US$ 800 bilhões para um consórcio internacional. A decisão impactou fortemente as ações globais e gerou especulações sobre o futuro dos veículos elétricos. Musk afirmou que focará exclusivamente na SpaceX."
+      } 
     ]
 }
 
