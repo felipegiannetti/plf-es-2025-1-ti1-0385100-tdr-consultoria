@@ -117,5 +117,45 @@
       "respostas": [],
       "formularioFeito": "nao"
     }
-  ]
+  ],
+  "quizzperguntas": [ 
+        {
+            "id": 1,
+            "quizzId": 1,
+            "pergunta": "Com qual dessas areas você mais se identifica?",
+            "opcoes": [
+                "Financias",
+                "Bolsa de valores",
+                "RH"
+            ]
+        },
+        {
+            "id": 2,
+            "quizzId": 1,
+            "pergunta": "Qual sua meta financeiran no periodo de 5 anos?",
+            "opcoes": [
+                "Entre 100000 - 500000",
+                "Entre 500000 - 1000000",
+                "+1000000"
+            ]
+        }
+    ],
+    "avaliacoeseventos": [
+        {
+            "idavaliacao": 1,
+            "idevento": 1,
+            "comentario": "Evento bom."
+        },
+        {
+            "idavaliacao": 2,
+            "idevento": 2,
+            "comentario": "Evento ruim."
+        },
+        {
+            "idavaliacao": 3,
+            "idevento": 1,
+            "comentario": "Evento empolgante."
+        }
+    ]
 }
+
