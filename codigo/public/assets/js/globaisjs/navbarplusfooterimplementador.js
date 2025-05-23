@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await loadBootstrap();
-    // Pequena espera para garantir Bootstrap carregado
     await new Promise(resolve => setTimeout(resolve, 100));
     addStyles();
     implementNavbar();
     implementFooter();
 
-    // Inicializa dropdowns do Bootstrap normalmente — sem preventDefault
     const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
     dropdownElementList.forEach(dropdownToggleEl => {
         new bootstrap.Dropdown(dropdownToggleEl, {
@@ -15,7 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // Fecha menu colapsado ao clicar em qualquer link (bom UX no mobile)
     document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
             const navbarCollapse = document.getElementById('navbarNav');
@@ -81,13 +78,11 @@ function implementNavbar() {
             home: '',
             eventos: 'public/modulos/eventos/exibicaoeventos.html',
             cadastroEventos: 'public/modulos/eventos/cadastroEventos.html',
-            contato: 'public/modulos/contato/contato.html'
         },
         other: {
             home: '../../../index.html',
             eventos: 'exibicaoeventos.html',
             cadastroEventos: 'cadastroEventos.html',
-            contato: '../contato/contato.html'
         }
     };
 
@@ -130,7 +125,7 @@ function implementNavbar() {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="toggleContatoCard(true); return false;">Contato</a>
+                            <a class="nav-link" onclick="toggleContatoCard(true); return false;">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -147,7 +142,6 @@ function implementNavbar() {
         }
     });
 
-    // Cria card de contato e overlay se não existir
     if (!document.getElementById('card-contato')) {
         const contactCard = document.createElement('div');
         contactCard.id = 'card-contato';
