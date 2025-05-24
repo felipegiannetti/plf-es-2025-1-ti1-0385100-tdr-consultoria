@@ -1,99 +1,228 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="public/assets/css/style.css">
-  <link rel="stylesheet" href="public/assets/css/navbar.css">
-  <link rel="stylesheet" href="public/assets/css/footer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script src="public/assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
-  <title>TDR Consultoria - Home</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="public/assets/css/homeCSS/index.css" />
+    <link rel="stylesheet" href="public/assets/css/navbar.css" />
+    <link rel="stylesheet" href="public/assets/css/footer.css" />
+    <title>TDR Consultoria - Home</title>
 </head>
+
 <body>
-  <div id="navbarimplementador"></div>
+    <div id="navbarimplementador"></div>
 
-  <header class="hero">
-    <div class="container">
-      <h1 class="hero-title">Consultoria Financeira de Resultados</h1>
-      <p class="hero-subtitle">Transforme suas ideias em resultados através de estratégias personalizadas.</p>
-      <button class="btn btn-light">Saiba Mais</button>
-    </div>
-  </header>
-
-  <div class="carousel-title">Eventos Destaque</div>
-
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="evento-gestao-empresarial.jpg" class="d-block w-100" alt="Hero 1">
-      </div>
-      <div class="carousel-item">
-        <img src="hotmart-fire.jpeg" class="d-block w-100" alt="Hero 2">
-      </div>
-      <div class="carousel-item">
-        <img src="palestra-empresarial.webp" class="d-block w-100" alt="Hero 3">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-
-  <section class="midpage-section">
-    <div class="container">
-      <div class="headline-container">
-        <h2 class="headline">Transformação Digital para Resultados</h2>
-        <p class="subtitle">Capacitação e consultoria financeira com soluções modernas e eficientes.</p>
-      </div>
-      <div class="image-container">
-        <img src="financas-startups.jpg" alt="Consultoria Financeira" class="midpage-image">
-      </div>
-    </div>
-  </section>
-
-  <section class="features-section">
-    <div class="container">
-        <div class="feature">
-            <div class="feature-content">
-                <img src="hotmart-fire.jpeg" alt="Feature 1">
-                <h2>Gestão Estratégica</h2>
-                <p>Implementamos estratégias para impulsionar seus resultados financeiros.</p>
+    <header class="hero">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-8 mx-auto text-center animate__animated animate__fadeIn">
+                    <h1 class="hero-title mb-4">Consultoria Financeira de Resultados</h1>
+                    <p class="hero-subtitle mb-5">Transforme suas ideias em resultados através de estratégias personalizadas.
+                    </p>
+                    <a href="#diferenciais"
+                        class="btn btn-primary btn-lg btn-pulse animate__animated animate__pulse animate__infinite">Saiba Mais</a>
+                </div>
             </div>
-            <button class="btn btn-light mt-auto">Saiba Mais</button>
         </div>
-        <div class="feature">
-            <div class="feature-content">
-                <img src="hotmart-fire.jpeg" alt="Feature 2">
-                <h2>Consultoria Personalizada</h2>
-                <p>Soluções customizadas para cada desafio empresarial.</p>
-            </div>
-            <button class="btn btn-light mt-auto">Saiba Mais</button>
-        </div>
-        <div class="feature">
-            <div class="feature-content">
-                <img src="hotmart-fire.jpeg" alt="Feature 3">
-                <h2>Capacitação Profissional</h2>
-                <p>Workshops, cursos e palestras com foco em liderança e inovação.</p>
-            </div>
-            <button class="btn btn-light mt-auto">Saiba Mais</button>
-        </div>
-    </div>
-  </section>
+        <div class="hero-overlay"></div>
+    </header>
 
-  <div id="footerimplementador"></div>
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title animate__animated animate__fadeInUp">Eventos Destaque</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">Confira nossos principais
+                    eventos e capacitações</p>
+            </div>
+            <div class="row justify-content-center animate__animated animate__fadeIn animate__delay-1s">
+                <div class="col-lg-10">
+                    <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner rounded-4 overflow-hidden shadow-lg"></div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Próximo</span>
+                        </button>
+                        <div class="carousel-indicators"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  
-  <script src="public/assets/js/indexjs/carrossel.js"></script>
-  
+    <section class="py-5" id="sobre">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeInUp">Sobre a TDR Consultoria</h2>
+                    <p class="animate__animated animate__fadeInUp">
+                        Fundada em 2010, a TDR Consultoria é referência em soluções financeiras estratégicas para empresas de
+                        todos
+                        os portes.
+                        Nossa missão é impulsionar o crescimento sustentável dos nossos clientes por meio de planejamento
+                        inteligente e inovação.
+                    </p>
+
+                    <div class="row stats mt-5 animate__animated animate__fadeIn">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="stat-item">
+                                <strong>500+</strong>
+                                <span>Clientes atendidos</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="stat-item">
+                                <strong>15</strong>
+                                <span>Anos de experiência</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-item">
+                                <strong>98%</strong>
+                                <span>Índice de satisfação</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 animate__animated animate__fadeInLeft">
+                    <h2 class="headline mb-4">Transformação Digital para Resultados</h2>
+                    <p class="subtitle mb-4">
+                        Capacitação e consultoria financeira com soluções modernas e eficientes.
+                    </p>
+                    <a href="#diferenciais" class="btn btn-primary">Conheça Nossos Serviços</a>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="midpage-image-container rounded-4 overflow-hidden shadow">
+                        <img src="financas-startups.jpg" alt="Consultoria Financeira" class="img-fluid w-100">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="diferenciais">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title animate__animated animate__fadeInUp">Nossos Diferenciais</h2>
+                <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">Soluções exclusivas para seu
+                    crescimento financeiro</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="feature-card h-100 d-flex flex-column">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Análise de Mercado</h3>
+                        <p class="flex-grow-1">Diagnósticos precisos e estratégias baseadas em dados reais do mercado financeiro.
+                        </p>
+                        <ul class="feature-list mb-3">
+                            <li><i class="fas fa-check-circle"></i> Relatórios mensais</li>
+                            <li><i class="fas fa-check-circle"></i> Projeções personalizadas</li>
+                            <li><i class="fas fa-check-circle"></i> Benchmarking setorial</li>
+                        </ul>
+                        <button class="btn btn-outline-primary mt-auto">Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="feature-card h-100 d-flex flex-column">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Consultoria Personalizada</h3>
+                        <p class="flex-grow-1">Soluções sob medida para seu negócio com acompanhamento especializado.</p>
+                        <ul class="feature-list mb-3">
+                            <li><i class="fas fa-check-circle"></i> Diagnóstico empresarial</li>
+                            <li><i class="fas fa-check-circle"></i> Plano de ação</li>
+                            <li><i class="fas fa-check-circle"></i> Acompanhamento mensal</li>
+                        </ul>
+                        <button class="btn btn-outline-primary mt-auto">Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="feature-card h-100 d-flex flex-column">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Capacitação Executiva</h3>
+                        <p class="flex-grow-1">Programas de desenvolvimento para líderes e equipes financeiras.</p>
+                        <ul class="feature-list mb-3">
+                            <li><i class="fas fa-check-circle"></i> Cursos certificados</li>
+                            <li><i class="fas fa-check-circle"></i> Workshops práticos</li>
+                            <li><i class="fas fa-check-circle"></i> Mentoria individual</li>
+                        </ul>
+                        <button class="btn btn-outline-primary mt-auto">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footerimplementador"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public/assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
+    <script src="public/assets/js/indexjs/carrossel.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const animateElements = document.querySelectorAll('.animate__animated');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animation = entry.target.dataset.animation || 'animate__fadeInUp';
+                        entry.target.classList.add(animation);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            const carousel = document.getElementById('eventCarousel');
+            const prevBtn = carousel.querySelector('.carousel-control-prev');
+            const nextBtn = carousel.querySelector('.carousel-control-next');
+            let hideControlsTimeout;
+
+            const hideControls = () => {
+                hideControlsTimeout = setTimeout(() => {
+                    prevBtn.style.opacity = '0';
+                    nextBtn.style.opacity = '0';
+                }, 300);
+            };
+
+            carousel.addEventListener('mouseenter', () => {
+                clearTimeout(hideControlsTimeout);
+                prevBtn.style.opacity = '1';
+                nextBtn.style.opacity = '1';
+            });
+
+            carousel.addEventListener('mouseleave', hideControls);
+            hideControls();
+        });
+    </script>
 </body>
+
 </html>
