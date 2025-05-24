@@ -193,6 +193,72 @@ a:hover {
     box-shadow: 0 15px 35px rgba(255, 122, 0, 0.3);
 }
 
+.card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(255, 122, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(255, 122, 0, 0.4);
+    border-color: #ff7a00;
+}
+
+.card-title {
+    color: #ff9a2e;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: #ccc;
+}
+
+.event-details {
+    color: #aaa;
+}
+
+.event-details i {
+    color: #ff9a2e;
+    margin-right: 8px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff7a00, #ff9a2e);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+}
+
+.btn-secondary {
+    background: #333;
+    border: 1px solid #444;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #444;
+    border-color: #555;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.5rem;
+    }
+    
+    .event-details {
+        font-size: 0.9rem;
+    }
+}
+
 @media screen and (min-width: 769px) {
     .postcard {
         flex-wrap: inherit;
