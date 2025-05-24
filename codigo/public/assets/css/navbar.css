@@ -203,30 +203,275 @@
     display: none;
 }
 
+/* Card de Contato Premium */
+.card-contato {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 450px;
+    background: linear-gradient(145deg, #1a1a1a, #222);
+    color: #eee;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3), 
+                0 0 0 1px rgba(255, 154, 46, 0.2);
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    border: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-contato.active {
+    animation: cardAppear 0.6s ease-out;
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Card de Contato Premium com Botão Visível */
+.card-contato {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 450px;
+    background: linear-gradient(145deg, #1a1a1a, #222);
+    color: #eee;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3), 
+                0 0 0 1px rgba(255, 154, 46, 0.2);
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    border: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Card de Contato Responsivo - TDR Consultoria */
+.card-contato {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 2rem); /* 1rem de margem em cada lado */
+    max-width: 500px;
+    background: linear-gradient(145deg, #1a1a1a, #222);
+    color: #eee;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    border: none;
+    transition: all 0.4s ease;
+    margin: 0 auto;
+}
+
+/* Overlay responsivo */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
     z-index: 1040;
     display: none;
 }
 
+/* Header responsivo */
 .card-contato .card-header {
-    background-color: #ff4800;
+    background: linear-gradient(135deg, #ff7a00, #ff9a2e);
     color: white;
-    padding: 1rem;
-    border-radius: 8px 8px 0 0;
+    padding: 1rem 1.25rem;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.card-contato .card-header h3 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem); /* Tamanho responsivo */
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão de fechar responsivo */
+.card-contato .btn-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0; /* Evita que o botão diminua muito */
+}
+
+.card-contato .btn-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.card-contato .btn-close::before,
+.card-contato .btn-close::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background-color: white;
+    top: 50%;
+    left: 20%;
+}
+
+.card-contato .btn-close::before {
+    transform: rotate(45deg);
+}
+
+.card-contato .btn-close::after {
+    transform: rotate(-45deg);
+}
+
+/* Corpo do card responsivo */
 .card-contato .card-body {
     padding: 1.5rem;
 }
 
 .card-contato p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    font-size: clamp(0.95rem, 3vw, 1.05rem);
+    line-height: 1.5;
+    color: #ddd;
+    transition: all 0.3s ease;
+    padding: 0.75rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    flex-wrap: wrap;
+}
+
+.card-contato p:hover {
+    background: rgba(255, 122, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.card-contato strong {
+    color: #ff9a2e;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.card-contato i {
+    width: 28px;
+    height: 28px;
+    min-width: 28px; /* Evita que o ícone diminua */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 122, 0, 0.2);
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    color: #ff7a00;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.card-contato p:hover i {
+    background: #ff7a00;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.card-contato.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Media Queries para ajustes específicos */
+@media (max-width: 768px) {
+    .card-contato {
+        width: calc(100% - 1.5rem);
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    
+    .card-contato .card-header {
+        padding: 0.9rem 1.1rem;
+    }
+    
+    .card-contato .card-body {
+        padding: 1.25rem;
+    }
+    
+    .card-contato p {
+        padding: 0.6rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-contato {
+        width: calc(100% - 1rem);
+    }
+    
+    .card-contato .card-header {
+        padding: 0.8rem 1rem;
+    }
+    
+    .card-contato .card-body {
+        padding: 1rem;
+    }
+    
+    .card-contato p {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .card-contato i {
+        width: 26px;
+        height: 26px;
+        margin-right: 0.5rem;
+    }
+    
+    .card-contato .btn-close {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .card-contato {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
 }
 
 /* Hover automático em telas grandes */

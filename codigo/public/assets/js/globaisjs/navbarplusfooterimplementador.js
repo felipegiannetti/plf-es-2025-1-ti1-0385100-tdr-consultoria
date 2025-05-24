@@ -155,7 +155,7 @@ function implementNavbar() {
             <div class="card-body">
                 <p><i class="fas fa-envelope me-2"></i><strong>Email:</strong> tdrconsultoria@gmail.com</p>
                 <p><i class="fas fa-phone me-2"></i><strong>Telefone:</strong> (32) 98431-5193</p>
-                <p><i class="fas fa-clock me-2"></i><strong>Horário:</strong> Segunda a sexta das 11h às 19h</p>
+                <p><i class="fas fa-clock me-2"></i><strong>Funcionamento:</strong> Segunda à sexta de 11h às 19h</p>
             </div>
         `;
         document.body.appendChild(contactCard);
