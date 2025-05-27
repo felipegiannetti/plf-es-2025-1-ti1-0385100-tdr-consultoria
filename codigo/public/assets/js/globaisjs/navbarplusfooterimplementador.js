@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            const navbarCollapse = document.getElementById('navbarNav');
-            if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                if (bsCollapse) bsCollapse.hide();
-            }
-        });
-    });
+    // document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    //     link.addEventListener('click', () => {
+    //         const navbarCollapse = document.getElementById('navbarNav');
+    //         if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+    //             const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+    //             if (bsCollapse) bsCollapse.hide();
+    //         }
+    //     });
+    // });  BUG DE CLICAR E FECHAR
 });
 
 async function loadBootstrap() {
