@@ -166,7 +166,8 @@
         "hora": "09:30",
         "publicoAlvo": "Investidores e entusiastas do mercado automotivo",
         "categoria": "Mercado Financeiro",
-        "noticia": "Em uma surpreendente reviravolta no mercado automotivo, Elon Musk anunciou a venda da Tesla por US$ 800 bilhões para um consórcio internacional. A decisão impactou fortemente as ações globais e gerou especulações sobre o futuro dos veículos elétricos. Musk afirmou que focará exclusivamente na SpaceX."
+        "noticia": "Em uma surpreendente reviravolta no mercado automotivo, Elon Musk anunciou a venda da Tesla por US$ 800 bilhões para um consórcio internacional. A decisão impactou fortemente as ações globais e gerou especulações sobre o futuro dos veículos elétricos. Musk afirmou que focará exclusivamente na SpaceX.",
+        "imagem":"/../docs/images/eventos/design-thinking.jpg"
       },
       {
         "id": 2,
@@ -176,7 +177,8 @@
         "hora": "14:15",
         "publicoAlvo": "Empreendedores e investidores",
         "categoria": "Startups",
-        "noticia": "Uma startup brasileira do setor fintech acaba de receber o maior investimento do ano na América Latina. A rodada Série C foi liderada por fundos internacionais e marca um momento histórico para o ecossistema empreendedor brasileiro."
+        "noticia": "Uma startup brasileira do setor fintech acaba de receber o maior investimento do ano na América Latina. A rodada Série C foi liderada por fundos internacionais e marca um momento histórico para o ecossistema empreendedor brasileiro.",
+        "imagem":"/../docs/images/eventos/design-thinking.jpg"
       },
       {
         "id": 3,
@@ -186,7 +188,8 @@
         "hora": "10:45",
         "publicoAlvo": "Micro e pequenos empresários",
         "categoria": "Legislação",
-        "noticia": "O Congresso Nacional aprovou uma nova legislação que simplifica a tributação para pequenas empresas. A medida deve beneficiar mais de 2 milhões de empreendedores em todo o país, reduzindo a burocracia e os custos operacionais."
+        "noticia": "O Congresso Nacional aprovou uma nova legislação que simplifica a tributação para pequenas empresas. A medida deve beneficiar mais de 2 milhões de empreendedores em todo o país, reduzindo a burocracia e os custos operacionais.",
+        "imagem":"/../docs/images/eventos/design-thinking.jpg"
       },
       {
         "id": 4,
@@ -196,7 +199,8 @@
         "hora": "08:00",
         "publicoAlvo": "Fundadores de startups",
         "categoria": "Aceleração",
-        "noticia": "A renomada aceleradora Y Combinator anunciou seu primeiro programa focado exclusivamente em startups da América Latina. O programa oferecerá mentoria, networking e investimento inicial de US$ 500 mil para as empresas selecionadas."
+        "noticia": "A renomada aceleradora Y Combinator anunciou seu primeiro programa focado exclusivamente em startups da América Latina. O programa oferecerá mentoria, networking e investimento inicial de US$ 500 mil para as empresas selecionadas.",
+        "imagem":"/../docs/images/eventos/design-thinking.jpg"
       },
       {
         "id": 5,
@@ -206,7 +210,8 @@
         "hora": "16:30",
         "publicoAlvo": "Profissionais autônomos e freelancers",
         "categoria": "Inovação",
-        "noticia": "Uma nova plataforma está revolucionando o mercado de trabalho autônomo no Brasil. Com tecnologia blockchain e inteligência artificial, o sistema promete maior segurança e eficiência na conexão entre profissionais independentes e empresas."
+        "noticia": "Uma nova plataforma está revolucionando o mercado de trabalho autônomo no Brasil. Com tecnologia blockchain e inteligência artificial, o sistema promete maior segurança e eficiência na conexão entre profissionais independentes e empresas.",
+        "imagem":"/../docs/images/eventos/design-thinking.jpg"
       }
     ]
 }
