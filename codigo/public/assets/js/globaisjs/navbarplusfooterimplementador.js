@@ -206,7 +206,6 @@ function implementFooter() {
                         <ul class="list-unstyled">
                             <li><a href="${currentPaths.home}">Home</a></li>
                             <li><a href="${currentPaths.eventos}">Eventos</a></li>
-                            <li><a href="${currentPaths.contato}">Contato</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 mb-3">

@@ -480,3 +480,12 @@
         display: block;
     }
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.dropdown > .nav-link {
+    pointer-events: none; /* Isso desativa o clique no item do menu */
+}
