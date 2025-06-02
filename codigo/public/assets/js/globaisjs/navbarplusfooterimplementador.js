@@ -78,11 +78,13 @@ function implementNavbar() {
             home: '',
             eventos: 'public/modulos/eventos/exibicaoeventos.html',
             cadastroEventos: 'public/modulos/eventos/cadastroEventos.html',
+            noticias: 'public/modulos/noticias/noticias.html',
         },
         other: {
             home: '../../../index.html',
-            eventos: 'exibicaoeventos.html',
+            eventos: '../eventos/exibicaoeventos.html',  // Fixed path for subfolders
             cadastroEventos: 'cadastroEventos.html',
+            noticias: '../noticias/noticias.html',
         }
     };
 
@@ -123,6 +125,9 @@ function implementNavbar() {
                                 <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
                                 <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${currentPaths.noticias}">Notícias</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" onclick="toggleContatoCard(true); return false;">Contato</a>
