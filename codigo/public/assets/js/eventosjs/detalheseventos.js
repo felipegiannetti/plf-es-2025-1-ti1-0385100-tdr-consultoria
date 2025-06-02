@@ -68,6 +68,20 @@ async function carregarDetalhesEvento() {
                                     <p><i class="fas fa-dollar-sign"></i> Preço: R$ ${evento.preco.toFixed(2)}</p>
                                 </div>
                             </div>
+                            <div class="avaliacoes-section mt-4 mb-4">
+                                <h4 class="text-white text-center">Avaliações do evento</h4>
+                                <div class="avaliacoes-container" style="max-height: 200px; overflow-y: auto; padding: 10px;">
+                                    <div class="avaliacao-item mb-3 p-2 border-bottom">
+                                        <div class="stars mb-1">
+                                            ★★★★★
+                                            <span class="text-muted">(5.0)</span>
+                                        </div>
+                                        <strong>João Silva</strong>
+                                        <p class="mb-1">Excelente evento! Superou minhas expectativas.</p>
+                                        <small class="text-muted">2 dias atrás</small>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mt-auto">
                                 <button class="btn btn-primary btn-lg w-100">Inscrever-se</button>
                             </div>

@@ -248,6 +248,42 @@ a:hover {
     border-color: #555;
 }
 
+/* Estilos para a seção de avaliações */
+.avaliacoes-container {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.avaliacao-item {
+    transition: background-color 0.2s;
+}
+
+.avaliacao-item:hover {
+    background-color: #ffffff;
+}
+
+.stars {
+    color: #ffd700;
+}
+
+.avaliacoes-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.avaliacoes-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.avaliacoes-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.avaliacoes-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 /* Responsiveness */
 @media (max-width: 768px) {
     .card-title {
