@@ -1,31 +1,31 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: TDR Consultoria - Plataforma de Consultoria
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Giannetti Fontenelle
+    given-names: Felipe
+  - family-names: Guimarães
+    given-names: Raphael
+  - family-names: José
+    given-names: Filipe
+  - family-names: Sokoli
+    given-names: Cesar
+  - family-names: de Castro
+    given-names: Felipe
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Carneiro
+    given-names: Rommel
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Silva
+    given-names: Cleiton
 keywords:
-  - 
-  - 
-repository-code: 
+  - Consultoria Empresarial
+  - Eventos Corporativos
+  - Desenvolvimento Web
+  - Gestão de Negócios
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-SI/plf-es-2025-1-ti1-0385100-tdr-consultoria
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2025-06-03
