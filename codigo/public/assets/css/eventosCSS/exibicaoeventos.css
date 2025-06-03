@@ -184,6 +184,14 @@ a:hover {
     background: rgba(255, 122, 0, 0.9);
 }
 
+.tag__item.play.green {
+    background: rgba(255, 122, 0, 0.9);
+}
+
+.tag__item.play.green:hover {
+    background: rgba(255, 122, 0, 0.9);
+}
+
 .articlehover {
     transition: all 0.4s ease;
 }
@@ -346,6 +354,7 @@ a:hover {
     #pageHeaderTitle {
         font-size: 2rem;
     }
+    
 }
 
 @media (max-width: 576px) {
@@ -359,4 +368,5 @@ a:hover {
         font-size: 0.8rem;
         padding: 6px 12px;
     }
+    
 }

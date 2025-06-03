@@ -72,9 +72,10 @@ async function loadEvents() {
 function createEventCard(evento) {
     const article = document.createElement('article');
     article.className = 'articlehover postcard orangebgcard red';
-
+    
 
     const detailsPath = 'detalheseventos.html';
+    const cadastroPath = 'cadastrousuariosevento.html';
 
     article.innerHTML = `
         <a class="postcard__img_link" href="${detailsPath}?id=${evento.id}">
@@ -93,6 +94,12 @@ function createEventCard(evento) {
             <div class="postcard__bar"></div>
             <div class="postcard__preview-txt">${evento.descricao}</div>
             <ul class="postcard__tagbox">
+                <li class="tag__item play green">
+                        <a href="${cadastroPath}?id=${evento.id}">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            <span class="me-2"></span>Inscrever-se
+                        </a>
+                </li>
                 <li class="tag__item">
                     <i class="fas fa-tag mr-2"></i>
                     <span class="me-2"></span>${evento.categoria}
