@@ -79,12 +79,14 @@ function implementNavbar() {
             eventos: 'public/modulos/eventos/exibicaoeventos.html',
             cadastroEventos: 'public/modulos/eventos/cadastroEventos.html',
             noticias: 'public/modulos/noticias/noticias.html',
+            quizzes: 'public/modulos/formulario/exibiformulario.html',
         },
         other: {
             home: '../../../index.html',
             eventos: '../eventos/exibicaoeventos.html',  // Fixed path for subfolders
             cadastroEventos: 'cadastroEventos.html',
             noticias: '../noticias/noticias.html',
+            quizzes: '../formulario/exibiformulario.html',
         }
     };
 
@@ -112,7 +114,7 @@ function implementNavbar() {
                             <a class="nav-link" href="${currentPaths.home}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${currentPaths.home}">Quizzes</a>
+                            <a class="nav-link" href="${currentPaths.quizzes}">Quizzes</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" 
