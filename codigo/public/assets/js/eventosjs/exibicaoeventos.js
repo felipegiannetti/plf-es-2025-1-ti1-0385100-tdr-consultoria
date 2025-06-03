@@ -26,7 +26,7 @@ async function loadEvents() {
 
 
         container.innerHTML = `
-            <section class="event-header py-5 text-center text-white">
+            <section class="event-header py-5 text-center text-white margemtopo">
                 <div class="container">
                     <h1 class="display-3 fw-bold mb-3" id="pageHeaderTitle">PRÓXIMOS EVENTOS</h1>
                     <div class="separator mx-auto mb-4"></div>
