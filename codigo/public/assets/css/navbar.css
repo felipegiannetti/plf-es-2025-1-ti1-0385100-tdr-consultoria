@@ -2,14 +2,6 @@
     background: linear-gradient(to right, #ffffff, #FFA500);
 }
 
-.distanciastart {
-    margin-left: 70px;
-}
-
-.distanciaend {
-    margin-right: 70px;
-}
-
 .nav-item {
     margin-left: 10px;
     padding: 5px 15px;
