@@ -22,8 +22,13 @@
       "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/palestra-empresarial.webp",
       "vagas": 100,
-      "preco": 80
-    },
+      "preco": 80,
+      "cadastrados": [
+          {"id": "1"},
+          {"id": "10110"},
+          {"id": "424259" }
+          ]
+  },
     {
       "id": "3",
       "titulo": "Hotmart FIRE",
@@ -34,7 +39,12 @@
       "localmapa": "https://maps.google.com/maps?q=Centro+de+Convencoes+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/hotmart-fire.jpeg",
       "vagas": 30,
-      "preco": 299.99
+      "preco": 299.99,
+      "cadastrados": [
+          {"id": "1"},
+          {"id": "10110"},
+          {"id": "424259" }
+          ]
     },
     {
       "id": "4",
@@ -46,7 +56,12 @@
       "localmapa": "https://maps.google.com/maps?q=San+Pedro+Valley+Savassi+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/financas-startups.jpg",
       "vagas": 40,
-      "preco": 180
+      "preco": 180,
+      "cadastrados": [
+          {"id": "1"},
+          {"id": "10110"},
+          {"id": "424259" }
+          ]
     },
     {
       "id": "5",
@@ -58,7 +73,12 @@
       "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/esg-empresas.png",
       "vagas": 75,
-      "preco": 220
+      "preco": 220,
+      "cadastrados": [
+          {"id": "1"},
+          {"id": "10110"},
+          {"id": "424259" }
+          ]
     },
     {
       "id": "6",
@@ -70,7 +90,12 @@
       "localmapa": "https://maps.google.com/maps?q=Le+Monde+Hub+Funcionarios+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/design-thinking.jpg",
       "vagas": 35,
-      "preco": 280
+      "preco": 280,
+      "cadastrados": [
+          {"id": "1"},
+          {"id": "10110"},
+          {"id": "424259" }
+          ]
     },
     {
       "id": "7",
@@ -82,7 +107,12 @@
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
       "imagem": "/../docs/images/eventos/vendas-b2b.jpg",
       "vagas": 45,
-      "preco": 245
+      "preco": 245,
+      "cadastrados": [
+          {"id": "1"},
+          {"id": "10110"},
+          {"id": "424259" }
+          ]
     }
   ],
   "usuarios": [
