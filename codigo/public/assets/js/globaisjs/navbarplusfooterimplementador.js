@@ -89,10 +89,12 @@ function implementNavbar() {
     };
 
     const currentPaths = isIndex ? paths.index : paths.other;
+    const logoPath = isIndex ? 'public/assets/img/logo.png' : '../../assets/img/logo.png';
 
     navbarContainer.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top">
             <div class="container">
+                <a href="${currentPaths.home}"><img src="${logoPath}" alt="Logo" class="navbar-logo img-fluid mb-3" style="max-height: 60px; width: auto;"></a>
                 <a class="navbar-brand distanciastart" href="${currentPaths.home}">
                     TDR<span style="color: orange;">Consultoria</span>
                 </a>
