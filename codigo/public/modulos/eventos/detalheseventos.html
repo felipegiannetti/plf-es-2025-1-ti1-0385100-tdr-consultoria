@@ -15,9 +15,31 @@
 
     <section class="margemtopo">
         <div class="container py-4" id="evento-detalhes">
+  <!-- Aqui os detalhes do evento vão aparecer dinamicamente pelo JS -->
 
+  <hr>
 
-        </div>
+  <div id="avaliacao-container">
+    <h3>Avalie este evento</h3>
+    <div id="estrelas">
+      <span class="estrela" data-value="1">&#9733;</span>
+      <span class="estrela" data-value="2">&#9733;</span>
+      <span class="estrela" data-value="3">&#9733;</span>
+      <span class="estrela" data-value="4">&#9733;</span>
+      <span class="estrela" data-value="5">&#9733;</span>
+    </div>
+    <textarea id="comentario" rows="4" placeholder="Deixe seu comentário..." class="form-control mt-2"></textarea>
+    <button id="enviar-avaliacao" class="btn btn-primary mt-2">Enviar Avaliação</button>
+  </div>
+
+  <hr>
+
+  <div id="avaliacoes-lista">
+    <h3>Avaliações</h3>
+    <!-- Aqui serão exibidas as avaliações dos usuários -->
+  </div>
+</div>
+
     </section>
 
     <div id="footerimplementador"></div>

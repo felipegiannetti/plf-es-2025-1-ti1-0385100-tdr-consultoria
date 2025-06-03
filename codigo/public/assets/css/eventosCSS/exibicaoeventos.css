@@ -360,3 +360,21 @@ a:hover {
         padding: 6px 12px;
     }
 }
+/* Avaliação de eventos */
+#estrelas {
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.estrela.selecionada {
+  color: gold;
+}
+
+#comentario {
+  width: 100%;
+}
+
+#avaliacoes-lista {
+  margin-top: 2rem;
+}
