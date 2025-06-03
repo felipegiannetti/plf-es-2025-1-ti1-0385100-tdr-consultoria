@@ -111,3 +111,43 @@ document.addEventListener('DOMContentLoaded', () => {
     carregarEventos();
     carregarDetalhesEvento();
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const estrelas = document.querySelectorAll(".estrela");
+    const comentarioInput = document.getElementById("comentario");
+    const enviarBtn = document.getElementById("enviar-avaliacao");
+    let notaSelecionada = 0;
+
+    estrelas.forEach(estrela => {
+        estrela.addEventListener("click", () => {
+            notaSelecionada = parseInt(estrela.getAttribute("data-value"));
+
+            // Resetar estrelas
+            estrelas.forEach(e => e.classList.remove("selecionada"));
+
+            // Marcar estrelas até a selecionada
+            for (let i = 0; i < notaSelecionada; i++) {
+                estrelas[i].classList.add("selecionada");
+            }
+        });
+    });
+
+    enviarBtn.addEventListener("click", () => {
+        const comentario = comentarioInput.value.trim();
+
+        if (notaSelecionada === 0 || comentario === "") {
+            alert("Por favor, preencha uma nota e um comentário.");
+            return;
+        }
+
+        const avaliacao = {
+            estrelas: notaSelecionada,
+            comentario: comentario,
+            data: new Date().toLocaleString()
+        };
+
+        console.log("Avaliação enviada:", avaliacao);
+
+        // Aqui depois faremos o POST no db.json com JSON Server.
+        // Por enquanto só exibimos no console.
+    });
+});
