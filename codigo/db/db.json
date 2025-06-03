@@ -122,21 +122,13 @@
       "senha": "123",
       "nome": "Administrador do Sistema",
       "email": "admin@abc.com",
-      "respostas": [
-        {
-          "question": "Como você avalia nosso produto?",
-          "response": "Bom"
-        },
-        {
-          "question": "Como você avalia nosso atendimento?",
-          "response": "Bom"
-        },
-        {
-          "question": "Você recomendaria nosso produto para amigos?",
-          "response": "Provavelmente"
-        }
-      ],
-      "formularioFeito": "sim"
+      "respostas": [],
+      "formularioFeito": "sim",
+      "eventos_cadastrados": [
+        {"id": "1"},
+        {"id": "2"},
+        {"id": "3"}
+        ]
     },
     {
       "id": "2",
@@ -145,7 +137,12 @@
       "nome": "Administrador do Sistema2",
       "email": "admin2@abc.com",
       "respostas": [],
-      "formularioFeito": "nao"
+      "formularioFeito": "nao",
+      "eventos_cadastrados": [
+        {"id": "1"},
+        {"id": "2"},
+        {"id": "3"}
+        ]
     }
   ],
   "quizzperguntas": [ 
