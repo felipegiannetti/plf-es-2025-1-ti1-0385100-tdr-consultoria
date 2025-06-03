@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="public/assets/css/homeCSS/index.css" />
@@ -125,20 +125,43 @@
             </div>
 
             <div class="row g-4">
-                <div class="col-md-4 animate__animated animate__fadeInUp">
-                    <div class="feature-card h-100 d-flex flex-column">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
+                <div class="col-md-4 animate__animated animate__fadeInUp" id="market-analysis-card">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Frente -->
+                            <div class="flip-card-front feature-card h-100 d-flex flex-column">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Análise de Mercado</h3>
+                                <p class="flex-grow-1">
+                                    Diagnósticos precisos e estratégias baseadas em dados reais do mercado financeiro.
+                                </p>
+                                <ul class="feature-list mb-3">
+                                    <li><i class="fas fa-check-circle"></i> Relatórios mensais</li>
+                                    <li><i class="fas fa-check-circle"></i> Projeções personalizadas</li>
+                                    <li><i class="fas fa-check-circle"></i> Benchmarking setorial</li>
+                                </ul>
+                                <button class="btn btn-outline-primary mt-auto flip-toggle">Detalhes</button>
+                            </div>
+
+                            <!-- Verso -->
+                            <div class="flip-card-back feature-card h-100 d-flex flex-column">
+                                <div class="feature-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <h3>Mais Detalhes</h3>
+                                <p class="flex-grow-1">
+                                    Oferecemos inteligência de mercado com base em big data, IA e tendências de comportamento.
+                                </p>
+                                <ul class="feature-list mb-3">
+                                    <li><i class="fas fa-bullseye"></i> Estratégias orientadas por dados</li>
+                                    <li><i class="fas fa-lightbulb"></i> Insights acionáveis</li>
+                                    <li><i class="fas fa-sync-alt"></i> Atualizações em tempo real</li>
+                                </ul>
+                                <button class="btn btn-outline-primary mt-auto flip-toggle">Voltar</button>
+                            </div>
                         </div>
-                        <h3>Análise de Mercado</h3>
-                        <p class="flex-grow-1">Diagnósticos precisos e estratégias baseadas em dados reais do mercado financeiro.
-                        </p>
-                        <ul class="feature-list mb-3">
-                            <li><i class="fas fa-check-circle"></i> Relatórios mensais</li>
-                            <li><i class="fas fa-check-circle"></i> Projeções personalizadas</li>
-                            <li><i class="fas fa-check-circle"></i> Benchmarking setorial</li>
-                        </ul>
-                        <button class="btn btn-outline-primary mt-auto">Detalhes</button>
                     </div>
                 </div>
 
@@ -182,6 +205,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="public/assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
     <script src="public/assets/js/indexjs/carrossel.js"></script>
+    <script src="public/assets/js/indexjs/cardanalisemercado.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const animateElements = document.querySelectorAll('.animate__animated');
