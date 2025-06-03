@@ -97,7 +97,7 @@ function implementNavbar() {
         <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top">
             <div class="container">
                 <a href="${currentPaths.home}"><img src="${logoPath}" alt="Logo" class="navbar-logo img-fluid mb-3" style="max-height: 60px; width: auto;"></a>
-                <a class="navbar-brand distanciastart" href="${currentPaths.home}">
+                <a class="navbar-brand" href="${currentPaths.home}">
                     TDR<span style="color: orange;">Consultoria</span>
                 </a>
                 <button class="navbar-toggler" type="button" 
@@ -201,38 +201,41 @@ function implementFooter() {
     };
 
     const currentPaths = isIndex ? paths.index : paths.other;
+    const logoPath = isIndex ? 'public/assets/img/logo.png' : '../../assets/img/logo.png';
 
     const footerHtml = `
-        <footer class="bg-footer py-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 mb-3">
+        <footer class="bg-footer py-5 text-light">
+            <div class="container position-relative">
+                <div class="row text-center text-md-start">
+                    <div class="col-md-4 mb-4">
                         <h5 class="mb-3">TDR Consultoria</h5>
-                        <p>Transformando ideias em resultados através de soluções inovadoras e personalizadas.</p>
+                        <p class="text-dark">Transformando ideias em resultados com soluções inovadoras e personalizadas.</p>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-4">
                         <h5 class="mb-3">Links Rápidos</h5>
                         <ul class="list-unstyled">
-                            <li><a href="${currentPaths.home}">Home</a></li>
-                            <li><a href="${currentPaths.eventos}">Eventos</a></li>
+                            <li><a href="${currentPaths.home}"><i class="fas fa-home me-2"></i>Home</a></li>
+                            <li><a href="${currentPaths.eventos}"><i class="fas fa-calendar-alt me-2"></i>Eventos</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-4">
                         <h5 class="mb-3">Contato</h5>
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled text-dark">
                             <li><i class="fas fa-envelope me-2"></i>contato@tdrconsultoria.com</li>
                             <li><i class="fas fa-phone me-2"></i>(31) 9999-9999</li>
                             <li><i class="fas fa-map-marker-alt me-2"></i>Belo Horizonte, MG</li>
                         </ul>
                     </div>
                 </div>
-                <hr class="my-4">
-                <div class="text-center">
-                    <p class="mb-0">&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
-                </div>
+            <hr class="my-4">
+            <div class="text-center small">
+                <p class="mb-0 text-dark">&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
             </div>
-        </footer>
-    `;
+            <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-left animate-logo">
+            <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-right animate-logo">
+        </div>
+    </footer>
+`;
 
     footerContainer.innerHTML = footerHtml;
 }

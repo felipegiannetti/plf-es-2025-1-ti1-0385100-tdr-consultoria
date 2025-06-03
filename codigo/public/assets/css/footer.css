@@ -1,6 +1,8 @@
 .bg-footer {
     background: linear-gradient(to right, #FFA500, #ffffff);
     color: #424242;
+    position: relative;
+    overflow: hidden;
 }
 
 .bg-footer h5 {
@@ -16,12 +18,12 @@
     color: #424242;
     text-decoration: none;
     transition: all 0.3s ease;
+    display: inline-block;
 }
 
 .bg-footer a:hover {
     color: #ff5500;
     transform: translateX(5px);
-    display: inline-block;
 }
 
 .bg-footer hr {
@@ -31,4 +33,42 @@
 
 .bg-footer i {
     color: #ff5500;
+    margin-right: 5px;
+}
+
+/* Logos */
+.footer-logo {
+    position: absolute;
+    bottom: 20px;
+    max-width: 80px;
+    opacity: 0.85;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.footer-logo:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Positioned to sides */
+.footer-logo-left {
+    left: 20px;
+}
+
+.footer-logo-right {
+    right: 20px;
+}
+
+/* Animation (floating effect) */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-logo {
+    animation: float 3s ease-in-out infinite;
 }
