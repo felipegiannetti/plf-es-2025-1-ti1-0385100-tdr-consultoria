@@ -4,6 +4,8 @@ async function carregarEventos() {
     try {
         const response = await fetch(`${API_URL}/eventos`);
         const eventos = await response.json();
+
+        
         
         const featuresSection = document.querySelector('.features-section .container');
         featuresSection.innerHTML = '';
@@ -48,6 +50,8 @@ async function carregarDetalhesEvento() {
         console.log('Evento carregado:', evento); // Debug log
 
         const container = document.getElementById('evento-detalhes');
+
+        const cadastroPath = 'cadastrousuariosevento.html';
         
         container.innerHTML = `
             <div class="card mb-4">
@@ -82,9 +86,11 @@ async function carregarDetalhesEvento() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-auto">
-                                <button class="btn btn-primary btn-lg w-100">Inscrever-se</button>
-                            </div>
+                            <a href="${cadastroPath}?id=${evento.id}" class="btn btn-primary btn-lg w-100 mb-3">
+                                <div class="mt-auto">
+                                    <button class="btn btn-primary btn-lg w-100">Inscrever-se</button>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
