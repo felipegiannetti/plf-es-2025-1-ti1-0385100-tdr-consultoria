@@ -79,6 +79,7 @@ function implementNavbar() {
             eventos: 'public/modulos/eventos/exibicaoeventos.html',
             cadastroEventos: 'public/modulos/eventos/cadastroEventos.html',
             noticias: 'public/modulos/noticias/noticias.html',
+            cadastroNoticias: 'public/modulos/noticias/cadastroNoticias.html',
             quizzes: 'public/modulos/formulario/exibiformulario.html',
         },
         other: {
@@ -86,6 +87,7 @@ function implementNavbar() {
             eventos: '../eventos/exibicaoeventos.html',  // Fixed path for subfolders
             cadastroEventos: 'cadastroEventos.html',
             noticias: '../noticias/noticias.html',
+            cadastroNoticias: 'cadastroNoticias.html',
             quizzes: '../formulario/exibiformulario.html',
         }
     };
@@ -98,7 +100,7 @@ function implementNavbar() {
             <div class="container">
                 <a href="${currentPaths.home}"><img src="${logoPath}" alt="Logo" class="navbar-logo img-fluid mb-3" style="max-height: 60px; width: auto;"></a>
                 <a class="navbar-brand" href="${currentPaths.home}">
-                    TDR<span style="color: orange;">Consultoria</span>
+                    TDR<span style="color: #cc0000;">Consultoria</span>
                 </a>
                 <button class="navbar-toggler" type="button" 
                         data-bs-toggle="collapse" 
@@ -130,8 +132,19 @@ function implementNavbar() {
                                 <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${currentPaths.noticias}">Notícias</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" 
+                               href="#" 
+                               id="noticiasDropdown"
+                               role="button" 
+                               data-bs-toggle="dropdown" 
+                               aria-expanded="false">
+                                Notícias
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
+                                <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
+                                <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Cadastro de Notícias</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" onclick="toggleContatoCard(true); return false;">Contato</a>
