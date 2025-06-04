@@ -79,30 +79,30 @@ document.addEventListener('DOMContentLoaded', carregarNoticias);
 const mockNoticias = [
     {
         id: 1,
-        titulo: "Inovação em Consultoria Empresarial",
-        descricao: "Nova abordagem revoluciona mercado",
-        texto_completo: "Nossa equipe desenvolveu uma metodologia inovadora que combina análise de dados em tempo real com estratégias personalizadas de crescimento. Os resultados mostram um aumento médio de 45% na eficiência operacional dos nossos clientes.",
+        titulo: "Hotmart FIRE: O Maior Evento de Marketing Digital",
+        descricao: "Prepare-se para o maior evento de marketing digital da América Latina",
+        texto_completo: "O Hotmart FIRE 2025 promete reunir os maiores nomes do marketing digital em São Paulo. Com mais de 150 palestrantes internacionais e nacionais, o evento abordará temas como vendas online, tráfego pago, copywriting e muito mais. Garanta sua vaga para os dias 15 a 17 de julho no Allianz Parque.",
         imagem: "https://picsum.photos/300/200?random=1",
-        data: "2025-05-25",
-        hora: "14:30"
+        data: "2025-07-15",
+        hora: "09:00"
     },
     {
         id: 2,
-        titulo: "Transformação Digital nas PMEs",
-        descricao: "Pequenas empresas lideram mudança tecnológica",
-        texto_completo: "O processo de transformação digital tem sido especialmente impactante para pequenas e médias empresas. Nossa consultoria tem ajudado dezenas de negócios a implementarem soluções tecnológicas que antes eram exclusivas de grandes corporações.",
+        titulo: "Subido: Imersão em Gestão de Tráfego",
+        descricao: "O evento que vai revolucionar sua forma de fazer tráfego pago",
+        texto_completo: "O Subido 2025 traz três dias intensos de aprendizado sobre gestão de tráfego com especialistas do mercado. Aprenda estratégias avançadas de Facebook Ads, Google Ads e TikTok Ads. O evento acontecerá nos dias 20 a 22 de agosto no WTC São Paulo.",
         imagem: "https://picsum.photos/300/200?random=2",
-        data: "2025-05-28",
-        hora: "09:15"
+        data: "2025-08-20",
+        hora: "08:30"
     },
     {
         id: 3,
-        titulo: "Sustentabilidade nos Negócios",
-        descricao: "ESG como diferencial competitivo",
-        texto_completo: "Empresas que adotam práticas ESG têm mostrado resultados superiores no mercado. Nossa consultoria especializada ajuda organizações a implementarem estratégias sustentáveis sem comprometer a lucratividade.",
+        titulo: "Summit Empresarial: Inovação e Liderança",
+        descricao: "Encontro dos maiores líderes empresariais do Brasil",
+        texto_completo: "O Summit Empresarial 2025 reunirá CEOs, empreendedores e líderes de grandes empresas para discutir o futuro dos negócios. Com foco em inovação, tecnologia e liderança, o evento acontecerá nos dias 10 e 11 de setembro no Centro de Convenções Frei Caneca.",
         imagem: "https://picsum.photos/300/200?random=3",
-        data: "2025-06-01",
-        hora: "16:45"
+        data: "2025-09-10",
+        hora: "10:00"
     }
 ];
 
@@ -143,22 +143,35 @@ function criarCards() {
 
 // Initialize when document is ready
 $(document).ready(function() {
-    const API_URL = 'http://localhost:3000';
-
-    async function carregarNoticias() {
-        try {
-            const response = await fetch(`${API_URL}/noticias`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const noticias = await response.json();
-            exibirNoticias(noticias);
-        } catch (error) {
-            console.error('Erro ao carregar notícias:', error);
-            document.getElementById('noticias-card').innerHTML = 
-                '<div class="alert alert-danger">Erro ao carregar notícias. Por favor, tente novamente mais tarde.</div>';
+    const mockNoticias = [
+        {
+            id: 1,
+            titulo: "Hotmart FIRE: O Maior Evento de Marketing Digital",
+            descricao: "Prepare-se para o maior evento de marketing digital da América Latina",
+            texto_completo: "O Hotmart FIRE 2025 promete reunir os maiores nomes do marketing digital em São Paulo. Com mais de 150 palestrantes internacionais e nacionais, o evento abordará temas como vendas online, tráfego pago, copywriting e muito mais. Garanta sua vaga para os dias 15 a 17 de julho no Allianz Parque.",
+            imagem: "https://picsum.photos/300/200?random=1",
+            data: "2025-07-15",
+            hora: "09:00"
+        },
+        {
+            id: 2,
+            titulo: "Subido: Imersão em Gestão de Tráfego",
+            descricao: "O evento que vai revolucionar sua forma de fazer tráfego pago",
+            texto_completo: "O Subido 2025 traz três dias intensos de aprendizado sobre gestão de tráfego com especialistas do mercado. Aprenda estratégias avançadas de Facebook Ads, Google Ads e TikTok Ads. O evento acontecerá nos dias 20 a 22 de agosto no WTC São Paulo.",
+            imagem: "https://picsum.photos/300/200?random=2",
+            data: "2025-08-20",
+            hora: "08:30"
+        },
+        {
+            id: 3,
+            titulo: "Summit Empresarial: Inovação e Liderança",
+            descricao: "Encontro dos maiores líderes empresariais do Brasil",
+            texto_completo: "O Summit Empresarial 2025 reunirá CEOs, empreendedores e líderes de grandes empresas para discutir o futuro dos negócios. Com foco em inovação, tecnologia e liderança, o evento acontecerá nos dias 10 e 11 de setembro no Centro de Convenções Frei Caneca.",
+            imagem: "https://picsum.photos/300/200?random=3",
+            data: "2025-09-10",
+            hora: "10:00"
         }
-    }
+    ];
 
     function exibirNoticias(noticias) {
         const container = document.getElementById('noticias-card');
@@ -174,6 +187,7 @@ $(document).ready(function() {
                                 ${noticia.titulo}<hr>
                             </h5>
                             <p class="card-text description">${noticia.descricao}</p>
+                            <p class="card-text expanded-text">${noticia.texto_completo}</p>
                             <p class="card-text mt-2">
                                 <small class="text-muted">
                                     Publicado em ${noticia.data} às ${noticia.hora}
@@ -188,33 +202,18 @@ $(document).ready(function() {
         htmlContent += '</div>';
         container.innerHTML = htmlContent;
 
-        // Efeitos de hover aprimorados
+        // Efeitos de hover
         $('.card').on('mouseenter', function() {
-            $(this).find('.description').css({
-                'opacity': '0',
-                'transition': 'opacity 0.3s ease'
-            });
-            $(this).find('.expanded-text').css({
-                'display': 'block',
-                'opacity': '1',
-                'transition': 'opacity 0.3s ease'
-            });
+            $(this).find('.description').slideUp(300);
+            $(this).find('.expanded-text').slideDown(300);
         });
 
         $('.card').on('mouseleave', function() {
-            $(this).find('.expanded-text').css({
-                'opacity': '0',
-                'transition': 'opacity 0.3s ease'
-            });
-            setTimeout(() => {
-                $(this).find('.expanded-text').css('display', 'none');
-            }, 300);
-            $(this).find('.description').css({
-                'opacity': '1',
-                'transition': 'opacity 0.3s ease'
-            });
+            $(this).find('.expanded-text').slideUp(300);
+            $(this).find('.description').slideDown(300);
         });
     }
 
-    carregarNoticias();
+    // Iniciar com os dados mockados
+    exibirNoticias(mockNoticias);
 });
