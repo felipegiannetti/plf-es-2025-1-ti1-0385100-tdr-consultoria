@@ -61,19 +61,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline-primary {
-  border: 2px solid var(--primary);
   color: var(--primary);
+  border: 2px solid var(--primary);
   background: transparent;
-  padding: 0.5rem 1.5rem;
+  padding: 0.75rem 2rem;
   border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+  width: 150px; /* Fixed width for consistency */
+  margin: 0 auto; /* Center the button */
+  margin-top: 1rem; /* Add space above button */
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .btn-outline-primary:hover {
-  background: var(--primary);
   color: white;
-  border-color: var(--primary);
-  transform: translateY(-2px);
+  background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  border-color: transparent;
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
 }
 
 .btn-pulse {
@@ -311,38 +322,36 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Feature Cards */
 .feature-card {
-  background: var(--dark-light);
-  padding: 2.5rem 2rem;
-  border-radius: 15px;
-  text-align: center;
-  transition: all 0.4s ease;
-  border: 1px solid var(--gray-dark);
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.feature-card:hover {
-    border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(255, 122, 0, 0.3), inset 0 0 20px rgba(255, 122, 0, 0.1);
-    transition: all 0.4s ease;
+    background: var(--dark-light);
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid var(--gray-dark);
+    position: relative;
+    overflow: visible; /* Changed from hidden to visible */
+    height: 100%;
+    min-height: 500px; /* Increased minimum height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Flip Card Styles */
 .flip-card {
-  perspective: 1000px;
-  height: 100%;
+    perspective: 1000px;
+    height: 100%;
+    min-height: 500px; /* Match feature-card height */
 }
 
 .flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 500px; /* Match feature-card height */
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
 .flip-card.flipped .flip-card-inner {
@@ -351,15 +360,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .flip-card-front,
 .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 15px;
-  background: var(--dark-light);
-  color: var(--light);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  pointer-events: auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 500px; /* Match feature-card height */
+    backface-visibility: hidden;
+    border-radius: 15px;
+    background: var(--dark-light);
+    color: var(--light);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    pointer-events: auto;
 }
 
 .flip-card-back {
@@ -401,27 +411,68 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline-primary {
   color: var(--primary);
-  border-color: var(--primary);
+  border: 2px solid var(--primary);
+  background: transparent;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   transition: all 0.3s ease;
-  padding: 0.5rem 1.5rem;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  width: 150px; /* Fixed width for consistency */
+  margin: 0 auto; /* Center the button */
+  margin-top: 1rem; /* Add space above button */
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .btn-outline-primary:hover {
   color: white;
-  background-color: var(--primary);
-  border-color: var(--primary);
+  background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  border-color: transparent;
   transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
 }
 
+.flip-card-front:hover,
+.flip-card-back:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(255, 122, 0, 0.3),
+                inset 0 0 20px rgba(255, 122, 0, 0.1);
+}
+
+/* Remove duplicate hover rules and combine them */
+.btn-outline-primary:hover,
 .flip-card-back .btn-outline-primary:hover {
-  transform: translateX(-5px);
+    color: white;
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    border-color: transparent;
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
+/* Ensure buttons are visible and clickable */
+.flip-card-back .btn-outline-primary {
+    position: relative;
+    z-index: 3;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto;
+}
+
+/* Add consistent spacing */
 .flip-toggle {
-  width: auto;
-  display: inline-block;
+    display: inline-block;
+    margin-top: auto;
+    width: 150px;
+}
+
+/* Container principal para os cards */
+.features-container {
+    padding-bottom: 50px; /* Espaço extra para o footer */
 }
 
 /* Responsividade */
@@ -447,11 +498,6 @@ h1, h2, h3, h4, h5, h6 {
   .section-title {
     font-size: 2rem;
   }
-  
-  .carousel-inner {
-    height: 350px;
-  }
-  
   .carousel-caption h3 {
     font-size: 1.5rem;
   }
