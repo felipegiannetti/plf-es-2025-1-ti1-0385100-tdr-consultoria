@@ -100,7 +100,7 @@ function implementNavbar() {
             <div class="container">
                 <a href="${currentPaths.home}"><img src="${logoPath}" alt="Logo" class="navbar-logo img-fluid mb-3" style="max-height: 60px; width: auto;"></a>
                 <a class="navbar-brand" href="${currentPaths.home}">
-                    TDR<span style="color: #cc0000;">Consultoria</span>
+                    TDR<span style="color: #cc0000;"> Consultoria</span>
                 </a>
                 <button class="navbar-toggler" type="button" 
                         data-bs-toggle="collapse" 
