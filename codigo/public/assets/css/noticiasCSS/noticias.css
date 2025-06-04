@@ -205,3 +205,18 @@ a:hover {
     }
 }
 
+#footerimplementador {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+    width: calc(100% + 30px);
+    position: relative;
+}
+
+/* Adjust container margins */
+.container-fluid {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
