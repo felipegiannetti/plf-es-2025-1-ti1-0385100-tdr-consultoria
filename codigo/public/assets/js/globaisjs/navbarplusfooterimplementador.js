@@ -244,7 +244,6 @@ function implementFooter() {
             <div class="text-center small">
                 <p class="mb-0 text-dark">&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
             </div>
-            <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-left animate-logo">
             <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-right animate-logo">
         </div>
     </footer>
