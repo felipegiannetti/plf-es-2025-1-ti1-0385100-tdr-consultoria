@@ -34,18 +34,45 @@
     margin-bottom: 20px;
 }
 
+.form-group label {
+    color: #ff8c00;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.form-group label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, #ff8c00, #ff4800);
+    border-radius: 2px;
+}
+
 .form-control {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8);
     border: 2px solid #ff8c00;
     color: white;
     transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 5px;
 }
 
 .form-control:focus {
-    background-color: #404040;
-    border-color: #ff7600;
-    color: white;
-    box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25);
+    background-color: rgba(64, 64, 64, 0.9);
+    border-color: #ff4800;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
 }
 
 .form-control::placeholder {
@@ -58,16 +85,26 @@ select.form-control option {
 }
 
 .btn-primary {
-    background-color: #ff8c00;
-    border-color: #ff8c00;
-    padding: 10px 25px;
+    background: linear-gradient(to right, #ff8c00, #ff4800);
+    border: none;
+    padding: 12px 35px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 25px;
+    display: block;
+    margin: 30px auto 0;
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #ff7600;
-    border-color: #ff7600;
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+    background: linear-gradient(to right, #ff7600, #ff3c00);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
 }
 
 body {
@@ -78,6 +115,30 @@ h2 {
     color: #ff8c00;
     margin-bottom: 30px;
     text-align: center;
+}
+
+h2.form-title {
+    color: #ff8c00;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2.form-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #ff8c00, #ff4800);
+    border-radius: 2px;
 }
 
 .form-label {
