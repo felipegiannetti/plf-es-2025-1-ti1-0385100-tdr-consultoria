@@ -46,7 +46,7 @@ a:hover {
 .separator {
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, #ff7a00, #ff9a2e);
+    background: linear-gradient(90deg, #000000, #ffffff);
     border-radius: 2px;
     margin: 0 auto 20px;
 }
