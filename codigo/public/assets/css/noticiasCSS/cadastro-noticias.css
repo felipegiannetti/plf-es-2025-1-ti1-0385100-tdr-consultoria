@@ -14,13 +14,6 @@
     opacity: 0.5;
 }
 
-.margemtopo {
-    margin-top: 120px !important; /* Reduzido para 120px e adicionado !important */
-    padding-top: 20px; /* Adicionado padding para espaçamento extra */
-    position: relative; /* Garante que a margem seja respeitada */
-    z-index: 1; /* Garante que fique acima de elementos fixed */
-}
-
 .floating-button:hover {
     background-color: #ff7600;
     color: white;
@@ -35,10 +28,6 @@
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
     color: white;
-}
-
-.form-container.margemtopo {
-    margin-top: 120px !important;
 }
 
 .form-group {
