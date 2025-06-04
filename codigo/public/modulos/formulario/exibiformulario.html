@@ -59,10 +59,13 @@
 
         //Lista de perguntas que aparencem no formulario
         const questions = [
-            { title: "Descubra seu nicho", question: "Com qual dessas areas você mais se identifica?", options: ["Financias", "Bolsa de valores", "RH"] },
-            { title: "Falando sobre dinheiro", question: "Qual sua meta financeiran no periodo de 5 anos?", options: ["Entre 100000 - 500000", "Entre 500000 - 1000000", "+1000000", "Ruim", "Péssimo"] },
-            { title: "Recomendaria a Amigos?", question: "Você recomendaria nosso produto para amigos?", options: ["Com certeza", "Provavelmente", "Talvez", "Pouco Provável", "Não"] },
-            { title: "Obrigado!", question: "Vamos fornercer sua experiencia personalizada!", options: [] }
+            { title: "Descubra seu nicho", question: "Com qual dessas areas você mais se identifica?", options: ["Financias", "Bolsa de valores", "RH", "Construtora"] },
+            { title: "Falando sobre dinheiro", question: "Qual sua meta financeiran no periodo de 5 anos?", options: ["Entre 100000 - 500000", "Entre 500000 - 1000000", "+1000000", "Menos de 100000"] },
+            { title: "Investimentos", question: "Qual desses investimentos você mais gostaria de aprender?", options: ["Ações", "Criptomoedas", "Imóveis", "Renda Fixa"] },
+            { title: "Perfil de Investidor", question: "Como você descreveria seu perfil de investidor?", options: ["Conservador", "Moderado", "Agressivo", "Fluido"] },
+            { title: "Objetivos Financeiros", question: "Qual é o seu principal objetivo financeiro?", options: ["Aposentadoria", "Comprar uma casa", "Educação dos filhos", "Viagens"] },
+            { title: "Conhecimento Financeiro", question: "Qual é o seu nível de conhecimento sobre finanças pessoais?", options: ["Básico", "Intermediário", "Avançado", "Medianao"] },
+            { title: "Risco e Retorno", question: "Você prefere investimentos de baixo risco com retorno menor ou alto risco com retorno maior?", options: ["Baixo risco, baixo retorno", "Alto risco", "Alto retorno"] },
         ];
 
         //Sistema para atualizar as perguntas depois de escolher a resposta 
@@ -106,9 +109,7 @@
             }
         }
 
-        window.addEventListener("load", () => {
-            document.getElementById("options").addEventListener("click", nextQuestion);
-        });
+        
 
     </script>
 

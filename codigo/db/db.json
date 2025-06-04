@@ -24,11 +24,17 @@
       "vagas": 100,
       "preco": 80,
       "cadastrados": [
-          {"id": "1"},
-          {"id": "10110"},
-          {"id": "424259" }
-          ]
-  },
+        {
+          "id": "1"
+        },
+        {
+          "id": "10110"
+        },
+        {
+          "id": "424259"
+        }
+      ]
+    },
     {
       "id": "3",
       "titulo": "Hotmart FIRE",
@@ -41,10 +47,16 @@
       "vagas": 7000,
       "preco": 2999.99,
       "cadastrados": [
-          {"id": "1"},
-          {"id": "10110"},
-          {"id": "424259" }
-          ]
+        {
+          "id": "1"
+        },
+        {
+          "id": "10110"
+        },
+        {
+          "id": "424259"
+        }
+      ]
     },
     {
       "id": "4",
@@ -58,10 +70,16 @@
       "vagas": 40,
       "preco": 180,
       "cadastrados": [
-          {"id": "1"},
-          {"id": "10110"},
-          {"id": "424259" }
-          ]
+        {
+          "id": "1"
+        },
+        {
+          "id": "10110"
+        },
+        {
+          "id": "424259"
+        }
+      ]
     },
     {
       "id": "5",
@@ -75,10 +93,16 @@
       "vagas": 75,
       "preco": 220,
       "cadastrados": [
-          {"id": "1"},
-          {"id": "10110"},
-          {"id": "424259" }
-          ]
+        {
+          "id": "1"
+        },
+        {
+          "id": "10110"
+        },
+        {
+          "id": "424259"
+        }
+      ]
     },
     {
       "id": "6",
@@ -92,10 +116,16 @@
       "vagas": 35,
       "preco": 280,
       "cadastrados": [
-          {"id": "1"},
-          {"id": "10110"},
-          {"id": "424259" }
-          ]
+        {
+          "id": "1"
+        },
+        {
+          "id": "10110"
+        },
+        {
+          "id": "424259"
+        }
+      ]
     },
     {
       "id": "7",
@@ -109,10 +139,16 @@
       "vagas": 45,
       "preco": 245,
       "cadastrados": [
-          {"id": "1"},
-          {"id": "10110"},
-          {"id": "424259" }
-          ]
+        {
+          "id": "1"
+        },
+        {
+          "id": "10110"
+        },
+        {
+          "id": "424259"
+        }
+      ]
     }
   ],
   "usuarios": [
@@ -122,13 +158,44 @@
       "senha": "123",
       "nome": "Administrador do Sistema",
       "email": "admin@abc.com",
-      "respostas": [],
+      "respostas": [
+        {
+          "question": "Com qual dessas areas você mais se identifica?",
+          "response": "RH"
+        },
+        {
+          "question": "Qual sua meta financeiran no periodo de 5 anos?",
+          "response": "Entre 500000 - 1000000"
+        },
+        {
+          "question": "Qual desses investimentos você mais gostaria de aprender?",
+          "response": "Imóveis"
+        },
+        {
+          "question": "Como você descreveria seu perfil de investidor?",
+          "response": "Conservador"
+        },
+        {
+          "question": "Qual é o seu principal objetivo financeiro?",
+          "response": "Viagens"
+        },
+        {
+          "question": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
+          "response": "Básico"
+        }
+      ],
       "formularioFeito": "sim",
       "eventos_cadastrados": [
-        {"id": "1"},
-        {"id": "2"},
-        {"id": "3"}
-        ]
+        {
+          "id": "1"
+        },
+        {
+          "id": "2"
+        },
+        {
+          "id": "3"
+        }
+      ]
     },
     {
       "id": "2",
@@ -139,129 +206,137 @@
       "respostas": [],
       "formularioFeito": "nao",
       "eventos_cadastrados": [
-        {"id": "1"},
-        {"id": "2"},
-        {"id": "3"}
-        ]
+        {
+          "id": "1"
+        },
+        {
+          "id": "2"
+        },
+        {
+          "id": "3"
+        }
+      ]
     }
   ],
-  "quizzperguntas": [ 
-        {
-            "id": 1,
-            "quizzId": 1,
-            "pergunta": "Com qual dessas areas você mais se identifica?",
-            "opcoes": [
-                "Financias",
-                "Bolsa de valores",
-                "RH"
-            ]
-        },
-        {
-            "id": 2,
-            "quizzId": 1,
-            "pergunta": "Qual sua meta financeiran no periodo de 5 anos?",
-            "opcoes": [
-                "Entre 100000 - 500000",
-                "Entre 500000 - 1000000",
-                "+1000000"
-            ]
-        }
-    ],
-    "avaliacoeseventos": [
-        {
-            "idavaliacao": 1,
-            "idevento": 1,
-            "comentario": "Evento bom."
-        },
-        {
-            "idavaliacao": 2,
-            "idevento": 2,
-            "comentario": "Evento ruim."
-        },
-        {
-            "idavaliacao": 3,
-            "idevento": 1,
-            "comentario": "Evento empolgante."
-        }
-    ],
-    "noticias": [
-      {
-        "id": 1,
-        "titulo": "Hotmart FIRE: O Maior Evento de Marketing Digital",
-        "descricao": "Prepare-se para o maior evento de marketing digital da América Latina",
-        "texto_completo": "O Hotmart FIRE 2025 promete reunir os maiores nomes do marketing digital em São Paulo. Com mais de 150 palestrantes internacionais e nacionais, o evento abordará temas como vendas online, tráfego pago, copywriting e muito mais. Garanta sua vaga para os dias 15 a 17 de julho no Allianz Parque.",
-        "imagem": "https://picsum.photos/300/200?random=1",
-        "data": "2025-07-15",
-        "hora": "09:00",
-        "publicoAlvo": "Profissionais de marketing digital",
-        "categoria": "Marketing Digital"
-      },
-      {
-        "id": 2,
-        "titulo": "Subido: Imersão em Gestão de Tráfego",
-        "descricao": "O evento que vai revolucionar sua forma de fazer tráfego pago",
-        "texto_completo": "O Subido 2025 traz três dias intensos de aprendizado sobre gestão de tráfego com especialistas do mercado. Aprenda estratégias avançadas de Facebook Ads, Google Ads e TikTok Ads. O evento acontecerá nos dias 20 a 22 de agosto no WTC São Paulo.",
-        "imagem": "https://picsum.photos/300/200?random=2",
-        "data": "2025-08-20",
-        "hora": "08:30",
-        "publicoAlvo": "Gestores de tráfego e marketeiros",
-        "categoria": "Tráfego Pago"
-      },
-      {
-        "id": 3,
-        "titulo": "Summit Empresarial: Inovação e Liderança",
-        "descricao": "Encontro dos maiores líderes empresariais do Brasil",
-        "texto_completo": "O Summit Empresarial 2025 reunirá CEOs, empreendedores e líderes de grandes empresas para discutir o futuro dos negócios. Com foco em inovação, tecnologia e liderança, o evento acontecerá nos dias 10 e 11 de setembro no Centro de Convenções Frei Caneca.",
-        "imagem": "https://picsum.photos/300/200?random=3",
-        "data": "2025-09-10",
-        "hora": "10:00",
-        "publicoAlvo": "CEOs e líderes empresariais",
-        "categoria": "Liderança e Inovação"
-      },
-      {
-        "id": 4,
-        "titulo": "Workshop ESG: Sustentabilidade nos Negócios",
-        "descricao": "Como implementar práticas ESG em sua empresa",
-        "texto_completo": "O Workshop ESG 2025 trará especialistas em sustentabilidade para discutir implementações práticas de Environmental, Social and Governance em empresas de todos os portes. O evento acontecerá no dia 25 de outubro e contará com cases de sucesso de grandes empresas brasileiras.",
-        "imagem": "https://picsum.photos/300/200?random=4",
-        "data": "2025-10-25",
-        "hora": "14:00",
-        "publicoAlvo": "Gestores e empresários",
-        "categoria": "Sustentabilidade"
-      },
-      {
-        "id": 5,
-        "titulo": "TechFinance Conference 2025",
-        "descricao": "O futuro das finanças e tecnologia blockchain",
-        "texto_completo": "A TechFinance Conference reunirá especialistas em finanças digitais, criptomoedas e blockchain para discutir as tendências que estão moldando o futuro do mercado financeiro. Com palestras sobre DeFi, NFTs e regulamentações.",
-        "imagem": "https://picsum.photos/300/200?random=5",
-        "data": "2025-11-05",
-        "hora": "09:30",
-        "publicoAlvo": "Profissionais do mercado financeiro",
-        "categoria": "Finanças Digitais"
-      },
-      {
-        "id": 6,
-        "titulo": "RH Summit: O Futuro do Trabalho",
-        "descricao": "Tendências em gestão de pessoas e cultura organizacional",
-        "texto_completo": "O RH Summit 2025 abordará temas cruciais como trabalho híbrido, well-being corporativo e desenvolvimento de talentos. Com palestrantes internacionais e workshops práticos sobre as novas demandas do mercado de trabalho.",
-        "imagem": "https://picsum.photos/300/200?random=6",
-        "data": "2025-12-03",
-        "hora": "13:00",
-        "publicoAlvo": "Profissionais de RH e gestores",
-        "categoria": "Recursos Humanos"
-      },
-      {
-        "id": 7,
-        "titulo": "Data Analytics Forum",
-        "descricao": "Big Data e Inteligência Artificial nos negócios",
-        "texto_completo": "O Data Analytics Forum apresentará as últimas tendências em análise de dados e IA aplicada aos negócios. Com demonstrações práticas de ferramentas e metodologias para tomada de decisão baseada em dados.",
-        "imagem": "https://picsum.photos/300/200?random=7",
-        "data": "2026-01-15",
-        "hora": "10:00",
-        "publicoAlvo": "Analistas de dados e gestores",
-        "categoria": "Tecnologia"
-      }
-    ]
+  "quizzperguntas": [
+    {
+      "id": "1",
+      "quizzId": 1,
+      "pergunta": "Com qual dessas areas você mais se identifica?",
+      "opcoes": [
+        "Financias",
+        "Bolsa de valores",
+        "RH"
+      ]
+    },
+    {
+      "id": "2",
+      "quizzId": 1,
+      "pergunta": "Qual sua meta financeiran no periodo de 5 anos?",
+      "opcoes": [
+        "Entre 100000 - 500000",
+        "Entre 500000 - 1000000",
+        "+1000000"
+      ]
+    }
+  ],
+  "avaliacoeseventos": [
+    {
+      "idavaliacao": 1,
+      "idevento": 1,
+      "comentario": "Evento bom.",
+      "id": "1d17"
+    },
+    {
+      "idavaliacao": 2,
+      "idevento": 2,
+      "comentario": "Evento ruim.",
+      "id": "1488"
+    },
+    {
+      "idavaliacao": 3,
+      "idevento": 1,
+      "comentario": "Evento empolgante.",
+      "id": "982f"
+    }
+  ],
+  "noticias": [
+    {
+      "id": "1",
+      "titulo": "Hotmart FIRE: O Maior Evento de Marketing Digital",
+      "descricao": "Prepare-se para o maior evento de marketing digital da América Latina",
+      "texto_completo": "O Hotmart FIRE 2025 promete reunir os maiores nomes do marketing digital em São Paulo. Com mais de 150 palestrantes internacionais e nacionais, o evento abordará temas como vendas online, tráfego pago, copywriting e muito mais. Garanta sua vaga para os dias 15 a 17 de julho no Allianz Parque.",
+      "imagem": "https://picsum.photos/300/200?random=1",
+      "data": "2025-07-15",
+      "hora": "09:00",
+      "publicoAlvo": "Profissionais de marketing digital",
+      "categoria": "Marketing Digital"
+    },
+    {
+      "id": "2",
+      "titulo": "Subido: Imersão em Gestão de Tráfego",
+      "descricao": "O evento que vai revolucionar sua forma de fazer tráfego pago",
+      "texto_completo": "O Subido 2025 traz três dias intensos de aprendizado sobre gestão de tráfego com especialistas do mercado. Aprenda estratégias avançadas de Facebook Ads, Google Ads e TikTok Ads. O evento acontecerá nos dias 20 a 22 de agosto no WTC São Paulo.",
+      "imagem": "https://picsum.photos/300/200?random=2",
+      "data": "2025-08-20",
+      "hora": "08:30",
+      "publicoAlvo": "Gestores de tráfego e marketeiros",
+      "categoria": "Tráfego Pago"
+    },
+    {
+      "id": "3",
+      "titulo": "Summit Empresarial: Inovação e Liderança",
+      "descricao": "Encontro dos maiores líderes empresariais do Brasil",
+      "texto_completo": "O Summit Empresarial 2025 reunirá CEOs, empreendedores e líderes de grandes empresas para discutir o futuro dos negócios. Com foco em inovação, tecnologia e liderança, o evento acontecerá nos dias 10 e 11 de setembro no Centro de Convenções Frei Caneca.",
+      "imagem": "https://picsum.photos/300/200?random=3",
+      "data": "2025-09-10",
+      "hora": "10:00",
+      "publicoAlvo": "CEOs e líderes empresariais",
+      "categoria": "Liderança e Inovação"
+    },
+    {
+      "id": "4",
+      "titulo": "Workshop ESG: Sustentabilidade nos Negócios",
+      "descricao": "Como implementar práticas ESG em sua empresa",
+      "texto_completo": "O Workshop ESG 2025 trará especialistas em sustentabilidade para discutir implementações práticas de Environmental, Social and Governance em empresas de todos os portes. O evento acontecerá no dia 25 de outubro e contará com cases de sucesso de grandes empresas brasileiras.",
+      "imagem": "https://picsum.photos/300/200?random=4",
+      "data": "2025-10-25",
+      "hora": "14:00",
+      "publicoAlvo": "Gestores e empresários",
+      "categoria": "Sustentabilidade"
+    },
+    {
+      "id": "5",
+      "titulo": "TechFinance Conference 2025",
+      "descricao": "O futuro das finanças e tecnologia blockchain",
+      "texto_completo": "A TechFinance Conference reunirá especialistas em finanças digitais, criptomoedas e blockchain para discutir as tendências que estão moldando o futuro do mercado financeiro. Com palestras sobre DeFi, NFTs e regulamentações.",
+      "imagem": "https://picsum.photos/300/200?random=5",
+      "data": "2025-11-05",
+      "hora": "09:30",
+      "publicoAlvo": "Profissionais do mercado financeiro",
+      "categoria": "Finanças Digitais"
+    },
+    {
+      "id": "6",
+      "titulo": "RH Summit: O Futuro do Trabalho",
+      "descricao": "Tendências em gestão de pessoas e cultura organizacional",
+      "texto_completo": "O RH Summit 2025 abordará temas cruciais como trabalho híbrido, well-being corporativo e desenvolvimento de talentos. Com palestrantes internacionais e workshops práticos sobre as novas demandas do mercado de trabalho.",
+      "imagem": "https://picsum.photos/300/200?random=6",
+      "data": "2025-12-03",
+      "hora": "13:00",
+      "publicoAlvo": "Profissionais de RH e gestores",
+      "categoria": "Recursos Humanos"
+    },
+    {
+      "id": "7",
+      "titulo": "Data Analytics Forum",
+      "descricao": "Big Data e Inteligência Artificial nos negócios",
+      "texto_completo": "O Data Analytics Forum apresentará as últimas tendências em análise de dados e IA aplicada aos negócios. Com demonstrações práticas de ferramentas e metodologias para tomada de decisão baseada em dados.",
+      "imagem": "https://picsum.photos/300/200?random=7",
+      "data": "2026-01-15",
+      "hora": "10:00",
+      "publicoAlvo": "Analistas de dados e gestores",
+      "categoria": "Tecnologia"
+    }
+  ]
 }
-
