@@ -1,0 +1,30 @@
+.floating-button {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ff8c00;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-button:hover {
+    background-color: #ff7600;
+    color: white;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
