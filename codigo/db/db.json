@@ -187,58 +187,36 @@
     "noticias": [
       {
         "id": 1,
-        "titulo": "Venda de uma das maiores empresas do mundo",
-        "descricao": "Elon musk vende tesla.",
-        "data": "2025-05-22",
-        "hora": "09:30",
-        "publicoAlvo": "Investidores e entusiastas do mercado automotivo",
-        "categoria": "Mercado Financeiro",
-        "noticia": "Em uma surpreendente reviravolta no mercado automotivo, Elon Musk anunciou a venda da Tesla por US$ 800 bilhões para um consórcio internacional. A decisão impactou fortemente as ações globais e gerou especulações sobre o futuro dos veículos elétricos. Musk afirmou que focará exclusivamente na SpaceX.",
-        "imagem":"/../docs/images/eventos/design-thinking.jpg"
+        "titulo": "Hotmart FIRE: O Maior Evento de Marketing Digital",
+        "descricao": "Prepare-se para o maior evento de marketing digital da América Latina",
+        "texto_completo": "O Hotmart FIRE 2025 promete reunir os maiores nomes do marketing digital em São Paulo. Com mais de 150 palestrantes internacionais e nacionais, o evento abordará temas como vendas online, tráfego pago, copywriting e muito mais. Garanta sua vaga para os dias 15 a 17 de julho no Allianz Parque.",
+        "imagem": "https://picsum.photos/300/200?random=1",
+        "data": "2025-07-15",
+        "hora": "09:00",
+        "publicoAlvo": "Profissionais de marketing digital",
+        "categoria": "Marketing Digital"
       },
       {
         "id": 2,
-        "titulo": "Startup Brasileira Recebe Investimento Recorde",
-        "descricao": "Empresa de tecnologia financeira atrai R$ 500 milhões em rodada Série C",
-        "data": "2025-05-25",
-        "hora": "14:15",
-        "publicoAlvo": "Empreendedores e investidores",
-        "categoria": "Startups",
-        "noticia": "Uma startup brasileira do setor fintech acaba de receber o maior investimento do ano na América Latina. A rodada Série C foi liderada por fundos internacionais e marca um momento histórico para o ecossistema empreendedor brasileiro.",
-        "imagem":"/../docs/images/eventos/design-thinking.jpg"
+        "titulo": "Subido: Imersão em Gestão de Tráfego",
+        "descricao": "O evento que vai revolucionar sua forma de fazer tráfego pago",
+        "texto_completo": "O Subido 2025 traz três dias intensos de aprendizado sobre gestão de tráfego com especialistas do mercado. Aprenda estratégias avançadas de Facebook Ads, Google Ads e TikTok Ads. O evento acontecerá nos dias 20 a 22 de agosto no WTC São Paulo.",
+        "imagem": "https://picsum.photos/300/200?random=2",
+        "data": "2025-08-20",
+        "hora": "08:30",
+        "publicoAlvo": "Gestores de tráfego e marketeiros",
+        "categoria": "Tráfego Pago"
       },
       {
         "id": 3,
-        "titulo": "Nova Lei Beneficia Pequenos Empreendedores",
-        "descricao": "Governo aprova medidas de simplificação tributária",
-        "data": "2025-05-28",
-        "hora": "10:45",
-        "publicoAlvo": "Micro e pequenos empresários",
-        "categoria": "Legislação",
-        "noticia": "O Congresso Nacional aprovou uma nova legislação que simplifica a tributação para pequenas empresas. A medida deve beneficiar mais de 2 milhões de empreendedores em todo o país, reduzindo a burocracia e os custos operacionais.",
-        "imagem":"/../docs/images/eventos/design-thinking.jpg"
-      },
-      {
-        "id": 4,
-        "titulo": "Programa de Aceleração Abre Inscrições",
-        "descricao": "Y Combinator anuncia programa exclusivo para startups latino-americanas",
-        "data": "2025-06-01",
-        "hora": "08:00",
-        "publicoAlvo": "Fundadores de startups",
-        "categoria": "Aceleração",
-        "noticia": "A renomada aceleradora Y Combinator anunciou seu primeiro programa focado exclusivamente em startups da América Latina. O programa oferecerá mentoria, networking e investimento inicial de US$ 500 mil para as empresas selecionadas.",
-        "imagem":"/../docs/images/eventos/design-thinking.jpg"
-      },
-      {
-        "id": 5,
-        "titulo": "Revolução no Mercado de Trabalho Autônomo",
-        "descricao": "Plataforma brasileira inova com marketplace para profissionais independentes",
-        "data": "2025-06-02",
-        "hora": "16:30",
-        "publicoAlvo": "Profissionais autônomos e freelancers",
-        "categoria": "Inovação",
-        "noticia": "Uma nova plataforma está revolucionando o mercado de trabalho autônomo no Brasil. Com tecnologia blockchain e inteligência artificial, o sistema promete maior segurança e eficiência na conexão entre profissionais independentes e empresas.",
-        "imagem":"/../docs/images/eventos/design-thinking.jpg"
+        "titulo": "Summit Empresarial: Inovação e Liderança",
+        "descricao": "Encontro dos maiores líderes empresariais do Brasil",
+        "texto_completo": "O Summit Empresarial 2025 reunirá CEOs, empreendedores e líderes de grandes empresas para discutir o futuro dos negócios. Com foco em inovação, tecnologia e liderança, o evento acontecerá nos dias 10 e 11 de setembro no Centro de Convenções Frei Caneca.",
+        "imagem": "https://picsum.photos/300/200?random=3",
+        "data": "2025-09-10",
+        "hora": "10:00",
+        "publicoAlvo": "CEOs e líderes empresariais",
+        "categoria": "Liderança e Inovação"
       }
     ]
 }
