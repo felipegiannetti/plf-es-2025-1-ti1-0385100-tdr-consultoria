@@ -33,28 +33,22 @@ async function carregarNoticias() {
 
 // Função para exibir as notícias no HTML
 function exibirNoticias(noticias) {
-    console.log('Notícias recebidas:', noticias); // Debug log
-    
     const container = document.getElementById('noticias-card');
     let htmlContent = '<div class="card-group">';
 
     noticias.forEach(noticia => {
-        console.log('Processando notícia:', noticia); // Debug log
         htmlContent += `
             <div class="underlay">
                 <div class="card">
                     <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
-                    <div class="card-body"> <!-- Changed from card-block to card-body -->
+                    <div class="card-block">
                         <h5 class="card-title" style="font-family: 'Anton', sans-serif">
-                            ${noticia.titulo || 'Sem título'}
+                            ${noticia.titulo}
                         </h5>
-                        <hr>
-                        <p class="card-text">${noticia.descricao || 'Sem descrição'}</p>
-                        <a href="#" class="text-primary"><u>Ler mais...</u></a>
+                        <p class="card-text description">${noticia.descricao}</p>
                         <p class="card-text mt-2">
                             <small class="text-muted">
-                                Publicado em ${noticia.data || 'Data não disponível'} 
-                                às ${noticia.hora || 'Hora não disponível'}
+                                Publicado em ${noticia.data} às ${noticia.hora}
                             </small>
                         </p>
                     </div>
@@ -180,7 +174,6 @@ $(document).ready(function() {
                                 ${noticia.titulo}<hr>
                             </h5>
                             <p class="card-text description">${noticia.descricao}</p>
-                            <p class="card-text expanded-text">${noticia.texto_completo}</p>
                             <p class="card-text mt-2">
                                 <small class="text-muted">
                                     Publicado em ${noticia.data} às ${noticia.hora}
@@ -195,15 +188,31 @@ $(document).ready(function() {
         htmlContent += '</div>';
         container.innerHTML = htmlContent;
 
-        // Efeitos de hover
+        // Efeitos de hover aprimorados
         $('.card').on('mouseenter', function() {
-            $(this).find('.description').slideUp(300);
-            $(this).find('.expanded-text').slideDown(300);
+            $(this).find('.description').css({
+                'opacity': '0',
+                'transition': 'opacity 0.3s ease'
+            });
+            $(this).find('.expanded-text').css({
+                'display': 'block',
+                'opacity': '1',
+                'transition': 'opacity 0.3s ease'
+            });
         });
 
         $('.card').on('mouseleave', function() {
-            $(this).find('.expanded-text').slideUp(300);
-            $(this).find('.description').slideDown(300);
+            $(this).find('.expanded-text').css({
+                'opacity': '0',
+                'transition': 'opacity 0.3s ease'
+            });
+            setTimeout(() => {
+                $(this).find('.expanded-text').css('display', 'none');
+            }, 300);
+            $(this).find('.description').css({
+                'opacity': '1',
+                'transition': 'opacity 0.3s ease'
+            });
         });
     }
 

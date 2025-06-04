@@ -54,8 +54,10 @@ a:hover {
     margin: auto;
     padding: 0;
     background-color: transparent;
-    max-width: 1060px;
+    max-width: 1200px; /* Increased to accommodate centered cards */
     min-width: 100px;
+    display: flex;
+    justify-content: center;
     border: 20px solid transparent;
     border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
     border-image-slice: 1 !important;
@@ -69,6 +71,8 @@ a:hover {
     padding: 0;
     max-height: 350px;
     max-width: 340px;
+    display: flex;
+    justify-content: center;
 }
 
 .card {
@@ -77,53 +81,75 @@ a:hover {
     max-height: 350px;
     max-width: 340px;
     background-color: #fff;
-    border: 2px solid #FF8C00 !important;
-    transition: transform 0.6s ease;
-    animation: blockAppear .6s ease-in-out;
-    animation-duration: 1.5s;
-    box-shadow: 0 4px 8px rgba(255, 140, 0, 0.2);
+    border: 3px solid #FF8C00 !important;
+    border-image: none !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.8s ease;
+    z-index: 1;
+    position: relative;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(255, 140, 0, 0.3);
+    z-index: 9999; /* Increased z-index to overlay navbar */
+    transform: translate(-30px, -80px); /* Increased upward movement */
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); /* Added smoother easing */
+}
+
+.card:before {
+    box-shadow: none;
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    transition: all 0.8s ease; /* Match card transition timing */
+}
+
+.card:hover:before {
+    max-width: 300px;
+    box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);
 }
 
 .card-block {
-    background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #343a40;
     padding: 1.25rem;
 }
 
 .card-title {
-    color: white;
+    color: #FF8C00;
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
+    font-weight: 600;
 }
 
 .card-text {
-    color: rgba(255, 255, 255, 0.9);
+    color: #495057;
     display: block;
     font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .card-text.expanded-text {
     display: none;
-    color: #fff;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-top: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Slowed down text transition */
 }
 
 .card-text.description {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Slowed down text transition */
 }
 
 .card a {
-    color: white;
+    color: #FF8C00;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.card a:hover {
+    color: #fd7e14;
     text-decoration: underline;
 }
 
@@ -134,13 +160,31 @@ a:hover {
 }
 
 .card:hover .card-block {
-    background-image: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+    background: linear-gradient(135deg, #fff5eb 0%, #ffe5cc 100%);
 }
 
 .card:hover .card-title {
-    color: #fff;
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
+    color: #fd7e14;
+}
+
+/* Ensure navbar doesn't overlap cards */
+#navbarimplementador {
+    z-index: 1000;
+}
+
+/* When card is hovered, it should go over navbar */
+.card:hover {
+    z-index: 10000;
+}
+
+/* Update the card group layout */
+.card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
 }
 
 /* Animations */
@@ -152,7 +196,7 @@ a:hover {
     40% {
         opacity: 0;
         transform: translateY(20px);
-        box-shadow: 0 10px 35px rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.15);
+        box-shadow: 0 10px 35px rgba(0,0,0,.15);
     }
     80% {
         opacity: 1;
@@ -161,14 +205,13 @@ a:hover {
     100% {
         opacity: 1;
         transform: translateY(0);
-        box-shadow: none;
     }
 }
 
 /* Media Queries */
 @media (max-width: 1120px) {
     .news-block {
-        max-width: 720px;
+        max-width: 900px;
     }
     .card:hover {
         margin-right: -20px;
@@ -180,7 +223,7 @@ a:hover {
 
 @media (max-width: 800px) {
     .news-block {
-        min-width: 380px;
+        max-width: 600px;
     }
     .card:hover {
         border-left: 20px solid transparent !important;
@@ -198,6 +241,10 @@ a:hover {
 @media (max-width: 580px) {
     .news-block {
         max-width: 380px;
+    }
+    .card-group {
+        padding: 1rem;
+        gap: 1rem;
     }
 }
 
