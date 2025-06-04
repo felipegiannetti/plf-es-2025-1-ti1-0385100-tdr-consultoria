@@ -11,17 +11,21 @@ async function loadEvents() {
         const container = document.getElementById('cardQuiz');
         container.innerHTML = `
            <div class="card" id="card">
-            <h2 id="title">Sua opinião importa</h2>
-            <p id="question">Como você avalia nosso produto?</p>
-            <div class="options" id="options">
-                <input type="radio" name="option" id="opt1" value="Excelente"><label for="opt1">Excelente</label>
-                <input type="radio" name="option" id="opt2" value="Bom"><label for="opt2">Bom</label>
-                <input type="radio" name="option" id="opt3" value="Razoável"><label for="opt3">Razoável</label>
-                <input type="radio" name="option" id="opt4" value="Ruim"><label for="opt4">Ruim</label>
-                <input type="radio" name="option" id="opt5" value="Péssimo"><label for="opt5">Péssimo</label>
+                <h2 id="title">Descubra seu nicho</h2>
+                <p id="question">Com qual dessas areas você mais se identifica?</p>
+                <div class="options" id="options">
+                    <input type="radio" name="option" id="opt1" value="Financias"><label for="opt1">Financias</label>
+                    <input type="radio" name="option" id="opt2" value="Bolsa de valores"><label for="opt2">Bolsa de valores</label>
+                    <input type="radio" name="option" id="opt3" value="RH"><label for="opt3">RH</label>
+                    <input type="radio" name="option" id="opt4" value="Construtora"><label for="opt4">Construtora</label>
+                </div>
             </div>
-        </div>
         `;
+
+    const optionsDiv = document.getElementById("options");
+    if (optionsDiv) {
+        optionsDiv.addEventListener("click", nextQuestion);
+    }
 
     } catch (error) {
         console.error('Erro ao carregar usuarios:', error);
