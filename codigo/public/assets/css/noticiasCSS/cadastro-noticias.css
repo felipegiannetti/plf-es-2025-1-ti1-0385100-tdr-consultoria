@@ -14,6 +14,30 @@
     opacity: 0.5;
 }
 
+.margemtopo {
+    padding-top: 900px;
+}
+
+/* Override any other margin styles */
+body .form-container.margemtopo,
+body .margemtopo {
+    margin-top: 150px !important;
+    padding-top: 20px !important;
+    position: relative !important;
+    z-index: 1;
+}
+
+/* Reset form container margin */
+.form-container {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #212121;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+    color: white;
+}
+
 .floating-button:hover {
     background-color: #ff7600;
     color: white;
