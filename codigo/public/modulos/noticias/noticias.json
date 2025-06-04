@@ -1,0 +1,45 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "noticias": [
+    {
+      "id": 1,
+      "titulo": "Startup Brasileira Recebe Investimento Recorde",
+      "descricao": "A TechFin, startup brasileira de tecnologia financeira, acaba de receber um investimento de R$ 500 milhões em sua rodada Série C, marcando um dos maiores aportes do setor na América Latina. A empresa planeja expandir suas operações para outros países e desenvolver novas soluções de pagamento digital.",
+      "imagem": "https://picsum.photos/300/200",
+      "data": "2025-05-25",
+      "hora": "14:30"
+    },
+    {
+      "id": 2,
+      "titulo": "Nova Lei Beneficia Pequenos Empreendedores",
+      "descricao": "O governo federal anunciou hoje um pacote de medidas que simplifica a tributação para pequenas empresas. A nova legislação reduz a burocracia e oferece incentivos fiscais para startups e microempreendedores, com potencial para beneficiar mais de 1 milhão de negócios em todo o país.",
+      "imagem": "https://picsum.photos/300/201",
+      "data": "2025-05-28",
+      "hora": "09:15"
+    },
+    {
+      "id": 3,
+      "titulo": "Programa de Aceleração Abre Inscrições",
+      "descricao": "A Y Combinator, uma das mais prestigiadas aceleradoras do mundo, anunciou seu primeiro programa dedicado exclusivamente a startups latino-americanas. O programa oferecerá investimento inicial de US$ 500 mil e mentoria intensiva durante 12 semanas em São Paulo.",
+      "imagem": "https://picsum.photos/300/202",
+      "data": "2025-06-01",
+      "hora": "16:45"
+    }
+  ]
+}

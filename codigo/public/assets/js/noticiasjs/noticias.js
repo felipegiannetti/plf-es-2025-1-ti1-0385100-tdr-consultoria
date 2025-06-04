@@ -1,7 +1,10 @@
+// URL base do JSON Server
+const API_URL = 'http://localhost:3000';
+
 // Função para carregar as notícias do db.json
 async function carregarNoticias() {
     try {
-        const response = await fetch('http://localhost:3000/noticias');
+        const response = await fetch(`${API_URL}/noticias`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -82,27 +85,30 @@ document.addEventListener('DOMContentLoaded', carregarNoticias);
 const mockNoticias = [
     {
         id: 1,
-        titulo: "Startup Brasileira Recebe Investimento Recorde",
-        descricao: "Empresa de tecnologia financeira atrai R$ 500 milhões em rodada Série C",
-        imagem: "https://picsum.photos/300/200",
+        titulo: "Inovação em Consultoria Empresarial",
+        descricao: "Nova abordagem revoluciona mercado",
+        texto_completo: "Nossa equipe desenvolveu uma metodologia inovadora que combina análise de dados em tempo real com estratégias personalizadas de crescimento. Os resultados mostram um aumento médio de 45% na eficiência operacional dos nossos clientes.",
+        imagem: "https://picsum.photos/300/200?random=1",
         data: "2025-05-25",
-        texto: "Uma startup brasileira do setor fintech acaba de receber o maior investimento do ano na América Latina..."
+        hora: "14:30"
     },
     {
         id: 2,
-        titulo: "Nova Lei Beneficia Pequenos Empreendedores",
-        descricao: "Governo aprova medidas de simplificação tributária",
-        imagem: "https://picsum.photos/300/201",
+        titulo: "Transformação Digital nas PMEs",
+        descricao: "Pequenas empresas lideram mudança tecnológica",
+        texto_completo: "O processo de transformação digital tem sido especialmente impactante para pequenas e médias empresas. Nossa consultoria tem ajudado dezenas de negócios a implementarem soluções tecnológicas que antes eram exclusivas de grandes corporações.",
+        imagem: "https://picsum.photos/300/200?random=2",
         data: "2025-05-28",
-        texto: "O Congresso Nacional aprovou uma nova legislação que simplifica a tributação para pequenas empresas..."
+        hora: "09:15"
     },
     {
         id: 3,
-        titulo: "Programa de Aceleração Abre Inscrições",
-        descricao: "Y Combinator anuncia programa exclusivo para startups latino-americanas",
-        imagem: "https://picsum.photos/300/202",
+        titulo: "Sustentabilidade nos Negócios",
+        descricao: "ESG como diferencial competitivo",
+        texto_completo: "Empresas que adotam práticas ESG têm mostrado resultados superiores no mercado. Nossa consultoria especializada ajuda organizações a implementarem estratégias sustentáveis sem comprometer a lucratividade.",
+        imagem: "https://picsum.photos/300/200?random=3",
         data: "2025-06-01",
-        texto: "A renomada aceleradora Y Combinator anunciou seu primeiro programa focado exclusivamente em startups..."
+        hora: "16:45"
     }
 ];
 
@@ -143,5 +149,63 @@ function criarCards() {
 
 // Initialize when document is ready
 $(document).ready(function() {
-    criarCards();
+    const API_URL = 'http://localhost:3000';
+
+    async function carregarNoticias() {
+        try {
+            const response = await fetch(`${API_URL}/noticias`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const noticias = await response.json();
+            exibirNoticias(noticias);
+        } catch (error) {
+            console.error('Erro ao carregar notícias:', error);
+            document.getElementById('noticias-card').innerHTML = 
+                '<div class="alert alert-danger">Erro ao carregar notícias. Por favor, tente novamente mais tarde.</div>';
+        }
+    }
+
+    function exibirNoticias(noticias) {
+        const container = document.getElementById('noticias-card');
+        let htmlContent = '<div class="card-group">';
+
+        noticias.forEach(noticia => {
+            htmlContent += `
+                <div class="underlay">
+                    <div class="card">
+                        <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
+                        <div class="card-block">
+                            <h5 class="card-title" style="font-family: 'Anton', sans-serif">
+                                ${noticia.titulo}<hr>
+                            </h5>
+                            <p class="card-text description">${noticia.descricao}</p>
+                            <p class="card-text expanded-text">${noticia.texto_completo}</p>
+                            <p class="card-text mt-2">
+                                <small class="text-muted">
+                                    Publicado em ${noticia.data} às ${noticia.hora}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        htmlContent += '</div>';
+        container.innerHTML = htmlContent;
+
+        // Efeitos de hover
+        $('.card').on('mouseenter', function() {
+            $(this).find('.description').slideUp(300);
+            $(this).find('.expanded-text').slideDown(300);
+        });
+
+        $('.card').on('mouseleave', function() {
+            $(this).find('.expanded-text').slideUp(300);
+            $(this).find('.description').slideDown(300);
+        });
+    }
+
+    carregarNoticias();
 });

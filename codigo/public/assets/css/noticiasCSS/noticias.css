@@ -76,75 +76,71 @@ a:hover {
     width: 340px;
     max-height: 350px;
     max-width: 340px;
-    background-color: transparent;
-    border: 20px solid transparent !important;
-    border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
-    border-image-slice: 1 !important;
+    background-color: #fff;
+    border: 2px solid #FF8C00 !important;
     transition: transform 0.6s ease;
     animation: blockAppear .6s ease-in-out;
     animation-duration: 1.5s;
+    box-shadow: 0 4px 8px rgba(255, 140, 0, 0.2);
 }
 
 .card:hover {
-    z-index: 999;
-    max-height: 800px;
-    width: 400px;
-    max-width: 400px;
-    border: none !important;
-    border-right: 60px solid transparent !important;
-    border-bottom: 20px solid transparent !important;
-    margin-right: -20px;
-    transform: translate(-30px, -50px);
-}
-
-.card:before {
-    box-shadow: none;
-    display: block;
-    content: '';
-    position: absolute;
-    width: 100%;
-    max-width: 400px;
-    height: 100%;
-    transition: box-shadow 0.6s ease;
-}
-
-.card:hover:before {
-    max-width: 300px;
-    box-shadow: 60px 60px 20px RGBA(142, 142, 142, .6);
-}
-
-.card:hover .card-img-top {
-    height: 300px;
-}
-
-.card:hover .card-block {
-    width: 300px;
-    background-image: linear-gradient(to top left,rgb(72, 85, 108) 0%,rgb(27, 33, 43) 50%,rgb(20, 25, 34) 51%,rgb(53, 59, 69) 100%);
-}
-
-.card:hover .card-title {
-    color: white;
-}
-
-.card:hover .card-text {
-    color: white;
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(255, 140, 0, 0.3);
 }
 
 .card-block {
-    background-color: transparent;
-    background-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%);
-    background-repeat: no-repeat;
+    background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+    color: white;
+    padding: 1.25rem;
+}
+
+.card-title {
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
 .card-text {
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    font-size: 0.9rem;
+}
+
+.card-text.expanded-text {
     display: none;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
+
+.card-text.description {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.card a {
+    color: white;
+    text-decoration: underline;
 }
 
 .card-img-top {
-    width: 300px;
-    height: 250px;
-    background-color: #fff;
-    transition: height 0.8s ease;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #FF8C00;
+}
+
+.card:hover .card-block {
+    background-image: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+}
+
+.card:hover .card-title {
+    color: #fff;
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
 }
 
 /* Animations */
