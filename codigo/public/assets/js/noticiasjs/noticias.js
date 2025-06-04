@@ -79,7 +79,7 @@ function criarCards() {
     const container = document.getElementById('noticias-card');
     let htmlContent = '<div class="card-group">';
 
-    mockNoticias.forEach(noticia => {
+    forEach(noticia => {
         htmlContent += `
             <div class="underlay">
                 <div class="card">
