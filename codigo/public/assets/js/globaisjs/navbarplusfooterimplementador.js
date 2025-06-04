@@ -99,8 +99,8 @@ function implementNavbar() {
         <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top" id= "navbar">
             <div class="container">
                 <a href="${currentPaths.home}"><img src="${logoPath}" alt="Logo" class="navbar-logo img-fluid mb-3" style="max-height: 60px; width: auto;"></a>
-                <a class="navbar-brand" href="${currentPaths.home}">
-                    TDR<span style="color: #cc0000;">Consultoria</span>
+                <a class="navbar-brand" href="${currentPaths.home}" style="font-size: 1.3rem;">
+                    TDR<span style="color: #cc0000;"> Corporative</span>
                 </a>
                 <button class="navbar-toggler" type="button" 
                         data-bs-toggle="collapse" 
@@ -244,7 +244,6 @@ function implementFooter() {
             <div class="text-center small">
                 <p class="mb-0 text-dark">&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
             </div>
-            <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-left animate-logo">
             <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-right animate-logo">
         </div>
     </footer>

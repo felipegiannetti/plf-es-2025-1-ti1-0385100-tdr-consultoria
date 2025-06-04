@@ -158,32 +158,7 @@
       "senha": "123",
       "nome": "Administrador do Sistema",
       "email": "admin@abc.com",
-      "respostas": [
-        {
-          "question": "Com qual dessas areas você mais se identifica?",
-          "response": "RH"
-        },
-        {
-          "question": "Qual sua meta financeira no periodo de 5 anos?",
-          "response": "Entre 500000 - 1000000"
-        },
-        {
-          "question": "Qual desses investimentos você mais gostaria de aprender?",
-          "response": "Imóveis"
-        },
-        {
-          "question": "Como você descreveria seu perfil de investidor?",
-          "response": "Conservador"
-        },
-        {
-          "question": "Qual é o seu principal objetivo financeiro?",
-          "response": "Viagens"
-        },
-        {
-          "question": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
-          "response": "Básico"
-        }
-      ],
+      "respostas": [],
       "formularioFeito": "sim",
       "eventos_cadastrados": [
         {

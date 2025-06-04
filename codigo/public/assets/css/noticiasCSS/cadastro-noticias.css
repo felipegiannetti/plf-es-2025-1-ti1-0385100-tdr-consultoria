@@ -1,3 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, 
+body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+}
+
 .floating-button {
     position: fixed;
     right: 20px;
@@ -12,6 +26,34 @@
     z-index: 1000;
     transition: all 0.3s ease;
     opacity: 0.5;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Override any other margin styles */
+body .form-container.margemtopo,
+body .margemtopo {
+    margin-top: 150px !important;
+    padding-top: 20px !important;
+    position: relative !important;
+    z-index: 1;
+}
+
+/* Reset form container margin */
+.form-container {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #212121;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+    color: white;
+    width: 95%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .floating-button:hover {
@@ -143,4 +185,17 @@ h2.form-title::after {
 .form-label {
     color: #ff8c00;
     font-weight: 500;
+}
+
+/* Ensure all content stays within bounds */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix any potential floating elements */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
