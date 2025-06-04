@@ -54,7 +54,7 @@ async function carregarDetalhesEvento() {
         const cadastroPath = 'cadastrousuariosevento.html';
         
         container.innerHTML = `
-            <div class="card mb-4">
+            <div class="card mb-4 margemtopodetalhes">
                 <div class="row g-0">
                     <div class="col-md-6">
                         <img src="${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
