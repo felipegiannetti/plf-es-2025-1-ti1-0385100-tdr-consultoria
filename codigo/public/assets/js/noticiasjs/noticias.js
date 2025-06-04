@@ -46,6 +46,7 @@ function exibirNoticias(noticias) {
                             ${noticia.titulo}
                         </h5>
                         <p class="card-text description">${noticia.descricao}</p>
+                        <p class="card-text expanded-text" style="display: none;">${noticia.texto_completo}</p>
                         <p class="card-text mt-2">
                             <small class="text-muted">
                                 Publicado em ${noticia.data} às ${noticia.hora}
@@ -60,15 +61,13 @@ function exibirNoticias(noticias) {
     htmlContent += '</div>';
     container.innerHTML = htmlContent;
 
-    // Adicionar efeitos de hover
+    // Efeitos de hover
     $('.card').on('mouseenter', function() {
-        $(this).find('.card-text').slideDown(300);
-    });
-
-    $('.card').on('mouseleave', function() {
-        $(this).find('.card-text').css({
-            'display': 'none'
-        });
+        $(this).find('.description').slideUp(300);
+        $(this).find('.expanded-text').slideDown(300);
+    }).on('mouseleave', function() {
+        $(this).find('.expanded-text').slideUp(300);
+        $(this).find('.description').slideDown(300);
     });
 }
 
@@ -184,10 +183,10 @@ $(document).ready(function() {
                         <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
                         <div class="card-block">
                             <h5 class="card-title" style="font-family: 'Anton', sans-serif">
-                                ${noticia.titulo}<hr>
+                                ${noticia.titulo}
                             </h5>
                             <p class="card-text description">${noticia.descricao}</p>
-                            <p class="card-text expanded-text">${noticia.texto_completo}</p>
+                            <p class="card-text expanded-text" style="display: none;">${noticia.texto_completo}</p>
                             <p class="card-text mt-2">
                                 <small class="text-muted">
                                     Publicado em ${noticia.data} às ${noticia.hora}
@@ -206,9 +205,7 @@ $(document).ready(function() {
         $('.card').on('mouseenter', function() {
             $(this).find('.description').slideUp(300);
             $(this).find('.expanded-text').slideDown(300);
-        });
-
-        $('.card').on('mouseleave', function() {
+        }).on('mouseleave', function() {
             $(this).find('.expanded-text').slideUp(300);
             $(this).find('.description').slideDown(300);
         });

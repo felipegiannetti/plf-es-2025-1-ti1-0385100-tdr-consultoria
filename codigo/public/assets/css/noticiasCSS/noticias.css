@@ -1,7 +1,6 @@
 * {
     padding: 0;
     margin: 0;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -11,18 +10,15 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: transparent;
-    background: url('https://i.imgur.com/ApQKtQZ.jpeg') fixed no-repeat;
-    background-size: cover;
-    max-height: 300rem;
-    border: 15px solid transparent !important;
-    border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
-    border-image-slice: 1 !important;
+    background: #111;
     line-height: 1.6;
+    min-height: 100vh;
+
 }
 
 .margemtopo {
-    margin-top: 80px;
+    padding-top: 100px; /* Changed from margin to padding */
+    width: 100%;
 }
 
 a {
@@ -41,7 +37,6 @@ a:hover {
 .main-cont {
     padding: 0;
     margin: 0;
-    top: -215px;
 }
 
 .news-row {
@@ -51,28 +46,19 @@ a:hover {
 }
 
 .news-block {
-    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
     padding: 0;
     background-color: transparent;
-    max-width: 1200px; /* Increased to accommodate centered cards */
+    max-width: 1200px;
     min-width: 100px;
     display: flex;
     justify-content: center;
-    border: 20px solid transparent;
-    border-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.75) 0%,rgba(245, 245, 245, 0.75) 0%,rgba(245, 245, 245, 0.75) 16.6%,rgb(245, 245, 245) 37.8%,rgb(245, 245, 245) 48.8%,rgb(254, 254, 254) 53.1%,rgba(245, 245, 245, 0.75) 79.4%,rgba(245, 245, 245, 0.75) 84.3%) !important;
-    border-image-slice: 1 !important;
-    transition: all 0.6s ease;
-    animation: blockAppear .6s ease-in-out;
-    animation-duration: 1s;
-}
-
-.underlay {
-    margin: 0;
-    padding: 0;
-    max-height: 350px;
-    max-width: 340px;
-    display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 .card {
@@ -87,11 +73,12 @@ a:hover {
     transition: all 0.8s ease;
     z-index: 1;
     position: relative;
+    height: 100%;
 }
 
 .card:hover {
     z-index: 9999; /* Increased z-index to overlay navbar */
-    transform: translate(-30px, -80px); /* Increased upward movement */
+    transform: translate(-10px, -20px); /* Increased upward movement */
     transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); /* Added smoother easing */
 }
 
@@ -157,6 +144,9 @@ a:hover {
     height: 200px;
     object-fit: cover;
     border-bottom: 3px solid #FF8C00;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .card:hover .card-block {
@@ -185,6 +175,8 @@ a:hover {
     gap: 2rem;
     padding: 2rem;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Animations */
@@ -255,11 +247,28 @@ a:hover {
     position: relative;
 }
 
-/* Adjust container margins */
+/* Update container margins */
 .container-fluid {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.centralizacontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Combine classes if needed */
+.margemtopo.centralizacontainer {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
