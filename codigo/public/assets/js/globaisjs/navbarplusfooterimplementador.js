@@ -94,7 +94,7 @@ function implementNavbar() {
     const logoPath = isIndex ? 'public/assets/img/logo.png' : '../../assets/img/logo.png';
 
     navbarContainer.innerHTML = `
-        <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top" id= "navbar">
             <div class="container">
                 <a href="${currentPaths.home}"><img src="${logoPath}" alt="Logo" class="navbar-logo img-fluid mb-3" style="max-height: 60px; width: auto;"></a>
                 <a class="navbar-brand" href="${currentPaths.home}">
