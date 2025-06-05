@@ -408,74 +408,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Unified hover styles */
-.btn-outline-primary:hover,
-.flip-card-front .btn-outline-primary:hover,
-.flip-card-back .btn-outline-primary:hover {
-    color: white;
-    background: linear-gradient(45deg, var(--primary), var(--primary-light));
-    border-color: transparent;
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
-    text-decoration: none;
-}
-
-/* Remove conflicting styles */
-.flip-toggle {
-    display: inline-block; /* Changed from block */
-    width: 150px; /* Match button width */
-    margin: 0 auto;
-}
-
-/* Back card specific styles */
-.flip-card-back {
-    transform: rotateY(180deg);
-}
-
-.flip-card-back .btn-outline-primary {
-    position: relative;
-    z-index: 10;
-    pointer-events: auto;
-}
-
-/* Remove any conflicting hover rules */
-.btn-outline-primary:hover {
-    color: white;
-    background: linear-gradient(45deg, var(--primary), var(--primary-light));
-    border-color: transparent;
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
-}
-
-/* Ensure buttons are visible and clickable */
-.flip-card-back .btn-outline-primary {
-    position: relative;
-    z-index: 3;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto;
-}
-
-/* Botões flip (Detalhes/Voltar) */
-.flip-toggle {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    min-width: 150px;
-    padding: 0.75rem 2rem !important;
-    margin: 1rem auto 0;
-    z-index: 10;
-    position: relative;
-    pointer-events: auto;
-}
-
-/* Correção específica para o hover no botão Voltar */
-.flip-card-back .flip-toggle:hover {
-    transform: translateX(-5px) !important;
+.flip-toggle:hover {
     color: white !important;
     background: linear-gradient(45deg, var(--primary), var(--primary-light)) !important;
     border-color: transparent !important;
+    transform: translateX(5px) !important;
     box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4) !important;
+}
+
+/* Special case for back card button */
+.flip-card-back .flip-toggle:hover {
+    transform: translateX(-5px) !important;
 }
 
 /* Container principal para os cards */
