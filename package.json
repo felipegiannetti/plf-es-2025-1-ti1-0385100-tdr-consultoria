@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run server",
     "server": "json-server --watch codigo/db/db.json --port 3000"
   },
   "dependencies": {
