@@ -8,7 +8,7 @@
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
-      "imagem": "/../docs/images/eventos/evento-gestao-empresarial.jpg",
+      "imagem": "./public/assets/img/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
       "preco": 150
     },
@@ -20,20 +20,9 @@
       "categoria": "Palestra",
       "local": "Hotel Business Center - BH",
       "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
-      "imagem": "/../docs/images/eventos/palestra-empresarial.webp",
+      "imagem": "./public/assets/img/eventos/palestra-empresarial.webp",
       "vagas": 100,
-      "preco": 80,
-      "cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "10110"
-        },
-        {
-          "id": "424259"
-        }
-      ]
+      "preco": 80
     },
     {
       "id": "3",
@@ -43,20 +32,9 @@
       "categoria": "Evento",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Centro+de+Convencoes+Belo+Horizonte",
-      "imagem": "/../docs/images/eventos/hotmart-fire.jpeg",
+      "imagem": "./public/assets/img/eventos/hotmart-fire.jpeg",
       "vagas": 7000,
-      "preco": 2999.99,
-      "cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "10110"
-        },
-        {
-          "id": "424259"
-        }
-      ]
+      "preco": 2999.99
     },
     {
       "id": "4",
@@ -66,20 +44,9 @@
       "categoria": "Workshop",
       "local": "San Pedro Valley - Savassi, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=San+Pedro+Valley+Savassi+Belo+Horizonte",
-      "imagem": "/../docs/images/eventos/financas-startups.jpg",
+      "imagem": "./public/assets/img/eventos/financas-startups.jpg",
       "vagas": 40,
-      "preco": 180,
-      "cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "10110"
-        },
-        {
-          "id": "424259"
-        }
-      ]
+      "preco": 180
     },
     {
       "id": "5",
@@ -89,20 +56,9 @@
       "categoria": "Seminário",
       "local": "CDL-BH - Centro, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
-      "imagem": "/../docs/images/eventos/esg-empresas.png",
+      "imagem": "./public/assets/img/eventos/esg-empresas.png",
       "vagas": 75,
-      "preco": 220,
-      "cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "10110"
-        },
-        {
-          "id": "424259"
-        }
-      ]
+      "preco": 220
     },
     {
       "id": "6",
@@ -112,20 +68,9 @@
       "categoria": "Curso",
       "local": "Le Monde Hub - Funcionários, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=Le+Monde+Hub+Funcionarios+Belo+Horizonte",
-      "imagem": "/../docs/images/eventos/design-thinking.jpg",
+      "imagem": "./public/assets/img/eventos/design-thinking.jpg",
       "vagas": 35,
-      "preco": 280,
-      "cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "10110"
-        },
-        {
-          "id": "424259"
-        }
-      ]
+      "preco": 280
     },
     {
       "id": "7",
@@ -135,20 +80,16 @@
       "categoria": "Treinamento",
       "local": "FIEMG - Santa Efigênia, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "imagem": "/../docs/images/eventos/vendas-b2b.jpg",
+      "imagem": "./public/assets/img/eventos/vendas-b2b.jpg",
       "vagas": 45,
-      "preco": 245,
-      "cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "10110"
-        },
-        {
-          "id": "424259"
-        }
-      ]
+      "preco": 245
+    }
+  ],
+  "cadastroDeEventos": [
+    {    
+      "id" : "1",
+      "idEvento" : "1",
+      "idUsuario" : "1"     
     }
   ],
   "usuarios": [
@@ -215,28 +156,6 @@
         {
           "id": "3"
         }
-      ]
-    }
-  ],
-  "quizzperguntas": [
-    {
-      "id": "1",
-      "quizzId": 1,
-      "pergunta": "Com qual dessas areas você mais se identifica?",
-      "opcoes": [
-        "Financias",
-        "Bolsa de valores",
-        "RH"
-      ]
-    },
-    {
-      "id": "2",
-      "quizzId": 1,
-      "pergunta": "Qual sua meta financeiran no periodo de 5 anos?",
-      "opcoes": [
-        "Entre 100000 - 500000",
-        "Entre 500000 - 1000000",
-        "+1000000"
       ]
     }
   ],
