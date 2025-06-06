@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
   font-weight: 300;
   max-width: 700px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1rem; /* Reduced from 2rem to 1rem */
 }
 
 /* Carousel Custom Styles */
@@ -323,110 +323,86 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2.5rem 2rem;
     border-radius: 15px;
     text-align: center;
-    transition: all 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     border: 1px solid var(--gray-dark);
     position: relative;
-    overflow: visible; /* Changed from hidden to visible */
     height: 100%;
-    min-height: 500px; /* Increased minimum height */
+    min-height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Flip Card Styles */
-.flip-card {
-  perspective: 1000px;
-  height: 100%;
-  min-height: 500px;
-  position: relative;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 15px;
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  background: var(--dark-light);
-  border: 1px solid var(--gray-dark);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
+    justify-content: flex-start;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .feature-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(45deg, var(--primary), var(--primary-light));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 2rem;
-  color: white;
-  box-shadow: 0 5px 15px rgba(255, 122, 0, 0.5);
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 122, 0, 0.5);
 }
 
 .feature-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 1.5rem;
-  text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
 }
 
 .feature-list li {
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  color: var(--gray);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    color: var(--gray);
 }
 
 .feature-list i {
-  color: var(--primary);
-  margin-right: 0.5rem;
+    color: var(--primary);
+    margin-right: 0.5rem;
 }
 
-/* Unified hover styles */
-.flip-toggle:hover {
-    color: white !important;
-    background: linear-gradient(45deg, var(--primary), var(--primary-light)) !important;
-    border-color: transparent !important;
-    transform: translateX(5px) !important;
-    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4) !important;
+/* Mobile Responsiveness */
+@media (max-width: 576px) {
+    .feature-card {
+        min-height: auto;
+        margin-bottom: 2rem;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Hide flip functionality and details button on mobile */
+    .flip-card-back,
+    .flip-toggle,
+    .btn-outline-primary {
+        display: none !important;
+    }
+
+    /* Ensure front card shows full content */
+    .flip-card-front {
+        position: relative;
+        min-height: auto;
+        height: auto;
+        transform: none;
+        backface-visibility: visible;
+    }
+
+    /* Remove any flip animations */
+    .flip-card-inner {
+        transform-style: flat;
+        transform: none !important;
+        transition: none;
+    }
+
+    /* Adjust spacing for mobile */
+    .feature-list {
+        margin-bottom: 0;
+    }
 }
 
-/* Special case for back card button */
-.flip-card-back .flip-toggle:hover {
-    transform: translateX(-5px) !important;
-}
-
-/* Container principal para os cards */
-.features-container {
-    padding-bottom: 50px; /* Espaço extra para o footer */
-}
-
-/* Responsividade */
 @media (max-width: 992px) {
   .hero-title {
     font-size: 2.8rem;
@@ -464,6 +440,14 @@ h1, h2, h3, h4, h5, h6 {
   .flip-card {
     min-height: 400px;
   }
+
+  .section-subtitle {
+    margin: 0 auto 0.75rem;
+  }
+  
+  .features-container {
+    margin-top: -0.5rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -485,6 +469,100 @@ h1, h2, h3, h4, h5, h6 {
   
   .subtitle {
     font-size: 1.1rem;
+  }
+
+  /* Update mobile styles for feature cards */
+  .feature-card {
+    margin-bottom: 1rem;
+    min-height: auto;
+    height: auto;
+  }
+
+  .flip-card {
+    min-height: auto;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    min-height: 450px;
+    height: 100%;
+    position: relative;
+  }
+
+  .feature-list {
+    margin-bottom: 1rem;
+  }
+
+  .flip-toggle {
+    margin-top: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .carousel-inner {
+    height: 200px;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 1.2rem;
+  }
+  
+  .stat-item strong {
+    font-size: 2rem;
+  }
+  
+  .flip-card-front,
+  .flip-card-back {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .carousel-inner {
+    height: 180px;
+  }
+  
+  .carousel-caption {
+    padding: 1rem;
+  }
+  
+  .flip-card {
+    min-height: 300px;
+  }
+  
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    min-height: 350px;
+    padding: 1.5rem 1rem;
   }
 }
 
