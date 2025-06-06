@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
+
+
 .bg-navbar {
     background: linear-gradient(to right, #ffffff, #FFA500);
 }
@@ -10,11 +18,17 @@
     /* overflow: hidden; → REMOVIDO para permitir que o dropdown ultrapasse */
 }
 
+.nav-link{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000000
+}
+
 .nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
     border-radius: 20px;
+    box-shadow: none;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
 }
 
 .nav-item::after {
@@ -23,8 +37,8 @@
     bottom: 0;
     left: 0;
     width: 0;
-    height: 5px;
-    background: #0048ff;
+    height: 3px;
+    background: #1f2124;
     transition: width 0.3s ease;
 }
 
@@ -66,18 +80,19 @@
 .nav-link:focus {
     outline: none;
     box-shadow: none !important;
+    
 }
 
 /* Dropdown Styling */
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 120%;
     left: 50%;
     transform: translateX(-50%);
     min-width: 220px;
     padding: 0.8rem 0;
-    background: linear-gradient(135deg, #ffffff, #fff5e6);
-    border: none;
+    background-color: #212121;
+    border: 1px solid #ff4800;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(255, 165, 0, 0.15);
     opacity: 0;
@@ -87,6 +102,8 @@
 }
 
 /* Dropdown arrow indicator */
+
+/*
 .dropdown-menu::before {
     content: '';
     position: absolute;
@@ -98,11 +115,12 @@
     background: #ffffff;
     border-radius: 2px;
 }
+*/
 
 /* Dropdown items styling */
 .dropdown-item {
     padding: 0.75rem 1.8rem;
-    color: #333;
+    color: #ff4800;
     font-weight: 500;
     font-size: 0.95rem;
     transition: all 0.25s ease;
