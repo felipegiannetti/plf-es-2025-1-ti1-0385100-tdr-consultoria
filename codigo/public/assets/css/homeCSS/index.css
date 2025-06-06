@@ -18,10 +18,11 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--dark);
   color: var(--light);
   line-height: 1.6;
   overflow-x: hidden;
+  background-image: url(../../img/conteiner_landscape.png);
+  background-repeat: repeat;
 }
 
 html {
@@ -105,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  background: none;
   color: white;
   height: 100vh;
   min-height: 600px;
@@ -615,4 +616,9 @@ h1, h2, h3, h4, h5, h6 {
 
 #sobre {
     scroll-margin-top: 90px;
+    background-color: #1a1a1a;
+}
+
+#diferenciais {
+    background-color: #1a1a1a;
 }
