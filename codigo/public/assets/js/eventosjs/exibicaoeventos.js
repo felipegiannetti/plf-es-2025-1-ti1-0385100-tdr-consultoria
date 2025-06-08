@@ -72,14 +72,15 @@ async function loadEvents() {
 function createEventCard(evento) {
     const article = document.createElement('article');
     article.className = 'articlehover postcard orangebgcard red';
-    
 
     const detailsPath = 'detalheseventos.html';
-
+    
+    // Fix image path by adding '../../../' to go up to the public folder
+    const imagePath = `../../../${evento.imagem}`;
 
     article.innerHTML = `
         <a class="postcard__img_link" href="${detailsPath}?id=${evento.id}">
-            <img class="postcard__img" src="${evento.imagem}" alt="${evento.titulo}" />    
+            <img class="postcard__img" src="${imagePath}" alt="${evento.titulo}" />    
         </a>
         <div class="postcard__text">
             <h1 class="postcard__title">
@@ -94,27 +95,29 @@ function createEventCard(evento) {
             <div class="postcard__bar"></div>
             <div class="postcard__preview-txt">${evento.descricao}</div>
             <ul class="postcard__tagbox">
-                <li class="tag__item play green">
-                        <a href="${detailsPath}?id=${evento.id}">
-                            <i class="fas fa-user-plus mr-2"></i>
-                            <span class="me-2"></span>Inscrever-se
-                        </a>
+                <li class="tag__item play green" onclick="window.location.href='${detailsPath}?id=${evento.id}'">
+                    <button class="tag-button">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        <span class="me-2"></span>Inscrever-se
+                    </button>
                 </li>
                 <li class="tag__item">
-                    <i class="fas fa-tag mr-2"></i>
-                    <span class="me-2"></span>${evento.categoria}
+                    <button class="tag-button">
+                        <i class="fas fa-tag mr-2"></i>
+                        <span class="me-2"></span>${evento.categoria}
+                    </button>
                 </li>
-                <li class="tag__item">
-                    <a href="${evento.localmapa}" target="_blank">
+                <li class="tag__item" onclick="window.open('${evento.localmapa}', '_blank')">
+                    <button class="tag-button">
                         <i class="fas fa-map-marker-alt mr-2"></i>
                         <span class="me-2"></span>${evento.local}
-                    </a>
+                    </button>
                 </li>
-                <li class="tag__item play red">
-                    <a href="${detailsPath}?id=${evento.id}">
+                <li class="tag__item play red" onclick="window.location.href='${detailsPath}?id=${evento.id}'">
+                    <button class="tag-button">
                         <i class="fas fa-info-circle mr-2 text-white"></i>
                         <span class="me-2"></span>Ver Detalhes
-                    </a>
+                    </button>
                 </li>
             </ul>
         </div>

@@ -10,10 +10,11 @@ async function carregarEventos() {
         const featuresSection = document.querySelector('.features-section .container');
         featuresSection.innerHTML = '';
         
+        // Fix image path in carregarEventos function
         eventos.forEach(evento => {
             featuresSection.innerHTML += `
                 <div class="feature">
-                    <img src="${evento.imagem}" alt="${evento.titulo}">
+                    <img src="../../../${evento.imagem}" alt="${evento.titulo}">
                     <h2>${evento.titulo}</h2>
                     <p>${evento.descricao}</p>
                     <p>Data: ${new Date(evento.data).toLocaleDateString()}</p>
@@ -53,11 +54,12 @@ async function carregarDetalhesEvento() {
 
         const cadastroPath = 'cadastrousuariosevento.html';
         
+        // Fix image path in carregarDetalhesEvento function
         container.innerHTML = `
             <div class="card mb-4 margemtopodetalhes">
                 <div class="row g-0">
                     <div class="col-md-6">
-                        <img src="${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
+                        <img src="../../../${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body d-flex flex-column h-100">
