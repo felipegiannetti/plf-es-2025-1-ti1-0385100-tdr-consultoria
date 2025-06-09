@@ -1,0 +1,103 @@
+body {
+    background-color: #111;
+    color: #eee;
+}
+
+.margemtopo {
+    margin-top: 130px;
+}
+
+.form-control {
+    background-color: #222;
+    border-color: #444;
+    color: #eee;
+}
+
+.form-control:focus {
+    background-color: #333;
+    border-color: #ff7a00;
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(255, 122, 0, 0.25);
+}
+
+.form-label {
+    color: #eee;
+}
+
+.table {
+    color: #eee;
+    background-color: #222;
+}
+
+.table thead th {
+    border-bottom: 2px solid #444;
+}
+
+.table td, .table th {
+    border-top: 1px solid #444;
+}
+
+.btn-primary {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+}
+
+.btn-primary:hover {
+    background-color: #ff9a2e;
+    border-color: #ff9a2e;
+}
+
+.btn-secondary {
+    background-color: #444;
+    border-color: #444;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #ffa500;
+    border-color: #ffa500;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Estilo bonito com degradê preto e branco para o título */
+.custom-title-container {
+    background: linear-gradient(90deg, #000 0%, #fff 100%);
+    border-radius: 18px;
+    padding: 32px 0 28px 0;
+    margin: 0 auto 2.5rem auto;
+    max-width: 600px;
+    width: 100%; 
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gestao-eventos-title {
+    color: #fff; /* alterado de #222 para branco */
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 600px) {
+    .custom-title-container {
+        padding: 20px 0 16px 0;
+        max-width: 98vw;
+    }
+    .gestao-eventos-title {
+        font-size: 1.5rem;
+    }
+}
