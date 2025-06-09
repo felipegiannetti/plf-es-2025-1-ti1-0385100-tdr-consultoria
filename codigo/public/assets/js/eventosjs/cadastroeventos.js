@@ -69,6 +69,22 @@ eventForm.addEventListener('submit', async (e) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
+        if (!isEditing) {
+            // Gera um novo id para o cadastro 
+            const cadastroId = String(Date.now());
+            await fetch(`${API_URL}/cadastroDeEventos`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: cadastroId,
+                    idEvento: eventData.id,
+                    idUsuario: ""
+                })
+            });
+        }
+
         alert(isEditing ? 'Evento atualizado com sucesso!' : 'Evento criado com sucesso!');
         clearForm();
         loadEvents();
