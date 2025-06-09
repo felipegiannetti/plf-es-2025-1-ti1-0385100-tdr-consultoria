@@ -5,19 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadEvents() {
     try {
 
-        const response = await fetch('http://localhost:3000/eventos');
+        const response = await fetch(`${API_URL}/eventos`);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const eventos = await response.json();
+        const events = await response.json();
+        const eventosAtivos = events.filter(event => event.status === 'ativo');
         
-        if (!eventos || eventos.length === 0) {
+        if (!eventosAtivos || eventosAtivos.length === 0) {
             throw new Error('Nenhum evento encontrado');
         }
 
-        console.log('Eventos carregados:', eventos); 
+        console.log('Eventos carregados:', eventosAtivos); 
 
         const container = document.getElementById('cardseventos');
         if (!container) {
@@ -39,7 +40,7 @@ async function loadEvents() {
         const eventsContainer = container.querySelector('.events-container');
         
 
-        const validEvents = eventos.filter(evento => evento.id);
+        const validEvents = eventosAtivos.filter(evento => evento.id);
         
 
         validEvents.sort((a, b) => new Date(a.data) - new Date(b.data));

@@ -3,12 +3,10 @@ const API_URL = 'http://localhost:3000';
 const eventForm = document.getElementById('eventForm');
 const eventsTable = document.getElementById('eventsTable');
 
-let imagemAtual = ''; // Variável global para guardar a imagem atual ao editar
+let imagemAtual = ''; 
 
-// Load events when page loads
 document.addEventListener('DOMContentLoaded', loadEvents);
 
-// Upload image
 async function uploadImagem(file) {
     const formData = new FormData();
     formData.append('imagem', file);
@@ -21,11 +19,20 @@ async function uploadImagem(file) {
     return (await response.json()).imageUrl;
 }
 
-// Form submit handler
 eventForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    let imageUrl = imagemAtual; // Usa a imagem atual por padrão
+    const dataInput = document.getElementById('data').value;
+    const dataEvento = new Date(dataInput);
+    const agora = new Date();
+    agora.setSeconds(0, 0); 
+
+    if (!dataInput || dataEvento < agora) {
+        alert('A data do evento deve ser igual ou posterior à data e hora atual.');
+        return;
+    }
+
+    let imageUrl = imagemAtual; 
     const fileInput = document.getElementById('imagem');
     if (fileInput.files && fileInput.files[0]) {
         imageUrl = await uploadImagem(fileInput.files[0]);
@@ -41,7 +48,8 @@ eventForm.addEventListener('submit', async (e) => {
         localmapa: document.getElementById('localmapa').value,
         imagem: imageUrl,
         vagas: parseInt(document.getElementById('vagas').value),
-        preco: parseFloat(document.getElementById('preco').value)
+        preco: parseFloat(document.getElementById('preco').value),
+        status: document.getElementById('status').value
     };
 
     try {
@@ -70,36 +78,40 @@ eventForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Load events from db.json
 async function loadEvents() {
     try {
         const response = await fetch(`${API_URL}/eventos`);
         const events = await response.json();
-        
-        eventsTable.innerHTML = events.map(event => `
-            <tr>
-                <td>${event.titulo}</td>
-                <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
-                <td>${event.categoria}</td>
-                <td>${event.vagas}</td>
-                <td>R$ ${event.preco.toFixed(2)}</td>
-                <td>
-                    <button onclick="editEvent('${event.id}')" class="btn btn-sm btn-warning">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-        `).join('');
+        const agora = new Date();
+
+        eventsTable.innerHTML = events.map(event => {
+            const dataEvento = new Date(event.data);
+            const isPast = dataEvento < agora;
+
+            return `
+                <tr class="${isPast ? 'table-secondary' : ''}">
+                    <td>${event.titulo}</td>
+                    <td>${dataEvento.toLocaleDateString('pt-BR')}</td>
+                    <td>${event.categoria}</td>
+                    <td>${event.vagas}</td>
+                    <td>R$ ${event.preco.toFixed(2)}</td>
+                    <td>
+                        <button onclick="editEvent('${event.id}')" class="btn btn-sm btn-warning" ${isPast ? 'disabled' : ''}>
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger" ${isPast ? 'disabled' : ''}>
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
     } catch (error) {
         console.error('Error loading events:', error);
         alert('Erro ao carregar eventos: ' + error.message);
     }
 }
 
-// Edit event
 async function editEvent(id) {
     try {
         const response = await fetch(`${API_URL}/eventos/${id}`);
@@ -114,9 +126,9 @@ async function editEvent(id) {
         document.getElementById('localmapa').value = event.localmapa;
         document.getElementById('vagas').value = event.vagas;
         document.getElementById('preco').value = event.preco;
-        imagemAtual = event.imagem || ''; // Salva a imagem atual
+        document.getElementById('status').value = event.status || 'ativo';
+        imagemAtual = event.imagem || ''; 
 
-        // Exibe a imagem atual ao editar
         mostrarImagemAtual(event.imagem);
     } catch (error) {
         console.error('Error loading event for edit:', error);
@@ -124,7 +136,6 @@ async function editEvent(id) {
     }
 }
 
-// Função para mostrar a imagem atual ao editar
 function mostrarImagemAtual(url) {
     let info = document.getElementById('imagem-info');
     if (!info) {
@@ -136,7 +147,6 @@ function mostrarImagemAtual(url) {
         document.getElementById('imagem').insertAdjacentElement('afterend', info);
     }
     if (url) {
-        // Extrai apenas o nome do arquivo do caminho
         const nomeArquivo = url.split('/').pop();
         info.textContent = `Arquivo atual: ${nomeArquivo}`;
         info.style.display = 'block';
@@ -146,7 +156,6 @@ function mostrarImagemAtual(url) {
     }
 }
 
-// Delete event
 async function deleteEvent(id) {
     if (confirm('Tem certeza que deseja excluir este evento?')) {
         try {
@@ -167,7 +176,6 @@ async function deleteEvent(id) {
     }
 }
 
-// Clear form
 function clearForm() {
     eventForm.reset();
     document.getElementById('eventId').value = '';

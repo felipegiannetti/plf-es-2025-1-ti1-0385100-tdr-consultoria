@@ -70,6 +70,13 @@
                 <label for="imagem" class="form-label">Imagem do Evento</label>
                 <input type="file" class="form-control" id="imagem" accept="image/*">
             </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status do Evento</label>
+                <select class="form-control" id="status" required>
+                    <option value="ativo">Ativado</option>
+                    <option value="inativo">Desativado</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Salvar Evento</button>
             <button type="button" class="btn btn-secondary" onclick="clearForm()">Novo Evento</button>
         </form>

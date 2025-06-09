@@ -10,7 +10,8 @@
       "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
-      "preco": 300
+      "preco": 300,
+      "status": "inativo"
     },
     {
       "id": "2",
@@ -22,7 +23,8 @@
       "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/palestra-empresarial.webp",
       "vagas": 100,
-      "preco": 80
+      "preco": 80,
+      "status": "ativo"
     },
     {
       "id": "3",
@@ -34,7 +36,8 @@
       "localmapa": "https://maps.google.com/maps?q=Centro+de+Convencoes+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/hotmart-fire.jpeg",
       "vagas": 7000,
-      "preco": 2999.99
+      "preco": 2999.99,
+      "status": "ativo"
     },
     {
       "id": "4",
@@ -46,7 +49,8 @@
       "localmapa": "https://maps.google.com/maps?q=San+Pedro+Valley+Savassi+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/financas-startups.jpg",
       "vagas": 40,
-      "preco": 180
+      "preco": 180,
+      "status": "ativo"
     },
     {
       "id": "5",
@@ -58,7 +62,8 @@
       "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/esg-empresas.png",
       "vagas": 75,
-      "preco": 220
+      "preco": 220,
+      "status": "ativo"
     },
     {
       "id": "6",
@@ -70,19 +75,21 @@
       "localmapa": "https://maps.google.com/maps?q=Le+Monde+Hub+Funcionarios+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/design-thinking.jpg",
       "vagas": 35,
-      "preco": 280
+      "preco": 280,
+      "status": "ativo"
     },
     {
       "id": "7",
       "titulo": "Vendas B2B Avançado",
-      "data": "2025-10-18T18:00:00.000Z",
+      "data": "2024-10-18T18:00:00.000Z",
       "descricao": "Treinamento intensivo em técnicas avançadas de vendas B2B, negociação e gestão de contas-chave.",
       "categoria": "Treinamento",
       "local": "FIEMG - Santa Efigênia, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/vendas-b2b.jpg",
       "vagas": 45,
-      "preco": 300
+      "preco": 300,
+      "status": "inativo"
     }
   ],
   "cadastroDeEventos": [
