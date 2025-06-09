@@ -6,19 +6,38 @@ const eventsTable = document.getElementById('eventsTable');
 // Load events when page loads
 document.addEventListener('DOMContentLoaded', loadEvents);
 
+// Upload image
+async function uploadImagem(file) {
+    const formData = new FormData();
+    formData.append('imagem', file);
+
+    const response = await fetch('http://localhost:4000/upload', {
+        method: 'POST',
+        body: formData
+    });
+    if (!response.ok) throw new Error('Falha no upload da imagem');
+    return (await response.json()).imageUrl;
+}
+
 // Form submit handler
 eventForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
+    let imageUrl = '';
+    const fileInput = document.getElementById('imagem');
+    if (fileInput.files && fileInput.files[0]) {
+        imageUrl = await uploadImagem(fileInput.files[0]);
+    }
+
     const eventData = {
-        id: document.getElementById('eventId').value || String(Date.now()), // Generate ID if new event
+        id: document.getElementById('eventId').value || String(Date.now()),
         titulo: document.getElementById('titulo').value,
         data: new Date(document.getElementById('data').value).toISOString(),
         descricao: document.getElementById('descricao').value,
         categoria: document.getElementById('categoria').value,
         local: document.getElementById('local').value,
-        localmapa: `https://maps.google.com/maps?q=${encodeURIComponent(document.getElementById('local').value)}`,
-        imagem: document.getElementById('imagem').value,
+        localmapa: document.getElementById('localmapa').value, // agora pega direto do input
+        imagem: imageUrl,
         vagas: parseInt(document.getElementById('vagas').value),
         preco: parseFloat(document.getElementById('preco').value)
     };
@@ -90,6 +109,7 @@ async function editEvent(id) {
         document.getElementById('descricao').value = event.descricao;
         document.getElementById('categoria').value = event.categoria;
         document.getElementById('local').value = event.local;
+        document.getElementById('localmapa').value = event.localmapa;
         document.getElementById('vagas').value = event.vagas;
         document.getElementById('preco').value = event.preco;
         document.getElementById('imagem').value = event.imagem;

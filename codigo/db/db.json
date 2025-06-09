@@ -86,10 +86,10 @@
     }
   ],
   "cadastroDeEventos": [
-    {    
-      "id" : "1",
-      "idEvento" : "1",
-      "idUsuario" : "1"     
+    {
+      "id": "1",
+      "idEvento": "1",
+      "idUsuario": "1"
     }
   ],
   "usuarios": [
