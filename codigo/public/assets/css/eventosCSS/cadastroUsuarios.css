@@ -1,0 +1,130 @@
+body {
+    background-color: #111;
+    color: #eee;
+}
+
+#navbar {
+    position: relative;
+}
+
+h1 {
+    color: #ff7a00;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.evento-container {
+    max-width: 900px;
+    margin: 32px auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 12px #0001;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ff7a00;
+    background-color: #1a1a1a;
+}
+.evento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 24px;
+}
+.evento-titulo {
+    font-size: 2rem;
+    margin: 0 0 8px 0;
+}
+.evento-descricao {
+    color: #666;
+    margin: 0 0 8px 0;
+}
+.evento-data {
+    font-size: 1.1rem;
+    color: #ff7a00;
+    font-weight: bold;
+}
+.evento-status-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+}
+.evento-status {
+    background: #383535;
+    color: #15a028;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.evento-status-btn {
+    display: flex;
+    flex-direction: row;
+}
+
+.evento-status-btn h5 {
+    margin: 0 0 8px 0;
+    color: #ff7a00;
+    display: flex;
+}
+.btn-inscrever {
+    background: #43a047;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-inscrever:hover {
+    background: #388e3c;
+}
+.evento-info-area {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+}
+.evento-img {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 8px;
+    background: #fafafa;
+}
+.evento-mapa-label {
+    font-size: 0.95rem;
+    color: #888;
+}
+.btn-mapa {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.btn-mapa:hover {
+    background: #444;
+}
+.erro-evento {
+    color: #fff;
+    background: #e53935;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 32px 0;
+}
+.evento-icone {
+    font-size: 1.2em;
+    vertical-align: middle;
+}
