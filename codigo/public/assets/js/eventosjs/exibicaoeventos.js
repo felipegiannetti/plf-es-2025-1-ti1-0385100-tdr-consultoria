@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         article.className = 'articlehover postcard orangebgcard red';
 
         const detailsPath = 'detalheseventos.html';
-        
-        // Fix image path by adding '../../../' to go up to the public folder
         const imagePath = `../../../${evento.imagem}`;
 
         article.innerHTML = `

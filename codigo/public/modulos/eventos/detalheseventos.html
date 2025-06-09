@@ -8,38 +8,31 @@
     <link href="../../assets/css/eventosCSS/exibicaoeventos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="../../assets/js/eventosjs/detalheseventos.js"></script>
+    <script src="../../assets/js/eventosjs/avaliacao.js"></script>
     <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
 </head>
 <body class="orangebg">
     <div id="navbarimplementador"></div>
 
     <section class="margemtopo">
-        <div class="container py-4" id="evento-detalhes">
-  <!-- Aqui os detalhes do evento vão aparecer dinamicamente pelo JS -->
-
-  <hr>
-
-  <div id="avaliacao-container">
-    <h3>Avalie este evento</h3>
-    <div id="estrelas">
-      <span class="estrela" data-value="1">&#9733;</span>
-      <span class="estrela" data-value="2">&#9733;</span>
-      <span class="estrela" data-value="3">&#9733;</span>
-      <span class="estrela" data-value="4">&#9733;</span>
-      <span class="estrela" data-value="5">&#9733;</span>
-    </div>
-    <textarea id="comentario" rows="4" placeholder="Deixe seu comentário..." class="form-control mt-2"></textarea>
-    <button id="enviar-avaliacao" class="btn btn-primary mt-2">Enviar Avaliação</button>
-  </div>
-
-  <hr>
-
-  <div id="avaliacoes-lista">
-    <h3>Avaliações</h3>
-    <!-- Aqui serão exibidas as avaliações dos usuários -->
-  </div>
-</div>
-
+        <div class="container py-4">
+            <div id="evento-detalhes"></div>
+            <hr>
+            <div id="avaliacao-container">
+                <h3>Avalie este evento</h3>
+                <input id="nome" type="text" placeholder="Seu nome" class="form-control mt-2" />
+                <div id="estrelas">
+                    <span class="estrela" data-value="1">&#9733;</span>
+                    <span class="estrela" data-value="2">&#9733;</span>
+                    <span class="estrela" data-value="3">&#9733;</span>
+                    <span class="estrela" data-value="4">&#9733;</span>
+                    <span class="estrela" data-value="5">&#9733;</span>
+                </div>
+                <textarea id="comentario" rows="4" placeholder="Deixe seu comentário..." class="form-control mt-2"></textarea>
+                <button id="enviar-avaliacao" class="btn btn-primary mt-2">Enviar Avaliação</button>
+            </div>
+            <div id="avaliacoes-lista"></div>
+        </div>
     </section>
 
     <div id="footerimplementador"></div>
