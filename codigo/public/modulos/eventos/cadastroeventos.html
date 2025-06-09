@@ -81,22 +81,36 @@
             <button type="button" class="btn btn-secondary" onclick="clearForm()">Novo Evento</button>
         </form>
 
-        <!-- Events table -->
-        <div class="table-responsive mb-4">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Data</th>
-                        <th>Categoria</th>
-                        <th>Vagas</th>
-                        <th>Preço</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="eventsTable"></tbody>
-            </table>
-        </div>
+        <!-- Tabela de eventos ativos -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Data</th>
+              <th>Categoria</th>
+              <th>Vagas</th>
+              <th>Preço</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="eventsTable"></tbody>
+        </table>
+
+        <!-- Tabela de eventos inativos -->
+        <h4 class="mt-5">Eventos Inativos</h4>
+        <table class="table table-secondary">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Data</th>
+              <th>Categoria</th>
+              <th>Vagas</th>
+              <th>Preço</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="inactiveEventsTable"></tbody>
+        </table>
     </div>
 
     <div id="footerimplementador"></div>

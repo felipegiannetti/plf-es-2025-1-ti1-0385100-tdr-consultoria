@@ -84,10 +84,14 @@ async function loadEvents() {
         const events = await response.json();
         const agora = new Date();
 
-        eventsTable.innerHTML = events.map(event => {
+        // Separe eventos ativos e inativos
+        const ativos = events.filter(event => event.status === 'ativo');
+        const inativos = events.filter(event => event.status !== 'ativo');
+
+        // Preencha tabela de ativos
+        eventsTable.innerHTML = ativos.map(event => {
             const dataEvento = new Date(event.data);
             const isPast = dataEvento < agora;
-
             return `
                 <tr class="${isPast ? 'table-secondary' : ''}">
                     <td>${event.titulo}</td>
@@ -106,6 +110,31 @@ async function loadEvents() {
                 </tr>
             `;
         }).join('');
+
+        // Preencha tabela de inativos
+        const inactiveTable = document.getElementById('inactiveEventsTable');
+        if (inactiveTable) {
+            inactiveTable.innerHTML = inativos.map(event => {
+                const dataEvento = new Date(event.data);
+                return `
+                    <tr>
+                        <td>${event.titulo}</td>
+                        <td>${dataEvento.toLocaleDateString('pt-BR')}</td>
+                        <td>${event.categoria}</td>
+                        <td>${event.vagas}</td>
+                        <td>R$ ${event.preco.toFixed(2)}</td>
+                        <td>
+                            <button onclick="editEvent('${event.id}')" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
     } catch (error) {
         console.error('Error loading events:', error);
         alert('Erro ao carregar eventos: ' + error.message);
