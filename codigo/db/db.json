@@ -3,14 +3,14 @@
     {
       "id": "1",
       "titulo": "Workshop de Gestão Empresarial",
-      "data": "2025-05-20T19:00:00.000Z",
+      "data": "2025-05-20T22:00:00.000Z",
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
-      "preco": 150
+      "preco": 300
     },
     {
       "id": "2",
@@ -75,14 +75,14 @@
     {
       "id": "7",
       "titulo": "Vendas B2B Avançado",
-      "data": "2025-10-18T15:00:00.000Z",
+      "data": "2025-10-18T18:00:00.000Z",
       "descricao": "Treinamento intensivo em técnicas avançadas de vendas B2B, negociação e gestão de contas-chave.",
       "categoria": "Treinamento",
       "local": "FIEMG - Santa Efigênia, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
       "imagem": "public/assets/img/eventos/vendas-b2b.jpg",
       "vagas": 45,
-      "preco": 245
+      "preco": 300
     }
   ],
   "cadastroDeEventos": [

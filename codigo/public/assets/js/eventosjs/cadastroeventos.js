@@ -3,6 +3,8 @@ const API_URL = 'http://localhost:3000';
 const eventForm = document.getElementById('eventForm');
 const eventsTable = document.getElementById('eventsTable');
 
+let imagemAtual = ''; // Variável global para guardar a imagem atual ao editar
+
 // Load events when page loads
 document.addEventListener('DOMContentLoaded', loadEvents);
 
@@ -23,7 +25,7 @@ async function uploadImagem(file) {
 eventForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    let imageUrl = '';
+    let imageUrl = imagemAtual; // Usa a imagem atual por padrão
     const fileInput = document.getElementById('imagem');
     if (fileInput.files && fileInput.files[0]) {
         imageUrl = await uploadImagem(fileInput.files[0]);
@@ -36,7 +38,7 @@ eventForm.addEventListener('submit', async (e) => {
         descricao: document.getElementById('descricao').value,
         categoria: document.getElementById('categoria').value,
         local: document.getElementById('local').value,
-        localmapa: document.getElementById('localmapa').value, // agora pega direto do input
+        localmapa: document.getElementById('localmapa').value,
         imagem: imageUrl,
         vagas: parseInt(document.getElementById('vagas').value),
         preco: parseFloat(document.getElementById('preco').value)
@@ -112,10 +114,35 @@ async function editEvent(id) {
         document.getElementById('localmapa').value = event.localmapa;
         document.getElementById('vagas').value = event.vagas;
         document.getElementById('preco').value = event.preco;
-        document.getElementById('imagem').value = event.imagem;
+        imagemAtual = event.imagem || ''; // Salva a imagem atual
+
+        // Exibe a imagem atual ao editar
+        mostrarImagemAtual(event.imagem);
     } catch (error) {
         console.error('Error loading event for edit:', error);
         alert('Erro ao carregar evento para edição: ' + error.message);
+    }
+}
+
+// Função para mostrar a imagem atual ao editar
+function mostrarImagemAtual(url) {
+    let info = document.getElementById('imagem-info');
+    if (!info) {
+        info = document.createElement('div');
+        info.id = 'imagem-info';
+        info.style.fontSize = '0.95rem';
+        info.style.color = '#aaa';
+        info.style.margin = '8px 0 0 0';
+        document.getElementById('imagem').insertAdjacentElement('afterend', info);
+    }
+    if (url) {
+        // Extrai apenas o nome do arquivo do caminho
+        const nomeArquivo = url.split('/').pop();
+        info.textContent = `Arquivo atual: ${nomeArquivo}`;
+        info.style.display = 'block';
+    } else {
+        info.textContent = '';
+        info.style.display = 'none';
     }
 }
 
@@ -144,4 +171,6 @@ async function deleteEvent(id) {
 function clearForm() {
     eventForm.reset();
     document.getElementById('eventId').value = '';
+    imagemAtual = '';
+    mostrarImagemAtual('');
 }
