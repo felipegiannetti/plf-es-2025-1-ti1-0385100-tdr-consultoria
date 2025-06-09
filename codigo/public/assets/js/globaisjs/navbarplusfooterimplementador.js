@@ -77,7 +77,7 @@ function implementNavbar() {
         index: {
             home: '',
             eventos: 'public/modulos/eventos/exibicaoeventos.html',
-            cadastroEventos: 'public/modulos/eventos/cadastroEventos.html',
+            cadastroEventos: 'public/modulos/eventos/cadastroeventos.html',
             noticias: 'public/modulos/noticias/noticias.html',
             cadastroNoticias: 'public/modulos/noticias/cadastroNoticias.html',
             quizzes: 'public/modulos/formulario/exibiformulario.html',
