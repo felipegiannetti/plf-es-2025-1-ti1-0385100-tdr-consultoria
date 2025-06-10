@@ -1,37 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
     const eventsTable = document.getElementById('eventsTable');
     const cardseventos = document.getElementById('cardseventos');
+    const searchInput = document.getElementById('searchEvents');
+    let allEvents = []; // Store all events
 
     async function loadEvents() {
         try {
             const response = await fetch('http://localhost:3000/eventos');
-            const events = await response.json();
-
+            allEvents = await response.json();
+            
             // Filtra apenas eventos ativos
-            const eventosAtivos = events.filter(event => event.status === "ativo");
-
-            // Renderize eventosAtivos na tabela/lista
-            eventsTable.innerHTML = eventosAtivos.map(event => `
-                <tr>
-                    <td>${event.titulo}</td>
-                    <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
-                    <td>${event.categoria}</td>
-                    <td>${event.vagas}</td>
-                    <td>R$ ${event.preco.toFixed(2)}</td>
-                </tr>
-            `).join('');
-
-            // Limpa o container de cards
-            cardseventos.innerHTML = '';
-
-            // Adiciona um card para cada evento ativo
-            eventosAtivos.forEach(evento => {
-                const card = createEventCard(evento);
-                cardseventos.appendChild(card);
-            });
+            allEvents = allEvents.filter(event => event.status === "ativo");
+            
+            renderEvents(allEvents);
         } catch (error) {
-            alert('Erro ao carregar eventos: ' + error.message);
+            console.error('Error:', error);
         }
+    }
+
+    function renderEvents(events) {
+        // Renderize eventosAtivos na tabela/lista
+        eventsTable.innerHTML = events.map(event => `
+            <tr>
+                <td>${event.titulo}</td>
+                <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
+                <td>${event.categoria}</td>
+                <td>${event.vagas}</td>
+                <td>R$ ${event.preco.toFixed(2)}</td>
+            </tr>
+        `).join('');
+
+        // Limpa o container de cards
+        cardseventos.innerHTML = '';
+
+        // Adiciona um card para cada evento ativo
+        events.forEach(evento => {
+            const card = createEventCard(evento);
+            cardseventos.appendChild(card);
+        });
     }
 
     function createEventCard(evento) {
@@ -90,5 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return article;
     }
 
-    loadEvents();
+    // Add search functionality
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredEvents = allEvents.filter(event => 
+            event.titulo.toLowerCase().includes(searchTerm)
+        );
+        renderEvents(filteredEvents);
+    });
+
+    loadEvents(); // Initial load
 });
