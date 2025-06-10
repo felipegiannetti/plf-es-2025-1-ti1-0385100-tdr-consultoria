@@ -6,10 +6,6 @@ async function carregarEventos() {
         const eventos = await response.json();
 
         
-        
-        const featuresSection = document.querySelector('.features-section .container');
-        featuresSection.innerHTML = '';
-        
         // Fix image path in carregarEventos function
         eventos.forEach(evento => {
             featuresSection.innerHTML += `
@@ -33,9 +29,23 @@ async function carregarDetalhesEvento() {
     try {
         const urlParams = new URLSearchParams(window.location.search);
         const eventoId = urlParams.get('id');
+        const usuarioId = urlParams.get('idUsuario');
+
 
         if (!eventoId) {
             throw new Error('ID do evento não fornecido');
+        }
+
+        let usuario = null;
+        if (usuarioId) {
+            // Busca o usuário na API
+            const userRes = await fetch(`${API_URL}/usuarios/${usuarioId}`);
+            if (userRes.ok) {
+                usuario = await userRes.json();
+                console.log('Usuário carregado:', usuario);
+            } else {
+                console.warn('Usuário não encontrado');
+            }
         }
 
         console.log('Buscando evento com ID:', eventoId); // Debug log
@@ -88,11 +98,7 @@ async function carregarDetalhesEvento() {
                                     </div>
                                 </div>
                             </div>
-                            <a href="${cadastroPath}?id=${evento.id}" class="btn btn-primary btn-lg w-100 mb-3">
-                                <div class="mt-auto">
-                                    <button class="btn btn-primary btn-lg w-100">Inscrever-se</button>
-                                </div>
-                            </a>
+                            <a id="btnInscrever" href="cadastrousuariosevento.html?id=${evento.id}" class="btn btn-primary btn-lg w-100 mb-3">Inscrever-se</a>
                         </div>
                     </div>
                 </div>
@@ -103,6 +109,45 @@ async function carregarDetalhesEvento() {
                 </a>
             </div>
         `;
+
+         // Listener do botão de inscrição
+        document.getElementById('btnInscrever').addEventListener('click', async function () {
+            const response = await fetch('http://localhost:3000/usuarios');
+            const usuarios = await response.json();
+            
+            const USUARIO_ID = "1"; // ID estático para testes
+            const eventoId2 = evento.id; // ID do evento atual
+            
+            if (!USUARIO_ID) {
+                alert('Usuário não está logado. Por favor, faça login para se inscrever.');
+                return;
+            }
+
+            try {
+                // Verifica se já existe cadastro para este usuário e evento
+                const cadRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventoId}&idUsuario=${usuarios.USUARIO_ID}`);
+                const cadastros = await cadRes.json();
+
+                if (cadastros.length === 0) {
+                // Não existe, cria um novo cadastro
+                await fetch(`${API_URL}/cadastroDeEventos`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: Date.now().toString(), 
+                        idEvento: eventoId,
+                        idUsuario: USUARIO_ID
+                    })
+                });
+            }
+            // Redireciona para a página de cadastro do usuário no evento
+            window.location.href = `cadastrousuariosevento.html?id=${eventoId}`;
+        } catch (err) {
+            alert('Erro ao inscrever: ' + err.message);
+        }
+    });
+
+
     } catch (error) {
         console.error('Erro ao carregar detalhes do evento:', error);
         document.getElementById('evento-detalhes').innerHTML = `
@@ -119,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     carregarEventos();
     carregarDetalhesEvento();
 });
+
 document.addEventListener("DOMContentLoaded", () => {
     const estrelas = document.querySelectorAll(".estrela");
     const comentarioInput = document.getElementById("comentario");

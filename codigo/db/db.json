@@ -90,6 +90,19 @@
       "vagas": 45,
       "preco": 300,
       "status": "ativo"
+    },
+    {
+      "id": "1749506214923",
+      "titulo": "Teste",
+      "data": "2025-06-19T21:56:00.000Z",
+      "descricao": "Teste cadastro de usuarios evento",
+      "categoria": "Workshop",
+      "local": "Teste",
+      "localmapa": "https://maps.app.goo.gl/6eSsbXC9iyPevqM67",
+      "imagem": "",
+      "vagas": 100000,
+      "preco": 50,
+      "status": "ativo"
     }
   ],
   "cadastroDeEventos": [
@@ -97,6 +110,11 @@
       "id": "1",
       "idEvento": "1",
       "idUsuario": "1"
+    },
+    {
+      "id": "1749506214932",
+      "idEvento": "1749506214923",
+      "idUsuario": ""
     }
   ],
   "usuarios": [
