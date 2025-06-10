@@ -259,6 +259,8 @@ function implementFooter() {
     const currentPaths = isIndex ? paths.index : paths.other;
     const logoPath = isIndex ? 'public/assets/img/logo.png' : '../../assets/img/logo.png';
 
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+    
     const footerHtml = `
         <footer class="bg-footer py-5 text-light">
             <div class="container position-relative">
@@ -267,14 +269,16 @@ function implementFooter() {
                         <h5 class="mb-3">TDR Consultoria</h5>
                         <p class="text-dark">Transformando ideias em resultados com soluções inovadoras e personalizadas.</p>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <h5 class="mb-3">Links Rápidos</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="${currentPaths.home}"><i class="fas fa-home me-2"></i>Home</a></li>
-                            <li><a href="${currentPaths.eventos}"><i class="fas fa-calendar-alt me-2"></i>Eventos</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 mb-4">
+                    ${usuario ? `
+                        <div class="col-md-4 mb-4">
+                            <h5 class="mb-3">Links Rápidos</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="${currentPaths.home}"><i class="fas fa-home me-2"></i>Home</a></li>
+                                <li><a href="${currentPaths.eventos}"><i class="fas fa-calendar-alt me-2"></i>Eventos</a></li>
+                            </ul>
+                        </div>
+                    ` : ''}
+                    <div class="col-md-${usuario ? '4' : '8'} mb-4">
                         <h5 class="mb-3">Contato</h5>
                         <ul class="list-unstyled text-dark">
                             <li><i class="fas fa-envelope me-2"></i>contato@tdrconsultoria.com</li>
@@ -283,14 +287,14 @@ function implementFooter() {
                         </ul>
                     </div>
                 </div>
-            <hr class="my-4">
-            <div class="text-center small">
-                <p class="mb-0 text-dark">&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
+                <hr class="my-4">
+                <div class="text-center small">
+                    <p class="mb-0 text-dark">&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
+                </div>
+                <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-right animate-logo">
             </div>
-            <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-right animate-logo">
-        </div>
-    </footer>
-`;
+        </footer>
+    `;
 
     footerContainer.innerHTML = footerHtml;
 }

@@ -1,16 +1,29 @@
+@import url('../../css/globaisCSS/navbar.css');
+@import url('../../css/globaisCSS/footer.css');
+
 .orangebg {
-    background-color: #ff7a00;
+    background-color: rgb(255, 111, 0);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Changed to column for navbar spacing */
+}
+
+.margens {
+    margin-top: 200px;
+    margin-bottom: 70px;
 }
 
 .card-container {
+    margin-top: 80px; /* Add space for navbar */
+    margin-bottom: 30px; /* Add space for footer */
     perspective: 1000px;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+    box-shadow: inset;
 }
 
 .card-flip {
