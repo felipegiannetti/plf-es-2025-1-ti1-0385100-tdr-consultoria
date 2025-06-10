@@ -177,3 +177,9 @@ body {
         font-size: 0.75rem;
     }
 }
+
+/* Placeholder color styles */
+::placeholder {
+    color: #ffffff !important;
+    opacity: 0.3 !important;
+}
