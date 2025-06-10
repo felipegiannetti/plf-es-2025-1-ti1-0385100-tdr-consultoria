@@ -44,6 +44,7 @@ async function carregarDetalhesEvento() {
                 usuario = await userRes.json();
                 console.log('Usuário carregado:', usuario);
             } else {
+                throw new Error(`HTTP error! status: ${userRes.status}`);
                 console.warn('Usuário não encontrado');
             }
         }
@@ -156,42 +157,54 @@ document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
             </div>
         `;
 
-         // Listener do botão de inscrição
-        document.getElementById('btnInscrever').addEventListener('click', async function () {
-            const response = await fetch('http://localhost:3000/usuarios');
-            const usuarios = await response.json();
-            
-            const USUARIO_ID = "1"; // ID estático para testes
-            const eventoId2 = evento.id; // ID do evento atual
-            
-            if (!USUARIO_ID) {
+        document.getElementById('btnInscrever').addEventListener('click', async function (e) {
+            e.preventDefault();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventoId = urlParams.get('id');
+            const usuarioId = urlParams.get('idUsuario');
+
+            if (!usuarioId) {
                 alert('Usuário não está logado. Por favor, faça login para se inscrever.');
                 return;
             }
 
             try {
-                // Verifica se já existe cadastro para este usuário e evento
-                const cadRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventoId}&idUsuario=${usuarios.USUARIO_ID}`);
+                // Busca cadastro existente para o evento
+                const cadRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventoId}`);
                 const cadastros = await cadRes.json();
 
                 if (cadastros.length === 0) {
-                // Não existe, cria um novo cadastro
-                await fetch(`${API_URL}/cadastroDeEventos`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        id: Date.now().toString(), 
-                        idEvento: eventoId,
-                        idUsuario: USUARIO_ID
-                    })
-                });
+                    // Não existe cadastro, cria novo com array de usuários
+                    await fetch(`${API_URL}/cadastroDeEventos`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            id: Date.now().toString(),
+                            idEvento: eventoId,
+                            idUsuario: [usuarioId]
+                        })
+                    });
+                } else {
+                    // Já existe cadastro, verifica se usuário já está inscrito
+                    const cadastro = cadastros[0];
+                    const usuariosArray = cadastro.idUsuario || [];
+                    if (!usuariosArray.includes(usuarioId)) {
+                        // Atualiza o array de usuários
+                        usuariosArray.push(usuarioId);
+                        await fetch(`${API_URL}/cadastroDeEventos/${cadastro.id}`, {
+                            method: 'PATCH',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ idUsuario: usuariosArray })
+                        });
+                    }
+                }
+                // Redireciona para a página de cadastro do usuário no evento
+                window.location.href = `cadastrousuariosevento.html?id=${eventoId}`;
+            } catch (err) {
+                alert('Erro ao inscrever: ' + err.message);
             }
-            // Redireciona para a página de cadastro do usuário no evento
-            window.location.href = `cadastrousuariosevento.html?id=${eventoId}`;
-        } catch (err) {
-            alert('Erro ao inscrever: ' + err.message);
-        }
-    });
+        });
 
 
     } catch (error) {

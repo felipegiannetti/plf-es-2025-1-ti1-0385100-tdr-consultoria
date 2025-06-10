@@ -49,12 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const usuarioId = 1; // ID estático para testes
 
         article.innerHTML = `
-            <a class="postcard__img_link" href="${detailsPath}?id=${evento.id}">
+            <a class="postcard__img_link" href="${detailsPath}?id=${evento.id}&idUsuario=${usuarioId}">
                 <img class="postcard__img" src="${imagePath}" alt="${evento.titulo}" />    
             </a>
             <div class="postcard__text">
                 <h1 class="postcard__title">
-                    <a href="${detailsPath}?id=${evento.id}">${evento.titulo}</a>
+                    <a href="${detailsPath}?id=${evento.id}&idUsuario=${usuarioId}">${evento.titulo}</a>
                 </h1>
                 <div class="postcard__subtitle small">
                     <time datetime="${evento.data}">
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="me-2"></span>${evento.local}
                         </button>
                     </li>
-                    <li class="tag__item play red" onclick="window.location.href='${detailsPath}?id=${evento.id}'">
+                    <li class="tag__item play red" onclick="window.location.href='${detailsPath}?id=${evento.id}&idUsuario=${usuarioId}'">
                         <button class="tag-button">
                             <i class="fas fa-info-circle mr-2 text-white"></i>
                             <span class="me-2"></span>Ver Detalhes
