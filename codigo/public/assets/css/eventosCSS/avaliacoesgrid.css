@@ -10,9 +10,9 @@ body {
 .card {
     border-radius: 8px;
     transition: transform 0.2s ease-in-out;
-    background: var(--dark-light);
-    color: var(--light);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background: var(--light); /* Define os cards como brancos */
+    color: var(--dark); /* Texto escuro para contraste */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
 .card:hover {

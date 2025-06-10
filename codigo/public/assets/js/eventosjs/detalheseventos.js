@@ -62,6 +62,59 @@ async function carregarDetalhesEvento() {
 
         const container = document.getElementById('evento-detalhes');
 
+        // Adiciona funcionalidade para enviar avaliações
+document.getElementById('enviar-avaliacao').addEventListener('click', async () => {
+    const nome = document.getElementById('nome').value.trim();
+    const comentario = document.getElementById('comentario').value.trim();
+    const estrelas = document.querySelectorAll('#estrelas .estrela.selecionada').length;
+
+    if (!nome || !comentario || estrelas === 0) {
+        alert('Por favor, preencha todos os campos e selecione uma quantidade de estrelas.');
+        return;
+    }
+
+    const novaAvaliacao = {
+        idavaliacao: Date.now(), // Gera um ID único baseado no timestamp
+        idevento: evento.id, // ID do evento atual
+        nome: nome,
+        comentario: comentario,
+        rating: estrelas,
+        data: new Date().toLocaleString('pt-BR')
+    };
+
+    try {
+        const response = await fetch(`${API_URL}/avaliacoeseventos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(novaAvaliacao)
+        });
+
+        if (response.ok) {
+            alert('Avaliação enviada com sucesso!');
+            document.getElementById('nome').value = '';
+            document.getElementById('comentario').value = '';
+            document.querySelectorAll('#estrelas .estrela').forEach(estrela => estrela.classList.remove('selecionada'));
+        } else {
+            alert('Erro ao enviar a avaliação. Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao enviar a avaliação:', error);
+        alert('Erro ao enviar a avaliação. Verifique sua conexão e tente novamente.');
+    }
+});
+
+// Adiciona funcionalidade para selecionar estrelas
+document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
+    estrela.addEventListener('click', () => {
+        const value = parseInt(estrela.getAttribute('data-value'));
+        document.querySelectorAll('#estrelas .estrela').forEach(e => {
+            e.classList.toggle('selecionada', parseInt(e.getAttribute('data-value')) <= value);
+        });
+    });
+});
+
         const cadastroPath = 'cadastrousuariosevento.html';
         
         // Fix image path in carregarDetalhesEvento function
