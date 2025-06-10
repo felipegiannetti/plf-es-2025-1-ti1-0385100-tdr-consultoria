@@ -95,8 +95,87 @@ function implementNavbar() {
     const currentPaths = isIndex ? paths.index : paths.other;
     const logoPath = isIndex ? 'public/assets/img/logo.png' : '../../assets/img/logo.png';
 
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const isAdminUser = usuario && usuario.tipo === 'admin';
+    const firstName = usuario ? getFirstName(usuario.nome) : '';
+
+    const navItems = usuario ? `
+        <li class="nav-item">
+            <a class="nav-link" href="${currentPaths.home}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${currentPaths.quizzes}">Quizzes</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" 
+               href="#" 
+               id="navbarDropdown"
+               role="button" 
+               data-bs-toggle="dropdown" 
+               aria-expanded="false">
+                Eventos
+            </a>
+            ${isAdminUser ? `
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
+                </ul>
+            ` : `
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
+                </ul>
+            `}
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" 
+               href="#" 
+               id="noticiasDropdown"
+               role="button" 
+               data-bs-toggle="dropdown" 
+               aria-expanded="false">
+                Notícias
+            </a>
+            ${isAdminUser ? `
+                <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Cadastro de Notícias</a></li>
+                </ul>
+            ` : `
+                <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
+                </ul>
+            `}
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" onclick="toggleContatoCard(true); return false;">Contato</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" 
+               href="#" 
+               id="userDropdown"
+               role="button" 
+               data-bs-toggle="dropdown" 
+               aria-expanded="false">
+                ${firstName}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="${currentPaths.perfil}">Perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" onclick="logout()">Sair</a></li>
+            </ul>
+        </li>
+    ` : `
+        <li class="nav-item">
+            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Sign Up</a>
+        </li>
+    `;
+
+    // Update the navbar HTML
     navbarContainer.innerHTML = `
-        <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top" id= "navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-navbar fixed-top" id="navbar">
             <div class="container">
                 <a href="${currentPaths.home}"><img src="${logoPath}" alt="Logo" class="navbar-logo img-fluid mb-3" style="max-height: 60px; width: auto;"></a>
                 <a class="navbar-brand" href="${currentPaths.home}" style="font-size: 1.3rem;">
@@ -112,43 +191,7 @@ function implementNavbar() {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="${currentPaths.home}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${currentPaths.quizzes}">Quizzes</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" 
-                               href="#" 
-                               id="navbarDropdown"
-                               role="button" 
-                               data-bs-toggle="dropdown" 
-                               aria-expanded="false">
-                                Eventos
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
-                                <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" 
-                               href="#" 
-                               id="noticiasDropdown"
-                               role="button" 
-                               data-bs-toggle="dropdown" 
-                               aria-expanded="false">
-                                Notícias
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
-                                <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
-                                <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Cadastro de Notícias</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" onclick="toggleContatoCard(true); return false;">Contato</a>
-                        </li>
+                        ${navItems}
                     </ul>
                 </div>
             </div>
@@ -270,4 +313,17 @@ function toggleContatoCard(show) {
         overlay.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
+}
+
+// Add logout function
+function logout() {
+    localStorage.removeItem('usuarioLogado');
+    window.location.href = window.location.pathname.includes('index.html') ? 
+        'public/modulos/login/loginregistro.html' : 
+        '../login/loginregistro.html';
+}
+
+// Add this function to get first name
+function getFirstName(fullName) {
+    return fullName.split(' ')[0];
 }

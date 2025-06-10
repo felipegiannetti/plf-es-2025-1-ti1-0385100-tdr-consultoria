@@ -1,0 +1,83 @@
+.orangebg {
+    background-color: #ff7a00;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.card-flip {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-flip.flipped {
+    transform: rotateY(180deg);
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.card.front {
+    background: white;
+}
+
+.card.back {
+    background: white;
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* For Safari */
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.form-control {
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.btn-primary {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #ff9a2e;
+    border-color: #ff9a2e;
+}
+
+.flip-link {
+    color: #ff7a00;
+    text-decoration: none;
+}
+
+.flip-link:hover {
+    color: #ff9a2e;
+}

@@ -213,6 +213,13 @@
           "id": "3"
         }
       ]
+    },
+    {
+      "id": "1749560312233",
+      "nome": "Felipe Giannetti",
+      "email": "felipegiannettifontenelle@gmail.com",
+      "senha": "admin123",
+      "tipo": "admin"
     }
   ],
   "avaliacoeseventos": [
