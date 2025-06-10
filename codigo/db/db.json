@@ -103,6 +103,32 @@
       "vagas": 100000,
       "preco": 50,
       "status": "inativo"
+    },
+    {
+      "id": "6dfd",
+      "titulo": "Teste",
+      "data": "2026-01-16T16:00",
+      "descricao": "teste",
+      "categoria": "Workshop",
+      "vagas": 10,
+      "preco": 10,
+      "local": "teste",
+      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
+      "status": "ativo",
+      "imagem": "public/assets/img/eventos/teste.jpg"
+    },
+    {
+      "id": "1749558968050",
+      "titulo": "testedenovo",
+      "data": "2025-12-15T22:00",
+      "descricao": "teste",
+      "categoria": "Workshop",
+      "vagas": 10,
+      "preco": 10,
+      "local": "testeq",
+      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
+      "status": "ativo",
+      "imagem": "public/assets/img/eventos/teste.jpg"
     }
   ],
   "cadastroDeEventos": [
@@ -112,6 +138,17 @@
       "idUsuario": [
         "1"
       ]
+      "idUsuario": "1"
+    },
+    {
+      "id": "1749506214932",
+      "idEvento": "1749506214923",
+      "idUsuario": ""
+    },
+    {
+      "id": "1749558195644",
+      "idEvento": "1",
+      "idUsuario": "1"
     }
   ],
   "usuarios": [
@@ -179,6 +216,13 @@
           "id": "3"
         }
       ]
+    },
+    {
+      "id": "1749560312233",
+      "nome": "Felipe Giannetti",
+      "email": "felipegiannettifontenelle@gmail.com",
+      "senha": "admin123",
+      "tipo": "admin"
     }
   ],
   "avaliacoeseventos": [
@@ -199,6 +243,24 @@
       "idevento": 1,
       "comentario": "Evento empolgante.",
       "id": "982f"
+    },
+    {
+      "id": "3450",
+      "idavaliacao": 1749560261035,
+      "idevento": "1",
+      "nome": "S. Adilson",
+      "comentario": "Poderia melhorar.",
+      "rating": 2,
+      "data": "10/06/2025, 09:57:41"
+    },
+    {
+      "id": "1a5d",
+      "idavaliacao": 1749560295056,
+      "idevento": "1",
+      "nome": "Cesar",
+      "comentario": "Cesar.",
+      "rating": 3,
+      "data": "10/06/2025, 09:58:15"
     }
   ],
   "noticias": [
@@ -278,6 +340,15 @@
       "hora": "10:00",
       "publicoAlvo": "Analistas de dados e gestores",
       "categoria": "Tecnologia"
+    },
+    {
+      "id": "b0c9",
+      "titulo": "Teste",
+      "descricao": "teste",
+      "texto_completo": "teste",
+      "categoria": "Marketing Digital",
+      "imagem": "http://st.depositphotos.com/1005920/4362/i/950/depositphotos_43629535-stock-photo-test-icon.jpg",
+      "data": "2025-06-10"
     }
   ]
 }
