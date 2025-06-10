@@ -96,6 +96,8 @@ function implementNavbar() {
     const logoPath = isIndex ? 'public/assets/img/logo.png' : '../../assets/img/logo.png';
 
     const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const isAdminUser = usuario && usuario.tipo === 'admin';
+
     const navItems = usuario ? `
         <li class="nav-item">
             <a class="nav-link" href="${currentPaths.home}">Home</a>
@@ -112,10 +114,16 @@ function implementNavbar() {
                aria-expanded="false">
                 Eventos
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
-                <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
-            </ul>
+            ${isAdminUser ? `
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
+                </ul>
+            ` : `
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
+                </ul>
+            `}
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" 
@@ -126,10 +134,16 @@ function implementNavbar() {
                aria-expanded="false">
                 Notícias
             </a>
-            <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
-                <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
-                <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Cadastro de Notícias</a></li>
-            </ul>
+            ${isAdminUser ? `
+                <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Cadastro de Notícias</a></li>
+                </ul>
+            ` : `
+                <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
+                    <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
+                </ul>
+            `}
         </li>
         <li class="nav-item">
             <a class="nav-link" onclick="toggleContatoCard(true); return false;">Contato</a>
