@@ -240,6 +240,24 @@
       "idevento": 1,
       "comentario": "Evento empolgante.",
       "id": "982f"
+    },
+    {
+      "id": "3450",
+      "idavaliacao": 1749560261035,
+      "idevento": "1",
+      "nome": "S. Adilson",
+      "comentario": "Poderia melhorar.",
+      "rating": 2,
+      "data": "10/06/2025, 09:57:41"
+    },
+    {
+      "id": "1a5d",
+      "idavaliacao": 1749560295056,
+      "idevento": "1",
+      "nome": "Cesar",
+      "comentario": "Cesar.",
+      "rating": 3,
+      "data": "10/06/2025, 09:58:15"
     }
   ],
   "noticias": [

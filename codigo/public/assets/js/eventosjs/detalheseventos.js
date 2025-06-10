@@ -62,6 +62,59 @@ async function carregarDetalhesEvento() {
 
         const container = document.getElementById('evento-detalhes');
 
+        // Adiciona funcionalidade para enviar avaliações
+document.getElementById('enviar-avaliacao').addEventListener('click', async () => {
+    const nome = document.getElementById('nome').value.trim();
+    const comentario = document.getElementById('comentario').value.trim();
+    const estrelas = document.querySelectorAll('#estrelas .estrela.selecionada').length;
+
+    if (!nome || !comentario || estrelas === 0) {
+        alert('Por favor, preencha todos os campos e selecione uma quantidade de estrelas.');
+        return;
+    }
+
+    const novaAvaliacao = {
+        idavaliacao: Date.now(), // Gera um ID único baseado no timestamp
+        idevento: evento.id, // ID do evento atual
+        nome: nome,
+        comentario: comentario,
+        rating: estrelas,
+        data: new Date().toLocaleString('pt-BR')
+    };
+
+    try {
+        const response = await fetch(`${API_URL}/avaliacoeseventos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(novaAvaliacao)
+        });
+
+        if (response.ok) {
+            alert('Avaliação enviada com sucesso!');
+            document.getElementById('nome').value = '';
+            document.getElementById('comentario').value = '';
+            document.querySelectorAll('#estrelas .estrela').forEach(estrela => estrela.classList.remove('selecionada'));
+        } else {
+            alert('Erro ao enviar a avaliação. Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao enviar a avaliação:', error);
+        alert('Erro ao enviar a avaliação. Verifique sua conexão e tente novamente.');
+    }
+});
+
+// Adiciona funcionalidade para selecionar estrelas
+document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
+    estrela.addEventListener('click', () => {
+        const value = parseInt(estrela.getAttribute('data-value'));
+        document.querySelectorAll('#estrelas .estrela').forEach(e => {
+            e.classList.toggle('selecionada', parseInt(e.getAttribute('data-value')) <= value);
+        });
+    });
+});
+
         const cadastroPath = 'cadastrousuariosevento.html';
         
         // Fix image path in carregarDetalhesEvento function
@@ -85,19 +138,10 @@ async function carregarDetalhesEvento() {
                                     <p><i class="fas fa-dollar-sign"></i> Preço: R$ ${evento.preco.toFixed(2)}</p>
                                 </div>
                             </div>
-                            <div class="avaliacoes-section mt-4 mb-4">
-                                <h4 class="text-white text-center">Avaliações do evento</h4>
-                                <div class="avaliacoes-container" style="max-height: 200px; overflow-y: auto; padding: 10px;">
-                                    <div class="avaliacao-item mb-3 p-2 border-bottom">
-                                        <div class="stars mb-1">
-                                            ★★★★★
-                                            <span class="text-muted">(5.0)</span>
-                                        </div>
-                                        <strong>João Silva</strong>
-                                        <p class="mb-1">Excelente evento! Superou minhas expectativas.</p>
-                                        <small class="text-muted">2 dias atrás</small>
-                                    </div>
-                                </div>
+                            <div class="text-center mt-4 mb-4">
+                                <a href="avaliacoesgrid.html" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-star me-2"></i>Ver Avaliações do Evento
+                            </a>
                             </div>
                             <a id="btnInscrever" href="cadastrousuariosevento.html?id=${evento.id}" class="btn btn-primary btn-lg w-100 mb-3">Inscrever-se</a>
                         </div>
