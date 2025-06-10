@@ -97,6 +97,7 @@ function implementNavbar() {
 
     const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
     const isAdminUser = usuario && usuario.tipo === 'admin';
+    const firstName = usuario ? getFirstName(usuario.nome) : '';
 
     const navItems = usuario ? `
         <li class="nav-item">
@@ -155,7 +156,7 @@ function implementNavbar() {
                role="button" 
                data-bs-toggle="dropdown" 
                aria-expanded="false">
-                ${usuario.nome}
+                ${firstName}
             </a>
             <ul class="dropdown-menu" aria-labelledby="userDropdown">
                 <li><a class="dropdown-item" href="${currentPaths.perfil}">Perfil</a></li>
@@ -320,4 +321,9 @@ function logout() {
     window.location.href = window.location.pathname.includes('index.html') ? 
         'public/modulos/login/loginregistro.html' : 
         '../login/loginregistro.html';
+}
+
+// Add this function to get first name
+function getFirstName(fullName) {
+    return fullName.split(' ')[0];
 }
