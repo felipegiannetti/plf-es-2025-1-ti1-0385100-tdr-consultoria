@@ -94,7 +94,7 @@
     {
       "id": "1749506214923",
       "titulo": "Teste",
-      "data": "2025-06-19T21:56:00.000Z",
+      "data": "2025-06-20T00:56:00.000Z",
       "descricao": "Teste cadastro de usuarios evento",
       "categoria": "Workshop",
       "local": "Teste",
@@ -102,7 +102,7 @@
       "imagem": "",
       "vagas": 100000,
       "preco": 50,
-      "status": "ativo"
+      "status": "inativo"
     }
   ],
   "cadastroDeEventos": [
