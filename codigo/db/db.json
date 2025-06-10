@@ -231,24 +231,6 @@
   ],
   "avaliacoeseventos": [
     {
-      "idavaliacao": 1,
-      "idevento": 1,
-      "comentario": "Evento bom.",
-      "id": "1d17"
-    },
-    {
-      "idavaliacao": 2,
-      "idevento": 2,
-      "comentario": "Evento ruim.",
-      "id": "1488"
-    },
-    {
-      "idavaliacao": 3,
-      "idevento": 1,
-      "comentario": "Evento empolgante.",
-      "id": "982f"
-    },
-    {
       "id": "3450",
       "idavaliacao": 1749560261035,
       "idevento": "1",
@@ -283,6 +265,15 @@
       "comentario": "a",
       "rating": 5,
       "data": "10/06/2025, 10:22:27"
+    },
+    {
+      "id": "7e2a",
+      "idavaliacao": 1749564187224,
+      "idevento": "3",
+      "nome": "Felipe",
+      "comentario": "Evento bom.",
+      "rating": 4,
+      "data": "10/06/2025, 11:03:07"
     }
   ],
   "noticias": [
