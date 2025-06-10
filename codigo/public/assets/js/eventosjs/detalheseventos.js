@@ -64,6 +64,7 @@ async function carregarDetalhesEvento() {
         const container = document.getElementById('evento-detalhes');
 
         // Adiciona funcionalidade para enviar avaliações
+
 document.getElementById('enviar-avaliacao').addEventListener('click', async () => {
     const nome = document.getElementById('nome').value.trim();
     const comentario = document.getElementById('comentario').value.trim();
