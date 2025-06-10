@@ -52,9 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 notaSelecionada = 0;
                 document.querySelectorAll('#estrelas .estrela').forEach(e => e.classList.remove('selecionada'));
                 carregarAvaliacoes(); // Atualiza lista de avaliações
-            } else {
-                alert("Erro ao enviar.");
-            }
         })
         .catch(() => alert("Erro ao conectar com o servidor."));
     });
