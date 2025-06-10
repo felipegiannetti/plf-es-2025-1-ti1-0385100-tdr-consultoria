@@ -105,3 +105,75 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 992px) {
+    .margemtopo {
+        margin-top: 130px;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 15px; /* Equal margins on both sides */
+    }
+}
+
+@media (max-width: 768px) {
+    .margemtopo {
+        margin-top: 130px;
+    }
+    
+    .table td, .table th {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+    .table-responsive {
+        margin: 0 10px; /* Equal margins on both sides */
+    }
+}
+
+@media (max-width: 576px) {
+    .margemtopo {
+        margin-top: 130px;
+    }
+    
+    .table td, .table th {
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+    
+    .form-control {
+        font-size: 0.9rem;
+    }
+    
+    .btn-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    .table-responsive {
+        margin: 0 8px; /* Equal margins on both sides */
+    }
+}
+
+@media (max-width: 400px) {
+    .table-responsive {
+        margin: 0 5px; /* Already had equal margins */
+    }
+    
+    .table td, .table th {
+        padding: 0.3rem;
+        font-size: 0.75rem;
+    }
+}

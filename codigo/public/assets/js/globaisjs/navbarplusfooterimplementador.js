@@ -85,7 +85,7 @@ function implementNavbar() {
         other: {
             home: '../../../index.html',
             eventos: '../eventos/exibicaoeventos.html',  // Fixed path for subfolders
-            cadastroEventos: 'cadastroEventos.html',
+            cadastroEventos: '../eventos/cadastroeventos.html',  // Changed from 'cadastroeventos.html'
             noticias: '../noticias/noticias.html',
             cadastroNoticias: '../noticias/cadastro-noticias.html', // Changed path and file name
             quizzes: '../formulario/exibiformulario.html',
