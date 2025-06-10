@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const detailsPath = 'detalheseventos.html';
         const imagePath = `../../../${evento.imagem}`;
+        const usuarioId = 1; // ID estático para testes
 
         article.innerHTML = `
             <a class="postcard__img_link" href="${detailsPath}?id=${evento.id}">
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="postcard__bar"></div>
                 <div class="postcard__preview-txt">${evento.descricao}</div>
                 <ul class="postcard__tagbox">
-                    <li class="tag__item play green" onclick="window.location.href='${detailsPath}?id=${evento.id}'">
+                    <li class="tag__item play green" onclick="window.location.href='${detailsPath}?id=${evento.id}&idUsuario=${usuarioId}'">
                         <button class="tag-button">
                             <i class="fas fa-user-plus mr-2"></i>
                             <span class="me-2"></span>Inscrever-se
