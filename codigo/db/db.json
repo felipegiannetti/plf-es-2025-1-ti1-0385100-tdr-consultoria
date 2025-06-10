@@ -107,14 +107,11 @@
   ],
   "cadastroDeEventos": [
     {
-      "id": "1",
+      "id": "1749562113316",
       "idEvento": "1",
-      "idUsuario": "1"
-    },
-    {
-      "id": "1749506214932",
-      "idEvento": "1749506214923",
-      "idUsuario": ""
+      "idUsuario": [
+        "1"
+      ]
     }
   ],
   "usuarios": [
