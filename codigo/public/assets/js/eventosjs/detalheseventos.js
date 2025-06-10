@@ -77,7 +77,8 @@ async function carregarDetalhesEvento() {
                                 <h2 class="card-title">${evento.titulo}</h2>
                                 <p class="card-text">${evento.descricao}</p>
                                 <div class="event-details">
-                                    <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString('pt-BR')}</p>
+                                    <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString('pt-BR')} 
+                                       <i class="far fa-clock ms-2"></i> ${new Date(evento.data).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'})}</p>
                                     <p><i class="fas fa-map-marker-alt"></i> Local: ${evento.local}</p>
                                     <p><i class="fas fa-ticket-alt"></i> Vagas disponíveis: ${evento.vagas}</p>
                                     <p><i class="fas fa-tag"></i> Categoria: ${evento.categoria}</p>

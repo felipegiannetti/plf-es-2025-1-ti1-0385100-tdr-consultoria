@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <time datetime="${evento.data}">
                         <i class="fas fa-calendar-alt mr-2"></i>
                         <span class="me-2"></span>${new Date(evento.data).toLocaleDateString('pt-BR')}
+                        <i class="fas fa-clock ms-3 me-2"></i>${new Date(evento.data).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'})}
                     </time>
                 </div>
                 <div class="postcard__bar"></div>
