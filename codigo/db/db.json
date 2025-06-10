@@ -219,6 +219,13 @@
       "email": "felipefonseca2006@gmail.com",
       "senha": "felipe201",
       "tipo": "usuario"
+    },
+    {
+      "id": "1749588469711",
+      "nome": "usuario",
+      "email": "usuario@gmail.com",
+      "senha": "1",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
