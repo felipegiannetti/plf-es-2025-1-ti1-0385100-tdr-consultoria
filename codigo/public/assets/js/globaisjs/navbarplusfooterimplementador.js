@@ -77,17 +77,17 @@ function implementNavbar() {
         index: {
             home: '',
             eventos: 'public/modulos/eventos/exibicaoeventos.html',
-            cadastroEventos: 'public/modulos/eventos/cadastroEventos.html',
+            cadastroEventos: 'public/modulos/eventos/cadastroeventos.html',
             noticias: 'public/modulos/noticias/noticias.html',
-            cadastroNoticias: 'public/modulos/noticias/cadastroNoticias.html',
+            cadastroNoticias: 'public/modulos/noticias/cadastro-noticias.html', // Changed to match file name
             quizzes: 'public/modulos/formulario/exibiformulario.html',
         },
         other: {
             home: '../../../index.html',
             eventos: '../eventos/exibicaoeventos.html',  // Fixed path for subfolders
-            cadastroEventos: 'cadastroEventos.html',
+            cadastroEventos: '../eventos/cadastroeventos.html',  // Changed from 'cadastroeventos.html'
             noticias: '../noticias/noticias.html',
-            cadastroNoticias: 'cadastroNoticias.html',
+            cadastroNoticias: '../noticias/cadastro-noticias.html', // Changed path and file name
             quizzes: '../formulario/exibiformulario.html',
         }
     };

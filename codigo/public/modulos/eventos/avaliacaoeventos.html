@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avaliar Evento</title>
+  <link rel="stylesheet" href="../../assets/css/eventosCSS/avaliacao.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Avaliar Evento</h2>
+    <p id="evento-id"></p>
+
+    <div id="avaliacao-container">
+      <h3>Avalie este evento</h3>
+      <!-- Campo de nome acima das estrelas -->
+      <input id="nome" type="text" placeholder="Seu nome" class="form-control mt-2" />
+      <div id="estrelas" class="mt-2">
+          <span class="estrela" data-value="1">&#9734;</span>
+          <span class="estrela" data-value="2">&#9734;</span>
+          <span class="estrela" data-value="3">&#9734;</span>
+          <span class="estrela" data-value="4">&#9734;</span>
+          <span class="estrela" data-value="5">&#9734;</span>
+      </div>
+      <textarea id="comentario" placeholder="Deixe seu comentário..." class="form-control mt-2"></textarea>
+      <button id="enviar-avaliacao" class="btn btn-primary mt-2">Enviar Avaliação</button>
+      <a href="../../../index.html" style="display:block;text-align:center;margin-top:15px;">Voltar para eventos</a>
+    </div>
+    <div id="avaliacoes-lista"></div>
+  </div>
+
+  <script src="../../assets/js/eventosjs/avaliacao.js"></script>
+</body>
+</html>

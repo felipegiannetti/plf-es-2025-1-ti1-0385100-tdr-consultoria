@@ -6,14 +6,11 @@ async function carregarEventos() {
         const eventos = await response.json();
 
         
-        
-        const featuresSection = document.querySelector('.features-section .container');
-        featuresSection.innerHTML = '';
-        
+        // Fix image path in carregarEventos function
         eventos.forEach(evento => {
             featuresSection.innerHTML += `
                 <div class="feature">
-                    <img src="${evento.imagem}" alt="${evento.titulo}">
+                    <img src="../../../${evento.imagem}" alt="${evento.titulo}">
                     <h2>${evento.titulo}</h2>
                     <p>${evento.descricao}</p>
                     <p>Data: ${new Date(evento.data).toLocaleDateString()}</p>
@@ -32,9 +29,23 @@ async function carregarDetalhesEvento() {
     try {
         const urlParams = new URLSearchParams(window.location.search);
         const eventoId = urlParams.get('id');
+        const usuarioId = urlParams.get('idUsuario');
+
 
         if (!eventoId) {
             throw new Error('ID do evento não fornecido');
+        }
+
+        let usuario = null;
+        if (usuarioId) {
+            // Busca o usuário na API
+            const userRes = await fetch(`${API_URL}/usuarios/${usuarioId}`);
+            if (userRes.ok) {
+                usuario = await userRes.json();
+                console.log('Usuário carregado:', usuario);
+            } else {
+                console.warn('Usuário não encontrado');
+            }
         }
 
         console.log('Buscando evento com ID:', eventoId); // Debug log
@@ -53,11 +64,12 @@ async function carregarDetalhesEvento() {
 
         const cadastroPath = 'cadastrousuariosevento.html';
         
+        // Fix image path in carregarDetalhesEvento function
         container.innerHTML = `
             <div class="card mb-4 margemtopodetalhes">
                 <div class="row g-0">
                     <div class="col-md-6">
-                        <img src="${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
+                        <img src="../../../${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body d-flex flex-column h-100">
@@ -65,7 +77,8 @@ async function carregarDetalhesEvento() {
                                 <h2 class="card-title">${evento.titulo}</h2>
                                 <p class="card-text">${evento.descricao}</p>
                                 <div class="event-details">
-                                    <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString('pt-BR')}</p>
+                                    <p><i class="far fa-calendar"></i> Data: ${new Date(evento.data).toLocaleDateString('pt-BR')} 
+                                       <i class="far fa-clock ms-2"></i> ${new Date(evento.data).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'})}</p>
                                     <p><i class="fas fa-map-marker-alt"></i> Local: ${evento.local}</p>
                                     <p><i class="fas fa-ticket-alt"></i> Vagas disponíveis: ${evento.vagas}</p>
                                     <p><i class="fas fa-tag"></i> Categoria: ${evento.categoria}</p>
@@ -86,11 +99,7 @@ async function carregarDetalhesEvento() {
                                     </div>
                                 </div>
                             </div>
-                            <a href="${cadastroPath}?id=${evento.id}" class="btn btn-primary btn-lg w-100 mb-3">
-                                <div class="mt-auto">
-                                    <button class="btn btn-primary btn-lg w-100">Inscrever-se</button>
-                                </div>
-                            </a>
+                            <a id="btnInscrever" href="cadastrousuariosevento.html?id=${evento.id}" class="btn btn-primary btn-lg w-100 mb-3">Inscrever-se</a>
                         </div>
                     </div>
                 </div>
@@ -101,6 +110,45 @@ async function carregarDetalhesEvento() {
                 </a>
             </div>
         `;
+
+         // Listener do botão de inscrição
+        document.getElementById('btnInscrever').addEventListener('click', async function () {
+            const response = await fetch('http://localhost:3000/usuarios');
+            const usuarios = await response.json();
+            
+            const USUARIO_ID = "1"; // ID estático para testes
+            const eventoId2 = evento.id; // ID do evento atual
+            
+            if (!USUARIO_ID) {
+                alert('Usuário não está logado. Por favor, faça login para se inscrever.');
+                return;
+            }
+
+            try {
+                // Verifica se já existe cadastro para este usuário e evento
+                const cadRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventoId}&idUsuario=${usuarios.USUARIO_ID}`);
+                const cadastros = await cadRes.json();
+
+                if (cadastros.length === 0) {
+                // Não existe, cria um novo cadastro
+                await fetch(`${API_URL}/cadastroDeEventos`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: Date.now().toString(), 
+                        idEvento: eventoId,
+                        idUsuario: USUARIO_ID
+                    })
+                });
+            }
+            // Redireciona para a página de cadastro do usuário no evento
+            window.location.href = `cadastrousuariosevento.html?id=${eventoId}`;
+        } catch (err) {
+            alert('Erro ao inscrever: ' + err.message);
+        }
+    });
+
+
     } catch (error) {
         console.error('Erro ao carregar detalhes do evento:', error);
         document.getElementById('evento-detalhes').innerHTML = `
@@ -117,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     carregarEventos();
     carregarDetalhesEvento();
 });
+
 document.addEventListener("DOMContentLoaded", () => {
     const estrelas = document.querySelectorAll(".estrela");
     const comentarioInput = document.getElementById("comentario");

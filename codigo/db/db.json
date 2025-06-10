@@ -3,26 +3,28 @@
     {
       "id": "1",
       "titulo": "Workshop de Gestão Empresarial",
-      "data": "2025-05-20T19:00:00.000Z",
+      "data": "2025-08-21T10:00:00.000Z",
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/palestra-empresarial.webp",
+      "imagem": "public/assets/img/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
-      "preco": 150
+      "preco": 300,
+      "status": "ativo"
     },
     {
       "id": "2",
       "titulo": "Palestra sobre Liderança",
-      "data": "2025-06-10T16:00:00.000Z",
+      "data": "2025-08-10T19:00:00.000Z",
       "descricao": "Palestra sobre desenvolvimento de habilidades de liderança no ambiente corporativo moderno.",
       "categoria": "Palestra",
       "local": "Hotel Business Center - BH",
       "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/palestra-empresarial.webp",
+      "imagem": "public/assets/img/eventos/palestra-empresarial.webp",
       "vagas": 100,
-      "preco": 80
+      "preco": 80,
+      "status": "ativo"
     },
     {
       "id": "3",
@@ -32,9 +34,10 @@
       "categoria": "Evento",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Centro+de+Convencoes+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/hotmart-fire.jpeg",
+      "imagem": "public/assets/img/eventos/hotmart-fire.jpeg",
       "vagas": 7000,
-      "preco": 2999.99
+      "preco": 2999.99,
+      "status": "ativo"
     },
     {
       "id": "4",
@@ -44,9 +47,10 @@
       "categoria": "Workshop",
       "local": "San Pedro Valley - Savassi, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=San+Pedro+Valley+Savassi+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/financas-startups.jpg",
+      "imagem": "public/assets/img/eventos/financas-startups.jpg",
       "vagas": 40,
-      "preco": 180
+      "preco": 180,
+      "status": "ativo"
     },
     {
       "id": "5",
@@ -56,9 +60,10 @@
       "categoria": "Seminário",
       "local": "CDL-BH - Centro, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/esg-empresas.png",
+      "imagem": "public/assets/img/eventos/esg-empresas.png",
       "vagas": 75,
-      "preco": 220
+      "preco": 220,
+      "status": "ativo"
     },
     {
       "id": "6",
@@ -68,28 +73,48 @@
       "categoria": "Curso",
       "local": "Le Monde Hub - Funcionários, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=Le+Monde+Hub+Funcionarios+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/design-thinking.jpg",
+      "imagem": "public/assets/img/eventos/design-thinking.jpg",
       "vagas": 35,
-      "preco": 280
+      "preco": 280,
+      "status": "ativo"
     },
     {
       "id": "7",
       "titulo": "Vendas B2B Avançado",
-      "data": "2025-10-18T15:00:00.000Z",
+      "data": "2025-06-11T03:00:00.000Z",
       "descricao": "Treinamento intensivo em técnicas avançadas de vendas B2B, negociação e gestão de contas-chave.",
       "categoria": "Treinamento",
       "local": "FIEMG - Santa Efigênia, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/vendas-b2b.jpg",
+      "imagem": "public/assets/img/eventos/vendas-b2b.jpg",
       "vagas": 45,
-      "preco": 245
+      "preco": 300,
+      "status": "ativo"
+    },
+    {
+      "id": "1749506214923",
+      "titulo": "Teste",
+      "data": "2025-06-20T00:56:00.000Z",
+      "descricao": "Teste cadastro de usuarios evento",
+      "categoria": "Workshop",
+      "local": "Teste",
+      "localmapa": "https://maps.app.goo.gl/6eSsbXC9iyPevqM67",
+      "imagem": "",
+      "vagas": 100000,
+      "preco": 50,
+      "status": "inativo"
     }
   ],
   "cadastroDeEventos": [
-    {    
-      "id" : "1",
-      "idEvento" : "1",
-      "idUsuario" : "1"     
+    {
+      "id": "1",
+      "idEvento": "1",
+      "idUsuario": "1"
+    },
+    {
+      "id": "1749506214932",
+      "idEvento": "1749506214923",
+      "idUsuario": ""
     }
   ],
   "usuarios": [

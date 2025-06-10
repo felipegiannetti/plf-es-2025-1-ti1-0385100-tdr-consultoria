@@ -102,4 +102,64 @@ async function initCarousel() {
 }
 
 // Inicializa quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', initCarousel);
+document.addEventListener('DOMContentLoaded', async function() {
+    const carouselInner = document.querySelector('#eventCarousel .carousel-inner');
+    const carouselIndicators = document.querySelector('.carousel-indicators');
+
+    try {
+        // Fetch events from API
+        const response = await fetch('http://localhost:3000/eventos');
+        let events = await response.json();
+
+        // Filter active events and sort by closest date
+        const today = new Date();
+        events = events
+            .filter(event => event.status === 'ativo' && new Date(event.data) >= today)
+            .sort((a, b) => new Date(a.data) - new Date(b.data))
+            .slice(0, 3);
+
+        // Create carousel items
+        carouselInner.innerHTML = events.map((event, index) => `
+            <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                <img src="${event.imagem}" class="d-block w-100" alt="${event.titulo}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>${event.titulo}</h5>
+                    <p>Data: ${new Date(event.data).toLocaleDateString('pt-BR')}</p>
+                    <p>Local: ${event.local}</p>
+                    <a href="public/modulos/eventos/exibicaoeventos.html" class="btn btn-primary">Saiba mais</a>
+                </div>
+            </div>
+        `).join('');
+
+        // Create carousel indicators
+        carouselIndicators.innerHTML = events.map((_, index) => `
+            <button type="button" 
+                    data-bs-target="#eventCarousel" 
+                    data-bs-slide-to="${index}" 
+                    ${index === 0 ? 'class="active" aria-current="true"' : ''} 
+                    aria-label="Slide ${index + 1}">
+            </button>
+        `).join('');
+
+        // If no events found
+        if (events.length === 0) {
+            carouselInner.innerHTML = `
+                <div class="carousel-item active">
+                    <div class="no-events-message">
+                        <h3>Não há eventos próximos</h3>
+                        <p>Fique atento para novos eventos em breve!</p>
+                    </div>
+                </div>`;
+        }
+
+    } catch (error) {
+        console.error('Erro ao carregar eventos:', error);
+        carouselInner.innerHTML = `
+            <div class="carousel-item active">
+                <div class="error-message">
+                    <h3>Erro ao carregar eventos</h3>
+                    <p>Por favor, tente novamente mais tarde.</p>
+                </div>
+            </div>`;
+    }
+});
