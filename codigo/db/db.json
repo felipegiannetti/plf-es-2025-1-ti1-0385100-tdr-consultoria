@@ -8,7 +8,7 @@
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
-      "imagem": "./public/assets/img/eventos/evento-gestao-empresarial.jpg",
+      "imagem": "./public/assets/img/eventos/palestra-empresarial.webp",
       "vagas": 50,
       "preco": 150
     },
