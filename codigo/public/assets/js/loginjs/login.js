@@ -1,7 +1,6 @@
 function flipCard(event) {
     event.preventDefault();
     const cardFlip = document.querySelector('.card-flip');
-    console.log('Flipping card...'); // Debug
     cardFlip.classList.toggle('flipped');
 }
 
@@ -61,7 +60,6 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }
 });
 
-// Register form handler
 document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -71,13 +69,11 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         const password = document.getElementById('registerPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
 
-        // Validation checks
         if (password !== confirmPassword) {
             await showAlert('Erro', 'As senhas não coincidem', 'error');
             return;
         }
 
-        // Check existing email
         const checkResponse = await fetch('http://localhost:3000/usuarios');
         const existingUsers = await checkResponse.json();
         
@@ -86,7 +82,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
             return;
         }
 
-        // Register user
         const response = await fetch('http://localhost:3000/usuarios', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -100,10 +95,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         });
 
         if (response.ok) {
-            // Show success alert and wait for user confirmation
             const result = await showAlert('Sucesso!', 'Cadastro realizado com sucesso!', 'success');
             
-            // Only flip card after user clicks OK
             if (result.isConfirmed) {
                 document.getElementById('registerForm').reset();
                 document.querySelector('.card-flip').classList.remove('flipped');
