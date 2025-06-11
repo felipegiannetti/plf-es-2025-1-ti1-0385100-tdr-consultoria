@@ -19,7 +19,34 @@ async function carregarNoticias() {
             return;
         }
         
-        exibirNoticias(noticias);
+        // Salvar as notícias no localStorage
+        localStorage.setItem('noticias', JSON.stringify(noticias));
+        
+        // Exibir as notícias usando a função correta
+        const container = document.getElementById('noticias-card');
+        container.innerHTML = '';
+
+        noticias.forEach(noticia => {
+            const card = document.createElement('div');
+            card.className = 'news-card';
+            card.innerHTML = `
+                <a href="noticia-detalhes.html?id=${noticia.id}" class="text-decoration-none">
+                    <div class="news-image">
+                        <img src="${noticia.imagem}" alt="${noticia.titulo}">
+                    </div>
+                    <div class="news-content">
+                        <h3>${noticia.titulo}</h3>
+                        <p class="news-preview">${noticia.descricao.substring(0, 150)}...</p>
+                        <div class="news-meta">
+                            <span class="news-date">${new Date(noticia.data).toLocaleDateString()}</span>
+                            <span class="news-author">Por ${noticia.autor}</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+            container.appendChild(card);
+        });
+
     } catch (error) {
         console.error('Erro ao carregar notícias:', error);
         document.getElementById('noticias-card').innerHTML = `
@@ -29,46 +56,6 @@ async function carregarNoticias() {
             </div>
         `;
     }
-}
-
-// Função para exibir as notícias no HTML
-function exibirNoticias(noticias) {
-    const container = document.getElementById('noticias-card');
-    let htmlContent = '<div class="card-group">';
-
-    noticias.forEach(noticia => {
-        htmlContent += `
-            <div class="underlay">
-                <div class="card">
-                    <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
-                    <div class="card-block">
-                        <h5 class="card-title" style="font-family: 'Anton', sans-serif">
-                            ${noticia.titulo}
-                        </h5>
-                        <p class="card-text description">${noticia.descricao}</p>
-                        <p class="card-text expanded-text" style="display: none;">${noticia.texto_completo}</p>
-                        <p class="card-text mt-2">
-                            <small class="text-muted">
-                                Publicado em ${noticia.data} às ${noticia.hora}
-                            </small>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-
-    htmlContent += '</div>';
-    container.innerHTML = htmlContent;
-
-    // Efeitos de hover
-    $('.card').on('mouseenter', function() {
-        $(this).find('.description').slideUp(300);
-        $(this).find('.expanded-text').slideDown(300);
-    }).on('mouseleave', function() {
-        $(this).find('.expanded-text').slideUp(300);
-        $(this).find('.description').slideDown(300);
-    });
 }
 
 // Carregar notícias quando a página for carregada
@@ -106,6 +93,33 @@ function criarCards() {
         $(this).find('.card-text').css({
             'display': 'none'
         });
+    });
+}
+
+function exibirNoticias() {
+    const noticias = JSON.parse(localStorage.getItem('noticias')) || [];
+    const container = document.getElementById('noticias-card');
+    container.innerHTML = '';
+
+    noticias.forEach(noticia => {
+        const card = document.createElement('div');
+        card.className = 'news-card';
+        card.innerHTML = `
+            <a href="noticia-detalhes.html?id=${noticia.id}" class="text-decoration-none">
+                <div class="news-image">
+                    <img src="${noticia.imagem}" alt="${noticia.titulo}">
+                </div>
+                <div class="news-content">
+                    <h3>${noticia.titulo}</h3>
+                    <p class="news-preview">${noticia.descricao.substring(0, 150)}...</p>
+                    <div class="news-meta">
+                        <span class="news-date">${new Date(noticia.data).toLocaleDateString()}</span>
+                        <span class="news-author">Por ${noticia.autor}</span>
+                    </div>
+                </div>
+            </a>
+        `;
+        container.appendChild(card);
     });
 }
 
