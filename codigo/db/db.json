@@ -131,13 +131,7 @@
       "imagem": "public/assets/img/eventos/teste.jpg"
     }
   ],
-  "cadastroDeEventos": [
-    {
-      "id": "1749668869310",
-      "idEvento": "1",
-      "idUsuario": "1 2 3"
-    }
-  ],
+  "cadastroDeEventos": [],
   "usuarios": [
     {
       "id": "1",
@@ -191,6 +185,13 @@
       "email": "filipe@gmail.com",
       "senha": "fjb",
       "tipo": "admin"
+    },
+    {
+      "id": "1749587981878",
+      "nome": "Cesar Sokoli",
+      "email": "cesarsokolid@gmail.com",
+      "senha": "cesinha10",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
@@ -204,21 +205,12 @@
       "data": "10/06/2025, 09:57:41"
     },
     {
-      "id": "1a5d",
-      "idavaliacao": 1749560295056,
-      "idevento": "1",
-      "nome": "Cesar",
-      "comentario": "Cesar.",
-      "rating": 3,
-      "data": "10/06/2025, 09:58:15"
-    },
-    {
       "id": "5869",
       "idavaliacao": 1749560463626,
       "idevento": "2",
       "nome": "rgdf",
-      "comentario": "gfjgfg",
-      "rating": 4,
+      "comentario": "cesar lindo",
+      "rating": 5,
       "data": "10/06/2025, 10:01:03"
     },
     {
@@ -328,6 +320,24 @@
       "comentario": "teste",
       "rating": 5,
       "data": "10/06/2025, 11:35:07"
+    },
+    {
+      "idavaliacao": 1749588051111,
+      "idevento": "1",
+      "nome": "Cesar Sokoli",
+      "comentario": "Muito bom evento",
+      "rating": 4,
+      "data": "10/06/2025, 17:40:51",
+      "id": "Nc6smye"
+    },
+    {
+      "idavaliacao": 1749671282129,
+      "idevento": "1",
+      "nome": "Cesar Sokoli",
+      "comentario": "teste",
+      "rating": 4,
+      "data": "11/06/2025, 16:48:02",
+      "id": "JfqOAIF"
     }
   ],
   "noticias": [

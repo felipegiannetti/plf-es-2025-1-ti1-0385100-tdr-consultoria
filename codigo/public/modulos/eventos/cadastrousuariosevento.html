@@ -43,13 +43,19 @@
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <label for="inputIdEvento">ID_Evento</label>
-                        <input type="text" class="form-control" id="inputIdEvento" placeholder="ID do evento" disabled >
+                        <input type="number" class="form-control" id="inputIdEvento" placeholder="ID do evento" disabled >
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-6">
-                        <label for="inputUsuario">ID_Usuarios</label>
-                        <input type="text" class="form-control" id="inputUsuario" placeholder="Informe id dos usuarios" >
+                    <div class="col-sm-8">
+                        <label for="inputUsuario">IDs dos Usuários</label>
+                        <input type="text" class="form-control" id="inputUsuario" 
+                            placeholder="Digite os IDs separados por espaço (ex: 1 2 3 4)" 
+                            pattern="[0-9\s]*" 
+                            title="Apenas números e espaços são permitidos">
+                        <small class="form-text text-muted">
+                            <i class="fas fa-info-circle"></i> Digite múltiplos IDs separados por espaço. Exemplo: 1 2 3 4
+                        </small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -90,46 +96,101 @@
     </div>
 
     <script>
-        function exibeCadastro() {
-            tableCadastro = document.getElementById("table-cadastro");
-            tableCadastro.innerHTML = "";
+    function exibeCadastro() {
+        tableCadastro = document.getElementById("table-cadastro");
+        tableCadastro.innerHTML = "";
 
-            readCadastro(dados => {
-                for (i = 0; i < dados.length; i++) {
-                    let cadastro = dados[i];    
-                    tableCadastro.innerHTML += `<tr>
-                                                    <td scope="row">${cadastro.id}</td>
-                                                    <td>${cadastro.idEvento}</td>
-                                                    <td>${cadastro.idUsuario}</td>
-                                                </tr>`;
-                }
-            })
+        readCadastro(dados => {
+            for (i = 0; i < dados.length; i++) {
+                let cadastro = dados[i];
+                // Converte array de IDs para string para exibição
+                let idsUsuarios = Array.isArray(cadastro.idUsuario) 
+                    ? cadastro.idUsuario.join(', ') 
+                    : cadastro.idUsuario;
+                    
+                tableCadastro.innerHTML += `<tr>
+                                                <td scope="row">${cadastro.id}</td>
+                                                <td>${cadastro.idEvento}</td>
+                                                <td>${idsUsuarios}</td>
+                                            </tr>`;
+            }
+        })
+    }
+
+    // Função para validar entrada apenas números e espaços
+    function validarEntradaUsuarios(input) {
+        // Remove qualquer caractere que não seja número ou espaço
+        let valor = input.value.replace(/[^0-9\s]/g, '');
+        // Remove espaços múltiplos
+        valor = valor.replace(/\s+/g, ' ');
+        input.value = valor;
+    }
+
+    // Função para processar IDs de usuários
+    function processarIdsUsuarios(inputValue) {
+        if (!inputValue || !inputValue.trim()) {
+            return [];
+        }
+        
+        // Remove espaços extras e divide por espaços
+        let ids = inputValue.trim().split(/\s+/);
+        
+        // Remove valores vazios e converte para números
+        ids = ids.filter(id => id && id.trim() !== '').map(id => id.trim());
+        
+        // Valida se todos são números válidos
+        for (let id of ids) {
+            if (!/^\d+$/.test(id)) {
+                throw new Error(`"${id}" não é um ID válido. Use apenas números.`);
+            }
+        }
+        
+        return ids;
+    }
+
+    function init() {
+        formCadastro = document.getElementById("form-cadastro");
+        
+        // Adiciona validação em tempo real ao campo de usuários
+        const inputUsuario = document.getElementById('inputUsuario');
+        inputUsuario.addEventListener('input', function() {
+            validarEntradaUsuarios(this);
+        });
+        
+        // Adiciona dica visual no foco
+        inputUsuario.addEventListener('focus', function() {
+            this.placeholder = 'Digite os IDs separados por espaço (ex: 1 2 3 4)';
+        });
+
+        // Preenche automaticamente o ID do evento da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventoId = urlParams.get('id');
+        if (eventoId) {
+            document.getElementById('inputIdEvento').value = eventoId;
         }
 
-        function init() {
-            formCadastro = document.getElementById("form-cadastro");
+        btnInsert = document.getElementById("btnInsert");
+        btnInsert.addEventListener('click', function () {
+            let campoEvento = document.getElementById('inputIdEvento').value;
+            let campoUsuarioInput = document.getElementById('inputUsuario').value;
 
-            // Preenche automaticamente o ID do evento da URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const eventoId = urlParams.get('id');
-            if (eventoId) {
-                document.getElementById('inputIdEvento').value = eventoId;
+            if (!campoUsuarioInput.trim()) {
+                displayMessage("Preencha pelo menos um ID de usuário.");
+                return;
             }
 
-            btnInsert = document.getElementById("btnInsert");
-            btnInsert.addEventListener('click', function () {
-                let campoEvento = document.getElementById('inputIdEvento').value;
-                let campoUsuario = document.getElementById('inputUsuario').value;
-
-                if (!campoUsuario.trim()) {
-                    displayMessage("Preencha o ID do usuário.");
+            try {
+                let idsUsuarios = processarIdsUsuarios(campoUsuarioInput);
+                
+                if (idsUsuarios.length === 0) {
+                    displayMessage("Digite pelo menos um ID de usuário válido.");
                     return;
                 }
 
                 let cadastro = { 
                     id: Date.now().toString(),
                     idEvento: campoEvento, 
-                    idUsuario: campoUsuario
+                    idUsuario: idsUsuarios // Agora é um array
                 };
 
                 createCadastro(cadastro, exibeCadastro);
@@ -139,23 +200,35 @@
                 if (eventoId) {
                     document.getElementById('inputIdEvento').value = eventoId;
                 }
-            });
+                
+            } catch (error) {
+                displayMessage(error.message);
+            }
+        });
 
-            btnUpdate = document.getElementById("btnUpdate");
-            btnUpdate.addEventListener('click', function () {
-                let campoId = document.getElementById("inputId").value;
-                let campoIdEvento = document.getElementById('inputIdEvento').value;
-                let campoUsuario = document.getElementById('inputUsuario').value;
+        btnUpdate = document.getElementById("btnUpdate");
+        btnUpdate.addEventListener('click', function () {
+            let campoId = document.getElementById("inputId").value;
+            let campoIdEvento = document.getElementById('inputIdEvento').value;
+            let campoUsuarioInput = document.getElementById('inputUsuario').value;
 
-                if (!campoId.trim()) {
-                    displayMessage("Selecione um cadastro para alterar.");
+            if (!campoId.trim()) {
+                displayMessage("Selecione um cadastro para alterar.");
+                return;
+            }
+
+            try {
+                let idsUsuarios = processarIdsUsuarios(campoUsuarioInput);
+                
+                if (idsUsuarios.length === 0) {
+                    displayMessage("Digite pelo menos um ID de usuário válido.");
                     return;
                 }
 
                 let cadastro = { 
                     id: campoId, 
                     idEvento: campoIdEvento, 
-                    idUsuario: campoUsuario
+                    idUsuario: idsUsuarios // Agora é um array
                 };
 
                 updateCadastro(campoId, cadastro, exibeCadastro);
@@ -164,54 +237,62 @@
                 if (eventoId) {
                     document.getElementById('inputIdEvento').value = eventoId;
                 }
-            });
-
-            btnDelete = document.getElementById('btnDelete');
-            btnDelete.addEventListener('click', function () {
-                let campoId = document.getElementById('inputId').value;
-                if (campoId == "") {
-                    displayMessage("Selecione um cadastro a ser excluído.");
-                    return;
-                }
-
-                deleteCadastro(campoId, exibeCadastro);
-                formCadastro.reset();
                 
-                if (eventoId) {
-                    document.getElementById('inputIdEvento').value = eventoId;
+            } catch (error) {
+                displayMessage(error.message);
+            }
+        });
+
+        btnDelete = document.getElementById('btnDelete');
+        btnDelete.addEventListener('click', function () {
+            let campoId = document.getElementById('inputId').value;
+            if (campoId == "") {
+                displayMessage("Selecione um cadastro a ser excluído.");
+                return;
+            }
+
+            deleteCadastro(campoId, exibeCadastro);
+            formCadastro.reset();
+            
+            if (eventoId) {
+                document.getElementById('inputIdEvento').value = eventoId;
+            }
+        });
+
+        btnClear = document.getElementById('btnClear');
+        btnClear.addEventListener('click', function () {                
+            formCadastro.reset();
+            // Redefine o ID do evento após limpar
+            if (eventoId) {
+                document.getElementById('inputIdEvento').value = eventoId;
+            }
+        });
+
+        // Preenche formulário ao clicar na tabela
+        gridCadastro = document.getElementById("grid-cadastro");
+        gridCadastro.addEventListener('click', function (e) {
+            if (e.target.tagName == "TD") { 
+                let linhaClick = e.target.parentNode;
+                let colunas = linhaClick.querySelectorAll("td");
+
+                // Verifica se há colunas suficientes
+                if (colunas.length >= 3) {
+                    document.getElementById('inputId').value = colunas[0].innerText;
+                    document.getElementById('inputIdEvento').value = colunas[1].innerText;
+                    
+                    // Converte a exibição de volta para formato de entrada
+                    let idsExibidos = colunas[2].innerText;
+                    let idsParaEdicao = idsExibidos.replace(/,/g, '').replace(/\s+/g, ' ');
+                    document.getElementById('inputUsuario').value = idsParaEdicao;
                 }
-            });
+            }
+        });
 
-            btnClear = document.getElementById('btnClear');
-            btnClear.addEventListener('click', function () {                
-                formCadastro.reset();
-                // Redefine o ID do evento após limpar
-                if (eventoId) {
-                    document.getElementById('inputIdEvento').value = eventoId;
-                }
-            });
+        exibeCadastro();
+    }
 
-            // Preenche formulário ao clicar na tabela
-            gridCadastro = document.getElementById("grid-cadastro");
-            gridCadastro.addEventListener('click', function (e) {
-                if (e.target.tagName == "TD") { 
-                    let linhaClick = e.target.parentNode;
-                    let colunas = linhaClick.querySelectorAll("td");
-
-                    // Verifica se há colunas suficientes
-                    if (colunas.length >= 3) {
-                        document.getElementById('inputId').value = colunas[0].innerText;
-                        document.getElementById('inputIdEvento').value = colunas[1].innerText;
-                        document.getElementById('inputUsuario').value = colunas[2].innerText;
-                    }
-                }
-            });
-
-            exibeCadastro();
-        }
-
-        // Chama init quando a página carregar
-        document.addEventListener('DOMContentLoaded', init);
+    // Chama init quando a página carregar
+    document.addEventListener('DOMContentLoaded', init);
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
