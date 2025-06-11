@@ -226,6 +226,13 @@
       "email": "usuario@gmail.com",
       "senha": "1",
       "tipo": "usuario"
+    },
+    {
+      "id": "1749650387211",
+      "nome": "raphael guimaraes",
+      "email": "raphaelgrds@gmail.com",
+      "senha": "admin123",
+      "tipo": "admin"
     }
   ],
   "avaliacoeseventos": [
