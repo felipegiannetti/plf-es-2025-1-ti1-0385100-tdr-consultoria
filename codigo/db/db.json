@@ -212,6 +212,20 @@
       "email": "felipegiannettifontenelle@gmail.com",
       "senha": "admin123",
       "tipo": "admin"
+    },
+    {
+      "id": "1749562553755",
+      "nome": "Filipe ",
+      "email": "filipejose@gmail.com",
+      "senha": "fjb",
+      "tipo": "admin"
+    },
+    {
+      "id": "1749563112363",
+      "nome": "blob",
+      "email": "blob@gmail.com",
+      "senha": "blob@123",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
