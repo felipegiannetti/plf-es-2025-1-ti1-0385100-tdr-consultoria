@@ -81,40 +81,40 @@
     {
       "id": "7",
       "titulo": "Vendas B2B Avançado",
-      "data": "2025-06-11T03:00:00.000Z",
+      "data": "2025-06-18T12:00",
       "descricao": "Treinamento intensivo em técnicas avançadas de vendas B2B, negociação e gestão de contas-chave.",
       "categoria": "Treinamento",
-      "local": "FIEMG - Santa Efigênia, Belo Horizonte",
-      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/vendas-b2b.jpg",
       "vagas": 45,
       "preco": 300,
-      "status": "ativo"
+      "local": "FIEMG - Santa Efigênia, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
+      "status": "ativo",
+      "imagem": "public/assets/img/eventos/vendas-b2b.jpg"
     },
     {
       "id": "1749506214923",
       "titulo": "Teste",
-      "data": "2025-06-20T00:56:00.000Z",
+      "data": "2025-06-20T00:56",
       "descricao": "Teste cadastro de usuarios evento",
       "categoria": "Workshop",
-      "local": "Teste",
-      "localmapa": "https://maps.app.goo.gl/6eSsbXC9iyPevqM67",
-      "imagem": "",
       "vagas": 100000,
       "preco": 50,
-      "status": "inativo"
+      "local": "Teste",
+      "localmapa": "https://maps.app.goo.gl/6eSsbXC9iyPevqM67",
+      "status": "ativo",
+      "imagem": "public/assets/img/eventos/teste.jpg"
     },
     {
       "id": "6dfd",
       "titulo": "Teste",
-      "data": "2026-01-16T16:00",
+      "data": "2026-01-16T19:00",
       "descricao": "teste",
       "categoria": "Workshop",
       "vagas": 10,
       "preco": 10,
       "local": "teste",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "status": "ativo",
+      "status": "inativo",
       "imagem": "public/assets/img/eventos/teste.jpg"
     },
     {
@@ -127,7 +127,7 @@
       "preco": 10,
       "local": "lakjmsdnf",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "status": "ativo",
+      "status": "inativo",
       "imagem": "public/assets/img/eventos/teste.jpg"
     }
   ],

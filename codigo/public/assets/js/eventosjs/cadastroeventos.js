@@ -85,65 +85,98 @@ async function handleFormSubmit(event) {
 
 document.getElementById('eventForm').addEventListener('submit', handleFormSubmit);
 
+function isEventPast(eventDate) {
+    const now = new Date();
+    return new Date(eventDate) < now;
+}
+
 async function loadEvents() {
     try {
-        const response = await fetch(`${API_URL}/eventos`);
-        const events = await response.json();
-        const agora = new Date();
+        const response = await fetch('http://localhost:3000/eventos');
+        const eventos = await response.json();
+        
+        const activeEvents = [];
+        const inactiveEvents = [];
 
-        const ativos = events.filter(event => event.status === 'ativo');
-        const inativos = events.filter(event => event.status !== 'ativo');
+        eventos.forEach(evento => {
+            if (evento.status === 'inativo' || isEventPast(evento.data)) {
+                inactiveEvents.push(evento);
+                if (isEventPast(evento.data) && evento.status !== 'inativo') {
+                    updateEventStatus(evento.id, 'inativo');
+                }
+            } else {
+                activeEvents.push(evento);
+            }
+        });
 
-        eventsTable.innerHTML = ativos.map(event => {
-            const dataEvento = new Date(event.data);
-            const isPast = dataEvento < agora;
-            return `
-                <tr class="${isPast ? 'table-secondary' : ''}">
-                    <td>${event.titulo}</td>
-                    <td>${dataEvento.toLocaleDateString('pt-BR')}</td>
-                    <td>${event.categoria}</td>
-                    <td>${event.vagas}</td>
-                    <td>R$ ${event.preco.toFixed(2)}</td>
-                    <td>
-                        <button onclick="editEvent('${event.id}')" class="btn btn-sm btn-warning" ${isPast ? 'disabled' : ''}>
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger" ${isPast ? 'disabled' : ''}>
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            `;
-        }).join('');
+        const activeTableBody = document.getElementById('eventsTable');
+        activeTableBody.innerHTML = activeEvents.map(evento => `
+            <tr>
+                <td>${evento.titulo}</td>
+                <td>${new Date(evento.data).toLocaleString()}</td>
+                <td>${evento.categoria}</td>
+                <td>${evento.vagas}</td>
+                <td>R$ ${evento.preco}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" onclick="editEvent('${evento.id}')">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteEvent('${evento.id}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
 
-        const inactiveTable = document.getElementById('inactiveEventsTable');
-        if (inactiveTable) {
-            inactiveTable.innerHTML = inativos.map(event => {
-                const dataEvento = new Date(event.data);
-                return `
-                    <tr>
-                        <td>${event.titulo}</td>
-                        <td>${dataEvento.toLocaleDateString('pt-BR')}</td>
-                        <td>${event.categoria}</td>
-                        <td>${event.vagas}</td>
-                        <td>R$ ${event.preco.toFixed(2)}</td>
-                        <td>
-                            <button onclick="editEvent('${event.id}')" class="btn btn-sm btn-warning">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        }
+        const inactiveTableBody = document.getElementById('inactiveEventsTable');
+        inactiveTableBody.innerHTML = inactiveEvents.map(evento => `
+            <tr>
+                <td>${evento.titulo}</td>
+                <td>${new Date(evento.data).toLocaleString()}</td>
+                <td>${evento.categoria}</td>
+                <td>${evento.vagas}</td>
+                <td>R$ ${evento.preco}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" onclick="editEvent('${evento.id}')">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteEvent('${evento.id}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+
     } catch (error) {
-        console.error('Error loading events:', error);
-        alert('Erro ao carregar eventos: ' + error.message);
+        console.error('Erro ao carregar eventos:', error);
     }
 }
+
+async function updateEventStatus(eventId, status) {
+    try {
+        const response = await fetch(`http://localhost:3000/eventos/${eventId}`);
+        const event = await response.json();
+        
+        await fetch(`http://localhost:3000/eventos/${eventId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ...event,
+                status: status
+            })
+        });
+    } catch (error) {
+        console.error('Erro ao atualizar status do evento:', error);
+    }
+}
+
+setInterval(() => {
+    loadEvents();
+}, 60000);
+
+document.addEventListener('DOMContentLoaded', loadEvents);
 
 async function editEvent(id) {
     try {
