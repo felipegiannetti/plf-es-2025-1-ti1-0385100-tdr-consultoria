@@ -16,21 +16,15 @@
     
 <body class="orangebg">
 
-
     <div id="navbarimplementador">
-        
         <!--JS implementa-->
-
     </div>
         
     <div id ="main">
-
         <!--JS implementa-->
-
     </div>
 
-    <div id="CRUD" onload="init()">
-
+    <div id="CRUD">
         <h1>Cadastro de Cadastro (CRUD)</h1>
 
         <div class="container">
@@ -78,30 +72,23 @@
                     <table id="grid-cadastro" class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">ID_Usuarios</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">ID_Evento</th>
+                                <th scope="col">ID_Usuario</th>
                             </tr>
                         </thead>
                         <tbody id="table-cadastro">
-                            <tr>
-                                <td scope="row">1</td>
-                                <td></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div id="footerimplementador">
-
         <!--JS implementa-->
-
     </div>
 
-    <script src="../../assets/js/eventosjs/CRUDcadastrousuarioevento.js"></script>
     <script>
         function exibeCadastro() {
             tableCadastro = document.getElementById("table-cadastro");
@@ -110,103 +97,121 @@
             readCadastro(dados => {
                 for (i = 0; i < dados.length; i++) {
                     let cadastro = dados[i];    
-                    tableCadastro.innerHTML += `<tr><td scope="row">${cadastro.idEvento}</td>
+                    tableCadastro.innerHTML += `<tr>
+                                                    <td scope="row">${cadastro.id}</td>
+                                                    <td>${cadastro.idEvento}</td>
                                                     <td>${cadastro.idUsuario}</td>
                                                 </tr>`;
                 }
             })
         }
 
-function init() {
-    formCadastro = document.getElementById("form-cadastro");
+        function init() {
+            formCadastro = document.getElementById("form-cadastro");
 
-    // Preenche automaticamente o ID do evento da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const eventoId = urlParams.get('id');
-    if (eventoId) {
-        document.getElementById('inputIdEvento').value = eventoId;
-    }
+            // Preenche automaticamente o ID do evento da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventoId = urlParams.get('id');
+            if (eventoId) {
+                document.getElementById('inputIdEvento').value = eventoId;
+            }
 
-    btnInsert = document.getElementById("btnInsert");
-    btnInsert.addEventListener('click', function () {
-        if (!formCadastro.checkValidity()) {
-            displayMessage("Preencha o formulário corretamente.");
-            return;
+            btnInsert = document.getElementById("btnInsert");
+            btnInsert.addEventListener('click', function () {
+                let campoEvento = document.getElementById('inputIdEvento').value;
+                let campoUsuario = document.getElementById('inputUsuario').value;
+
+                if (!campoUsuario.trim()) {
+                    displayMessage("Preencha o ID do usuário.");
+                    return;
+                }
+
+                let cadastro = { 
+                    id: Date.now().toString(),
+                    idEvento: campoEvento, 
+                    idUsuario: campoUsuario
+                };
+
+                createCadastro(cadastro, exibeCadastro);
+                formCadastro.reset();
+                
+                // Redefine o ID do evento após reset
+                if (eventoId) {
+                    document.getElementById('inputIdEvento').value = eventoId;
+                }
+            });
+
+            btnUpdate = document.getElementById("btnUpdate");
+            btnUpdate.addEventListener('click', function () {
+                let campoId = document.getElementById("inputId").value;
+                let campoIdEvento = document.getElementById('inputIdEvento').value;
+                let campoUsuario = document.getElementById('inputUsuario').value;
+
+                if (!campoId.trim()) {
+                    displayMessage("Selecione um cadastro para alterar.");
+                    return;
+                }
+
+                let cadastro = { 
+                    id: campoId, 
+                    idEvento: campoIdEvento, 
+                    idUsuario: campoUsuario
+                };
+
+                updateCadastro(campoId, cadastro, exibeCadastro);
+                formCadastro.reset();
+                
+                if (eventoId) {
+                    document.getElementById('inputIdEvento').value = eventoId;
+                }
+            });
+
+            btnDelete = document.getElementById('btnDelete');
+            btnDelete.addEventListener('click', function () {
+                let campoId = document.getElementById('inputId').value;
+                if (campoId == "") {
+                    displayMessage("Selecione um cadastro a ser excluído.");
+                    return;
+                }
+
+                deleteCadastro(campoId, exibeCadastro);
+                formCadastro.reset();
+                
+                if (eventoId) {
+                    document.getElementById('inputIdEvento').value = eventoId;
+                }
+            });
+
+            btnClear = document.getElementById('btnClear');
+            btnClear.addEventListener('click', function () {                
+                formCadastro.reset();
+                // Redefine o ID do evento após limpar
+                if (eventoId) {
+                    document.getElementById('inputIdEvento').value = eventoId;
+                }
+            });
+
+            // Preenche formulário ao clicar na tabela
+            gridCadastro = document.getElementById("grid-cadastro");
+            gridCadastro.addEventListener('click', function (e) {
+                if (e.target.tagName == "TD") { 
+                    let linhaClick = e.target.parentNode;
+                    let colunas = linhaClick.querySelectorAll("td");
+
+                    // Verifica se há colunas suficientes
+                    if (colunas.length >= 3) {
+                        document.getElementById('inputId').value = colunas[0].innerText;
+                        document.getElementById('inputIdEvento').value = colunas[1].innerText;
+                        document.getElementById('inputUsuario').value = colunas[2].innerText;
+                    }
+                }
+            });
+
+            exibeCadastro();
         }
 
-        let campoEvento = document.getElementById('inputIdEvento').value;
-        let campoUsuario = document.getElementById('inputUsuario').value;
-
-        let cadastro = { 
-            id: Date.now().toString(),
-            idEvento: campoEvento, 
-            idUsuario: campoUsuario
-        };
-
-        createCadastro(cadastro, exibeCadastro);
-        formCadastro.reset();
-        
-        // Redefine o ID do evento após reset
-        if (eventoId) {
-            document.getElementById('inputIdEvento').value = eventoId;
-        }
-    });
-
-    btnUpdate = document.getElementById("btnUpdate");
-    btnUpdate.addEventListener('click', function () {
-        let campoId = document.getElementById("inputId").value;
-        let campoIdEvento = document.getElementById('inputIdEvento').value;
-        let campoUsuario = document.getElementById('inputUsuario').value;
-
-        let cadastro = { 
-            id: campoId, 
-            idEvento: campoIdEvento, 
-            idUsuario: campoUsuario
-        };
-
-        updateCadastro(parseInt(campoId), cadastro, exibeCadastro);
-        formCadastro.reset();
-    });
-
-    btnDelete = document.getElementById('btnDelete');
-    btnDelete.addEventListener('click', function () {
-        let campoId = document.getElementById('inputId').value;
-        if (campoId == "") {
-            displayMessage("Selecione um cadastro a ser excluído.");
-            return;
-        }
-
-        deleteCadastro(parseInt(campoId), exibeCadastro);
-        formCadastro.reset();
-    });
-
-    btnClear = document.getElementById('btnClear');
-    btnClear.addEventListener('click', function () {                
-        formCadastro.reset();
-        // Redefine o ID do evento após limpar
-        if (eventoId) {
-            document.getElementById('inputIdEvento').value = eventoId;
-        }
-    });
-
-    // Preenche formulário ao clicar na tabela
-    gridCadastro = document.getElementById("grid-cadastro");
-    gridCadastro.addEventListener('click', function (e) {
-        if (e.target.tagName == "TD") { 
-            let linhaContato = e.target.parentNode;
-            colunas = linhaContato.querySelectorAll("td");
-
-            document.getElementById('inputId').value = colunas[0].innerText;
-            document.getElementById('inputIdEvento').value = colunas[1].innerText;
-            document.getElementById('inputUsuario').value = colunas[2].innerText;
-        }
-    });
-
-    exibeCadastro();
-}
-
-// Chama init quando a página carregar
-document.addEventListener('DOMContentLoaded', init);
+        // Chama init quando a página carregar
+        document.addEventListener('DOMContentLoaded', init);
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
