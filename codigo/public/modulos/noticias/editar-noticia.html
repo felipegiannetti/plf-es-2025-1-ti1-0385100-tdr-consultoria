@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR Consultoria - Editar Notícia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/noticiasCSS/cadastro-noticias.css">
+</head>
+<body>
+    <div id="navbarimplementador"></div>
+
+    <div class="form-container margemtopo">
+        <h2 class="form-title">Editar Notícia</h2>
+        <form id="form-edicao" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título da Notícia</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="descricao_breve" class="form-label">Descrição Breve</label>
+                <textarea class="form-control" id="descricao_breve" name="descricao_breve" rows="2" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="texto_completo" class="form-label">Texto Completo</label>
+                <textarea class="form-control" id="texto_completo" name="texto_completo" rows="5" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select class="form-select" id="categoria" name="categoria" required>
+                    <option value="">Selecione uma categoria</option>
+                    <option value="Tecnologia">Tecnologia</option>
+                    <option value="Negócios">Negócios</option>
+                    <option value="Economia">Economia</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="imagem" class="form-label">URL da Imagem</label>
+                <input type="url" class="form-control" id="imagem" name="imagem">
+            </div>
+
+            <button type="submit" class="btn btn-warning">
+                <i class="fas fa-save"></i> Salvar Alterações
+            </button>
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </form>
+    </div>
+
+    <div id="footerimplementador"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
+    <script src="../../assets/js/noticiasjs/editar-noticia.js"></script>
+    <script src="../../assets/js/globaisjs/auth.js"></script>
+</body>
+</html>
