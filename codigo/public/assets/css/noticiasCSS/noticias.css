@@ -70,16 +70,19 @@ a:hover {
     border: 3px solid #FF8C00 !important;
     border-image: none !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.8s ease;
+    transition: transform 0.3s ease-in-out;
     z-index: 1;
     position: relative;
     height: 100%;
+    overflow: hidden;
 }
 
 .card:hover {
     z-index: 9999; /* Increased z-index to overlay navbar */
     transform: translate(-10px, -20px); /* Increased upward movement */
     transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); /* Added smoother easing */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .card:before {
@@ -113,9 +116,10 @@ a:hover {
 
 .card-text {
     color: #495057;
-    display: block;
+    display: none;
     font-size: 0.9rem;
     line-height: 1.5;
+    margin-bottom: 1rem;
 }
 
 .card-text.expanded-text {
@@ -171,12 +175,17 @@ a:hover {
 .card-group {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
     justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.underlay {
+    flex: 0 0 calc(33.333% - 20px);
+    margin-bottom: 20px;
 }
 
 /* Animations */
