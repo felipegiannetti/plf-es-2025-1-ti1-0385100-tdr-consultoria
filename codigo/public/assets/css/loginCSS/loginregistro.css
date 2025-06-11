@@ -106,8 +106,7 @@
 
 /* Fundo neon */
 .orangebg {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 40%, rgba(26, 26, 26, 0.9) 100%),
-                url('/assets/img/container_landscape.jpg');
+    background: url('../../img/conteiner_landscape.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

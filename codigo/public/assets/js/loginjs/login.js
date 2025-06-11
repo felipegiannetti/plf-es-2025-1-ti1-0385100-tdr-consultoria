@@ -1,7 +1,6 @@
 function flipCard(event) {
     event.preventDefault();
     const cardFlip = document.querySelector('.card-flip');
-    console.log('Flipping card...'); // Debug
     cardFlip.classList.toggle('flipped');
 }
 
@@ -49,10 +48,11 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
         if (usuario) {
             localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-            showAlert('Sucesso!', 'Login realizado com sucesso', 'success');
-            setTimeout(() => {
+            const result = await showAlert('Sucesso!', 'Login realizado com sucesso', 'success');
+            
+            if (result.isConfirmed) {
                 window.location.href = '../../../index.html';
-            }, 1500);
+            }
         } else {
             showAlert('Erro', 'Email ou senha inválidos', 'error');
         }
@@ -61,7 +61,6 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }
 });
 
-// Register form handler
 document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -71,25 +70,46 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         const password = document.getElementById('registerPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
 
-        // Validation checks
         if (password !== confirmPassword) {
-            await showAlert('Erro', 'As senhas não coincidem', 'error');
+            await Swal.fire({
+                title: 'Erro',
+                text: 'As senhas não coincidem',
+                icon: 'error',
+                confirmButtonColor: '#ff7a00',
+                background: '#111',
+                color: '#fff',
+                customClass: {
+                    popup: 'swal-custom-popup',
+                    confirmButton: 'swal-custom-button'
+                }
+            });
             return;
         }
 
-        // Check existing email
         const checkResponse = await fetch('http://localhost:3000/usuarios');
-        const existingUsers = await checkResponse.json();
-        
-        if (existingUsers.some(user => user.email === email)) {
-            await showAlert('Erro', 'Este email já está cadastrado', 'warning');
+        const users = await checkResponse.json();
+
+        if (users.some(user => user.email === email)) {
+            await Swal.fire({
+                title: 'Erro',
+                text: 'Este email já está cadastrado',
+                icon: 'warning',
+                confirmButtonColor: '#ff7a00',
+                background: '#111',
+                color: '#fff',
+                customClass: {
+                    popup: 'swal-custom-popup',
+                    confirmButton: 'swal-custom-button'
+                }
+            });
             return;
         }
 
-        // Register user
         const response = await fetch('http://localhost:3000/usuarios', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 id: Date.now().toString(),
                 nome: name,
@@ -100,19 +120,42 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         });
 
         if (response.ok) {
-            // Show success alert and wait for user confirmation
-            const result = await showAlert('Sucesso!', 'Cadastro realizado com sucesso!', 'success');
-            
+            const result = await Swal.fire({
+                title: 'Sucesso!',
+                text: 'Cadastro realizado com sucesso!',
+                icon: 'success',
+                confirmButtonColor: '#ff7a00',
+                background: '#111',
+                color: '#fff',
+                showConfirmButton: true,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                customClass: {
+                    popup: 'swal-custom-popup',
+                    confirmButton: 'swal-custom-button'
+                }
+            });
+
             // Only flip card after user clicks OK
             if (result.isConfirmed) {
                 document.getElementById('registerForm').reset();
                 document.querySelector('.card-flip').classList.remove('flipped');
             }
-        } else {
-            throw new Error('Erro ao registrar usuário');
         }
     } catch (error) {
         console.error('Erro:', error);
-        await showAlert('Erro', 'Erro ao registrar. Tente novamente.', 'error');
+        await Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao registrar usuário',
+            icon: 'error',
+            confirmButtonColor: '#ff7a00',
+            background: '#111',
+            color: '#fff',
+            customClass: {
+                popup: 'swal-custom-popup',
+                confirmButton: 'swal-custom-button'
+            }
+        });
     }
 });

@@ -118,14 +118,14 @@
       "imagem": "public/assets/img/eventos/teste.jpg"
     },
     {
-      "id": "1749558968050",
-      "titulo": "testedenovo",
-      "data": "2025-12-15T22:00",
-      "descricao": "teste",
-      "categoria": "Workshop",
-      "vagas": 10,
+      "id": "1749651156479",
+      "titulo": "sdfs",
+      "data": "2025-06-11T11:11",
+      "descricao": "apdksoifjiusdnf",
+      "categoria": "Palestra",
+      "vagas": 500,
       "preco": 10,
-      "local": "testeq",
+      "local": "lakjmsdnf",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
       "status": "ativo",
       "imagem": "public/assets/img/eventos/teste.jpg"
@@ -133,11 +133,9 @@
   ],
   "cadastroDeEventos": [
     {
-      "id": "1749562113316",
+      "id": "1749668869310",
       "idEvento": "1",
-      "idUsuario": [
-        "1"
-      ]
+      "idUsuario": "1 2 3"
     }
   ],
   "usuarios": [
@@ -148,18 +146,7 @@
       "nome": "Administrador do Sistema",
       "email": "admin@abc.com",
       "respostas": [],
-      "formularioFeito": "sim",
-      "eventos_cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        },
-        {
-          "id": "3"
-        }
-      ]
+      "formularioFeito": "sim"
     },
     {
       "id": "2",
@@ -167,44 +154,8 @@
       "senha": "1234",
       "nome": "Administrador do Sistema2",
       "email": "admin2@abc.com",
-      "respostas": [
-        {
-          "question": "Com qual dessas areas você mais se identifica?",
-          "response": "RH"
-        },
-        {
-          "question": "Qual sua meta financeiran no periodo de 5 anos?",
-          "response": "Entre 500000 - 1000000"
-        },
-        {
-          "question": "Qual desses investimentos você mais gostaria de aprender?",
-          "response": "Criptomoedas"
-        },
-        {
-          "question": "Como você descreveria seu perfil de investidor?",
-          "response": "Moderado"
-        },
-        {
-          "question": "Qual é o seu principal objetivo financeiro?",
-          "response": "Comprar uma casa"
-        },
-        {
-          "question": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
-          "response": "Intermediário"
-        }
-      ],
-      "formularioFeito": "sim",
-      "eventos_cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        },
-        {
-          "id": "3"
-        }
-      ]
+      "respostas": [],
+      "formularioFeito": "sim"
     },
     {
       "id": "1749560312233",
@@ -226,6 +177,20 @@
       "email": "usuario@gmail.com",
       "senha": "1",
       "tipo": "usuario"
+    },
+    {
+      "id": "1749650387211",
+      "nome": "raphael guimaraes",
+      "email": "raphaelgrds@gmail.com",
+      "senha": "admin123",
+      "tipo": "admin"
+    },
+    {
+      "id": "1749660914745",
+      "nome": "Filipe",
+      "email": "filipe@gmail.com",
+      "senha": "fjb",
+      "tipo": "admin"
     }
   ],
   "avaliacoeseventos": [
