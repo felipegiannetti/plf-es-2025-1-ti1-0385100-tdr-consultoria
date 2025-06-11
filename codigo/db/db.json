@@ -131,7 +131,15 @@
       "imagem": "public/assets/img/eventos/teste.jpg"
     }
   ],
-  "cadastroDeEventos": [],
+  "cadastroDeEventos": [
+    {
+      "id": "1749683145638",
+      "idEvento": "2",
+      "idUsuario": [
+        "1"
+      ]
+    }
+  ],
   "usuarios": [
     {
       "id": "1",
