@@ -166,10 +166,10 @@ function implementNavbar() {
         </li>
     ` : `
         <li class="nav-item">
-            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Login</a>
+            <a class="nav-link" href="${currentPaths.home}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Sign Up</a>
+            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Login</a>
         </li>
     `;
 
