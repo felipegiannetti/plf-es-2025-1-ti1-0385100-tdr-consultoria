@@ -138,6 +138,13 @@
       "idUsuario": [
         "1"
       ]
+    },
+    {
+      "id": "1749662777165",
+      "idEvento": "2",
+      "idUsuario": [
+        "1"
+      ]
     }
   ],
   "usuarios": [
@@ -148,18 +155,7 @@
       "nome": "Administrador do Sistema",
       "email": "admin@abc.com",
       "respostas": [],
-      "formularioFeito": "sim",
-      "eventos_cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        },
-        {
-          "id": "3"
-        }
-      ]
+      "formularioFeito": "sim"
     },
     {
       "id": "2",
@@ -167,44 +163,8 @@
       "senha": "1234",
       "nome": "Administrador do Sistema2",
       "email": "admin2@abc.com",
-      "respostas": [
-        {
-          "question": "Com qual dessas areas você mais se identifica?",
-          "response": "RH"
-        },
-        {
-          "question": "Qual sua meta financeiran no periodo de 5 anos?",
-          "response": "Entre 500000 - 1000000"
-        },
-        {
-          "question": "Qual desses investimentos você mais gostaria de aprender?",
-          "response": "Criptomoedas"
-        },
-        {
-          "question": "Como você descreveria seu perfil de investidor?",
-          "response": "Moderado"
-        },
-        {
-          "question": "Qual é o seu principal objetivo financeiro?",
-          "response": "Comprar uma casa"
-        },
-        {
-          "question": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
-          "response": "Intermediário"
-        }
-      ],
-      "formularioFeito": "sim",
-      "eventos_cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        },
-        {
-          "id": "3"
-        }
-      ]
+      "respostas": [],
+      "formularioFeito": "sim"
     },
     {
       "id": "1749560312233",
@@ -232,6 +192,13 @@
       "nome": "raphael guimaraes",
       "email": "raphaelgrds@gmail.com",
       "senha": "admin123",
+      "tipo": "admin"
+    },
+    {
+      "id": "1749660914745",
+      "nome": "Filipe",
+      "email": "filipe@gmail.com",
+      "senha": "fjb",
       "tipo": "admin"
     }
   ],
