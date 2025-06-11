@@ -30,3 +30,47 @@ document.getElementById('noticiaForm').addEventListener('submit', async (e) => {
         alert('Erro ao cadastrar notícia');
     }
 });
+
+async function cadastrarNoticia(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('form-cadastro');
+    const formData = new FormData(form);
+
+    const noticiaData = {
+        titulo: formData.get('titulo'),
+        subtitulo: formData.get('subtitulo'),
+        autor: formData.get('autor'),
+        data: new Date().toISOString(),
+        tema: formData.get('tema'),
+        descricao: formData.get('descricao'),
+        imagem: formData.get('imagem')
+    };
+
+    try {
+        const response = await fetch(`${API_URL}/noticias`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(noticiaData)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const novaNoticia = await response.json();
+        
+        // Broadcast a custom event when a new article is added
+        const event = new CustomEvent('noticiaAdicionada', { detail: novaNoticia });
+        window.dispatchEvent(event);
+
+        // Redirect to news page
+        window.location.href = '../noticias/noticias.html';
+
+    } catch (error) {
+        console.error('Erro ao cadastrar notícia:', error);
+        alert('Erro ao cadastrar notícia. Por favor, tente novamente.');
+    }
+}

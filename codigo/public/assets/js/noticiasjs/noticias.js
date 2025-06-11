@@ -1,6 +1,12 @@
 // URL base do JSON Server
 const API_URL = 'http://localhost:3000';
 
+// Listen for new articles
+window.addEventListener('noticiaAdicionada', function(event) {
+    carregarNoticias(); // Reload all news when a new article is added
+});
+
+// Modify the carregarNoticias function to sort by date
 async function carregarNoticias() {
     try {
         const response = await fetch(`${API_URL}/noticias`);
@@ -18,6 +24,9 @@ async function carregarNoticias() {
             return;
         }
         
+        // Sort news by date (newest first)
+        noticias.sort((a, b) => new Date(b.data) - new Date(a.data));
+        
         localStorage.setItem('noticias', JSON.stringify(noticias));
         
         const container = document.getElementById('noticias-card');
@@ -25,7 +34,7 @@ async function carregarNoticias() {
 
         noticias.forEach(noticia => {
             htmlContent += `
-                <div class="underlay">
+                <div class="underlay animate__animated animate__fadeIn">
                     <a href="noticia-detalhes.html?id=${noticia.id}" class="text-decoration-none">
                         <div class="card">
                             <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
@@ -48,7 +57,7 @@ async function carregarNoticias() {
         htmlContent += '</div>';
         container.innerHTML = htmlContent;
 
-        // Adicionar efeitos de hover
+        // Re-add hover effects
         $('.card').on('mouseenter', function() {
             $(this).find('.card-text').slideDown(300);
         });
