@@ -460,6 +460,26 @@
       "categoria": "Marketing Digital",
       "imagem": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FAlgemeen_Dagblad&psig=AOvVaw2cOPj_rzhEF6QDlOZ4Mghi&ust=1749732255611000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDG892y6Y0DFQAAAAAdAAAAABAE",
       "data": "2025-06-11"
+    },
+    {
+      "id": "26cb",
+      "titulo": "asdasd",
+      "descricaoBreve": "asdsad",
+      "textoCompleto": "asdasd",
+      "categoria": "Tecnologia",
+      "imagem": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.facebook.com%2Fp%2FAsdsada-100066304580407%2F&psig=AOvVaw3Dy1V-UnJITjNLo7hD0SHb&ust=1749733767753000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLjQ5K246Y0DFQAAAAAdAAAAABAE",
+      "data": "2025-06-11T13:11:43.163Z",
+      "autor": "Admin"
+    },
+    {
+      "id": "f2d2",
+      "titulo": "dadadad",
+      "descricaoBreve": "dadada",
+      "textoCompleto": "dadad",
+      "categoria": "Tecnologia",
+      "imagem": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.facebook.com%2Fp%2FAsdsada-100066304580407%2F&psig=AOvVaw3Dy1V-UnJITjNLo7hD0SHb&ust=1749733767753000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLjQ5K246Y0DFQAAAAAdAAAAABAEv",
+      "data": "2025-06-11T13:12:04.588Z",
+      "autor": "Admin"
     }
   ]
 }

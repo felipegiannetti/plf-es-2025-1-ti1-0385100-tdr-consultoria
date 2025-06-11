@@ -10,52 +10,39 @@ window.addEventListener('noticiaAdicionada', function(event) {
 async function carregarNoticias() {
     try {
         const response = await fetch(`${API_URL}/noticias`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error('Erro ao carregar notícias');
+        
         const noticias = await response.json();
         
         if (noticias.length === 0) {
             document.getElementById('noticias-card').innerHTML = `
                 <div class="alert alert-info">
-                    Nenhuma notícia disponível no momento.
+                    <i class="fas fa-info-circle"></i> Nenhuma notícia disponível no momento.
                 </div>
             `;
             return;
         }
-        
-        // Sort news by date (newest first)
-        noticias.sort((a, b) => new Date(b.data) - new Date(a.data));
-        
-        localStorage.setItem('noticias', JSON.stringify(noticias));
-        
+
         const container = document.getElementById('noticias-card');
-        let htmlContent = '<div class="card-group">';
-
-        noticias.forEach(noticia => {
-            htmlContent += `
-                <div class="underlay animate__animated animate__fadeIn">
-                    <a href="noticia-detalhes.html?id=${noticia.id}" class="text-decoration-none">
-                        <div class="card">
-                            <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
-                            <div class="card-block">
-                                <h5 class="card-title" style="font-family: 'Anton', sans-serif">${noticia.titulo}<hr></h5>
-                                <p class="card-text">${noticia.descricao.substring(0, 150)}... <u>Ler mais...</u></p>
-                                <div class="card-meta">
-                                    <p class="card-text">
-                                        <small class="text-muted">Publicado em ${new Date(noticia.data).toLocaleDateString()}</small>
-                                        <small class="text-muted ms-2">Por ${noticia.autor}</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+        container.className = 'solution_cards_box';
+        
+        container.innerHTML = noticias.map(noticia => `
+            <div class="solution_card">
+                <div class="hover_color_bubble"></div>
+                <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
+                <div class="solu_title">
+                    <h3 class="card-title">${noticia.titulo}</h3>
                 </div>
-            `;
-        });
-
-        htmlContent += '</div>';
-        container.innerHTML = htmlContent;
+                <div class="solu_description">
+                    <p class="card-text">${noticia.descricaoBreve}</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-calendar"></i> ${new Date(noticia.data).toLocaleDateString()}</span>
+                        <span><i class="far fa-user"></i> ${noticia.autor}</span>
+                    </div>
+                    <a href="noticia-detalhes.html?id=${noticia.id}" class="read_more_btn">Ler mais</a>
+                </div>
+            </div>
+        `).join('');
 
         // Re-add hover effects
         $('.card').on('mouseenter', function() {
@@ -69,11 +56,10 @@ async function carregarNoticias() {
         });
 
     } catch (error) {
-        console.error('Erro ao carregar notícias:', error);
+        console.error('Erro:', error);
         document.getElementById('noticias-card').innerHTML = `
             <div class="alert alert-danger">
-                Erro ao carregar notícias. Por favor, tente novamente mais tarde.<br>
-                Erro: ${error.message}
+                <i class="fas fa-exclamation-circle"></i> Erro ao carregar notícias: ${error.message}
             </div>
         `;
     }
@@ -81,4 +67,52 @@ async function carregarNoticias() {
 
 // Carregar notícias quando a página for carregada
 document.addEventListener('DOMContentLoaded', carregarNoticias);
+
+document.getElementById('form-cadastro').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    const form = this;
+    const formData = new FormData(form);
+    
+    const noticiaData = {
+        titulo: formData.get('titulo'),
+        descricaoBreve: formData.get('descricao_breve'),
+        textoCompleto: formData.get('texto_completo'),
+        categoria: formData.get('categoria'),
+        autor: formData.get('autor'),
+        data: new Date().toISOString(),
+        imagem: formData.get('imagem')
+    };
+
+    try {
+        const response = await fetch(`${API_URL}/noticias`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(noticiaData)
+        });
+
+        if (!response.ok) throw new Error('Erro ao cadastrar notícia');
+        
+        const novaNoticia = await response.json();
+        
+        // Mostrar mensagem de sucesso
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-success mt-3';
+        alertDiv.innerHTML = '<i class="fas fa-check-circle"></i> Notícia cadastrada com sucesso! Redirecionando...';
+        form.insertAdjacentElement('beforebegin', alertDiv);
+
+        // Redirecionar após 2 segundos
+        setTimeout(() => {
+            window.location.href = 'noticias.html';
+        }, 2000);
+
+    } catch (error) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-danger mt-3';
+        alertDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${error.message}`;
+        form.insertAdjacentElement('beforebegin', alertDiv);
+    }
+});
 

@@ -15,34 +15,40 @@
 
     <div class="form-container margemtopo">
         <h2 class="form-title">Cadastro de Notícias</h2>
-        <form id="noticiaForm">
-            <div class="form-group">
-                <label for="titulo">Título da Notícia</label>
-                <input type="text" class="form-control" id="titulo" required>
+        <form id="form-cadastro" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título da Notícia</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
             </div>
-            <div class="form-group">
-                <label for="descricao">Descrição Breve</label>
-                <input type="text" class="form-control" id="descricao" required>
+
+            <div class="mb-3">
+                <label for="descricao_breve" class="form-label">Descrição Breve</label>
+                <textarea class="form-control" id="descricao_breve" name="descricao_breve" rows="2" required></textarea>
             </div>
-            <div class="form-group">
-                <label for="texto_completo">Texto Completo</label>
-                <textarea class="form-control" id="texto_completo" rows="6" required></textarea>
+
+            <div class="mb-3">
+                <label for="texto_completo" class="form-label">Texto Completo</label>
+                <textarea class="form-control" id="texto_completo" name="texto_completo" rows="5" required></textarea>
             </div>
-            <div class="form-group">
-                <label for="categoria">Categoria</label>
-                <select class="form-control" id="categoria" required>
+
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select class="form-select" id="categoria" name="categoria" required>
                     <option value="">Selecione uma categoria</option>
-                    <option value="Marketing Digital">Marketing Digital</option>
-                    <option value="Tráfego Pago">Tráfego Pago</option>
-                    <option value="Liderança e Inovação">Liderança e Inovação</option>
-                    <option value="Sustentabilidade">Sustentabilidade</option>
+                    <option value="Tecnologia">Tecnologia</option>
+                    <option value="Negócios">Negócios</option>
+                    <option value="Economia">Economia</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="imagem">URL da Imagem</label>
-                <input type="url" class="form-control" id="imagem" required>
+
+            <div class="mb-3">
+                <label for="imagem" class="form-label">URL da Imagem</label>
+                <input type="url" class="form-control" id="imagem" name="imagem">
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar Notícia</button>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Cadastrar Notícia
+            </button>
         </form>
     </div>
 
