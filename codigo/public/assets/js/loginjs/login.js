@@ -13,86 +13,106 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Function to handle login
+// Utility function for alerts
+async function showAlert(title, message, icon) {
+    return await Swal.fire({
+        title: title,
+        text: message,
+        icon: icon,
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#ff7a00',
+        background: '#111',
+        color: '#fff',
+        showConfirmButton: true,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        customClass: {
+            popup: 'swal-custom-popup',
+            confirmButton: 'swal-custom-button'
+        }
+    });
+}
+
+// Login form handler
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
     try {
-        // Fetch users from db.json
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
         const response = await fetch('http://localhost:3000/usuarios');
         const usuarios = await response.json();
 
-        // Check if user exists and password matches
         const usuario = usuarios.find(u => u.email === email && u.senha === password);
 
         if (usuario) {
-            // Store user info in localStorage for session management
             localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-            // Redirect to home page
-            window.location.href = '../../../index.html';
+            showAlert('Sucesso!', 'Login realizado com sucesso', 'success');
+            setTimeout(() => {
+                window.location.href = '../../../index.html';
+            }, 1500);
         } else {
-            alert('Email ou senha inválidos');
+            showAlert('Erro', 'Email ou senha inválidos', 'error');
         }
     } catch (error) {
-        console.error('Erro ao fazer login:', error);
-        alert('Erro ao fazer login. Tente novamente.');
+        showAlert('Erro', 'Erro ao fazer login. Tente novamente.', 'error');
     }
 });
 
-// Function to handle registration
+// Register form handler
 document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-
-    // Validate passwords match
-    if (password !== confirmPassword) {
-        alert('As senhas não coincidem');
-        return;
-    }
-
     try {
-        // Check if email already exists
+        const name = document.getElementById('registerName').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Validation checks
+        if (password !== confirmPassword) {
+            await showAlert('Erro', 'As senhas não coincidem', 'error');
+            return;
+        }
+
+        // Check existing email
         const checkResponse = await fetch('http://localhost:3000/usuarios');
         const existingUsers = await checkResponse.json();
         
         if (existingUsers.some(user => user.email === email)) {
-            alert('Este email já está cadastrado');
+            await showAlert('Erro', 'Este email já está cadastrado', 'warning');
             return;
         }
 
-        // Create new user
+        // Register user
         const response = await fetch('http://localhost:3000/usuarios', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 id: Date.now().toString(),
                 nome: name,
                 email: email,
                 senha: password,
-                tipo: 'usuario' // default user type
+                tipo: 'usuario'
             })
         });
 
         if (response.ok) {
-            alert('Cadastro realizado com sucesso!');
-            // Clear form
-            document.getElementById('registerForm').reset();
-            // Flip back to login
-            document.querySelector('.card-flip').classList.remove('flipped');
+            // Show success alert and wait for user confirmation
+            const result = await showAlert('Sucesso!', 'Cadastro realizado com sucesso!', 'success');
+            
+            // Only flip card after user clicks OK
+            if (result.isConfirmed) {
+                document.getElementById('registerForm').reset();
+                document.querySelector('.card-flip').classList.remove('flipped');
+            }
         } else {
             throw new Error('Erro ao registrar usuário');
         }
     } catch (error) {
-        console.error('Erro no registro:', error);
-        alert('Erro ao registrar. Tente novamente.');
+        console.error('Erro:', error);
+        await showAlert('Erro', 'Erro ao registrar. Tente novamente.', 'error');
     }
 });

@@ -226,27 +226,23 @@
       "email": "blob@gmail.com",
       "senha": "blob@123",
       "tipo": "usuario"
+    },
+    {
+      "id": "1749563422237",
+      "nome": "Felipe Fonseca",
+      "email": "felipefonseca2006@gmail.com",
+      "senha": "felipe201",
+      "tipo": "usuario"
+    },
+    {
+      "id": "1749588469711",
+      "nome": "usuario",
+      "email": "usuario@gmail.com",
+      "senha": "1",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
-    {
-      "idavaliacao": 1,
-      "idevento": 1,
-      "comentario": "Evento bom.",
-      "id": "1d17"
-    },
-    {
-      "idavaliacao": 2,
-      "idevento": 2,
-      "comentario": "Evento ruim.",
-      "id": "1488"
-    },
-    {
-      "idavaliacao": 3,
-      "idevento": 1,
-      "comentario": "Evento empolgante.",
-      "id": "982f"
-    },
     {
       "id": "3450",
       "idavaliacao": 1749560261035,
@@ -282,6 +278,105 @@
       "comentario": "a",
       "rating": 5,
       "data": "10/06/2025, 10:22:27"
+    },
+    {
+      "id": "7e2a",
+      "idavaliacao": 1749564187224,
+      "idevento": "3",
+      "nome": "Felipe",
+      "comentario": "Evento bom.",
+      "rating": 4,
+      "data": "10/06/2025, 11:03:07"
+    },
+    {
+      "id": "7742",
+      "idavaliacao": 1749564893056,
+      "idevento": "1",
+      "nome": "Felipe Fonseca",
+      "comentario": "Ótimo evento!",
+      "rating": 5,
+      "data": "10/06/2025, 11:14:53"
+    },
+    {
+      "id": "305a",
+      "idavaliacao": 1749565213899,
+      "idevento": "5",
+      "nome": "Miguel",
+      "comentario": "Terrível.",
+      "rating": 1,
+      "data": "10/06/2025, 11:20:13"
+    },
+    {
+      "id": "00d0",
+      "idavaliacao": 1749565279401,
+      "idevento": "5",
+      "nome": "Manuel",
+      "comentario": "O Miguel mente.",
+      "rating": 4,
+      "data": "10/06/2025, 11:21:19"
+    },
+    {
+      "id": "3b98",
+      "idavaliacao": 1749565483052,
+      "idevento": "5",
+      "nome": "Mateus",
+      "comentario": "O Manuel está errado.",
+      "rating": 4,
+      "data": "10/06/2025, 11:24:43"
+    },
+    {
+      "id": "d090",
+      "idavaliacao": 1749565589104,
+      "idevento": "5",
+      "nome": "Teste",
+      "comentario": "Teste",
+      "rating": 5,
+      "data": "10/06/2025, 11:26:29"
+    },
+    {
+      "id": "3d4c",
+      "idavaliacao": 1749565781579,
+      "idevento": "6",
+      "nome": "Guilherme",
+      "comentario": "Muito interessante!",
+      "rating": 5,
+      "data": "10/06/2025, 11:29:41"
+    },
+    {
+      "id": "4cb9",
+      "idavaliacao": 1749565898248,
+      "idevento": "6",
+      "nome": "teste 2",
+      "comentario": "teste 2",
+      "rating": 2,
+      "data": "10/06/2025, 11:31:38"
+    },
+    {
+      "id": "f3ca",
+      "idavaliacao": 1749566008845,
+      "idevento": "7",
+      "nome": "teste avaliação 3",
+      "comentario": "teste avaliação 3",
+      "rating": 3,
+      "data": "10/06/2025, 11:33:28"
+    },
+    {
+      "id": "5d9d",
+      "idavaliacao": 1749566044602,
+      "idevento": "7",
+      "nome": "teste avaliação 4",
+      "comentario": "teste avaliação 4",
+      "rating": 4,
+      "data": "10/06/2025, 11:34:04"
+    },
+    {
+      "id": "a555",
+      "idavaliacao": 1749566107607,
+      "idevento": "7",
+      "nome": "teste avaliação 5",
+      "comentario": "teste",
+      "rating": 5,
+      "data": "10/06/2025, 11:35:07"
     }
   ],
   "noticias": [

@@ -16,7 +16,7 @@
 
     <header class="hero">
         <div class="container h-100">
-            <div class="row h-100 align-items-center">
+            <div class="row h-100 align-items-end">
                 <div class="col-lg-8 mx-auto text-center animate__animated animate__fadeIn">
                     <h1 class="hero-title mb-4">Avaliações de Eventos</h1>
                     <p class="hero-subtitle mb-5">Confira o que os participantes estão dizendo sobre nossos eventos.</p>
@@ -26,12 +26,16 @@
     </header>
 
     <section class="py-5">
-        <div class="container">
-            <div id="avaliacoes-grid" class="row g-4">
-                <!-- Cards will be dynamically inserted here -->
-            </div>
+    <div class="container">
+        <!-- Barra de pesquisa -->
+        <div class="mb-4">
+            <input id="search-bar" type="text" class="form-control" placeholder="Digite o nome do evento para filtrar as avaliações..." />
         </div>
-    </section>
+        <div id="avaliacoes-grid" class="row g-4">
+            <!-- Cards serão inseridos dinamicamente aqui -->
+        </div>
+    </div>
+</section>
 
     <div id="footerimplementador"></div>
 

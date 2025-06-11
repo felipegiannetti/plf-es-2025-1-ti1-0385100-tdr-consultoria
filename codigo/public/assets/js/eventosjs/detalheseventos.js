@@ -98,15 +98,11 @@ document.getElementById('enviar-avaliacao').addEventListener('click', async () =
             document.getElementById('nome').value = '';
             document.getElementById('comentario').value = '';
             document.querySelectorAll('#estrelas .estrela').forEach(estrela => estrela.classList.remove('selecionada'));
-        } else {
-            alert('Erro ao enviar a avaliação. Tente novamente.');
         }
     } catch (error) {
-        console.error('Erro ao enviar a avaliação:', error);
-        alert('Erro ao enviar a avaliação. Verifique sua conexão e tente novamente.');
+        // Removido o console.error e qualquer mensagem de erro
     }
 });
-
 // Adiciona funcionalidade para selecionar estrelas
 document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
     estrela.addEventListener('click', () => {
