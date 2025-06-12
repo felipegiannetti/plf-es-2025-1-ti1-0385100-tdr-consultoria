@@ -149,24 +149,6 @@
   ],
   "usuarios": [
     {
-      "id": "1",
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com",
-      "respostas": [],
-      "formularioFeito": "sim"
-    },
-    {
-      "id": "2",
-      "login": "admin2",
-      "senha": "1234",
-      "nome": "Administrador do Sistema2",
-      "email": "admin2@abc.com",
-      "respostas": [],
-      "formularioFeito": "sim"
-    },
-    {
       "id": "1749560312233",
       "nome": "Felipe Giannetti",
       "email": "felipegiannettifontenelle@gmail.com",
