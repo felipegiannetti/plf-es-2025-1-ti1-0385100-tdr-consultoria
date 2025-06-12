@@ -1,0 +1,24 @@
+.admin-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ff7a00;
+}
+
+.margemtopo {
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+.text-orange {
+    color: #ff7a00;
+}

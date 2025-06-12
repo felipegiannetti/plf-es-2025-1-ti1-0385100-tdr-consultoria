@@ -81,6 +81,7 @@ function implementNavbar() {
             noticias: 'public/modulos/noticias/noticias.html',
             cadastroNoticias: 'public/modulos/noticias/cadastro-noticias.html', // Changed to match file name
             quizzes: 'public/modulos/formulario/exibiformulario.html',
+            areaAdmin: 'public/modulos/adminarea/areaadmin.html'
         },
         other: {
             home: '../../../index.html',
@@ -89,6 +90,7 @@ function implementNavbar() {
             noticias: '../noticias/noticias.html',
             cadastroNoticias: '../noticias/cadastro-noticias.html', // Changed path and file name
             quizzes: '../formulario/exibiformulario.html',
+            areaAdmin: '../adminarea/areaadmin.html'
         }
     };
 
@@ -119,7 +121,7 @@ function implementNavbar() {
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Gestão de Eventos</a></li>
                 </ul>
             </li>
         ` : `
@@ -140,7 +142,7 @@ function implementNavbar() {
                 <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
                     <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Cadastro de Notícias</a></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Gestão de Notícias</a></li>
                 </ul>
             </li>
         ` : `
@@ -164,7 +166,7 @@ function implementNavbar() {
                 <li><a class="dropdown-item" href="${currentPaths.perfil}">Perfil</a></li>
                 ${isAdminUser ? `
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="${currentPaths.perfil}">Área do administrador</a></li>
+                    <li><a class="dropdown-item" href="${currentPaths.areaAdmin}">Área do administrador</a></li>
                 ` : ''}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#" onclick="logout()">Sair</a></li>
