@@ -359,14 +359,13 @@
       "categoria": "Marketing Digital"
     },
     {
+      "id": "2",
       "titulo": "Subido: Imersão em Gestão de Tráfego",
-      "descricaoBreve": "sssssssss",
-      "textoCompleto": "undefined",
-      "categoria": "",
+      "descricao_breve": "undefined",
+      "texto_completo": "undefined",
+      "categoria": "Tecnologia",
       "imagem": "https://picsum.photos/300/200?random=2",
-      "data": "2025-06-11T22:59:55.798Z",
-      "autor": "Admin",
-      "id": "2"
+      "data": "12/06/2025, 17:04:42"
     },
     {
       "id": "3",
@@ -404,13 +403,13 @@
     {
       "id": "6",
       "titulo": "RH Summit: O Futuro do Trabalho",
-      "descricao": "Tendências em gestão de pessoas e cultura organizacional",
+      "descricao_breve": "undefined",
       "texto_completo": "O RH Summit 2025 abordará temas cruciais como trabalho híbrido, well-being corporativo e desenvolvimento de talentos. Com palestrantes internacionais e workshops práticos sobre as novas demandas do mercado de trabalho.",
-      "imagem": "https://picsum.photos/300/200?random=6",
-      "data": "2025-12-03",
-      "hora": "13:00",
-      "publicoAlvo": "Profissionais de RH e gestores",
-      "categoria": "Recursos Humanos"
+      "categoria": "",
+      "imagem": "https://faculdadeimes.org.br/wp-content/uploads/2023/06/36-atencao-area-de-teste.jpg",
+      "data": "2025-06-12T20:10:30.251Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233"
     },
     {
       "id": "7",
@@ -431,6 +430,28 @@
       "categoria": "Marketing Digital",
       "imagem": "http://st.depositphotos.com/1005920/4362/i/950/depositphotos_43629535-stock-photo-test-icon.jpg",
       "data": "2025-06-10"
+    },
+    {
+      "id": "1749759011810",
+      "titulo": "Teste",
+      "descricao_breve": "adasd",
+      "texto_completo": "asdas",
+      "categoria": "Tecnologia",
+      "imagem": "http://st.depositphotos.com/1005920/4362/i/950/depositphotos_43629535-stock-photo-test-icon.jpg",
+      "data": "2025-06-12T20:10:11.810Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1749759521746",
+      "titulo": "asdfsa",
+      "descricao_breve": "asfsaf",
+      "texto_completo": "asdfasdf",
+      "categoria": "Tecnologia",
+      "imagem": "https://faculdadeimes.org.br/wp-content/uploads/2023/06/36-atencao-area-de-teste.jpg",
+      "data": "2025-06-12T20:18:41.746Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233"
     }
   ]
 }
