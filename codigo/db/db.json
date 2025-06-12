@@ -114,7 +114,7 @@
       "preco": 10,
       "local": "teste",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "status": "inativo",
+      "status": "ativo",
       "imagem": "public/assets/img/eventos/teste.jpg"
     },
     {
@@ -188,6 +188,27 @@
       "nome": "Cesar Sokoli",
       "email": "cesarsokolid@gmail.com",
       "senha": "cesinha10",
+      "tipo": "usuario"
+    },
+    {
+      "id": "1749760543701",
+      "nome": "pedro",
+      "email": "pedro@gmail.com",
+      "senha": "pedro",
+      "tipo": "usuario"
+    },
+    {
+      "id": "1749760558990",
+      "nome": "fthfgthj",
+      "email": "sadfsad@gmail.com",
+      "senha": "pedro",
+      "tipo": "usuario"
+    },
+    {
+      "id": "1749760573325",
+      "nome": "usuariousuarios",
+      "email": "asdfsadfsadfasdfsa@gmail.com",
+      "senha": "sadfsadf",
       "tipo": "usuario"
     }
   ],

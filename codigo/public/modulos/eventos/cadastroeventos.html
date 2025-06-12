@@ -78,39 +78,58 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Salvar Evento</button>
-            <button type="button" class="btn btn-secondary" onclick="clearForm()">Novo Evento</button>
+            <button type="button" class="btn btn-secondary" onclick="clearForm()">Limpar</button>
         </form>
 
-        <!-- Tabela de eventos ativos -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Título</th>
-              <th>Data</th>
-              <th>Categoria</th>
-              <th>Vagas</th>
-              <th>Preço</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="eventsTable"></tbody>
-        </table>
+        <!-- Active Events Section -->
+        <div>
+            <h3 class="table-title">
+                <i class="fas fa-calendar-check me-2"></i>
+                Eventos Ativos
+            </h3>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Data</th>
+                            <th>Categoria</th>
+                            <th>Vagas</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activeEventsTable">
+                        <!-- ...active events... -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <!-- Tabela de eventos inativos -->
-        <h4 class="mt-5">Eventos Inativos</h4>
-        <table class="table table-secondary">
-          <thead>
-            <tr>
-              <th>Título</th>
-              <th>Data</th>
-              <th>Categoria</th>
-              <th>Vagas</th>
-              <th>Preço</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="inactiveEventsTable"></tbody>
-        </table>
+        <!-- Inactive Events Section -->
+        <div>
+            <h3 class="table-title">
+                <i class="fas fa-calendar-times me-2"></i>
+                Eventos Inativos
+            </h3>
+            <div class="table-container">
+                <table class="table table-secondary">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Data</th>
+                            <th>Categoria</th>
+                            <th>Vagas</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inactiveEventsTable">
+                        <!-- ...inactive events... -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div id="footerimplementador"></div>
