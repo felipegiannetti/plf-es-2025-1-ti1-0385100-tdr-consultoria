@@ -16,15 +16,15 @@
     {
       "id": "2",
       "titulo": "Palestra sobre Liderança",
-      "data": "2025-08-10T19:00:00.000Z",
+      "data": "2025-08-10T22:00",
       "descricao": "Palestra sobre desenvolvimento de habilidades de liderança no ambiente corporativo moderno.",
       "categoria": "Palestra",
-      "local": "Hotel Business Center - BH",
-      "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/palestra-empresarial.webp",
       "vagas": 100,
       "preco": 80,
-      "status": "ativo"
+      "local": "Hotel Business Center - BH",
+      "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
+      "status": "ativo",
+      "imagem": "public/assets/img/eventos/palestra-empresarial.webp"
     },
     {
       "id": "3",
@@ -135,6 +135,13 @@
     {
       "id": "1749683145638",
       "idEvento": "2",
+      "idUsuario": [
+        "1"
+      ]
+    },
+    {
+      "id": "1749729174591",
+      "idEvento": "1",
       "idUsuario": [
         "1"
       ]
@@ -346,6 +353,15 @@
       "rating": 4,
       "data": "11/06/2025, 16:48:02",
       "id": "JfqOAIF"
+    },
+    {
+      "id": "b45d",
+      "idavaliacao": 1749729165147,
+      "idevento": "1",
+      "nome": "Felipe",
+      "comentario": "muito ruim",
+      "rating": 4,
+      "data": "12/06/2025, 08:52:45"
     }
   ],
   "noticias": [
