@@ -218,9 +218,8 @@ document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
 document.addEventListener('DOMContentLoaded', () => {
     carregarEventos();
     carregarDetalhesEvento();
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+    // Star rating functionality
     const estrelas = document.querySelectorAll(".estrela");
     const comentarioInput = document.getElementById("comentario");
     const enviarBtn = document.getElementById("enviar-avaliacao");
@@ -230,17 +229,17 @@ document.addEventListener("DOMContentLoaded", () => {
         estrela.addEventListener("click", () => {
             notaSelecionada = parseInt(estrela.getAttribute("data-value"));
 
-            // Resetar estrelas
+            // Reset stars
             estrelas.forEach(e => e.classList.remove("selecionada"));
 
-            // Marcar estrelas até a selecionada
+            // Mark stars up to selected
             for (let i = 0; i < notaSelecionada; i++) {
                 estrelas[i].classList.add("selecionada");
             }
         });
     });
 
-    enviarBtn.addEventListener("click", () => {
+    enviarBtn?.addEventListener("click", () => {
         const comentario = comentarioInput.value.trim();
 
         if (notaSelecionada === 0 || comentario === "") {
@@ -255,8 +254,5 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         console.log("Avaliação enviada:", avaliacao);
-
-        // Aqui depois faremos o POST no db.json com JSON Server.
-        // Por enquanto só exibimos no console.
     });
 });
