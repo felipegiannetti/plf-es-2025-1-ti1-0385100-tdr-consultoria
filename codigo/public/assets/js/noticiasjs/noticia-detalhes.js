@@ -37,37 +37,6 @@ async function carregarNoticia() {
     }
 }
 
-async function excluirNoticia() {
-    if (!confirm('Tem certeza que deseja excluir esta notícia?')) return;
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const noticiaId = urlParams.get('id');
-
-    try {
-        const response = await fetch(`${API_URL}/noticias/${noticiaId}`, {
-            method: 'DELETE'
-        });
-
-        if (!response.ok) throw new Error('Erro ao excluir notícia');
-
-        alert('Notícia excluída com sucesso!');
-        window.location.href = 'noticias.html';
-
-    } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao excluir notícia: ' + error.message);
-    }
-}
-
-function editarNoticia() {
-    if (!noticiaAtual) return;
-    
-    // Store the current news data
-    localStorage.setItem('editando_noticia', JSON.stringify(noticiaAtual));
-    // Redirect to edit page
-    window.location.href = `editar-noticia.html?id=${noticiaAtual.id}`;
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     carregarNoticia();
     checkAdminAccess(); // Make sure only admins can see edit/delete buttons
