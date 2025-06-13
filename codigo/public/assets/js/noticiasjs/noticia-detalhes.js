@@ -14,15 +14,18 @@ async function carregarNoticia() {
         document.getElementById('noticia-detalhada').innerHTML = `
             <article class="noticia-content">
                 <h1 class="noticia-titulo">${noticiaAtual.titulo}</h1>
+                <p class="noticias-descricaobreve">${noticiaAtual.descricao_breve || ''}</p>
                 <div class="noticia-meta">
                     <span><i class="far fa-calendar"></i> ${new Date(noticiaAtual.data).toLocaleDateString('pt-BR')}</span>
-                    <span><i class="far fa-user"></i> ${noticiaAtual.autor}</span>
+                    <span><i class="far fa-user"></i> ${noticiaAtual.autor || 'Anônimo'}</span>
                 </div>
                 <img src="http://localhost:4001/${noticiaAtual.imagem}" alt="${noticiaAtual.titulo}" class="noticia-imagem">
+
+                <hr>
+
                 <div class="noticia-texto">
-                    <p>${noticiaAtual.descricaoBreve}</p>
                     <div class="texto-completo">
-                        ${noticiaAtual.textoCompleto}
+                        ${noticiaAtual.texto_completo || ''}
                     </div>
                 </div>
             </article>
@@ -39,5 +42,5 @@ async function carregarNoticia() {
 
 document.addEventListener('DOMContentLoaded', function() {
     carregarNoticia();
-    checkAdminAccess(); // Make sure only admins can see edit/delete buttons
+    if (typeof checkAdminAccess === 'function') checkAdminAccess();
 });

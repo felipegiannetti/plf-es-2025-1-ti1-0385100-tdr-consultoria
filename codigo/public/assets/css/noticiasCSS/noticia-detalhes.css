@@ -27,9 +27,10 @@ body {
 }
 
 .noticia-titulo {
+    text-align: center;
     font-size: 2.5rem;
+    font-weight: 800;
     color: #333;
-    margin: 1rem 0;
     font-family: 'Anton', sans-serif;
     line-height: 1.2;
     word-wrap: break-word;
@@ -50,11 +51,13 @@ body {
 }
 
 .noticia-imagem {
+    display: block;
+    margin: 2rem auto; /* centraliza horizontalmente e mantém espaçamento vertical */
     width: 100%;
+    max-width: 800px; /* limite opcional para telas grandes */
     max-height: 500px;
     object-fit: cover;
     border-radius: 8px;
-    margin: 2rem 0;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -66,21 +69,38 @@ body {
     text-align: justify;
 }
 
+.noticias-descricaobreve {
+    font-size: 1.25rem;       /* Texto maior */
+    font-weight: 400;         /* Semibold para destaque */
+    color: #333;              /* Cor mais escura para legibilidade */
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
 .noticia-tema {
     display: inline-block;
     padding: 0.5rem 1rem;
     background-color: #FF8C00;
     color: white;
     border-radius: 20px;
-    font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
 .noticia-subtitulo {
-    font-size: 1.3rem;
+    font-size: 2.0rem;
     color: #666;
     margin-bottom: 2rem;
     font-style: italic;
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    background: linear-gradient(to right, #ff7a00, #ff4800);
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 2px;
 }
 
 .voltar-btn {
