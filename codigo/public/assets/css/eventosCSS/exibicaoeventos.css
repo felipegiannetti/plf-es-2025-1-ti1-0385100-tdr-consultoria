@@ -255,6 +255,24 @@ hr {
     color: #ccc;
 }
 
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-body > div:first-child {
+    flex-grow: 1;
+}
+
+/* Garante que os botões fiquem colados no fundo */
+.card-body .text-center,
+.card-body a.btn {
+    margin-top: auto !important;
+}
+
+
 .event-details {
     color: #aaa;
 }
