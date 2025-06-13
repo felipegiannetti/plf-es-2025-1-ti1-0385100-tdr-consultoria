@@ -8,7 +8,7 @@
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/evento-gestao-empresarial.jpg",
+      "imagem": "assets/img/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
       "preco": 300,
       "status": "ativo"
@@ -24,7 +24,7 @@
       "local": "Hotel Business Center - BH",
       "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
       "status": "ativo",
-      "imagem": "public/assets/img/eventos/palestra-empresarial.webp"
+      "imagem": "assets/img/eventos/palestra-empresarial.webp"
     },
     {
       "id": "3",
@@ -34,7 +34,7 @@
       "categoria": "Evento",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Centro+de+Convencoes+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/hotmart-fire.jpeg",
+      "imagem": "assets/img/eventos/hotmart-fire.jpeg",
       "vagas": 7000,
       "preco": 2999.99,
       "status": "ativo"
@@ -47,7 +47,7 @@
       "categoria": "Workshop",
       "local": "San Pedro Valley - Savassi, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=San+Pedro+Valley+Savassi+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/financas-startups.jpg",
+      "imagem": "assets/img/eventos/financas-startups.jpg",
       "vagas": 40,
       "preco": 180,
       "status": "ativo"
@@ -60,7 +60,7 @@
       "categoria": "Seminário",
       "local": "CDL-BH - Centro, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/esg-empresas.png",
+      "imagem": "assets/img/eventos/esg-empresas.png",
       "vagas": 75,
       "preco": 220,
       "status": "ativo"
@@ -73,7 +73,7 @@
       "categoria": "Curso",
       "local": "Le Monde Hub - Funcionários, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=Le+Monde+Hub+Funcionarios+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/design-thinking.jpg",
+      "imagem": "assets/img/eventos/design-thinking.jpg",
       "vagas": 35,
       "preco": 280,
       "status": "ativo"
@@ -89,46 +89,33 @@
       "local": "FIEMG - Santa Efigênia, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
       "status": "ativo",
-      "imagem": "public/assets/img/eventos/vendas-b2b.jpg"
+      "imagem": "assets/img/eventos/vendas-b2b.jpg"
     },
     {
-      "id": "1749506214923",
+      "id": "1749776036358",
       "titulo": "Teste",
-      "data": "2025-06-20T00:56",
-      "descricao": "Teste cadastro de usuarios evento",
-      "categoria": "Workshop",
-      "vagas": 100000,
-      "preco": 50,
-      "local": "Teste",
-      "localmapa": "https://maps.app.goo.gl/6eSsbXC9iyPevqM67",
-      "status": "ativo",
-      "imagem": "public/assets/img/eventos/teste.jpg"
-    },
-    {
-      "id": "6dfd",
-      "titulo": "Teste",
-      "data": "2026-01-16T19:00",
+      "data": "2025-07-10T19:00:00.000Z",
       "descricao": "teste",
       "categoria": "Workshop",
+      "local": "teste",
+      "localmapa": "https://www.google.com/maps/@-19.913972,-43.9669384,3a,72.2y,75.89h,95.56t/data=!3m7!1e1!3m5!1sdA9xeluYN4XnLnC2h0DpfQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.560000000000002%26panoid%3DdA9xeluYN4XnLnC2h0DpfQ%26yaw%3D75.89!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
+      "imagem": "",
       "vagas": 10,
       "preco": 10,
-      "local": "teste",
-      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "status": "ativo",
-      "imagem": "public/assets/img/eventos/teste.jpg"
+      "status": "inativo"
     },
     {
-      "id": "1749651156479",
-      "titulo": "sdfs",
-      "data": "2025-06-11T11:11",
-      "descricao": "apdksoifjiusdnf",
-      "categoria": "Palestra",
-      "vagas": 500,
-      "preco": 10,
-      "local": "lakjmsdnf",
+      "id": "1749777137767",
+      "titulo": "tes",
+      "data": "2026-06-12T19:00:00.000Z",
+      "descricao": "teste",
+      "categoria": "Workshop",
+      "local": "teste",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "status": "inativo",
-      "imagem": "public/assets/img/eventos/teste.jpg"
+      "imagem": "assets/img/eventos/1749777137739-teste.jpg",
+      "vagas": 10,
+      "preco": 10,
+      "status": "ativo"
     }
   ],
   "cadastroDeEventos": [
