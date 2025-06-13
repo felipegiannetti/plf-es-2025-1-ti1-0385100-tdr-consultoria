@@ -431,33 +431,13 @@
       "categoria": "Tecnologia"
     },
     {
-      "id": "b0c9",
+      "id": "1749780802635",
       "titulo": "Teste",
-      "descricao": "teste",
-      "texto_completo": "teste",
-      "categoria": "Marketing Digital",
-      "imagem": "http://st.depositphotos.com/1005920/4362/i/950/depositphotos_43629535-stock-photo-test-icon.jpg",
-      "data": "2025-06-10"
-    },
-    {
-      "id": "1749759011810",
-      "titulo": "Teste",
-      "descricao_breve": "adasd",
-      "texto_completo": "asdas",
+      "descricao_breve": "Teste upload",
+      "texto_completo": "UPLOAD",
       "categoria": "Tecnologia",
-      "imagem": "http://st.depositphotos.com/1005920/4362/i/950/depositphotos_43629535-stock-photo-test-icon.jpg",
-      "data": "2025-06-12T20:10:11.810Z",
-      "autor": "Felipe Giannetti",
-      "autorId": "1749560312233"
-    },
-    {
-      "id": "1749759521746",
-      "titulo": "asdfsa",
-      "descricao_breve": "asfsaf",
-      "texto_completo": "asdfasdf",
-      "categoria": "Tecnologia",
-      "imagem": "https://faculdadeimes.org.br/wp-content/uploads/2023/06/36-atencao-area-de-teste.jpg",
-      "data": "2025-06-12T20:18:41.746Z",
+      "imagem": "assets/img/noticias/1749780802625-teste.jpg",
+      "data": "2025-06-13T02:13:22.635Z",
       "autor": "Felipe Giannetti",
       "autorId": "1749560312233"
     }

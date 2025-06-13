@@ -123,7 +123,7 @@ body .margemtopo {
 .form-control {
     background-color: rgba(255, 255, 255, 0.8);
     border: 2px solid #ff8c00;
-    color: white;
+    color: rgb(0, 0, 0);
     transition: all 0.3s ease;
     border-radius: 8px;
     padding: 12px;
@@ -184,8 +184,7 @@ h2 {
 .form-label {
     color: #ff8c00;
     font-weight: 500;
-    font-weight: 500;
-    color: #555;
+    
 }
 
 .form-control, .form-select {
@@ -298,4 +297,28 @@ h2 {
     .card {
         margin-bottom: 20px;
     }
+}
+
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 0.95rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    color: #495057;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    background-color: #e9ecef;
+    border-color: #80bdff;
+}
+
+input[type="file"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
 }

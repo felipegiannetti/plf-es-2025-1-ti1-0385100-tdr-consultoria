@@ -15,10 +15,10 @@ async function carregarNoticia() {
             <article class="noticia-content">
                 <h1 class="noticia-titulo">${noticiaAtual.titulo}</h1>
                 <div class="noticia-meta">
-                    <span><i class="far fa-calendar"></i> ${new Date(noticiaAtual.data).toLocaleDateString()}</span>
+                    <span><i class="far fa-calendar"></i> ${new Date(noticiaAtual.data).toLocaleDateString('pt-BR')}</span>
                     <span><i class="far fa-user"></i> ${noticiaAtual.autor}</span>
                 </div>
-                <img src="${noticiaAtual.imagem}" alt="${noticiaAtual.titulo}" class="noticia-imagem">
+                <img src="http://localhost:4001/${noticiaAtual.imagem}" alt="${noticiaAtual.titulo}" class="noticia-imagem">
                 <div class="noticia-texto">
                     <p>${noticiaAtual.descricaoBreve}</p>
                     <div class="texto-completo">
