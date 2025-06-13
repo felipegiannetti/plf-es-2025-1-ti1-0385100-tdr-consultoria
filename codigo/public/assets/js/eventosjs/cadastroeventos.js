@@ -30,7 +30,7 @@ async function handleSubmit(e) {
         categoria: document.getElementById('categoria').value,
         local: document.getElementById('local').value,
         localmapa: document.getElementById('localmapa').value,
-        imagem: imageUrl,
+        imagem: imageUrl || document.getElementById('imagem').getAttribute('data-current') || '',
         vagas: parseInt(document.getElementById('vagas').value),
         preco: parseFloat(document.getElementById('preco').value),
         status: document.getElementById('status').value
@@ -47,9 +47,7 @@ async function handleSubmit(e) {
             body: JSON.stringify(eventData)
         });
 
-        if (!response.ok) {
-            throw new Error(`Erro HTTP: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
         alert(isEditing ? 'Evento atualizado com sucesso!' : 'Evento criado com sucesso!');
         clearForm();
@@ -60,7 +58,7 @@ async function handleSubmit(e) {
     }
 }
 
-// Upload de imagem com log
+// Upload de imagem
 async function uploadImagem(file) {
     const formData = new FormData();
     formData.append('imagem', file);
@@ -71,9 +69,7 @@ async function uploadImagem(file) {
             body: formData
         });
 
-        if (!response.ok) {
-            throw new Error(`Erro no upload da imagem: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Erro no upload da imagem: ${response.status}`);
 
         const data = await response.json();
         console.log('Imagem enviada com sucesso:', data.imageUrl);
@@ -90,56 +86,42 @@ async function loadEvents() {
         const response = await fetch(`${API_URL}/eventos`);
         const eventos = await response.json();
 
-        const activeEvents = eventos.filter(event => event.status === 'ativo');
-        const inactiveEvents = eventos.filter(event => event.status === 'inativo');
+        const activeEvents = eventos.filter(e => e.status === 'ativo');
+        const inactiveEvents = eventos.filter(e => e.status === 'inativo');
 
-        const activeTableBody = document.getElementById('activeEventsTable');
-        activeTableBody.innerHTML = activeEvents.map(event => `
-            <tr>
-                <td>${event.titulo}</td>
-                <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
-                <td>${event.categoria}</td>
-                <td>${event.vagas}</td>
-                <td>R$ ${parseFloat(event.preco).toFixed(2)}</td>
-                <td>
-                    <img src="http://localhost:4000/${event.imagem}" alt="${event.titulo}" style="max-width: 80px;"><br>
-                    <div class="btn-group mt-1" role="group">
-                        <button class="btn btn-sm btn-primary" onclick="editEvent('${event.id}')"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger ms-2" onclick="deleteEvent('${event.id}')"><i class="fas fa-trash"></i></button>
-                        <button class="btn btn-sm btn-warning ms-2" onclick="toggleEventStatus('${event.id}')"><i class="fas fa-power-off"></i></button>
-                    </div>
-                </td>
-            </tr>
-        `).join('');
-
-        const inactiveTableBody = document.getElementById('inactiveEventsTable');
-        inactiveTableBody.innerHTML = inactiveEvents.map(event => `
-            <tr>
-                <td>${event.titulo}</td>
-                <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
-                <td>${event.categoria}</td>
-                <td>${event.vagas}</td>
-                <td>R$ ${parseFloat(event.preco).toFixed(2)}</td>
-                <td>
-                    <img src="http://localhost:4000/${event.imagem}" alt="${event.titulo}" style="max-width: 80px;"><br>
-                    <div class="btn-group mt-1" role="group">
-                        <button class="btn btn-sm btn-primary" onclick="editEvent('${event.id}')"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-sm btn-danger ms-2" onclick="deleteEvent('${event.id}')"><i class="fas fa-trash"></i></button>
-                        <button class="btn btn-sm btn-success ms-2" onclick="toggleEventStatus('${event.id}')"><i class="fas fa-power-off"></i></button>
-                    </div>
-                </td>
-            </tr>
-        `).join('');
+        renderTable('activeEventsTable', activeEvents);
+        renderTable('inactiveEventsTable', inactiveEvents, true);
     } catch (error) {
         console.error('Erro ao carregar eventos:', error);
     }
 }
 
-// Alterar status ativo/inativo
+function renderTable(tableId, events, isInactive = false) {
+    const tbody = document.getElementById(tableId);
+    tbody.innerHTML = events.map(event => `
+        <tr>
+            <td>${event.titulo}</td>
+            <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
+            <td>${event.categoria}</td>
+            <td>${event.vagas}</td>
+            <td>R$ ${parseFloat(event.preco).toFixed(2)}</td>
+            <td>
+                <img src="http://localhost:4000/${event.imagem}" alt="${event.titulo}" style="max-width: 80px;"><br>
+                <div class="btn-group mt-1" role="group">
+                    <button class="btn btn-sm btn-primary" onclick="editEvent('${event.id}')"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger ms-2" onclick="deleteEvent('${event.id}')"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-sm ${isInactive ? 'btn-success' : 'btn-warning'} ms-2" onclick="toggleEventStatus('${event.id}')"><i class="fas fa-power-off"></i></button>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+}
+
+// Alternar status do evento
 async function toggleEventStatus(id) {
     try {
-        const response = await fetch(`${API_URL}/eventos/${id}`);
-        const event = await response.json();
+        const res = await fetch(`${API_URL}/eventos/${id}`);
+        const event = await res.json();
         event.status = event.status === 'ativo' ? 'inativo' : 'ativo';
 
         await fetch(`${API_URL}/eventos/${id}`, {
@@ -170,6 +152,15 @@ async function editEvent(id) {
         document.getElementById('local').value = event.local;
         document.getElementById('localmapa').value = event.localmapa;
         document.getElementById('status').value = event.status;
+
+        // Preservar imagem
+        document.getElementById('imagem').value = '';
+        document.getElementById('imagem').setAttribute('data-current', event.imagem);
+
+        // Exibir nome da imagem atual
+        const imagemInfo = document.getElementById('imagem-info');
+        const nomeImagem = event.imagem.split('/').pop();
+        imagemInfo.textContent = `Imagem atual: ${nomeImagem}`;
     } catch (error) {
         console.error('Erro ao carregar evento:', error);
     }
@@ -199,6 +190,8 @@ function clearForm() {
     document.getElementById('local').value = '';
     document.getElementById('localmapa').value = '';
     document.getElementById('imagem').value = '';
+    document.getElementById('imagem').removeAttribute('data-current');
+    document.getElementById('imagem-info').textContent = '';
     document.getElementById('status').value = 'ativo';
 
     const inputs = document.querySelectorAll('#eventForm .form-control');

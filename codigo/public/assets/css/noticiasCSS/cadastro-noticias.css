@@ -12,22 +12,6 @@ body {
     position: relative;
 }
 
-.floating-button {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #ff8c00;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    opacity: 0.5;
-}
-
 body {
     overflow-x: hidden;
     background-color: #f8f9fa;

@@ -3,7 +3,7 @@
     {
       "id": "1",
       "titulo": "Workshop de Gestão Empresarial",
-      "data": "2025-08-21T10:00:00.000Z",
+      "data": "2025-08-21T16:00:00.000Z",
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
@@ -359,10 +359,21 @@
       "id": "1749780802635",
       "titulo": "Teste",
       "descricao_breve": "Teste upload",
-      "texto_completo": "UPLOAD",
+      "texto_completo": "UPLOAD ",
       "categoria": "Tecnologia",
-      "imagem": "assets/img/noticias/1749780802625-teste.jpg",
-      "data": "2025-06-13T02:13:22.635Z",
+      "imagem": "assets/img/noticias/1749782279690-teste.jpg",
+      "data": "2025-06-13T02:38:20.510Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1749782463145",
+      "titulo": "teste2",
+      "descricao_breve": "UPLOAD TESTE",
+      "texto_completo": "UPLOAD TESTE AGAIN",
+      "categoria": "Tecnologia",
+      "imagem": "assets/img/noticias/1749782463155-teste.jpg",
+      "data": "2025-06-13T02:41:03.166Z",
       "autor": "Felipe Giannetti",
       "autorId": "1749560312233"
     }
