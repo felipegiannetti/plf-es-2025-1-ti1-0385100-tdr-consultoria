@@ -67,12 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="postcard__bar"></div>
                 <div class="postcard__preview-txt">${evento.descricao}</div>
                 <ul class="postcard__tagbox">
-                    <li class="tag__item play green" onclick="window.location.href='${detailsPath}?id=${evento.id}&idUsuario=${usuarioId}'">
-                        <button class="tag-button">
-                            <i class="fas fa-user-plus mr-2"></i>
-                            <span class="me-2"></span>Inscrever-se
-                        </button>
-                    </li>
                     <li class="tag__item">
                         <button class="tag-button">
                             <i class="fas fa-tag mr-2"></i>

@@ -269,7 +269,7 @@ hr {
 /* Garante que os botões fiquem colados no fundo */
 .card-body .text-center,
 .card-body a.btn {
-    margin-top: auto !important;
+    margin-top: auto;
 }
 
 
