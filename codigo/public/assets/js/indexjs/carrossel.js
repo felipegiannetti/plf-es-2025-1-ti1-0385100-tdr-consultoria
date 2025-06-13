@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             <h5>${event.titulo}</h5>
             <p>Data: ${new Date(event.data).toLocaleDateString('pt-BR')}</p>
             <p>Local: ${event.local}</p>
-            <a href="public/modulos/eventos/exibicaoeventos.html" class="btn btn-primary">Saiba mais</a>
+            <a href="public/modulos/eventos/exibicaoeventos.html" class="btn btn-geralzao btn-primary">Saiba mais</a>
           </div>
         </div>
         `).join('');
