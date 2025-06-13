@@ -120,15 +120,15 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // Create carousel items
         carouselInner.innerHTML = events.map((event, index) => `
-            <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                <img src="${event.imagem}" class="d-block w-100" alt="${event.titulo}">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>${event.titulo}</h5>
-                    <p>Data: ${new Date(event.data).toLocaleDateString('pt-BR')}</p>
-                    <p>Local: ${event.local}</p>
-                    <a href="public/modulos/eventos/exibicaoeventos.html" class="btn btn-primary">Saiba mais</a>
-                </div>
-            </div>
+        <div class="carousel-item ${index === 0 ? 'active' : ''}">
+          <img src="http://localhost:4000/${event.imagem}" class="d-block w-100" alt="${event.titulo}">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>${event.titulo}</h5>
+            <p>Data: ${new Date(event.data).toLocaleDateString('pt-BR')}</p>
+            <p>Local: ${event.local}</p>
+            <a href="public/modulos/eventos/exibicaoeventos.html" class="btn btn-primary">Saiba mais</a>
+          </div>
+        </div>
         `).join('');
 
         // Create carousel indicators
