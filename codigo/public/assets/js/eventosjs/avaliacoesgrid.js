@@ -64,8 +64,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <p class="card-text">${avaliacao.comentario}</p>
                         <small class="text-muted">Evento: ${evento ? evento.titulo : "Evento não encontrado"}</small>
                         <div class="botoes-edicao" style="display:none; position:absolute; top:10px; right:10px; z-index:2;">
-                            <button class="btn btn-sm btn-light btn-editar" title="Editar"><i class="fas fa-pen"></i></button>
-                            <button class="btn btn-sm btn-light btn-excluir" title="Excluir"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-sm btn-light btn-editar" title="Editar">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-sm btn-light btn-excluir" title="Excluir">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
