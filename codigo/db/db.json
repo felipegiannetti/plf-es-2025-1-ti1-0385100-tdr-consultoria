@@ -136,9 +136,9 @@
   ],
   "usuarios": [
     {
-      "nome": "Felipe Giannetti",
+      "nome": "Felipe Giannetti Fontenelle",
       "email": "felipegiannettifontenelle@gmail.com",
-      "senha": "123",
+      "senha": "",
       "tipo": "admin",
       "id": "1749560312233"
     },
@@ -169,13 +169,6 @@
       "senha": "",
       "tipo": "admin",
       "id": "1749587981878"
-    },
-    {
-      "id": "1750106534388",
-      "nome": "usuarioteste@gmail.com",
-      "email": "usuarioteste@gmail.com",
-      "senha": "123",
-      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
