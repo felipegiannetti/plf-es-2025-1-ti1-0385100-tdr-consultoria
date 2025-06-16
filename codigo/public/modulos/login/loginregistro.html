@@ -13,48 +13,53 @@
     <div id="navbarimplementador"></div>
 
     <div class="container margens">
-        <p class="text-white">BUGS DA PÁGINA: Alerta de cadastro está aparecendo por milésimos e</br> some antes de clicar em OK</p>
         <div class="card-container">
             <div class="card-flip">
+                <!-- Card de Login -->
                 <div class="card front">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Login</h2>
-                        <form id="loginForm" onsubmit="return false;">
+                        <form id="loginForm">
                             <div class="mb-3">
                                 <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 password-input-container">
                                 <input type="password" class="form-control" id="loginPassword" placeholder="Senha" required>
+                                <i class="fas fa-eye password-toggle" data-target="loginPassword"></i>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                            <button type="button" class="btn btn-primary w-100" onclick="handleLogin()">Entrar</button>
                             <p class="text-center mt-3">
                                 Não tem uma conta? 
-                                <a href="#" class="flip-link">Registre-se</a>
+                                <a href="#" class="flip-link" onclick="flipCard(event)">Registre-se</a>
                             </p>
                         </form>
                     </div>
                 </div>
                 
+                <!-- Card de Registro -->
                 <div class="card back">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Registro</h2>
-                        <form id="registerForm" onsubmit="return false;">
+                        <form id="registerForm">
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="registerName" placeholder="Nome completo" required>
                             </div>
                             <div class="mb-3">
                                 <input type="email" class="form-control" id="registerEmail" placeholder="Email" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 password-input-container">
                                 <input type="password" class="form-control" id="registerPassword" placeholder="Senha" required>
+                                <i class="fas fa-eye password-toggle" data-target="registerPassword"></i>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 password-input-container">
                                 <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a senha" required>
+                                <i class="fas fa-eye password-toggle" data-target="confirmPassword"></i>
+                                <i class="password-match-icon" id="passwordMatchIcon"></i>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Registrar</button>
+                            <button type="button" class="btn btn-primary w-100" onclick="handleRegister()">Registrar</button>
                             <p class="text-center mt-3">
                                 Já tem uma conta? 
-                                <a href="#" class="flip-link">Faça login</a>
+                                <a href="#" class="flip-link" onclick="flipCard(event)">Faça login</a>
                             </p>
                         </form>
                     </div>
