@@ -171,66 +171,10 @@
       "id": "1749587981878"
     },
     {
-      "id": "1750104515734",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.com.br",
+      "id": "1750106534388",
+      "nome": "usuarioteste@gmail.com",
+      "email": "usuarioteste@gmail.com",
       "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750104591263",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.com.rb.r",
-      "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750104687834",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.comsadfsa",
-      "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750104687834",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.comsadfsa",
-      "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750104931089",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.comfadsfgsadf",
-      "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750105047183",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.comasfdgsadfasdf",
-      "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750105140150",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.comsadfasdf",
-      "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750105386586",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.comsadfsadf",
-      "senha": "123",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750105588817",
-      "nome": "usuario",
-      "email": "tudoboxgiannetti@gmail.comsadfsadfsa",
-      "senha": "asd",
       "tipo": "usuario"
     }
   ],

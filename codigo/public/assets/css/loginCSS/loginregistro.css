@@ -134,5 +134,91 @@
     box-shadow: 0 0 15px #ff9a2e, 0 0 25px #ff9a2e;
 }
 
+/* Estilos para o olho da senha */
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: #ff7a00;
+}
+
+.password-match-icon {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.password-match-icon.correct {
+    color: #28a745;
+    animation: bounceIn 0.5s ease;
+}
+
+.password-match-icon.incorrect {
+    color: #dc3545;
+    animation: shake 0.5s ease;
+}
+
+/* Animação de sucesso (bounce) */
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-50%) scale(0);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Animação de erro (shake) */
+@keyframes shake {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0);
+    }
+    25% {
+        transform: translateY(-50%) translateX(-5px);
+    }
+    75% {
+        transform: translateY(-50%) translateX(5px);
+    }
+}
+
+/* Ajuste do padding dos inputs com ícones */
+.password-input-container .form-control {
+    padding-right: 45px;
+}
+
+.password-input-container:has(.password-match-icon) .form-control {
+    padding-right: 80px;
+}
+
+/* Animação de feedback visual nos campos */
+.form-control.success {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
 
 
