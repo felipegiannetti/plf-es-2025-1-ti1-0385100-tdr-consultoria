@@ -317,28 +317,20 @@
       "data": "12/06/2025, 08:52:45"
     },
     {
-      "id": "6ea6",
-      "eventoId": 1,
+      "id": "f457",
+      "idevento": 1,
       "nome": "Felipe Fonseca",
-      "nota": 5,
-      "comentario": "a",
-      "data": "2025-06-17T11:32:39.530Z"
+      "rating": 3,
+      "comentario": "TESTE",
+      "data": "2025-06-17T11:48:04.129Z"
     },
     {
-      "id": "12a3",
-      "eventoId": 2,
+      "id": "9384",
+      "idevento": 1,
       "nome": "Felipe Fonseca",
-      "nota": 5,
-      "comentario": "b",
-      "data": "2025-06-17T11:36:04.462Z"
-    },
-    {
-      "id": "00d8",
-      "eventoId": 2,
-      "nome": "Felipe Fonseca",
-      "nota": 5,
-      "comentario": "b",
-      "data": "2025-06-17T11:36:56.603Z"
+      "rating": 3,
+      "comentario": "Olá! Eu estou usando Whatsapp.",
+      "data": "2025-06-17T11:52:40.202Z"
     }
   ],
   "noticias": [

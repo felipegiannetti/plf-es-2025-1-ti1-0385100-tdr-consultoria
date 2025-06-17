@@ -38,10 +38,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
         console.error("Erro ao carregar as avaliações ou eventos:", error);
         gridContainer.innerHTML = `<p class="text-danger">Erro ao carregar as avaliações.</p>`;
-    }
-
-    function renderAvaliacoes(avaliacoes, eventos) {
+    }    function renderAvaliacoes(avaliacoes, eventos) {
         gridContainer.innerHTML = "";
+        console.log('Renderizando avaliações:', avaliacoes);
+        console.log('Eventos disponíveis:', eventos);
 
         if (avaliacoes.length === 0) {
             gridContainer.innerHTML = `<p class="text-muted">Nenhuma avaliação encontrada.</p>`;
@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         avaliacoes.forEach(avaliacao => {
-            const evento = eventos.find(evento => evento.id === avaliacao.idevento);
+            console.log('Processando avaliação:', avaliacao);
+            const evento = eventos.find(e => String(e.id) === String(avaliacao.idevento));
+            console.log('Evento encontrado:', evento);
+            
             const card = document.createElement("div");
-            card.className = "col-md-4 position-relative";
-
-            card.innerHTML = `
+            card.className = "col-md-4 position-relative";            card.innerHTML = `
                 <div class="card shadow-sm" style="overflow:visible;">
-                    <div class="card-body">
-                        <div class="stars mb-2">
-                            ${"★".repeat(avaliacao.rating || 5)} 
+                    <div class="card-body">                        <div class="stars mb-3">
+                            ${"★".repeat(avaliacao.rating || 0)}${"☆".repeat(5 - (avaliacao.rating || 0))} 
                             <span class="text-muted">(${avaliacao.rating || 5}.0)</span>
                         </div>
                         <h5 class="card-title">${avaliacao.nome || "Anônimo"}</h5>

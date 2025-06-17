@@ -65,12 +65,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert("Você precisa estar logado para enviar uma avaliação.");
                 window.location.href = '../login/loginregistro.html';
                 return;
-            }
-
-            const avaliacao = {
-                eventoId: parseInt(eventoId),
+            }            const avaliacao = {
+                idevento: parseInt(eventoId),
                 nome: usuarioAtual.nome,
-                nota: notaSelecionada,
+                rating: notaSelecionada, // Alterado de nota para rating para manter consistência
                 comentario: comentario,
                 data: new Date().toISOString()
             };
@@ -107,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para carregar avaliações
     async function carregarAvaliacoes() {
         try {
-            const response = await fetch(`${API_URL}/avaliacoeseventos?eventoId=${eventoId}`);
+            const response = await fetch(`${API_URL}/avaliacoeseventos?idevento=${eventoId}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -123,9 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
             lista.innerHTML = "<h3>Avaliações do evento</h3>" + avaliacoes.map(av => `
                 <div class="card mb-2" data-id="${av.id}">
                     <div class="card-body">
-                        <div>
-                            <span style="color:gold">${'★'.repeat(av.nota)}${'☆'.repeat(5-av.nota)}</span>
-                            <span>(${av.nota}.0)</span>
+                        <div>                            <span style="color:gold">${'★'.repeat(av.rating)}${'☆'.repeat(5-av.rating)}</span>
+                            <span>(${av.rating}.0)</span>
                         </div>
                         <strong>${av.nome || 'Anônimo'}</strong>
                         <p class="mb-0">${av.comentario}</p>
@@ -190,11 +187,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const av = await response.json();
-            document.getElementById('comentario').value = av.comentario;
-            notaSelecionada = av.nota;
+            const av = await response.json();            document.getElementById('comentario').value = av.comentario;
+            notaSelecionada = av.rating;
             document.querySelectorAll('#estrelas .estrela').forEach(e => e.classList.remove('selecionada'));
-            for (let i = 0; i < av.nota; i++) {
+            for (let i = 0; i < av.rating; i++) {
                 document.querySelectorAll('#estrelas .estrela')[i].classList.add('selecionada');
             }
 
@@ -213,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     const avaliacaoEditada = {
                         ...av,
-                        nota: notaSelecionada,
+                        rating: notaSelecionada,
                         comentario: comentario,
                         data: new Date().toISOString()
                     };
