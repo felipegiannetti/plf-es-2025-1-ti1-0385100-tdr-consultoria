@@ -136,9 +136,9 @@
   ],
   "usuarios": [
     {
-      "nome": "Felipe Giannetti",
+      "nome": "Felipe Giannetti Fontenelle",
       "email": "felipegiannettifontenelle@gmail.com",
-      "senha": "123",
+      "senha": "",
       "tipo": "admin",
       "id": "1749560312233"
     },
@@ -169,27 +169,6 @@
       "senha": "",
       "tipo": "admin",
       "id": "1749587981878"
-    },
-    {
-      "id": "1749760543701",
-      "nome": "pedro",
-      "email": "pedro@gmail.com",
-      "senha": "pedro",
-      "tipo": "usuario"
-    },
-    {
-      "nome": "usuario",
-      "email": "usuario@gmail.com",
-      "senha": "usuario123",
-      "tipo": "usuario",
-      "id": "1749760573325"
-    },
-    {
-      "id": "1749813412172",
-      "nome": "Vitor Viana",
-      "email": "vitorviana@gmail.com",
-      "senha": "123",
-      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
