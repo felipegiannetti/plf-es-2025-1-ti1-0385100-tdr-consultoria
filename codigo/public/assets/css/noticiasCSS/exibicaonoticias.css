@@ -1,0 +1,36 @@
+.event-header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #ff7a00 !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    background: linear-gradient(to right, #ff7a00, #ff4800);
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 2px;
+}
+
+#pageHeaderTitle {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Remove the separator since we're using hr instead */
+.separator {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #pageHeaderTitle {
+        font-size: 2rem;
+    }
+}

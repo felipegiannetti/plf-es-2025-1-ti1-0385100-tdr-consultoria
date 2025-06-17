@@ -1,0 +1,200 @@
+body {
+    background-color: #111;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.admin-card {
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Estilos para os popups SweetAlert */
+.swal-custom-popup {
+    border: 1px solid #ff7a00;
+    box-shadow: 0 0 15px rgba(255, 122, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho neon no fundo */
+.swal-custom-popup::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 122, 0, 0.1) 0%,
+        rgba(255, 122, 0, 0.05) 30%,
+        rgba(255, 122, 0, 0.01) 60%,
+        transparent 70%
+    );
+    z-index: -1;
+    animation: neonPulse 3s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+}
+
+.swal-custom-button {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+    box-shadow: 0 0 10px #ff7a00, 0 0 20px #ff7a00;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.swal-custom-button::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 122, 0, 0.3) 0%,
+        transparent 70%
+    );
+    z-index: -1;
+    animation: buttonGlow 2s ease-in-out infinite;
+}
+
+@keyframes buttonGlow {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.swal-custom-button:hover {
+    background-color: #000;
+    color: #ff7a00;
+    border-color: #ff9a2e;
+    box-shadow: 0 0 15px #ff9a2e, 0 0 25px #ff9a2e;
+}
+
+/* Estilos para o fundo dos popups */
+.swal2-popup {
+    background-color: #111 !important;
+    color: #fff !important;
+}
+
+.swal2-title {
+    color: #fff !important;
+    text-shadow: 0 0 5px rgba(255, 122, 0, 0.5);
+}
+
+.swal2-html-container {
+    color: #ddd !important;
+}
+
+.swal2-backdrop-show {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Efeito de brilho ao redor do popup */
+.swal2-show {
+    animation: popupAppear 0.3s ease-out !important;
+}
+
+@keyframes popupAppear {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.card-title {
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.card-text {
+    color: #ccc;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: #ff7a00;
+    margin-bottom: 1rem;
+}
+
+.margemtopo {
+    margin-top: 130px;
+    margin-bottom: 60px;
+}
+
+.text-orange {
+    color: #ff7a00;
+}
+
+.event-header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #ff7a00 !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#pageHeaderTitle {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    background: linear-gradient(to right, #ff7a00, #ff4800);
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 2px;
+}
+
+.welcome-text {
+    color: #fff;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 30px 0;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    #pageHeaderTitle {
+        font-size: 2rem;
+    }
+}

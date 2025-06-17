@@ -21,8 +21,6 @@ body {
   color: var(--light);
   line-height: 1.6;
   overflow-x: hidden;
-  background-image: url(../../img/conteiner_landscape.png);
-  background-repeat: repeat;
 }
 
 html {
@@ -36,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Botões */
-.btn {
+.btn-geralzao {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -106,7 +104,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero {
-  background: none;
+  background-image: url(../../img/conteiner_landscape.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   color: white;
   height: 100vh;
   min-height: 600px;
@@ -114,17 +115,6 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   overflow: hidden;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(0,0,0,0.05)" points="0,100 100,0 100,100"/></svg>');
-  background-size: cover;
-  opacity: 0.2;
 }
 
 .hero-title {
@@ -320,47 +310,6 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Feature Cards and Flip Card Styles */
-.flip-card {
-    perspective: 1000px;
-    height: 100%;
-    min-height: 500px;
-    position: relative;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.flip-card.active .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    background: var(--dark-light);
-    padding: 2.5rem 2rem;
-    border-radius: 15px;
-    text-align: center;
-    border: 1px solid var(--gray-dark);
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
-}
-
 /* Icon Styles - Updated */
 .feature-icon {
     width: 80px;
@@ -377,42 +326,6 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     box-shadow: 0 5px 15px rgba(255, 122, 0, 0.5);
     padding: 1rem; /* Added to maintain icon spacing */
-}
-
-/* Button Styles - Standardized */
-.flip-toggle,
-.btn-details,
-.btn-back {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    padding: 0.75rem 2rem;
-    margin: auto auto 0;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-    background: transparent;
-    border-radius: 50px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-}
-
-.btn-details:hover,
-.btn-back:hover {
-    color: white;
-    background: linear-gradient(45deg, var(--primary), var(--primary-light));
-    border-color: transparent;
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
-}
-
-.btn-back:hover {
-    transform: translateX(-5px);
 }
 
 /* List Styles - Updated */
@@ -440,23 +353,6 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* Card Content Spacing - Updated */
-.flip-card-front,
-.flip-card-back {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    padding: 2.5rem 2rem;
-}
-
-.flip-card-front .feature-list,
-.flip-card-back .feature-list {
-    width: 100%; /* Makes list full width for better alignment */
-    padding: 0 1rem; /* Adds some padding on sides */
 }
 
 /* Media Queries - Updated icon sizes */
@@ -541,12 +437,6 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
   }
 
-  .flip-card {
-    min-height: auto;
-    height: auto;
-    margin-bottom: 1rem;
-  }
-
   .feature-list {
     margin-bottom: 1rem;
   }
@@ -609,4 +499,81 @@ h1, h2, h3, h4, h5, h6 {
 
 #diferenciais {
     background-color: #1a1a1a;
+}
+
+/* === FLIP-CARD CONFIGURADO === */
+.flip-card {
+  perspective: 1000px;
+  height: 100%;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.flip-card.active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: var(--dark-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 2rem 4.5rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid var(--gray-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  pointer-events: none; /* impede clique fora dos botões */
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* === BOTÕES PADRONIZADOS NO CARD === */
+.flip-card button.btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 200px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  z-index: 1;
+  text-transform: uppercase;
+  line-height: 1.2;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  text-align: center;
+  pointer-events: auto; /* garante interatividade do botão */
+}
+
+.flip-card button.btn:hover {
+  background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  color: white;
+  border-color: transparent;
+  transform: translateX(-50%) scale(1.05);
 }

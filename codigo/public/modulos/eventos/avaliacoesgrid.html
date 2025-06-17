@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../assets/css/eventosCSS/avaliacoesgrid.css">
     <link rel="stylesheet" href="../../assets/css/navbar.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="../../assets/js/eventosjs/avaliacoesgrid.js" defer></script>
 </head>
 <body>
@@ -27,9 +28,17 @@
 
     <section class="py-5">
     <div class="container">
-        <!-- Barra de pesquisa -->
-        <div class="mb-4">
+        <!-- Barra de pesquisa e filtro por estrelas -->
+        <div class="mb-4 d-flex gap-3">
             <input id="search-bar" type="text" class="form-control" placeholder="Digite o nome do evento para filtrar as avaliações..." />
+            <select id="star-filter" class="form-select">
+                <option value="">Filtrar por estrelas</option>
+                <option value="5">5 estrelas</option>
+                <option value="4">4 estrelas</option>
+                <option value="3">3 estrelas</option>
+                <option value="2">2 estrelas</option>
+                <option value="1">1 estrela</option>
+            </select>
         </div>
         <div id="avaliacoes-grid" class="row g-4">
             <!-- Cards serão inseridos dinamicamente aqui -->

@@ -26,18 +26,28 @@ a:hover {
 }
 
 .event-header {
-    background: linear-gradient(135deg, #ff7a00, #ff9a2e);
-    box-shadow: 0 4px 20px rgba(255, 122, 0, 0.3);
-    border-radius: 15px;
-    margin-bottom: 40px;
+    text-align: center;
     padding: 20px;
+    margin-bottom: 30px;
+    background-color: #ff7a00 !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    background: linear-gradient(to right, #ff7a00, #ff4800);
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 2px;
 }
 
 #pageHeaderTitle {
     margin: 2rem 0;
     text-align: center;
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 600;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     letter-spacing: 1px;
@@ -244,6 +254,24 @@ a:hover {
 .card-text {
     color: #ccc;
 }
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-body > div:first-child {
+    flex-grow: 1;
+}
+
+/* Garante que os botões fiquem colados no fundo */
+.card-body .text-center,
+.card-body a.btn {
+    margin-top: auto;
+}
+
 
 .event-details {
     color: #aaa;

@@ -1,25 +1,25 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const eventsTable = document.getElementById('eventsTable');
     const cardseventos = document.getElementById('cardseventos');
     const searchInput = document.getElementById('searchEvents');
-    let allEvents = []; // Store all events
+    let allEvents = [];
 
     async function loadEvents() {
         try {
             const response = await fetch('http://localhost:3000/eventos');
             allEvents = await response.json();
-            
+
             // Filtra apenas eventos ativos
             allEvents = allEvents.filter(event => event.status === "ativo");
-            
+
             renderEvents(allEvents);
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Erro ao carregar eventos:', error);
         }
     }
 
     function renderEvents(events) {
-        // Renderize eventosAtivos na tabela/lista
+        // Renderiza na tabela (invisível)
         eventsTable.innerHTML = events.map(event => `
             <tr>
                 <td>${event.titulo}</td>
@@ -30,10 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </tr>
         `).join('');
 
-        // Limpa o container de cards
+        // Limpa os cards e adiciona os novos
         cardseventos.innerHTML = '';
-
-        // Adiciona um card para cada evento ativo
         events.forEach(evento => {
             const card = createEventCard(evento);
             cardseventos.appendChild(card);
@@ -45,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
         article.className = 'articlehover postcard orangebgcard red';
 
         const detailsPath = 'detalheseventos.html';
-        const imagePath = `../../../${evento.imagem}`;
-        const usuarioId = 1; // ID estático para testes
+        const imagePath = `http://localhost:4000/${evento.imagem}`; // Caminho correto da imagem
+        const usuarioId = 1; // ID fixo para teste
 
         article.innerHTML = `
             <a class="postcard__img_link" href="${detailsPath}?id=${evento.id}&idUsuario=${usuarioId}">
@@ -60,18 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     <time datetime="${evento.data}">
                         <i class="fas fa-calendar-alt mr-2"></i>
                         <span class="me-2"></span>${new Date(evento.data).toLocaleDateString('pt-BR')}
-                        <i class="fas fa-clock ms-3 me-2"></i>${new Date(evento.data).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'})}
+                        <i class="fas fa-clock ms-3 me-2"></i>${new Date(evento.data).toLocaleTimeString('pt-BR', {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        })}
                     </time>
                 </div>
                 <div class="postcard__bar"></div>
                 <div class="postcard__preview-txt">${evento.descricao}</div>
                 <ul class="postcard__tagbox">
-                    <li class="tag__item play green" onclick="window.location.href='${detailsPath}?id=${evento.id}&idUsuario=${usuarioId}'">
-                        <button class="tag-button">
-                            <i class="fas fa-user-plus mr-2"></i>
-                            <span class="me-2"></span>Inscrever-se
-                        </button>
-                    </li>
                     <li class="tag__item">
                         <button class="tag-button">
                             <i class="fas fa-tag mr-2"></i>
@@ -97,14 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return article;
     }
 
-    // Add search functionality
-    searchInput.addEventListener('input', function(e) {
+    // Filtro de busca
+    searchInput.addEventListener('input', function (e) {
         const searchTerm = e.target.value.toLowerCase();
-        const filteredEvents = allEvents.filter(event => 
+        const filteredEvents = allEvents.filter(event =>
             event.titulo.toLowerCase().includes(searchTerm)
         );
         renderEvents(filteredEvents);
     });
 
-    loadEvents(); // Initial load
+    loadEvents(); // Carrega eventos ao iniciar
 });

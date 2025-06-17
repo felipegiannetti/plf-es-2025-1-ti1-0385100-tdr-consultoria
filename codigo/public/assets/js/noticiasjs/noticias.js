@@ -1,111 +1,72 @@
 // URL base do JSON Server
 const API_URL = 'http://localhost:3000';
+// URL base do servidor de upload de imagens
+const IMAGE_URL = 'http://localhost:4001';
 
-// Função para carregar as notícias do db.json
+// Ouve eventos personalizados (opcional)
+window.addEventListener('noticiaAdicionada', function(event) {
+    carregarNoticias(); // Recarrega todas as notícias
+});
+
+// Função principal para carregar as notícias
 async function carregarNoticias() {
     try {
         const response = await fetch(`${API_URL}/noticias`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error('Erro ao carregar notícias');
+        
         const noticias = await response.json();
         
-        if (noticias.length === 0) {
-            document.getElementById('noticias-card').innerHTML = `
+        const container = document.getElementById('noticias-card');
+
+        if (!noticias || noticias.length === 0) {
+            container.innerHTML = `
                 <div class="alert alert-info">
-                    Nenhuma notícia disponível no momento.
+                    <i class="fas fa-info-circle"></i> Nenhuma notícia disponível no momento.
                 </div>
             `;
             return;
         }
-        
-        exibirNoticias(noticias);
+
+        container.className = 'solution_cards_box';
+
+        container.innerHTML = noticias.map(noticia => `
+            <div class="solution_card">
+                <div class="hover_color_bubble"></div>
+                <div class="card-img-top" style="background-image: url('${IMAGE_URL}/${noticia.imagem}')"></div>
+                <div class="solu_title">
+                    <h3 class="card-title">${noticia.titulo}</h3>
+                </div>
+                <div class="solu_description">
+                    <p class="card-text">${noticia.descricaoBreve}</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-calendar"></i> ${new Date(noticia.data).toLocaleDateString('pt-BR')}</span>
+                        <span><i class="far fa-user"></i> ${noticia.autor}</span>
+                    </div>
+                    <a href="noticia-detalhes.html?id=${noticia.id}" class="read_more_btn">Ler mais</a>
+                </div>
+            </div>
+        `).join('');
+
+        // Hover effect com jQuery, se necessário
+        $('.card').on('mouseenter', function() {
+            $(this).find('.card-text').slideDown(300);
+        });
+
+        $('.card').on('mouseleave', function() {
+            $(this).find('.card-text').css({
+                'display': 'none'
+            });
+        });
+
     } catch (error) {
-        console.error('Erro ao carregar notícias:', error);
+        console.error('Erro:', error);
         document.getElementById('noticias-card').innerHTML = `
             <div class="alert alert-danger">
-                Erro ao carregar notícias. Por favor, tente novamente mais tarde.<br>
-                Erro: ${error.message}
+                <i class="fas fa-exclamation-circle"></i> Erro ao carregar notícias: ${error.message}
             </div>
         `;
     }
 }
 
-// Função para exibir as notícias no HTML
-function exibirNoticias(noticias) {
-    const container = document.getElementById('noticias-card');
-    let htmlContent = '<div class="card-group">';
-
-    noticias.forEach(noticia => {
-        htmlContent += `
-            <div class="underlay">
-                <div class="card">
-                    <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
-                    <div class="card-block">
-                        <h5 class="card-title" style="font-family: 'Anton', sans-serif">
-                            ${noticia.titulo}
-                        </h5>
-                        <p class="card-text description">${noticia.descricao}</p>
-                        <p class="card-text expanded-text" style="display: none;">${noticia.texto_completo}</p>
-                        <p class="card-text mt-2">
-                            <small class="text-muted">
-                                Publicado em ${noticia.data} às ${noticia.hora}
-                            </small>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-
-    htmlContent += '</div>';
-    container.innerHTML = htmlContent;
-
-    // Efeitos de hover
-    $('.card').on('mouseenter', function() {
-        $(this).find('.description').slideUp(300);
-        $(this).find('.expanded-text').slideDown(300);
-    }).on('mouseleave', function() {
-        $(this).find('.expanded-text').slideUp(300);
-        $(this).find('.description').slideDown(300);
-    });
-}
-
-// Carregar notícias quando a página for carregada
+// Carregar automaticamente ao abrir a página
 document.addEventListener('DOMContentLoaded', carregarNoticias);
-
-// Function to create news cards
-function criarCards() {
-    const container = document.getElementById('noticias-card');
-    let htmlContent = '<div class="card-group">';
-
-    forEach(noticia => {
-        htmlContent += `
-            <div class="underlay">
-                <div class="card">
-                    <div class="card-img-top" style="background-image: url('${noticia.imagem}')"></div>
-                    <div class="card-block">
-                        <h5 class="card-title" style="font-family: 'Anton', sans-serif">${noticia.titulo}<hr></h5>
-                        <p class="card-text">${noticia.descricao} <a href="#"><u>Ler mais...</u></a></p>
-                        <p class="card-text"><small class="text-muted">Publicado em ${noticia.data}</small></p>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-
-    htmlContent += '</div>';
-    container.innerHTML = htmlContent;
-
-    // Add hover effects
-    $('.card').on('mouseenter', function() {
-        $(this).find('.card-text').slideDown(300);
-    });
-
-    $('.card').on('mouseleave', function() {
-        $(this).find('.card-text').css({
-            'display': 'none'
-        });
-    });
-}
-

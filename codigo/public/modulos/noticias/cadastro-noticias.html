@@ -6,44 +6,87 @@
     <title>TDR Consultoria - Cadastro de Notícias</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/navbar.css">
-    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="../../assets/css/noticiasCSS/cadastro-noticias.css">
 </head>
 <body>
     <div id="navbarimplementador"></div>
 
-    <div class="form-container margemtopo">
-        <h2 class="form-title">Cadastro de Notícias</h2>
-        <form id="noticiaForm">
-            <div class="form-group">
-                <label for="titulo">Título da Notícia</label>
-                <input type="text" class="form-control" id="titulo" required>
+    <div class="container margemtopo">
+        <div class="custom-title-container mb-4">
+            <h2 class="gestao-noticias-title">Gestão de Notícias</h2>
+        </div>
+
+        <!-- Existing content -->
+        <div class="row equal-height">
+            <!-- Form Section -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Cadastro de Notícias</h2>
+                        <form id="form-cadastro" class="needs-validation" novalidate>
+                            <input type="hidden" id="noticiaId">
+                            <div class="mb-3">
+                                <label for="titulo" class="form-label">Título da Notícia</label>
+                                <input type="text" class="form-control" id="titulo" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descricao_breve" class="form-label">Descrição Breve</label>
+                                <textarea class="form-control" id="descricao_breve" rows="2" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="texto_completo" class="form-label">Texto Completo</label>
+                                <textarea class="form-control" id="texto_completo" rows="5" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoria</label>
+                                <select class="form-select" id="categoria" required>
+                                    <option value="">Selecione uma categoria</option>
+                                    <option value="Tecnologia">Tecnologia</option>
+                                    <option value="Negócios">Negócios</option>
+                                    <option value="Economia">Economia</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="imagem" class="form-label">Imagem da Notícia</label>
+                                    <input type="file" class="form-control" id="imagem" accept="image/*">
+                                <div id="imagem-info"></div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-save"></i> Salvar Notícia
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="descricao">Descrição Breve</label>
-                <input type="text" class="form-control" id="descricao" required>
+
+            <!-- Table Section -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Notícias Cadastradas</h3>
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Título</th>
+                                        <th>Categoria</th>
+                                        <th>Autor</th>
+                                        <th class="text-center">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="newsTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="texto_completo">Texto Completo</label>
-                <textarea class="form-control" id="texto_completo" rows="6" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="categoria">Categoria</label>
-                <select class="form-control" id="categoria" required>
-                    <option value="">Selecione uma categoria</option>
-                    <option value="Marketing Digital">Marketing Digital</option>
-                    <option value="Tráfego Pago">Tráfego Pago</option>
-                    <option value="Liderança e Inovação">Liderança e Inovação</option>
-                    <option value="Sustentabilidade">Sustentabilidade</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="imagem">URL da Imagem</label>
-                <input type="url" class="form-control" id="imagem" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Cadastrar Notícia</button>
-        </form>
+        </div>
     </div>
 
     <div id="footerimplementador"></div>
@@ -55,6 +98,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             checkAdminAccess();
+            loadNews();
         });
     </script>
 </body>

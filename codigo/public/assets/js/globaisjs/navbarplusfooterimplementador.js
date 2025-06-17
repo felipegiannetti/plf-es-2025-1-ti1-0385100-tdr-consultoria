@@ -81,6 +81,7 @@ function implementNavbar() {
             noticias: 'public/modulos/noticias/noticias.html',
             cadastroNoticias: 'public/modulos/noticias/cadastro-noticias.html', // Changed to match file name
             quizzes: 'public/modulos/formulario/exibiformulario.html',
+            areaAdmin: 'public/modulos/adminarea/areaadmin.html'
         },
         other: {
             home: '../../../index.html',
@@ -89,6 +90,7 @@ function implementNavbar() {
             noticias: '../noticias/noticias.html',
             cadastroNoticias: '../noticias/cadastro-noticias.html', // Changed path and file name
             quizzes: '../formulario/exibiformulario.html',
+            areaAdmin: '../adminarea/areaadmin.html'
         }
     };
 
@@ -106,46 +108,48 @@ function implementNavbar() {
         <li class="nav-item">
             <a class="nav-link" href="${currentPaths.quizzes}">Quizzes</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" 
-               href="#" 
-               id="navbarDropdown"
-               role="button" 
-               data-bs-toggle="dropdown" 
-               aria-expanded="false">
-                Eventos
-            </a>
-            ${isAdminUser ? `
+        ${isAdminUser ? `
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" 
+                   href="#" 
+                   id="navbarDropdown"
+                   role="button" 
+                   data-bs-toggle="dropdown" 
+                   aria-expanded="false">
+                    Eventos
+                </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
-                    <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Cadastro de Eventos</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroEventos}">Gestão de Eventos</a></li>
                 </ul>
-            ` : `
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="${currentPaths.eventos}">Eventos Principais</a></li>
-                </ul>
-            `}
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" 
-               href="#" 
-               id="noticiasDropdown"
-               role="button" 
-               data-bs-toggle="dropdown" 
-               aria-expanded="false">
-                Notícias
-            </a>
-            ${isAdminUser ? `
+            </li>
+        ` : `
+            <li class="nav-item">
+                <a class="nav-link" href="${currentPaths.eventos}">Eventos</a>
+            </li>
+        `}
+        ${isAdminUser ? `
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" 
+                   href="#" 
+                   id="noticiasDropdown"
+                   role="button" 
+                   data-bs-toggle="dropdown" 
+                   aria-expanded="false">
+                    Notícias
+                </a>
                 <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
                     <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
-                    <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Cadastro de Notícias</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="${currentPaths.cadastroNoticias}">Gestão de Notícias</a></li>
                 </ul>
-            ` : `
-                <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
-                    <li><a class="dropdown-item" href="${currentPaths.noticias}">Últimas Notícias</a></li>
-                </ul>
-            `}
-        </li>
+            </li>
+        ` : `
+            <li class="nav-item">
+                <a class="nav-link" href="${currentPaths.noticias}">Notícias</a>
+            </li>
+        `}
         <li class="nav-item">
             <a class="nav-link" onclick="toggleContatoCard(true); return false;">Contato</a>
         </li>
@@ -160,16 +164,20 @@ function implementNavbar() {
             </a>
             <ul class="dropdown-menu" aria-labelledby="userDropdown">
                 <li><a class="dropdown-item" href="${currentPaths.perfil}">Perfil</a></li>
+                ${isAdminUser ? `
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="${currentPaths.areaAdmin}">Área do administrador</a></li>
+                ` : ''}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#" onclick="logout()">Sair</a></li>
             </ul>
         </li>
     ` : `
         <li class="nav-item">
-            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Login</a>
+            <a class="nav-link" href="${currentPaths.home}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Sign Up</a>
+            <a class="nav-link" href="${isIndex ? 'public/modulos/login/loginregistro.html' : '../login/loginregistro.html'}">Login</a>
         </li>
     `;
 

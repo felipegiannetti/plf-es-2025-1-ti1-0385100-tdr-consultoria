@@ -15,7 +15,6 @@
     padding: 5px 15px;
     transition: all 0.3s ease;
     position: relative;
-    /* overflow: hidden; → REMOVIDO para permitir que o dropdown ultrapasse */
 }
 
 .nav-link{
@@ -497,5 +496,5 @@
 }
 
 .dropdown > .nav-link {
-    pointer-events: none; /* Isso desativa o clique no item do menu */
+    pointer-events: none; 
 }

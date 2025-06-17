@@ -5,12 +5,10 @@ async function carregarEventos() {
         const response = await fetch(`${API_URL}/eventos`);
         const eventos = await response.json();
 
-        
-        // Fix image path in carregarEventos function
         eventos.forEach(evento => {
             featuresSection.innerHTML += `
                 <div class="feature">
-                    <img src="../../../${evento.imagem}" alt="${evento.titulo}">
+                    <img src="../../${evento.imagem}" alt="${evento.titulo}">
                     <h2>${evento.titulo}</h2>
                     <p>${evento.descricao}</p>
                     <p>Data: ${new Date(evento.data).toLocaleDateString()}</p>
@@ -31,96 +29,38 @@ async function carregarDetalhesEvento() {
         const eventoId = urlParams.get('id');
         const usuarioId = urlParams.get('idUsuario');
 
-
         if (!eventoId) {
-            throw new Error('ID do evento não fornecido');
+            document.getElementById('evento-detalhes').innerHTML = `
+                <div class="alert alert-warning">ID do evento não foi especificado na URL.</div>
+            `;
+            return;
         }
 
         let usuario = null;
         if (usuarioId) {
-            // Busca o usuário na API
             const userRes = await fetch(`${API_URL}/usuarios/${usuarioId}`);
             if (userRes.ok) {
                 usuario = await userRes.json();
-                console.log('Usuário carregado:', usuario);
             } else {
-                throw new Error(`HTTP error! status: ${userRes.status}`);
                 console.warn('Usuário não encontrado');
             }
         }
 
-        console.log('Buscando evento com ID:', eventoId); // Debug log
-
-        const response = await fetch(`${API_URL}/eventos/${eventoId}`);
-        
+        const response = await fetch(`${API_URL}/eventos?id=${eventoId}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
-        const evento = await response.json();
-        
-        console.log('Evento carregado:', evento); // Debug log
+
+        const eventos = await response.json();
+        const evento = eventos[0];
+        if (!evento) throw new Error('Evento não encontrado com o ID informado.');
 
         const container = document.getElementById('evento-detalhes');
-
-        // Adiciona funcionalidade para enviar avaliações
-
-document.getElementById('enviar-avaliacao').addEventListener('click', async () => {
-    const nome = document.getElementById('nome').value.trim();
-    const comentario = document.getElementById('comentario').value.trim();
-    const estrelas = document.querySelectorAll('#estrelas .estrela.selecionada').length;
-
-    if (!nome || !comentario || estrelas === 0) {
-        alert('Por favor, preencha todos os campos e selecione uma quantidade de estrelas.');
-        return;
-    }
-
-    const novaAvaliacao = {
-        idavaliacao: Date.now(), // Gera um ID único baseado no timestamp
-        idevento: evento.id, // ID do evento atual
-        nome: nome,
-        comentario: comentario,
-        rating: estrelas,
-        data: new Date().toLocaleString('pt-BR')
-    };
-
-    try {
-        const response = await fetch(`${API_URL}/avaliacoeseventos`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(novaAvaliacao)
-        });
-
-        if (response.ok) {
-            alert('Avaliação enviada com sucesso!');
-            document.getElementById('nome').value = '';
-            document.getElementById('comentario').value = '';
-            document.querySelectorAll('#estrelas .estrela').forEach(estrela => estrela.classList.remove('selecionada'));
-        }
-    } catch (error) {
-        // Removido o console.error e qualquer mensagem de erro
-    }
-});
-// Adiciona funcionalidade para selecionar estrelas
-document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
-    estrela.addEventListener('click', () => {
-        const value = parseInt(estrela.getAttribute('data-value'));
-        document.querySelectorAll('#estrelas .estrela').forEach(e => {
-            e.classList.toggle('selecionada', parseInt(e.getAttribute('data-value')) <= value);
-        });
-    });
-});
-
-        const cadastroPath = 'cadastrousuariosevento.html';
-        
-        // Fix image path in carregarDetalhesEvento function
         container.innerHTML = `
             <div class="card mb-4 margemtopodetalhes">
                 <div class="row g-0">
                     <div class="col-md-6">
-                        <img src="../../../${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
+                        <img src="../../${evento.imagem}" class="img-fluid rounded-start w-100 h-100" alt="${evento.titulo}">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body d-flex flex-column h-100">
@@ -156,22 +96,16 @@ document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
         document.getElementById('btnInscrever').addEventListener('click', async function (e) {
             e.preventDefault();
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const eventoId = urlParams.get('id');
-            const usuarioId = urlParams.get('idUsuario');
-
             if (!usuarioId) {
                 alert('Usuário não está logado. Por favor, faça login para se inscrever.');
                 return;
             }
 
             try {
-                // Busca cadastro existente para o evento
                 const cadRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventoId}`);
                 const cadastros = await cadRes.json();
 
                 if (cadastros.length === 0) {
-                    // Não existe cadastro, cria novo com array de usuários
                     await fetch(`${API_URL}/cadastroDeEventos`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -182,11 +116,9 @@ document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
                         })
                     });
                 } else {
-                    // Já existe cadastro, verifica se usuário já está inscrito
                     const cadastro = cadastros[0];
                     const usuariosArray = cadastro.idUsuario || [];
                     if (!usuariosArray.includes(usuarioId)) {
-                        // Atualiza o array de usuários
                         usuariosArray.push(usuarioId);
                         await fetch(`${API_URL}/cadastroDeEventos/${cadastro.id}`, {
                             method: 'PATCH',
@@ -195,13 +127,12 @@ document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
                         });
                     }
                 }
-                // Redireciona para a página de cadastro do usuário no evento
+
                 window.location.href = `cadastrousuariosevento.html?id=${eventoId}`;
             } catch (err) {
                 alert('Erro ao inscrever: ' + err.message);
             }
         });
-
 
     } catch (error) {
         console.error('Erro ao carregar detalhes do evento:', error);
@@ -214,49 +145,69 @@ document.querySelectorAll('#estrelas .estrela').forEach(estrela => {
     }
 }
 
-// Carregar eventos quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
     carregarEventos();
     carregarDetalhesEvento();
-});
 
-document.addEventListener("DOMContentLoaded", () => {
     const estrelas = document.querySelectorAll(".estrela");
     const comentarioInput = document.getElementById("comentario");
+    const nomeInput = document.getElementById("nome");
     const enviarBtn = document.getElementById("enviar-avaliacao");
+
     let notaSelecionada = 0;
 
     estrelas.forEach(estrela => {
         estrela.addEventListener("click", () => {
             notaSelecionada = parseInt(estrela.getAttribute("data-value"));
-
-            // Resetar estrelas
             estrelas.forEach(e => e.classList.remove("selecionada"));
-
-            // Marcar estrelas até a selecionada
             for (let i = 0; i < notaSelecionada; i++) {
                 estrelas[i].classList.add("selecionada");
             }
         });
     });
 
-    enviarBtn.addEventListener("click", () => {
+    enviarBtn?.addEventListener("click", async () => {
         const comentario = comentarioInput.value.trim();
+        const nome = nomeInput.value.trim();
 
-        if (notaSelecionada === 0 || comentario === "") {
-            alert("Por favor, preencha uma nota e um comentário.");
+        if (notaSelecionada === 0 || comentario === "" || nome === "") {
+            alert("Por favor, preencha todos os campos e selecione uma nota.");
             return;
         }
 
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventoId = urlParams.get('id');
+
         const avaliacao = {
-            estrelas: notaSelecionada,
+            idavaliacao: Date.now(),
+            idevento: eventoId,
+            nome: nome,
             comentario: comentario,
-            data: new Date().toLocaleString()
+            rating: notaSelecionada,
+            data: new Date().toLocaleString('pt-BR')
         };
 
-        console.log("Avaliação enviada:", avaliacao);
+        try {
+            const response = await fetch(`${API_URL}/avaliacoeseventos`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(avaliacao)
+            });
 
-        // Aqui depois faremos o POST no db.json com JSON Server.
-        // Por enquanto só exibimos no console.
+            if (response.ok) {
+                alert('Avaliação enviada com sucesso!');
+                nomeInput.value = '';
+                comentarioInput.value = '';
+                estrelas.forEach(e => e.classList.remove("selecionada"));
+                notaSelecionada = 0;
+            } else {
+                throw new Error('Erro ao enviar avaliação.');
+            }
+        } catch (error) {
+            console.error('Erro ao enviar avaliação:', error);
+            alert('Não foi possível enviar sua avaliação. Tente novamente mais tarde.');
+        }
     });
 });

@@ -3,12 +3,12 @@
     {
       "id": "1",
       "titulo": "Workshop de Gestão Empresarial",
-      "data": "2025-08-21T10:00:00.000Z",
+      "data": "2025-08-21T16:00:00.000Z",
       "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
       "categoria": "Workshop",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/evento-gestao-empresarial.jpg",
+      "imagem": "assets/img/eventos/evento-gestao-empresarial.jpg",
       "vagas": 50,
       "preco": 300,
       "status": "ativo"
@@ -16,15 +16,15 @@
     {
       "id": "2",
       "titulo": "Palestra sobre Liderança",
-      "data": "2025-08-10T19:00:00.000Z",
+      "data": "2025-08-10T22:00",
       "descricao": "Palestra sobre desenvolvimento de habilidades de liderança no ambiente corporativo moderno.",
       "categoria": "Palestra",
-      "local": "Hotel Business Center - BH",
-      "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/palestra-empresarial.webp",
       "vagas": 100,
       "preco": 80,
-      "status": "ativo"
+      "local": "Hotel Business Center - BH",
+      "localmapa": "https://maps.google.com/maps?q=Hotel+Business+Center+Belo+Horizonte",
+      "status": "ativo",
+      "imagem": "assets/img/eventos/palestra-empresarial.webp"
     },
     {
       "id": "3",
@@ -34,7 +34,7 @@
       "categoria": "Evento",
       "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
       "localmapa": "https://maps.google.com/maps?q=Centro+de+Convencoes+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/hotmart-fire.jpeg",
+      "imagem": "assets/img/eventos/hotmart-fire.jpeg",
       "vagas": 7000,
       "preco": 2999.99,
       "status": "ativo"
@@ -47,7 +47,7 @@
       "categoria": "Workshop",
       "local": "San Pedro Valley - Savassi, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=San+Pedro+Valley+Savassi+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/financas-startups.jpg",
+      "imagem": "assets/img/eventos/financas-startups.jpg",
       "vagas": 40,
       "preco": 180,
       "status": "ativo"
@@ -60,7 +60,7 @@
       "categoria": "Seminário",
       "local": "CDL-BH - Centro, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/esg-empresas.png",
+      "imagem": "assets/img/eventos/esg-empresas.png",
       "vagas": 75,
       "preco": 220,
       "status": "ativo"
@@ -73,7 +73,7 @@
       "categoria": "Curso",
       "local": "Le Monde Hub - Funcionários, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=Le+Monde+Hub+Funcionarios+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/design-thinking.jpg",
+      "imagem": "assets/img/eventos/design-thinking.jpg",
       "vagas": 35,
       "preco": 280,
       "status": "ativo"
@@ -81,59 +81,53 @@
     {
       "id": "7",
       "titulo": "Vendas B2B Avançado",
-      "data": "2025-06-11T03:00:00.000Z",
+      "data": "2025-06-18T12:00",
       "descricao": "Treinamento intensivo em técnicas avançadas de vendas B2B, negociação e gestão de contas-chave.",
       "categoria": "Treinamento",
-      "local": "FIEMG - Santa Efigênia, Belo Horizonte",
-      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "imagem": "public/assets/img/eventos/vendas-b2b.jpg",
       "vagas": 45,
       "preco": 300,
-      "status": "ativo"
+      "local": "FIEMG - Santa Efigênia, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
+      "status": "ativo",
+      "imagem": "assets/img/eventos/vendas-b2b.jpg"
     },
     {
-      "id": "1749506214923",
+      "id": "1749776036358",
       "titulo": "Teste",
-      "data": "2025-06-20T00:56:00.000Z",
-      "descricao": "Teste cadastro de usuarios evento",
+      "data": "2025-07-10T19:00:00.000Z",
+      "descricao": "teste",
       "categoria": "Workshop",
-      "local": "Teste",
-      "localmapa": "https://maps.app.goo.gl/6eSsbXC9iyPevqM67",
+      "local": "teste",
+      "localmapa": "https://www.google.com/maps/@-19.913972,-43.9669384,3a,72.2y,75.89h,95.56t/data=!3m7!1e1!3m5!1sdA9xeluYN4XnLnC2h0DpfQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.560000000000002%26panoid%3DdA9xeluYN4XnLnC2h0DpfQ%26yaw%3D75.89!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
       "imagem": "",
-      "vagas": 100000,
-      "preco": 50,
+      "vagas": 10,
+      "preco": 10,
       "status": "inativo"
     },
     {
-      "id": "6dfd",
-      "titulo": "Teste",
-      "data": "2026-01-16T16:00",
+      "id": "1749777137767",
+      "titulo": "tes",
+      "data": "2026-06-12T19:00:00.000Z",
       "descricao": "teste",
       "categoria": "Workshop",
-      "vagas": 10,
-      "preco": 10,
       "local": "teste",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "status": "ativo",
-      "imagem": "public/assets/img/eventos/teste.jpg"
-    },
-    {
-      "id": "1749558968050",
-      "titulo": "testedenovo",
-      "data": "2025-12-15T22:00",
-      "descricao": "teste",
-      "categoria": "Workshop",
+      "imagem": "assets/img/eventos/1749777137739-teste.jpg",
       "vagas": 10,
       "preco": 10,
-      "local": "testeq",
-      "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "status": "ativo",
-      "imagem": "public/assets/img/eventos/teste.jpg"
+      "status": "ativo"
     }
   ],
   "cadastroDeEventos": [
     {
-      "id": "1749562113316",
+      "id": "1749683145638",
+      "idEvento": "2",
+      "idUsuario": [
+        "1"
+      ]
+    },
+    {
+      "id": "1749729174591",
       "idEvento": "1",
       "idUsuario": [
         "1"
@@ -142,76 +136,11 @@
   ],
   "usuarios": [
     {
-      "id": "1",
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com",
-      "respostas": [],
-      "formularioFeito": "sim",
-      "eventos_cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        },
-        {
-          "id": "3"
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "login": "admin2",
-      "senha": "1234",
-      "nome": "Administrador do Sistema2",
-      "email": "admin2@abc.com",
-      "respostas": [
-        {
-          "question": "Com qual dessas areas você mais se identifica?",
-          "response": "RH"
-        },
-        {
-          "question": "Qual sua meta financeiran no periodo de 5 anos?",
-          "response": "Entre 500000 - 1000000"
-        },
-        {
-          "question": "Qual desses investimentos você mais gostaria de aprender?",
-          "response": "Criptomoedas"
-        },
-        {
-          "question": "Como você descreveria seu perfil de investidor?",
-          "response": "Moderado"
-        },
-        {
-          "question": "Qual é o seu principal objetivo financeiro?",
-          "response": "Comprar uma casa"
-        },
-        {
-          "question": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
-          "response": "Intermediário"
-        }
-      ],
-      "formularioFeito": "sim",
-      "eventos_cadastrados": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        },
-        {
-          "id": "3"
-        }
-      ]
-    },
-    {
-      "id": "1749560312233",
-      "nome": "Felipe Giannetti",
+      "nome": "Felipe Giannetti Fontenelle",
       "email": "felipegiannettifontenelle@gmail.com",
-      "senha": "admin123",
-      "tipo": "admin"
+      "senha": "",
+      "tipo": "admin",
+      "id": "1749560312233"
     },
     {
       "id": "1749562553755",
@@ -232,14 +161,28 @@
       "nome": "Felipe Fonseca",
       "email": "felipefonseca2006@gmail.com",
       "senha": "felipe201",
-      "tipo": "usuario"
+      "tipo": "admin"
     },
     {
-      "id": "1749588469711",
-      "nome": "usuario",
-      "email": "usuario@gmail.com",
-      "senha": "1",
-      "tipo": "usuario"
+      "id": "1749650387211",
+      "nome": "raphael guimaraes",
+      "email": "raphaelgrds@gmail.com",
+      "senha": "admin123",
+      "tipo": "admin"
+    },
+    {
+      "id": "1749660914745",
+      "nome": "Filipe",
+      "email": "filipe@gmail.com",
+      "senha": "fjb",
+      "tipo": "admin"
+    },
+    {
+      "nome": "Cesar Sokoli",
+      "email": "cesarsokolid@gmail.com",
+      "senha": "",
+      "tipo": "admin",
+      "id": "1749587981878"
     }
   ],
   "avaliacoeseventos": [
@@ -251,24 +194,6 @@
       "comentario": "Poderia melhorar.",
       "rating": 2,
       "data": "10/06/2025, 09:57:41"
-    },
-    {
-      "id": "1a5d",
-      "idavaliacao": 1749560295056,
-      "idevento": "1",
-      "nome": "Cesar",
-      "comentario": "Cesar.",
-      "rating": 3,
-      "data": "10/06/2025, 09:58:15"
-    },
-    {
-      "id": "5869",
-      "idavaliacao": 1749560463626,
-      "idevento": "2",
-      "nome": "rgdf",
-      "comentario": "gfjgfg",
-      "rating": 4,
-      "data": "10/06/2025, 10:01:03"
     },
     {
       "id": "41b7",
@@ -347,8 +272,8 @@
       "idavaliacao": 1749565898248,
       "idevento": "6",
       "nome": "teste 2",
-      "comentario": "teste 2",
-      "rating": 2,
+      "comentario": "Excelent",
+      "rating": 5,
       "data": "10/06/2025, 11:31:38"
     },
     {
@@ -377,94 +302,81 @@
       "comentario": "teste",
       "rating": 5,
       "data": "10/06/2025, 11:35:07"
+    },
+    {
+      "idavaliacao": 1749588051111,
+      "idevento": "1",
+      "nome": "Cesar Sokoli",
+      "comentario": "Muito bom evento",
+      "rating": 4,
+      "data": "10/06/2025, 17:40:51",
+      "id": "Nc6smye"
+    },
+    {
+      "idavaliacao": 1749671282129,
+      "idevento": "1",
+      "nome": "Cesar Sokoli",
+      "comentario": "teste",
+      "rating": 4,
+      "data": "11/06/2025, 16:48:02",
+      "id": "JfqOAIF"
+    },
+    {
+      "id": "b45d",
+      "idavaliacao": 1749729165147,
+      "idevento": "1",
+      "nome": "Felipe",
+      "comentario": "muito ruim",
+      "rating": 4,
+      "data": "12/06/2025, 08:52:45"
+    },
+    {
+      "id": "6ea6",
+      "eventoId": 1,
+      "nome": "Felipe Fonseca",
+      "nota": 5,
+      "comentario": "a",
+      "data": "2025-06-17T11:32:39.530Z"
+    },
+    {
+      "id": "12a3",
+      "eventoId": 2,
+      "nome": "Felipe Fonseca",
+      "nota": 5,
+      "comentario": "b",
+      "data": "2025-06-17T11:36:04.462Z"
+    },
+    {
+      "id": "00d8",
+      "eventoId": 2,
+      "nome": "Felipe Fonseca",
+      "nota": 5,
+      "comentario": "b",
+      "data": "2025-06-17T11:36:56.603Z"
     }
   ],
   "noticias": [
     {
-      "id": "1",
-      "titulo": "Hotmart FIRE: O Maior Evento de Marketing Digital",
-      "descricao": "Prepare-se para o maior evento de marketing digital da América Latina",
-      "texto_completo": "O Hotmart FIRE 2025 promete reunir os maiores nomes do marketing digital em São Paulo. Com mais de 150 palestrantes internacionais e nacionais, o evento abordará temas como vendas online, tráfego pago, copywriting e muito mais. Garanta sua vaga para os dias 15 a 17 de julho no Allianz Parque.",
-      "imagem": "https://picsum.photos/300/200?random=1",
-      "data": "2025-07-15",
-      "hora": "09:00",
-      "publicoAlvo": "Profissionais de marketing digital",
-      "categoria": "Marketing Digital"
-    },
-    {
-      "id": "2",
-      "titulo": "Subido: Imersão em Gestão de Tráfego",
-      "descricao": "O evento que vai revolucionar sua forma de fazer tráfego pago",
-      "texto_completo": "O Subido 2025 traz três dias intensos de aprendizado sobre gestão de tráfego com especialistas do mercado. Aprenda estratégias avançadas de Facebook Ads, Google Ads e TikTok Ads. O evento acontecerá nos dias 20 a 22 de agosto no WTC São Paulo.",
-      "imagem": "https://picsum.photos/300/200?random=2",
-      "data": "2025-08-20",
-      "hora": "08:30",
-      "publicoAlvo": "Gestores de tráfego e marketeiros",
-      "categoria": "Tráfego Pago"
-    },
-    {
-      "id": "3",
-      "titulo": "Summit Empresarial: Inovação e Liderança",
-      "descricao": "Encontro dos maiores líderes empresariais do Brasil",
-      "texto_completo": "O Summit Empresarial 2025 reunirá CEOs, empreendedores e líderes de grandes empresas para discutir o futuro dos negócios. Com foco em inovação, tecnologia e liderança, o evento acontecerá nos dias 10 e 11 de setembro no Centro de Convenções Frei Caneca.",
-      "imagem": "https://picsum.photos/300/200?random=3",
-      "data": "2025-09-10",
-      "hora": "10:00",
-      "publicoAlvo": "CEOs e líderes empresariais",
-      "categoria": "Liderança e Inovação"
-    },
-    {
-      "id": "4",
-      "titulo": "Workshop ESG: Sustentabilidade nos Negócios",
-      "descricao": "Como implementar práticas ESG em sua empresa",
-      "texto_completo": "O Workshop ESG 2025 trará especialistas em sustentabilidade para discutir implementações práticas de Environmental, Social and Governance em empresas de todos os portes. O evento acontecerá no dia 25 de outubro e contará com cases de sucesso de grandes empresas brasileiras.",
-      "imagem": "https://picsum.photos/300/200?random=4",
-      "data": "2025-10-25",
-      "hora": "14:00",
-      "publicoAlvo": "Gestores e empresários",
-      "categoria": "Sustentabilidade"
-    },
-    {
-      "id": "5",
-      "titulo": "TechFinance Conference 2025",
-      "descricao": "O futuro das finanças e tecnologia blockchain",
-      "texto_completo": "A TechFinance Conference reunirá especialistas em finanças digitais, criptomoedas e blockchain para discutir as tendências que estão moldando o futuro do mercado financeiro. Com palestras sobre DeFi, NFTs e regulamentações.",
-      "imagem": "https://picsum.photos/300/200?random=5",
-      "data": "2025-11-05",
-      "hora": "09:30",
-      "publicoAlvo": "Profissionais do mercado financeiro",
-      "categoria": "Finanças Digitais"
-    },
-    {
-      "id": "6",
-      "titulo": "RH Summit: O Futuro do Trabalho",
-      "descricao": "Tendências em gestão de pessoas e cultura organizacional",
-      "texto_completo": "O RH Summit 2025 abordará temas cruciais como trabalho híbrido, well-being corporativo e desenvolvimento de talentos. Com palestrantes internacionais e workshops práticos sobre as novas demandas do mercado de trabalho.",
-      "imagem": "https://picsum.photos/300/200?random=6",
-      "data": "2025-12-03",
-      "hora": "13:00",
-      "publicoAlvo": "Profissionais de RH e gestores",
-      "categoria": "Recursos Humanos"
-    },
-    {
-      "id": "7",
-      "titulo": "Data Analytics Forum",
-      "descricao": "Big Data e Inteligência Artificial nos negócios",
-      "texto_completo": "O Data Analytics Forum apresentará as últimas tendências em análise de dados e IA aplicada aos negócios. Com demonstrações práticas de ferramentas e metodologias para tomada de decisão baseada em dados.",
-      "imagem": "https://picsum.photos/300/200?random=7",
-      "data": "2026-01-15",
-      "hora": "10:00",
-      "publicoAlvo": "Analistas de dados e gestores",
-      "categoria": "Tecnologia"
-    },
-    {
-      "id": "b0c9",
+      "id": "1749780802635",
       "titulo": "Teste",
-      "descricao": "teste",
-      "texto_completo": "teste",
-      "categoria": "Marketing Digital",
-      "imagem": "http://st.depositphotos.com/1005920/4362/i/950/depositphotos_43629535-stock-photo-test-icon.jpg",
-      "data": "2025-06-10"
+      "descricao_breve": "Teste upload",
+      "texto_completo": "UPLOAD ",
+      "categoria": "Tecnologia",
+      "imagem": "assets/img/noticias/1749782279690-teste.jpg",
+      "data": "2025-06-13T02:38:20.510Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1749782463145",
+      "titulo": "teste2",
+      "descricao_breve": "UPLOAD TESTE",
+      "texto_completo": "UPLOAD TESTE AGAIN",
+      "categoria": "Negócios",
+      "imagem": "assets/img/noticias/1749816284245-images.jpeg",
+      "data": "2025-06-13T12:04:44.256Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233"
     }
   ]
 }

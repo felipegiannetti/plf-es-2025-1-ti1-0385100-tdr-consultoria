@@ -1,217 +1,199 @@
 const API_URL = 'http://localhost:3000';
 
-const eventForm = document.getElementById('eventForm');
-const eventsTable = document.getElementById('eventsTable');
+// Ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    loadEvents();
+    document.getElementById('eventForm').addEventListener('submit', handleSubmit);
+});
 
-let imagemAtual = ''; 
+// Enviar o formulário
+async function handleSubmit(e) {
+    e.preventDefault();
 
-document.addEventListener('DOMContentLoaded', loadEvents);
+    let imageUrl = '';
+    const fileInput = document.getElementById('imagem');
 
-async function uploadImagem(file) {
-    try {
-        const validExtensions = ['jpg', 'jpeg', 'png'];
-        const fileExtension = file.name.split('.').pop().toLowerCase();
-        
-        if (!validExtensions.includes(fileExtension)) {
-            throw new Error('O arquivo deve ter extensão .jpg, .jpeg ou .png');
+    if (fileInput.files && fileInput.files.length > 0) {
+        imageUrl = await uploadImagem(fileInput.files[0]);
+
+        if (!imageUrl) {
+            alert('Falha no upload da imagem. Evento não será salvo.');
+            return;
         }
-
-        const imagePath = `public/assets/img/eventos/${file.name}`;
-        
-        console.log('Image path being saved:', imagePath);
-        
-        return imagePath;
-        
-    } catch (error) {
-        console.error('Erro no processamento da imagem:', error);
-        throw new Error(`Erro no processamento da imagem: ${error.message}`);
     }
-}
 
-async function handleFormSubmit(event) {
-    event.preventDefault();
-    
+    const eventData = {
+        id: document.getElementById('eventId').value || String(Date.now()),
+        titulo: document.getElementById('titulo').value,
+        data: new Date(document.getElementById('data').value).toISOString(),
+        descricao: document.getElementById('descricao').value,
+        categoria: document.getElementById('categoria').value,
+        local: document.getElementById('local').value,
+        localmapa: document.getElementById('localmapa').value,
+        imagem: imageUrl || document.getElementById('imagem').getAttribute('data-current') || '',
+        vagas: parseInt(document.getElementById('vagas').value),
+        preco: parseFloat(document.getElementById('preco').value),
+        status: document.getElementById('status').value
+    };
+
+    const isEditing = document.getElementById('eventId').value !== '';
+    const method = isEditing ? 'PUT' : 'POST';
+    const url = isEditing ? `${API_URL}/eventos/${eventData.id}` : `${API_URL}/eventos`;
+
     try {
-        const imageFile = document.getElementById('imagem').files[0];
-
-        if (!imageFile && !imagemAtual) {
-            throw new Error('É necessário selecionar uma imagem para o evento');
-        }
-
-        let finalImageUrl = imagemAtual;
-        if (imageFile) {
-            finalImageUrl = await uploadImagem(imageFile);
-        }
-
-        const eventData = {
-            id: document.getElementById('eventId').value || Date.now().toString(),
-            titulo: document.getElementById('titulo').value,
-            data: document.getElementById('data').value,
-            descricao: document.getElementById('descricao').value,
-            categoria: document.getElementById('categoria').value,
-            vagas: parseInt(document.getElementById('vagas').value),
-            preco: parseFloat(document.getElementById('preco').value),
-            local: document.getElementById('local').value,
-            localmapa: document.getElementById('localmapa').value,
-            status: document.getElementById('status').value,
-            imagem: finalImageUrl 
-        };
-
-        const eventId = document.getElementById('eventId').value;
-        const method = eventId ? 'PUT' : 'POST';
-        const url = eventId ? `${API_URL}/eventos/${eventId}` : `${API_URL}/eventos`;
-
         const response = await fetch(url, {
             method: method,
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(eventData)
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
+        alert(isEditing ? 'Evento atualizado com sucesso!' : 'Evento criado com sucesso!');
         clearForm();
         loadEvents();
-        alert('Evento salvo com sucesso!');
-
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Erro ao salvar evento:', error);
         alert('Erro ao salvar evento: ' + error.message);
     }
 }
 
-document.getElementById('eventForm').addEventListener('submit', handleFormSubmit);
+// Upload de imagem
+async function uploadImagem(file) {
+    const formData = new FormData();
+    formData.append('imagem', file);
 
-async function loadEvents() {
     try {
-        const response = await fetch(`${API_URL}/eventos`);
-        const events = await response.json();
-        const agora = new Date();
+        const response = await fetch('http://localhost:4000/upload', {
+            method: 'POST',
+            body: formData
+        });
 
-        const ativos = events.filter(event => event.status === 'ativo');
-        const inativos = events.filter(event => event.status !== 'ativo');
+        if (!response.ok) throw new Error(`Erro no upload da imagem: ${response.status}`);
 
-        eventsTable.innerHTML = ativos.map(event => {
-            const dataEvento = new Date(event.data);
-            const isPast = dataEvento < agora;
-            return `
-                <tr class="${isPast ? 'table-secondary' : ''}">
-                    <td>${event.titulo}</td>
-                    <td>${dataEvento.toLocaleDateString('pt-BR')}</td>
-                    <td>${event.categoria}</td>
-                    <td>${event.vagas}</td>
-                    <td>R$ ${event.preco.toFixed(2)}</td>
-                    <td>
-                        <button onclick="editEvent('${event.id}')" class="btn btn-sm btn-warning" ${isPast ? 'disabled' : ''}>
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger" ${isPast ? 'disabled' : ''}>
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            `;
-        }).join('');
-
-        const inactiveTable = document.getElementById('inactiveEventsTable');
-        if (inactiveTable) {
-            inactiveTable.innerHTML = inativos.map(event => {
-                const dataEvento = new Date(event.data);
-                return `
-                    <tr>
-                        <td>${event.titulo}</td>
-                        <td>${dataEvento.toLocaleDateString('pt-BR')}</td>
-                        <td>${event.categoria}</td>
-                        <td>${event.vagas}</td>
-                        <td>R$ ${event.preco.toFixed(2)}</td>
-                        <td>
-                            <button onclick="editEvent('${event.id}')" class="btn btn-sm btn-warning">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        }
+        const data = await response.json();
+        console.log('Imagem enviada com sucesso:', data.imageUrl);
+        return data.imageUrl;
     } catch (error) {
-        console.error('Error loading events:', error);
-        alert('Erro ao carregar eventos: ' + error.message);
+        console.error('Erro ao fazer upload da imagem:', error);
+        return '';
     }
 }
 
+// Carregar eventos
+async function loadEvents() {
+    try {
+        const response = await fetch(`${API_URL}/eventos`);
+        const eventos = await response.json();
+
+        const activeEvents = eventos.filter(e => e.status === 'ativo');
+        const inactiveEvents = eventos.filter(e => e.status === 'inativo');
+
+        renderTable('activeEventsTable', activeEvents);
+        renderTable('inactiveEventsTable', inactiveEvents, true);
+    } catch (error) {
+        console.error('Erro ao carregar eventos:', error);
+    }
+}
+
+function renderTable(tableId, events, isInactive = false) {
+    const tbody = document.getElementById(tableId);
+    tbody.innerHTML = events.map(event => `
+        <tr>
+            <td>${event.titulo}</td>
+            <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
+            <td>${event.categoria}</td>
+            <td>${event.vagas}</td>
+            <td>R$ ${parseFloat(event.preco).toFixed(2)}</td>
+            <td>
+                <img src="http://localhost:4000/${event.imagem}" alt="${event.titulo}" style="max-width: 80px;"><br>
+                <div class="btn-group mt-1" role="group">
+                    <button class="btn btn-sm btn-primary" onclick="editEvent('${event.id}')"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger ms-2" onclick="deleteEvent('${event.id}')"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-sm ${isInactive ? 'btn-success' : 'btn-warning'} ms-2" onclick="toggleEventStatus('${event.id}')"><i class="fas fa-power-off"></i></button>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+}
+
+// Alternar status do evento
+async function toggleEventStatus(id) {
+    try {
+        const res = await fetch(`${API_URL}/eventos/${id}`);
+        const event = await res.json();
+        event.status = event.status === 'ativo' ? 'inativo' : 'ativo';
+
+        await fetch(`${API_URL}/eventos/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(event)
+        });
+
+        loadEvents();
+    } catch (error) {
+        console.error('Erro ao alterar status:', error);
+    }
+}
+
+// Editar evento
 async function editEvent(id) {
     try {
         const response = await fetch(`${API_URL}/eventos/${id}`);
         const event = await response.json();
-        
+
         document.getElementById('eventId').value = event.id;
         document.getElementById('titulo').value = event.titulo;
-        document.getElementById('data').value = new Date(event.data).toISOString().slice(0, 16);
+        document.getElementById('data').value = event.data.slice(0, 16);
         document.getElementById('descricao').value = event.descricao;
         document.getElementById('categoria').value = event.categoria;
-        document.getElementById('local').value = event.local;
-        document.getElementById('localmapa').value = event.localmapa;
         document.getElementById('vagas').value = event.vagas;
         document.getElementById('preco').value = event.preco;
-        document.getElementById('status').value = event.status || 'ativo';
-        imagemAtual = event.imagem || ''; 
+        document.getElementById('local').value = event.local;
+        document.getElementById('localmapa').value = event.localmapa;
+        document.getElementById('status').value = event.status;
 
-        mostrarImagemAtual(event.imagem);
+        // Preservar imagem
+        document.getElementById('imagem').value = '';
+        document.getElementById('imagem').setAttribute('data-current', event.imagem);
+
+        // Exibir nome da imagem atual
+        const imagemInfo = document.getElementById('imagem-info');
+        const nomeImagem = event.imagem.split('/').pop();
+        imagemInfo.textContent = `Imagem atual: ${nomeImagem}`;
     } catch (error) {
-        console.error('Error loading event for edit:', error);
-        alert('Erro ao carregar evento para edição: ' + error.message);
+        console.error('Erro ao carregar evento:', error);
     }
 }
 
-function mostrarImagemAtual(url) {
-    let info = document.getElementById('imagem-info');
-    if (!info) {
-        info = document.createElement('div');
-        info.id = 'imagem-info';
-        info.style.fontSize = '0.95rem';
-        info.style.color = '#aaa';
-        info.style.margin = '8px 0 0 0';
-        document.getElementById('imagem').insertAdjacentElement('afterend', info);
-    }
-    if (url) {
-        const nomeArquivo = url.split('/').pop();
-        info.textContent = `Arquivo atual: ${nomeArquivo}`;
-        info.style.display = 'block';
-    } else {
-        info.textContent = '';
-        info.style.display = 'none';
-    }
-}
-
+// Excluir evento
 async function deleteEvent(id) {
     if (confirm('Tem certeza que deseja excluir este evento?')) {
         try {
-            const response = await fetch(`${API_URL}/eventos/${id}`, {
-                method: 'DELETE'
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            alert('Evento excluído com sucesso!');
+            await fetch(`${API_URL}/eventos/${id}`, { method: 'DELETE' });
             loadEvents();
         } catch (error) {
-            console.error('Error deleting event:', error);
-            alert('Erro ao excluir evento: ' + error.message);
+            console.error('Erro ao excluir evento:', error);
         }
     }
 }
 
+// Limpar formulário
 function clearForm() {
-    eventForm.reset();
     document.getElementById('eventId').value = '';
-    imagemAtual = '';
-    mostrarImagemAtual('');
+    document.getElementById('titulo').value = '';
+    document.getElementById('data').value = '';
+    document.getElementById('descricao').value = '';
+    document.getElementById('categoria').value = '';
+    document.getElementById('vagas').value = '';
+    document.getElementById('preco').value = '';
+    document.getElementById('local').value = '';
+    document.getElementById('localmapa').value = '';
+    document.getElementById('imagem').value = '';
+    document.getElementById('imagem').removeAttribute('data-current');
+    document.getElementById('imagem-info').textContent = '';
+    document.getElementById('status').value = 'ativo';
+
+    const inputs = document.querySelectorAll('#eventForm .form-control');
+    inputs.forEach(input => input.classList.remove('is-valid', 'is-invalid'));
 }
