@@ -4,15 +4,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     const starFilter = document.getElementById("star-filter");
 
     let avaliacoes = [];
-    let eventos = [];
-
-    try {
+    let eventos = [];    try {
         // Fetch avaliações e eventos do servidor
-        const avaliacoesResponse = await fetch("http://localhost:3000/avaliacoeseventos");
-        avaliacoes = await avaliacoesResponse.json();
+        const [avaliacoesResponse, eventosResponse] = await Promise.all([
+            fetch("http://localhost:3000/avaliacoeseventos"),
+            fetch("http://localhost:3000/eventos")
+        ]);
 
-        const eventosResponse = await fetch("http://localhost:3000/eventos");
+        if (!avaliacoesResponse.ok) {
+            throw new Error(`HTTP error! status: ${avaliacoesResponse.status}`);
+        }
+        if (!eventosResponse.ok) {
+            throw new Error(`HTTP error! status: ${eventosResponse.status}`);
+        }
+
+        avaliacoes = await avaliacoesResponse.json();
         eventos = await eventosResponse.json();
+
+        console.log('Dados carregados:', {
+            avaliacoes,
+            eventos
+        });
 
         // Renderiza todas as avaliações inicialmente
         renderAvaliacoes(avaliacoes, eventos);
@@ -20,12 +32,36 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Adiciona funcionalidade de pesquisa e filtro
         const applyFilters = () => {
             const searchTerm = searchBar.value.toLowerCase();
-            const selectedStars = starFilter.value;
+            const selectedStars = starFilter.value;            console.log('Aplicando filtros:');
+            console.log('Termo de busca:', searchTerm);
+            console.log('Filtro de estrelas:', selectedStars);
+            console.log('Avaliações disponíveis:', avaliacoes);
+            console.log('Eventos disponíveis:', eventos);
 
             const filteredAvaliacoes = avaliacoes.filter(avaliacao => {
-                const evento = eventos.find(evento => evento.id === avaliacao.idevento);
-                const matchesEventName = evento && evento.titulo.toLowerCase().includes(searchTerm);
-                const matchesStarFilter = selectedStars ? avaliacao.rating === parseInt(selectedStars) : true;
+                // Converte os IDs para string para garantir uma comparação consistente
+                const evento = eventos.find(e => String(e.id) === String(avaliacao.idevento));
+                
+                // Log para debug
+                console.log('Avaliando avaliação:', {
+                    avaliacaoId: avaliacao.id,
+                    eventoId: avaliacao.idevento,
+                    eventoEncontrado: evento ? evento.titulo : 'não encontrado'
+                });
+
+                if (!evento) {
+                    console.log(`Evento não encontrado para avaliação ${avaliacao.id}`);
+                    return false;
+                }
+
+                const matchesEventName = evento.titulo.toLowerCase().includes(searchTerm);
+                const matchesStarFilter = selectedStars ? Number(avaliacao.rating) === Number(selectedStars) : true;
+
+                console.log('Resultado do filtro:', {
+                    titulo: evento.titulo,
+                    matchesEventName,
+                    matchesStarFilter
+                });
 
                 return matchesEventName && matchesStarFilter;
             });
