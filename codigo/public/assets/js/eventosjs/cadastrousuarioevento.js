@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('main').appendChild(main);
 
         document.getElementById('btnInscrever').addEventListener('click', function () {
-            alert('Funcionalidade de inscrição ainda não implementada.');
+            window.location.href = 'qrcodeEvento.html?id=' + eventId; 
         });
 
     } catch (err) {
