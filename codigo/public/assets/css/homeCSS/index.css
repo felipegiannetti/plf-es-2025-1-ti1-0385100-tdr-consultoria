@@ -102,7 +102,54 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 122, 0, 0.3);
+  color: white;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(255, 122, 0, 0.15);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: subtitleGlow 3s infinite alternate;
+}
+
+/* Animação de brilho suave */
+@keyframes subtitleGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 122, 0, 0.3);
+    box-shadow: 0 0 25px rgba(255, 122, 0, 0.15);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 122, 0, 0.5);
+    box-shadow: 0 0 35px rgba(255, 122, 0, 0.25);
+  }
+}
+
+/* Adicionar responsividade ao subtítulo com brilho */
+@media (max-width: 991px) {
+  .hero-subtitle {
+    font-size: 1.3rem;
+    padding: 0.4rem 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.2rem;
+    padding: 0.3rem 1rem;
+    animation-duration: 2.5s;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-subtitle {
+    font-size: 1.1rem;
+    padding: 0.25rem 0.8rem;
+    margin-bottom: 2rem;
+  }
 }
 
 /* Section Titles */
