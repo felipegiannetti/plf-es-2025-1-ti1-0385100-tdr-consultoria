@@ -138,7 +138,7 @@
     {
       "nome": "Felipe Giannetti Fontenelle",
       "email": "felipegiannettifontenelle@gmail.com",
-      "senha": "",
+      "senha": "admin123",
       "tipo": "admin",
       "id": "1749560312233"
     },
@@ -393,64 +393,120 @@
         {
           "texto": "Com qual dessas areas você mais se identifica?",
           "respostas": [
-            { "texto": "Financias"},
-            { "texto": "Bolsa de valores"},
-            { "texto": "RH"},
-            { "texto": "Construtora"}
+            {
+              "texto": "Financias"
+            },
+            {
+              "texto": "Bolsa de valores"
+            },
+            {
+              "texto": "RH"
+            },
+            {
+              "texto": "Construtora"
+            }
           ]
         },
         {
           "texto": "Qual sua meta financeira no periodo de 5 anos",
           "respostas": [
-            { "texto": "Menos de 100000"},
-            { "texto": "Entre 100000 - 500000"},
-            { "texto": "Entre 500000 - 1000000"},
-            { "texto": "Mais de 1000000"}  
+            {
+              "texto": "Menos de 100000"
+            },
+            {
+              "texto": "Entre 100000 - 500000"
+            },
+            {
+              "texto": "Entre 500000 - 1000000"
+            },
+            {
+              "texto": "Mais de 1000000"
+            }
           ]
         },
         {
           "texto": "Qual desses investimentos você mais gostaria de aprender?",
           "respostas": [
-            { "texto": "Ações"},
-            { "texto": "Criptomoedas"},
-            { "texto": "Imóveis"},
-            { "texto": "Renda Fixa"}
+            {
+              "texto": "Ações"
+            },
+            {
+              "texto": "Criptomoedas"
+            },
+            {
+              "texto": "Imóveis"
+            },
+            {
+              "texto": "Renda Fixa"
+            }
           ]
         },
         {
           "texto": "Como você descreveria seu perfil de investidor?",
           "respostas": [
-            { "texto": "Conservador"},
-            { "texto": "Moderado"},
-            { "texto": "Agressivo"},
-            { "texto": "Fluido"}
+            {
+              "texto": "Conservador"
+            },
+            {
+              "texto": "Moderado"
+            },
+            {
+              "texto": "Agressivo"
+            },
+            {
+              "texto": "Fluido"
+            }
           ]
         },
         {
           "texto": "Qual é o seu principal objetivo financeiro?",
           "respostas": [
-            { "texto": "Aposentadoria"},
-            { "texto": "Comprar uma casa"},
-            { "texto": "Educação dos filhos"},
-            { "texto": "Viagens"}
+            {
+              "texto": "Aposentadoria"
+            },
+            {
+              "texto": "Comprar uma casa"
+            },
+            {
+              "texto": "Educação dos filhos"
+            },
+            {
+              "texto": "Viagens"
+            }
           ]
         },
         {
           "texto": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
           "respostas": [
-            { "texto": "Básico"},
-            { "texto": "Intermediário"},
-            { "texto": "Avançado"},
-            { "texto": "Mediano"}
+            {
+              "texto": "Básico"
+            },
+            {
+              "texto": "Intermediário"
+            },
+            {
+              "texto": "Avançado"
+            },
+            {
+              "texto": "Mediano"
+            }
           ]
         },
         {
           "texto": "Você prefere investimentos de baixo risco com retorno menor ou alto risco com retorno maior?",
           "respostas": [
-            { "texto": "Baixo risco"},
-            { "texto": "Baixo retorno"},
-            { "texto": "Alto risco"},
-            { "texto": "Alto retorno"}
+            {
+              "texto": "Baixo risco"
+            },
+            {
+              "texto": "Baixo retorno"
+            },
+            {
+              "texto": "Alto risco"
+            },
+            {
+              "texto": "Alto retorno"
+            }
           ]
         }
       ]
@@ -468,46 +524,86 @@
         {
           "texto": "Qual é o seu maior desafio no trabalho?",
           "respostas": [
-            { "texto": "Gerenciar o tempo"},
-            { "texto": "Comunicação"},
-            { "texto": "Liderança"},
-            { "texto": "Inovação"}
+            {
+              "texto": "Gerenciar o tempo"
+            },
+            {
+              "texto": "Comunicação"
+            },
+            {
+              "texto": "Liderança"
+            },
+            {
+              "texto": "Inovação"
+            }
           ]
         },
         {
           "texto": "Como você descreveria seu estilo de liderança?",
           "respostas": [
-            { "texto": "Autocrático"},
-            { "texto": "Democrático"},
-            { "texto": "Transformacional"},
-            { "texto": "Laissez-faire"}
+            {
+              "texto": "Autocrático"
+            },
+            {
+              "texto": "Democrático"
+            },
+            {
+              "texto": "Transformacional"
+            },
+            {
+              "texto": "Laissez-faire"
+            }
           ]
         },
         {
           "texto": "Qual é a sua principal motivação no trabalho?",
           "respostas": [
-            { "texto": "Reconhecimento"},
-            { "texto": "Desenvolvimento pessoal"},
-            { "texto": "Impacto social"},
-            { "texto": "Estabilidade financeira"}
+            {
+              "texto": "Reconhecimento"
+            },
+            {
+              "texto": "Desenvolvimento pessoal"
+            },
+            {
+              "texto": "Impacto social"
+            },
+            {
+              "texto": "Estabilidade financeira"
+            }
           ]
         },
         {
           "texto": "Você prefere trabalhar em equipe ou individualmente?",
           "respostas": [
-            { "texto": "Equipe"},
-            { "texto": "Individualmente"},
-            { "texto": "Ambos"},
-            { "texto": "Depende do projeto"}
+            {
+              "texto": "Equipe"
+            },
+            {
+              "texto": "Individualmente"
+            },
+            {
+              "texto": "Ambos"
+            },
+            {
+              "texto": "Depende do projeto"
+            }
           ]
         },
         {
           "texto": "Qual é a sua abordagem para resolver problemas?",
           "respostas": [
-            { "texto": "Análise lógica"},
-            { "texto": "Criatividade"},
-            { "texto": "Colaboração"},
-            { "texto": "Intuição"}
+            {
+              "texto": "Análise lógica"
+            },
+            {
+              "texto": "Criatividade"
+            },
+            {
+              "texto": "Colaboração"
+            },
+            {
+              "texto": "Intuição"
+            }
           ]
         }
       ]
@@ -525,68 +621,123 @@
         {
           "texto": "Com qual dessas areas você mais se identifica?",
           "respostas": [
-            { "texto": "Financias"},
-            { "texto": "Bolsa de valores"},
-            { "texto": "RH"},
-            { "texto": "Construtora"}
+            {
+              "texto": "Financias"
+            },
+            {
+              "texto": "Bolsa de valores"
+            },
+            {
+              "texto": "RH"
+            },
+            {
+              "texto": "Construtora"
+            }
           ]
         },
         {
           "texto": "Qual sua meta financeira no periodo de 5 anos",
           "respostas": [
-            { "texto": "Menos de 100000"},
-            { "texto": "Entre 100000 - 500000"},
-            { "texto": "Entre 500000 - 1000000"},
-            { "texto": "Mais de 1000000"}  
+            {
+              "texto": "Menos de 100000"
+            },
+            {
+              "texto": "Entre 100000 - 500000"
+            },
+            {
+              "texto": "Entre 500000 - 1000000"
+            },
+            {
+              "texto": "Mais de 1000000"
+            }
           ]
         },
         {
           "texto": "Qual desses investimentos você mais gostaria de aprender?",
           "respostas": [
-            { "texto": "Ações"},
-            { "texto": "Criptomoedas"},
-            { "texto": "Imóveis"},
-            { "texto": "Renda Fixa"}
+            {
+              "texto": "Ações"
+            },
+            {
+              "texto": "Criptomoedas"
+            },
+            {
+              "texto": "Imóveis"
+            },
+            {
+              "texto": "Renda Fixa"
+            }
           ]
         },
         {
           "texto": "Como você descreveria seu perfil de investidor?",
           "respostas": [
-            { "texto": "Conservador"},
-            { "texto": "Moderado"},
-            { "texto": "Agressivo"},
-            { "texto": "Fluido"}
+            {
+              "texto": "Conservador"
+            },
+            {
+              "texto": "Moderado"
+            },
+            {
+              "texto": "Agressivo"
+            },
+            {
+              "texto": "Fluido"
+            }
           ]
         },
         {
           "texto": "Qual é o seu principal objetivo financeiro?",
           "respostas": [
-            { "texto": "Aposentadoria"},
-            { "texto": "Comprar uma casa"},
-            { "texto": "Educação dos filhos"},
-            { "texto": "Viagens"}
+            {
+              "texto": "Aposentadoria"
+            },
+            {
+              "texto": "Comprar uma casa"
+            },
+            {
+              "texto": "Educação dos filhos"
+            },
+            {
+              "texto": "Viagens"
+            }
           ]
         },
         {
           "texto": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
           "respostas": [
-            { "texto": "Básico"},
-            { "texto": "Intermediário"},
-            { "texto": "Avançado"},
-            { "texto": "Mediano"}
+            {
+              "texto": "Básico"
+            },
+            {
+              "texto": "Intermediário"
+            },
+            {
+              "texto": "Avançado"
+            },
+            {
+              "texto": "Mediano"
+            }
           ]
         },
         {
           "texto": "Você prefere investimentos de baixo risco com retorno menor ou alto risco com retorno maior?",
           "respostas": [
-            { "texto": "Baixo risco"},
-            { "texto": "Baixo retorno"},
-            { "texto": "Alto risco"},
-            { "texto": "Alto retorno"}
+            {
+              "texto": "Baixo risco"
+            },
+            {
+              "texto": "Baixo retorno"
+            },
+            {
+              "texto": "Alto risco"
+            },
+            {
+              "texto": "Alto retorno"
+            }
           ]
         }
       ]
     }
   ]
 }
-
