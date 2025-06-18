@@ -378,5 +378,215 @@
       "autor": "Felipe Giannetti",
       "autorId": "1749560312233"
     }
+  ],
+  "quizzes": [
+    {
+      "id": "1749780802635",
+      "titulo": "Teste Quiz",
+      "descricao_breve": "Teste upload",
+      "categoria": "Tecnologia",
+      "imagem": "assets/img/quizzes/1749782279690-teste.jpg",
+      "data": "2025-06-13T02:38:20.510Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233",
+      "perguntas": [
+        {
+          "texto": "Com qual dessas areas você mais se identifica?",
+          "respostas": [
+            { "texto": "Financias"},
+            { "texto": "Bolsa de valores"},
+            { "texto": "RH"},
+            { "texto": "Construtora"}
+          ]
+        },
+        {
+          "texto": "Qual sua meta financeira no periodo de 5 anos",
+          "respostas": [
+            { "texto": "Menos de 100000"},
+            { "texto": "Entre 100000 - 500000"},
+            { "texto": "Entre 500000 - 1000000"},
+            { "texto": "Mais de 1000000"}  
+          ]
+        },
+        {
+          "texto": "Qual desses investimentos você mais gostaria de aprender?",
+          "respostas": [
+            { "texto": "Ações"},
+            { "texto": "Criptomoedas"},
+            { "texto": "Imóveis"},
+            { "texto": "Renda Fixa"}
+          ]
+        },
+        {
+          "texto": "Como você descreveria seu perfil de investidor?",
+          "respostas": [
+            { "texto": "Conservador"},
+            { "texto": "Moderado"},
+            { "texto": "Agressivo"},
+            { "texto": "Fluido"}
+          ]
+        },
+        {
+          "texto": "Qual é o seu principal objetivo financeiro?",
+          "respostas": [
+            { "texto": "Aposentadoria"},
+            { "texto": "Comprar uma casa"},
+            { "texto": "Educação dos filhos"},
+            { "texto": "Viagens"}
+          ]
+        },
+        {
+          "texto": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
+          "respostas": [
+            { "texto": "Básico"},
+            { "texto": "Intermediário"},
+            { "texto": "Avançado"},
+            { "texto": "Mediano"}
+          ]
+        },
+        {
+          "texto": "Você prefere investimentos de baixo risco com retorno menor ou alto risco com retorno maior?",
+          "respostas": [
+            { "texto": "Baixo risco"},
+            { "texto": "Baixo retorno"},
+            { "texto": "Alto risco"},
+            { "texto": "Alto retorno"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1749782463145",
+      "titulo": "Teste Quiz 2",
+      "descricao_breve": "Teste upload",
+      "categoria": "Negócios",
+      "imagem": "assets/img/quizzes/1749816284245-images.jpeg",
+      "data": "2025-06-13T12:04:44.256Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233",
+      "perguntas": [
+        {
+          "texto": "Qual é o seu maior desafio no trabalho?",
+          "respostas": [
+            { "texto": "Gerenciar o tempo"},
+            { "texto": "Comunicação"},
+            { "texto": "Liderança"},
+            { "texto": "Inovação"}
+          ]
+        },
+        {
+          "texto": "Como você descreveria seu estilo de liderança?",
+          "respostas": [
+            { "texto": "Autocrático"},
+            { "texto": "Democrático"},
+            { "texto": "Transformacional"},
+            { "texto": "Laissez-faire"}
+          ]
+        },
+        {
+          "texto": "Qual é a sua principal motivação no trabalho?",
+          "respostas": [
+            { "texto": "Reconhecimento"},
+            { "texto": "Desenvolvimento pessoal"},
+            { "texto": "Impacto social"},
+            { "texto": "Estabilidade financeira"}
+          ]
+        },
+        {
+          "texto": "Você prefere trabalhar em equipe ou individualmente?",
+          "respostas": [
+            { "texto": "Equipe"},
+            { "texto": "Individualmente"},
+            { "texto": "Ambos"},
+            { "texto": "Depende do projeto"}
+          ]
+        },
+        {
+          "texto": "Qual é a sua abordagem para resolver problemas?",
+          "respostas": [
+            { "texto": "Análise lógica"},
+            { "texto": "Criatividade"},
+            { "texto": "Colaboração"},
+            { "texto": "Intuição"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1749780802635",
+      "titulo": "Teste Quiz",
+      "descricao_breve": "Teste upload",
+      "categoria": "Tecnologia",
+      "imagem": "assets/img/quizzes/1749782279690-teste.jpg",
+      "data": "2025-06-13T02:38:20.510Z",
+      "autor": "Felipe Giannetti",
+      "autorId": "1749560312233",
+      "perguntas": [
+        {
+          "texto": "Com qual dessas areas você mais se identifica?",
+          "respostas": [
+            { "texto": "Financias"},
+            { "texto": "Bolsa de valores"},
+            { "texto": "RH"},
+            { "texto": "Construtora"}
+          ]
+        },
+        {
+          "texto": "Qual sua meta financeira no periodo de 5 anos",
+          "respostas": [
+            { "texto": "Menos de 100000"},
+            { "texto": "Entre 100000 - 500000"},
+            { "texto": "Entre 500000 - 1000000"},
+            { "texto": "Mais de 1000000"}  
+          ]
+        },
+        {
+          "texto": "Qual desses investimentos você mais gostaria de aprender?",
+          "respostas": [
+            { "texto": "Ações"},
+            { "texto": "Criptomoedas"},
+            { "texto": "Imóveis"},
+            { "texto": "Renda Fixa"}
+          ]
+        },
+        {
+          "texto": "Como você descreveria seu perfil de investidor?",
+          "respostas": [
+            { "texto": "Conservador"},
+            { "texto": "Moderado"},
+            { "texto": "Agressivo"},
+            { "texto": "Fluido"}
+          ]
+        },
+        {
+          "texto": "Qual é o seu principal objetivo financeiro?",
+          "respostas": [
+            { "texto": "Aposentadoria"},
+            { "texto": "Comprar uma casa"},
+            { "texto": "Educação dos filhos"},
+            { "texto": "Viagens"}
+          ]
+        },
+        {
+          "texto": "Qual é o seu nível de conhecimento sobre finanças pessoais?",
+          "respostas": [
+            { "texto": "Básico"},
+            { "texto": "Intermediário"},
+            { "texto": "Avançado"},
+            { "texto": "Mediano"}
+          ]
+        },
+        {
+          "texto": "Você prefere investimentos de baixo risco com retorno menor ou alto risco com retorno maior?",
+          "respostas": [
+            { "texto": "Baixo risco"},
+            { "texto": "Baixo retorno"},
+            { "texto": "Alto risco"},
+            { "texto": "Alto retorno"}
+          ]
+        }
+      ]
+    }
   ]
 }
+
