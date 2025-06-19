@@ -66,12 +66,55 @@
             userId = 1;
         }
 
+        // Função para mostrar erro de conexão
+        function mostrarErroConexao() {
+            document.getElementById("listaQuizzes").innerHTML = `
+                <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-8 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <div class="mb-4">
+                                            <i class="fas fa-exclamation-triangle text-warning" style="font-size: 4rem;"></i>
+                                        </div>
+                                        <h2 class="text-danger">Erro de Conexão</h2>
+                                        <p class="fs-5 mb-4 text-white">Não foi possível conectar ao servidor. Verifique se:</p>
+                                        <div class="text-start mb-4">
+                                            <ul class="list-unstyled">
+                                                <li class="mb-2 text-white"><i class="fas fa-server text-warning me-2"></i>O json-server está rodando</li>
+                                                <li class="mb-2 text-white"><i class="fas fa-terminal text-warning me-2"></i>Execute: <code class="bg-dark text-light px-2 py-1 rounded">json-server --watch db.json</code></li>
+                                                <li class="mb-2 text-white"><i class="fas fa-network-wired text-warning me-2"></i>A conexão com localhost:3000 está disponível</li>
+                                                <li class="mb-2 text-white"><i class="fas fa-wifi text-warning me-2"></i>Sua conexão de internet está funcionando</li>
+                                            </ul>
+                                        </div>
+                                        <div class="mt-4">
+                                            <button class="btn btn-primary me-2" onclick="location.reload()">
+                                                <i class="fas fa-redo me-2"></i>Tentar Novamente
+                                            </button>
+                                            <a href="../../../index.html" class="btn btn-secondary">
+                                                <i class="fas fa-home me-2"></i>Voltar para Home
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         // Função para verificar se o usuário existe antes de carregar o quiz
         async function verificarUsuario() {
             try {
                 const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
                 if (!response.ok) {
-                    throw new Error('Usuário não encontrado');
+                    if (response.status === 404) {
+                        throw new Error('Usuário não encontrado');
+                    } else {
+                        throw new Error(`Erro do servidor: ${response.status}`);
+                    }
                 }
                 const usuario = await response.json();
                 console.log('Usuário encontrado:', usuario);
@@ -120,17 +163,39 @@
                 return true;
             } catch (error) {
                 console.error('Erro ao verificar usuário:', error);
-                document.getElementById("card").innerHTML = `
-                    <div class="text-center">
-                        <div class="mb-4">
-                            <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
-                        </div>
-                        <h2>Usuário não encontrado</h2>
-                        <p>O ID do usuário ${userId} não foi encontrado no sistema.</p>
-                        <div class="mt-3">
-                            <a href="../../../index.html" class="btn btn-primary">
-                                <i class="fas fa-home me-2"></i>Voltar para Home
-                            </a>
+                
+                // Verifica se é erro de conexão
+                if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                    mostrarErroConexao();
+                    return false;
+                }
+                
+                // Erro específico do usuário
+                document.getElementById("listaQuizzes").innerHTML = `
+                    <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-8 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="mb-4">
+                                                <i class="fas fa-user-times text-warning" style="font-size: 3rem;"></i>
+                                            </div>
+                                            <h2>Usuário não encontrado</h2>
+                                            <p>O ID do usuário <strong>${userId}</strong> não foi encontrado no sistema.</p>
+                                            <p class="text-muted">Verifique se o ID está correto ou faça login novamente.</p>
+                                            <div class="mt-4">
+                                                <a href="../../../index.html" class="btn btn-primary me-2">
+                                                    <i class="fas fa-home me-2"></i>Voltar para Home
+                                                </a>
+                                                <button class="btn btn-secondary" onclick="location.reload()">
+                                                    <i class="fas fa-redo me-2"></i>Tentar Novamente
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -138,20 +203,60 @@
             }
         }
 
+        // Função para verificar se o servidor está disponível
+        async function verificarServidor() {
+            try {
+                const response = await fetch('http://localhost:3000/quizzes', {
+                    method: 'GET',
+                    timeout: 5000 // 5 segundos de timeout
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Servidor retornou status: ${response.status}`);
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('Erro ao conectar com o servidor:', error);
+                mostrarErroConexao();
+                return false;
+            }
+        }
+
         // Inicializa o quiz quando a página carregar
         document.addEventListener('DOMContentLoaded', async function() {
-            const usuarioValido = await verificarUsuario();
-            if (usuarioValido) {
-                // Carrega a primeira pergunta se o usuário for válido e não tiver feito o quiz
-                if (questions.length > 0) {
-                    const q = questions[0];
-                    document.getElementById("title").textContent = q.title;
-                    document.getElementById("question").textContent = q.question;
-                    const optionsContainer = document.getElementById("options");
-                    optionsContainer.innerHTML = q.options.map(option => 
-                        `<label><input type="radio" name="option" value="${option}"> ${option}</label>`
-                    ).join('');
+            try {
+                // Primeiro verifica se o servidor está disponível
+                const servidorDisponivel = await verificarServidor();
+                
+                if (!servidorDisponivel) {
+                    return; // Para a execução se o servidor não estiver disponível
                 }
+
+                // Se o servidor estiver disponível, verifica o usuário
+                const usuarioValido = await verificarUsuario();
+                
+                if (usuarioValido) {
+                    // Carrega a primeira pergunta se o usuário for válido e não tiver feito o quiz
+                    if (typeof questions !== 'undefined' && questions.length > 0) {
+                        const q = questions[0];
+                        if (document.getElementById("title")) {
+                            document.getElementById("title").textContent = q.title;
+                        }
+                        if (document.getElementById("question")) {
+                            document.getElementById("question").textContent = q.question;
+                        }
+                        const optionsContainer = document.getElementById("options");
+                        if (optionsContainer) {
+                            optionsContainer.innerHTML = q.options.map(option => 
+                                `<label><input type="radio" name="option" value="${option}"> ${option}</label>`
+                            ).join('');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Erro geral na inicialização:', error);
+                mostrarErroConexao();
             }
         });
     </script>

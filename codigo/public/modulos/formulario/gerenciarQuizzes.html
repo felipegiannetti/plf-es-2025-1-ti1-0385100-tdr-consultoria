@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR Consultoria - Gestão de Quizzes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../assets/css/usuariosCSS/gerenciarusuarios.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbarimplementador"></div>
+
+    <div class="container margemtopo">
+        <div class="custom-title-container mb-4">
+            <h2 class="gestao-usuarios-title">Gestão de Quizzes</h2>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Buscar quizzes...">
+                    <button class="btn btn-primary" type="button" onclick="searchQuizzes()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="filterCategory">
+                    <option value="all">Todas as categorias</option>
+                    <option value="Profissional">Profissional</option>
+                    <option value="Pessoal">Pessoal</option>
+                    <option value="Técnico">Técnico</option>
+                    <option value="Comportamental">Comportamental</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success w-100" onclick="showAddQuizModal()">
+                    <i class="fas fa-quiz"></i> Novo Quiz
+                </button>
+            </div>
+        </div>
+
+        <!-- Quizzes Table -->
+        <div class="table-responsive">
+            <div class="table-container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Categoria</th>
+                            <th>Perguntas</th>
+                            <th>Status</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quizzesTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Quiz Modal -->
+    <div class="modal fade" id="quizModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Adicionar Quiz</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="quizForm">
+                        <input type="hidden" id="quizId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="titulo" class="form-label">Título</label>
+                                    <input type="text" class="form-control" id="titulo" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="categoria" class="form-label">Categoria</label>
+                                    <select class="form-select" id="categoria" required>
+                                        <option value="">Selecione uma categoria</option>
+                                        <option value="Profissional">Profissional</option>
+                                        <option value="Pessoal">Pessoal</option>
+                                        <option value="Técnico">Técnico</option>
+                                        <option value="Comportamental">Comportamental</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descricao_breve" class="form-label">Descrição Breve</label>
+                            <textarea class="form-control" id="descricao_breve" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Descrição Completa</label>
+                            <textarea class="form-control" id="descricao" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="imagem" class="form-label">URL da Imagem</label>
+                                    <input type="url" class="form-control" id="imagem">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select class="form-select" id="status" required>
+                                        <option value="ativo">Ativo</option>
+                                        <option value="inativo">Inativo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Perguntas Section -->
+                        <div class="mb-3">
+                            <label class="form-label">Perguntas</label>
+                            <div id="perguntasContainer">
+                                <!-- Perguntas serão adicionadas dinamicamente -->
+                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="addPergunta()">
+                                <i class="fas fa-plus"></i> Adicionar Pergunta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveQuiz()">Salvar Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Quiz Details Modal -->
+    <div class="modal fade" id="viewQuizModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalhes do Quiz</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="quizDetails">
+                    <!-- Detalhes do quiz serão carregados aqui -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footerimplementador"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
+    <script src="../../assets/js/globaisjs/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminAccess();
+            loadQuizzes();
+        });
+    </script>
+    <script src="../../assets/js/formulariojs/gerenciarQuizzes.js"></script>
+</body>
+</html>
