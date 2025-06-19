@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Função para pegar parâmetros da URL
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Pega o ID do usuário da URL atual
+    const userId = getUrlParameter('idUsuario') || '1';
+
     fetch('http://localhost:3000/quizzes')
         .then(response => response.json())
         .then(quizzes => {
@@ -45,11 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     cardBody.appendChild(categoria);
                 }
 
-                // Botão para acessar quiz (ajuste o link conforme necessário)
+                // Botão para acessar quiz - MODIFICADO para passar userId e quizId
                 const btn = document.createElement('a');
                 btn.className = 'btn btn-primary';
                 btn.textContent = 'Acessar Quiz';
-                btn.href = `quiz.html?id=${quiz.id}`; // ajuste conforme sua rota
+                btn.href = `exibiformulario.html?idUsuario=${userId}&idQuiz=${quiz.id}`;
                 cardBody.appendChild(btn);
 
                 card.appendChild(cardBody);

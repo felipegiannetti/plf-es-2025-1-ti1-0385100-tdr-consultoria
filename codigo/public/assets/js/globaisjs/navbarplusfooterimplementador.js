@@ -80,7 +80,7 @@ function implementNavbar() {
             cadastroEventos: 'public/modulos/eventos/cadastroeventos.html',
             noticias: 'public/modulos/noticias/noticias.html',
             cadastroNoticias: 'public/modulos/noticias/cadastro-noticias.html', // Changed to match file name
-            quizzes: 'public/modulos/formulario/exibiformulario.html',
+            quizzes: 'public/modulos/formulario/exibiquizzes.html',
             areaAdmin: 'public/modulos/adminarea/areaadmin.html'
         },
         other: {
@@ -89,7 +89,7 @@ function implementNavbar() {
             cadastroEventos: '../eventos/cadastroeventos.html',  // Changed from 'cadastroeventos.html'
             noticias: '../noticias/noticias.html',
             cadastroNoticias: '../noticias/cadastro-noticias.html', // Changed path and file name
-            quizzes: '../formulario/exibiformulario.html',
+            quizzes: '../formulario/exibiquizzes.html',
             areaAdmin: '../adminarea/areaadmin.html'
         }
     };
@@ -106,7 +106,7 @@ function implementNavbar() {
             <a class="nav-link" href="${currentPaths.home}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="${currentPaths.quizzes}">Quizzes</a>
+            <a class="nav-link" href="${currentPaths.quizzes}?idUsuario=${usuario.id}">Quizzes</a>
         </li>
         ${isAdminUser ? `
             <li class="nav-item dropdown">

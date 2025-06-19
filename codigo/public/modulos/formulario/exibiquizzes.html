@@ -46,75 +46,114 @@
 
     <script>
 
+        // Função para pegar parâmetros da URL
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
 
-        /* 
-        Esse sistema que esta implementado para o formulario nao esta completo. Ainda existe melhorias para serem feitas. Sao as seguintes:
+        // Pega o ID do usuário da URL, se não existir usa 1 como padrão
+        let userId = getUrlParameter('idUsuario') || '1';
+        
+        // Converte para número se necessário
+        userId = parseInt(userId);
 
-        Apos o envio das resposta o site reinicia e nao deixa o usuario ver a tela de obrigado. 
-        O sistema de FAQ ainda esta faltando.
-        O sistema de login ainda esta para ser implementado, entao so e possivel alterar o usuario em que sao cadastradas as respostas pelo userId.
-        As perguntas tem que ser atualizadas para o proposito do site.
-        O sistema de load que e usado para clicar nas options das questao apresenta bugs ocasionais por causa do carregamento da pagina web.
-        O css da pagina precisa ser atualizado.
-        */
+        console.log('ID do usuário capturado da URL:', userId);
 
-        //Id do usuario que futuramente sera pego atravez do login
-        let userId = 1; // Exemplo de ID do usuário, deve ser dinâmico
+        // Validação adicional para verificar se o ID é válido
+        if (!userId || isNaN(userId)) {
+            console.warn('ID do usuário inválido, usando ID padrão: 1');
+            userId = 1;
+        }
 
-        //Lista de perguntas que aparencem no formulario
-        const questions = [
-            { title: "Descubra seu nicho", question: "Com qual dessas areas você mais se identifica?", options: ["Financias", "Bolsa de valores", "RH", "Construtora"] },
-            { title: "Falando sobre dinheiro", question: "Qual sua meta financeiran no periodo de 5 anos?", options: ["Entre 100000 - 500000", "Entre 500000 - 1000000", "+1000000", "Menos de 100000"] },
-            { title: "Investimentos", question: "Qual desses investimentos você mais gostaria de aprender?", options: ["Ações", "Criptomoedas", "Imóveis", "Renda Fixa"] },
-            { title: "Perfil de Investidor", question: "Como você descreveria seu perfil de investidor?", options: ["Conservador", "Moderado", "Agressivo", "Fluido"] },
-            { title: "Objetivos Financeiros", question: "Qual é o seu principal objetivo financeiro?", options: ["Aposentadoria", "Comprar uma casa", "Educação dos filhos", "Viagens"] },
-            { title: "Conhecimento Financeiro", question: "Qual é o seu nível de conhecimento sobre finanças pessoais?", options: ["Básico", "Intermediário", "Avançado", "Medianao"] },
-            { title: "Risco e Retorno", question: "Você prefere investimentos de baixo risco com retorno menor ou alto risco com retorno maior?", options: ["Baixo risco, baixo retorno", "Alto risco", "Alto retorno"] },
-        ];
-
-        //Sistema para atualizar as perguntas depois de escolher a resposta 
-        let currentQuestion = 0;
-        let responses = [];
-        function nextQuestion() {
-            const selectedOption = document.querySelector('input[name="option"]:checked');
-            if (selectedOption) {
-                //Mandando a resposta do usuario para a variavel responses
-                responses.push({
-                    question: questions[currentQuestion].question,
-                    response: selectedOption.value
-                });
-                //Sistema de loop das questoes
-                currentQuestion++;
-                if (currentQuestion < questions.length - 1) {
-                    const q = questions[currentQuestion];
-                    document.getElementById("title").textContent = q.title;
-                    document.getElementById("question").textContent = q.question;
-                    const optionsContainer = document.getElementById("options");
-                    optionsContainer.innerHTML = q.options.map(option => `<label><input type="radio" name="option" value="${option}"> ${option}</label>`).join('');
-                } else {
-                    
-                    //Finalizacao do loop das questoes
-                        if (userId == 1){
-                        document.getElementById("card").innerHTML = "<h2>Obrigado pelo seu feedback!</h2>";
-                        //Fetch da api e envio dos dados atravez do method PATCH
-                        //Os dados sao passados para o db.json usuarios/respostas onde sao criadas as perguntas e as respostas
-                        //Tambem e atualizado o formularioFeito para saber se o usuario fez ou nao o formulario
-                        fetch(`http://localhost:3000/usuarios/${userId}`, {
-                            method: 'PATCH',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ respostas: responses, formularioFeito: "sim" })
-                        })
-                            .then(response => console.log('Respostas enviadas:', response))
-                            .catch(error => console.error('Erro ao enviar respostas:', error));
-                    }else {
-                        document.getElementById("card").innerHTML = "<h2>Se registre no sistema para descobrir sua resposta!</h2>";
-                    }
+        // Função para verificar se o usuário existe antes de carregar o quiz
+        async function verificarUsuario() {
+            try {
+                const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
+                if (!response.ok) {
+                    throw new Error('Usuário não encontrado');
                 }
+                const usuario = await response.json();
+                console.log('Usuário encontrado:', usuario);
+                
+                // Verifica se o usuário já fez o formulário
+                if (usuario.formularioFeito === "sim") {
+                    // Cria HTML para exibir as respostas
+                    let respostasHTML = '';
+                    if (usuario.respostas && usuario.respostas.length > 0) {
+                        respostasHTML = `
+                            <div class="mt-4">
+                                <h4>Suas respostas anteriores:</h4>
+                                <div class="text-start">
+                                    ${usuario.respostas.map((resposta, index) => `
+                                        <div class="mb-3 p-3 bg-light rounded">
+                                            <strong>Pergunta ${index + 1}:</strong> ${resposta.question}<br>
+                                            <strong>Sua resposta:</strong> <span class="text-primary">${resposta.response}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    document.getElementById("card").innerHTML = `
+                        <div class="text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                            </div>
+                            <h2>Quiz já realizado!</h2>
+                            <p>Você já completou este quiz anteriormente.</p>
+                            <p><strong>Data da última participação:</strong> ${new Date(usuario.dataFormulario).toLocaleDateString('pt-BR')}</p>
+                            ${respostasHTML}
+                            <div class="mt-4">
+                                <a href="../../../index.html" class="btn btn-primary me-2">
+                                    <i class="fas fa-home me-2"></i>Voltar para Home
+                                </a>
+                                <button class="btn btn-secondary" onclick="location.reload()">
+                                    <i class="fas fa-redo me-2"></i>Refazer Quiz
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    return false;
+                }
+                return true;
+            } catch (error) {
+                console.error('Erro ao verificar usuário:', error);
+                document.getElementById("card").innerHTML = `
+                    <div class="text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                        </div>
+                        <h2>Usuário não encontrado</h2>
+                        <p>O ID do usuário ${userId} não foi encontrado no sistema.</p>
+                        <div class="mt-3">
+                            <a href="../../../index.html" class="btn btn-primary">
+                                <i class="fas fa-home me-2"></i>Voltar para Home
+                            </a>
+                        </div>
+                    </div>
+                `;
+                return false;
             }
         }
 
-        
-
+        // Inicializa o quiz quando a página carregar
+        document.addEventListener('DOMContentLoaded', async function() {
+            const usuarioValido = await verificarUsuario();
+            if (usuarioValido) {
+                // Carrega a primeira pergunta se o usuário for válido e não tiver feito o quiz
+                if (questions.length > 0) {
+                    const q = questions[0];
+                    document.getElementById("title").textContent = q.title;
+                    document.getElementById("question").textContent = q.question;
+                    const optionsContainer = document.getElementById("options");
+                    optionsContainer.innerHTML = q.options.map(option => 
+                        `<label><input type="radio" name="option" value="${option}"> ${option}</label>`
+                    ).join('');
+                }
+            }
+        });
     </script>
 
 </body>
