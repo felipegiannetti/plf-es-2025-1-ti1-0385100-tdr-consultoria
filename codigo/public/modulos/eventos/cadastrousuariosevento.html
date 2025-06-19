@@ -96,6 +96,15 @@
     </div>
 
     <script>
+        // Função para acessar QR Code com ID do evento
+        function acessarQRCode(eventoId) {
+            window.location.href = `qrcodeEvento.html?id=${eventoId}`;
+        }
+        
+        // ... resto do código existente ...
+    </script>
+
+    <script>
     function exibeCadastro() {
         tableCadastro = document.getElementById("table-cadastro");
         tableCadastro.innerHTML = "";
