@@ -64,7 +64,8 @@ async function uploadImagem(file) {
     formData.append('imagem', file);
 
     try {
-        const response = await fetch('http://localhost:3000/upload', {
+        // Corrigindo a URL do endpoint de upload
+        const response = await fetch(`${API_URL}/upload-evento`, {
             method: 'POST',
             body: formData
         });

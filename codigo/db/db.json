@@ -94,12 +94,12 @@
     {
       "id": "1749777137767",
       "titulo": "tes",
-      "data": "2026-06-12T19:00:00.000Z",
+      "data": "2026-06-12T22:00:00.000Z",
       "descricao": "teste",
       "categoria": "Workshop",
       "local": "teste",
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
-      "imagem": "assets/img/eventos/1749777137739-teste.jpg",
+      "imagem": "assets/img/eventos/1750478656694-imagemperfil.jpg",
       "vagas": 10,
       "preco": 10,
       "status": "ativo"
@@ -123,6 +123,13 @@
     {
       "id": "1750478087875",
       "idEvento": "1749777137767",
+      "idUsuario": [
+        "1"
+      ]
+    },
+    {
+      "id": "1750478861992",
+      "idEvento": "3",
       "idUsuario": [
         "1"
       ]
