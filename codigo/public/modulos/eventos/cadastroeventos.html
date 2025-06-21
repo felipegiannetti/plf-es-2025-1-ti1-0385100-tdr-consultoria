@@ -82,55 +82,70 @@
     <button type="button" class="btn btn-secondary" onclick="clearForm()">Limpar</button>
 </form>
 
-        <!-- Active Events Section -->
-        <div>
-            <h3 class="table-title">
+        <!-- Replace the Active Events Section -->
+<div class="accordion" id="eventsAccordion">
+    <!-- Active Events Section -->
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="activeEventsHeader">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#activeEventsCollapse" aria-expanded="true" aria-controls="activeEventsCollapse">
                 <i class="fas fa-calendar-check me-2"></i>
                 Eventos Ativos
-            </h3>
-            <div class="table-container">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Data</th>
-                            <th>Categoria</th>
-                            <th>Vagas</th>
-                            <th>Preço</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="activeEventsTable">
-                        <!-- ...active events... -->
-                    </tbody>
-                </table>
+            </button>
+        </h3>
+        <div id="activeEventsCollapse" class="accordion-collapse collapse show" aria-labelledby="activeEventsHeader">
+            <div class="accordion-body">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Data</th>
+                                <th>Categoria</th>
+                                <th>Vagas</th>
+                                <th>Preço</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activeEventsTable">
+                            <!-- ...active events... -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Inactive Events Section -->
-        <div>
-            <h3 class="table-title">
+    <!-- Inactive Events Section -->
+    <div class="accordion-item mb-4 mt-4">
+        <h3 class="accordion-header" id="inactiveEventsHeader">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#inactiveEventsCollapse" aria-expanded="false" aria-controls="inactiveEventsCollapse">
                 <i class="fas fa-calendar-times me-2"></i>
                 Eventos Inativos
-            </h3>
-            <div class="table-container">
-                <table class="table table-secondary">
-                    <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Data</th>
-                            <th>Categoria</th>
-                            <th>Vagas</th>
-                            <th>Preço</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="inactiveEventsTable">
-                        <!-- ...inactive events... -->
-                    </tbody>
-                </table>
+            </button>
+        </h3>
+        <div id="inactiveEventsCollapse" class="accordion-collapse collapse" aria-labelledby="inactiveEventsHeader">
+            <div class="accordion-body">
+                <div class="table-container">
+                    <table class="table table-secondary">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Data</th>
+                                <th>Categoria</th>
+                                <th>Vagas</th>
+                                <th>Preço</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inactiveEventsTable">
+                            <!-- ...inactive events... -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+    </div>
+</div>
     </div>
 
     <div id="footerimplementador"></div>

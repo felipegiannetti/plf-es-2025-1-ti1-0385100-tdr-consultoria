@@ -108,7 +108,7 @@ body {
 
 /* Table Styles */
 .table-container {
-    max-height: 300px; /* Reduced height to show scroll in both tables */
+    max-height: 600px; /* Increased from 400px */
     overflow-y: auto;
     border-radius: 16px;
     background-color: #222;
@@ -191,6 +191,47 @@ body {
     width: 100%;
 }
 
+/* Accordion Styling */
+.accordion {
+    margin-top: 2rem;
+}
+
+.accordion-item {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+}
+
+.accordion-button {
+    background-color: #2a2a2a;
+    color: #eee;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #ff7a00;
+    color: #fff;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 122, 0, 0.25);
+}
+
+.accordion-button::after {
+    filter: invert(1);
+}
+
+.accordion-body {
+    background-color: #1a1a1a;
+    color: #eee;
+}
+
+/* Table container within accordion */
+.accordion .table-container {
+    margin: 0;
+    padding: 0;
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
     .container {
@@ -208,6 +249,10 @@ body {
         -webkit-overflow-scrolling: touch;
         margin: 0 15px; /* Equal margins on both sides */
     }
+    
+    .table-container {
+        max-height: 500px; /* Increased from 350px */
+    }
 }
 
 @media (max-width: 768px) {
@@ -216,7 +261,11 @@ body {
     }
     
     .table-container {
-        max-height: 250px;
+        max-height: 450px; /* Increased from 300px */
+    }
+
+    #inactiveEventsCollapse .table-container {
+        margin-bottom: 30px;
     }
 
     .table thead th {
@@ -236,6 +285,10 @@ body {
     .table-responsive {
         margin: 0 10px; /* Equal margins on both sides */
     }
+
+    .accordion-button {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -244,9 +297,13 @@ body {
     }
     
     .table-container {
-        max-height: 200px;
+        max-height: 400px; /* Increased from 250px */
     }
-
+    
+    #inactiveEventsCollapse .table-container {
+        margin-bottom: 25px;
+    }
+    
     .table td, .table th {
         padding: 0.4rem;
         font-size: 0.8rem;
