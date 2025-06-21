@@ -64,7 +64,7 @@ async function uploadImagem(file) {
     formData.append('imagem', file);
 
     try {
-        const response = await fetch('http://localhost:4000/upload', {
+        const response = await fetch('http://localhost:3000/upload', {
             method: 'POST',
             body: formData
         });
@@ -106,7 +106,7 @@ function renderTable(tableId, events, isInactive = false) {
             <td>${event.vagas}</td>
             <td>R$ ${parseFloat(event.preco).toFixed(2)}</td>
             <td>
-                <img src="http://localhost:4000/${event.imagem}" alt="${event.titulo}" style="max-width: 80px;"><br>
+                <img src="http://localhost:3000/${event.imagem}" alt="${event.titulo}" style="max-width: 80px;"><br>
                 <div class="btn-group mt-1" role="group">
                     <button class="btn btn-sm btn-primary" onclick="editEvent('${event.id}')"><i class="fas fa-edit"></i></button>
                     <button class="btn btn-sm btn-danger ms-2" onclick="deleteEvent('${event.id}')"><i class="fas fa-trash"></i></button>

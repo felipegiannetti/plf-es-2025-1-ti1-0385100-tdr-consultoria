@@ -92,19 +92,6 @@
       "imagem": "assets/img/eventos/vendas-b2b.jpg"
     },
     {
-      "id": "1749776036358",
-      "titulo": "Teste",
-      "data": "2025-07-10T19:00:00.000Z",
-      "descricao": "teste",
-      "categoria": "Workshop",
-      "local": "teste",
-      "localmapa": "https://www.google.com/maps/@-19.913972,-43.9669384,3a,72.2y,75.89h,95.56t/data=!3m7!1e1!3m5!1sdA9xeluYN4XnLnC2h0DpfQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.560000000000002%26panoid%3DdA9xeluYN4XnLnC2h0DpfQ%26yaw%3D75.89!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
-      "imagem": "",
-      "vagas": 10,
-      "preco": 10,
-      "status": "inativo"
-    },
-    {
       "id": "1749777137767",
       "titulo": "tes",
       "data": "2026-06-12T19:00:00.000Z",
@@ -129,6 +116,13 @@
     {
       "id": "1749729174591",
       "idEvento": "1",
+      "idUsuario": [
+        "1"
+      ]
+    },
+    {
+      "id": "1750478087875",
+      "idEvento": "1749777137767",
       "idUsuario": [
         "1"
       ]
@@ -183,6 +177,13 @@
       "senha": "",
       "tipo": "admin",
       "id": "1749587981878"
+    },
+    {
+      "id": "1750478148056",
+      "nome": "usuario",
+      "email": "usuario@gmail.com.br",
+      "senha": "123456",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
@@ -376,6 +377,17 @@
       "imagem": "assets/img/noticias/1749816284245-images.jpeg",
       "data": "2025-06-13T12:04:44.256Z",
       "autor": "Felipe Giannetti",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1750478454112",
+      "titulo": "Vendas B2B Avançado",
+      "descricao_breve": "hgfdhg",
+      "texto_completo": "fdghfdgh",
+      "categoria": "Tecnologia",
+      "imagem": "assets/img/noticias/1750478454124-imagemperfil.jpg",
+      "data": "2025-06-21T04:00:54.130Z",
+      "autor": "Felipe Giannetti Fontenelle",
       "autorId": "1749560312233"
     }
   ],

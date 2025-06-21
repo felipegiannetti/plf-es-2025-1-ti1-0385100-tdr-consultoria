@@ -1,5 +1,5 @@
 const API_URL = 'http://localhost:3000';
-const UPLOAD_URL = 'http://localhost:4001/upload-noticia';
+const UPLOAD_URL = `${API_URL}/upload-noticia`;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadNews();

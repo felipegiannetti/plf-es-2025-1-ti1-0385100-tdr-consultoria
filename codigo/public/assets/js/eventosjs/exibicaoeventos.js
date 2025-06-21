@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         article.className = 'articlehover postcard orangebgcard red';
 
         const detailsPath = 'detalheseventos.html';
-        const imagePath = `http://localhost:4000/${evento.imagem}`; // Caminho correto da imagem
+        const imagePath = `http://localhost:3000/${evento.imagem}`;  // Agora usa a porta 3000
         const usuarioId = 1; // ID fixo para teste
 
         article.innerHTML = `

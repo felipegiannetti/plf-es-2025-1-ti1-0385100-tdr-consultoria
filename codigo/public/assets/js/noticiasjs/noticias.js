@@ -1,7 +1,7 @@
 // URL base do JSON Server
 const API_URL = 'http://localhost:3000';
 // URL base do servidor de upload de imagens
-const IMAGE_URL = 'http://localhost:4001';
+const IMAGE_URL = 'http://localhost:3000';
 
 // Ouve eventos personalizados (opcional)
 window.addEventListener('noticiaAdicionada', function(event) {

@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const carouselIndicators = document.querySelector('.carousel-indicators');
 
     try {
-        // Fetch events from API
+        // Fetch events from JSON Server (porta 3000)
         const response = await fetch('http://localhost:3000/eventos');
         let events = await response.json();
 
@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             .sort((a, b) => new Date(a.data) - new Date(b.data))
             .slice(0, 3);
 
-        // Create carousel items
+        // Create carousel items - Atualizado para usar a porta 3000
         carouselInner.innerHTML = events.map((event, index) => `
         <div class="carousel-item ${index === 0 ? 'active' : ''}">
-          <img src="http://localhost:4000/${event.imagem}" class="d-block w-100" alt="${event.titulo}">
+          <img src="http://localhost:3000/${event.imagem}" class="d-block w-100" alt="${event.titulo}">
           <div class="carousel-caption d-none d-md-block">
             <h5>${event.titulo}</h5>
             <p>Data: ${new Date(event.data).toLocaleDateString('pt-BR')}</p>
