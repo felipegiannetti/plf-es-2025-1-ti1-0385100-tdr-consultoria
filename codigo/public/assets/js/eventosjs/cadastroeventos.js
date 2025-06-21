@@ -121,19 +121,45 @@ function renderTable(tableId, events, isInactive = false) {
 // Alternar status do evento
 async function toggleEventStatus(id) {
     try {
-        const res = await fetch(`${API_URL}/eventos/${id}`);
-        const event = await res.json();
-        event.status = event.status === 'ativo' ? 'inativo' : 'ativo';
+        // Buscar evento
+        const eventRes = await fetch(`${API_URL}/eventos/${id}`);
+        const event = await eventRes.json();
 
+        // Buscar inscrições
+        const inscricoesRes = await fetch(`${API_URL}/cadastroDeEventos`);
+        const inscricoes = await inscricoesRes.json();
+
+        // Calcular número de inscritos
+        const numeroInscritos = inscricoes
+            .filter(inscricao => inscricao.idEvento === id)
+            .reduce((total, inscricao) => total + inscricao.idUsuario.length, 0);
+
+        // Verificar se atingiu limite de vagas
+        if (numeroInscritos >= event.vagas) {
+            event.status = 'inativo';
+            console.log(`Evento ${event.titulo} desativado automaticamente por lotação`);
+        } else {
+            // Se não atingiu o limite, permite alternar normalmente
+            event.status = event.status === 'ativo' ? 'inativo' : 'ativo';
+        }
+
+        // Atualizar status do evento
         await fetch(`${API_URL}/eventos/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(event)
         });
 
+        // Recarregar lista de eventos
         loadEvents();
+        
+        // Notificar usuário
+        if (numeroInscritos >= event.vagas) {
+            alert('Evento foi desativado automaticamente por ter atingido o limite de vagas.');
+        }
     } catch (error) {
         console.error('Erro ao alterar status:', error);
+        alert('Erro ao alterar status do evento: ' + error.message);
     }
 }
 

@@ -1,9 +1,16 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const params = new URLSearchParams(window.location.search);
     const eventId = params.get('id');
-    const API_URL = 'http://localhost:3000/eventos';
+    const API_URL = 'http://localhost:3000';
 
-    // Elementos principais
+    // Improved user login check
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado')) || null;
+    console.log('Usuario antes da verificação:', usuarioLogado);
+    
+    // Better login verification
+    const usuarioEstaLogado = Boolean(usuarioLogado && usuarioLogado.id);
+    console.log('Status do login:', usuarioEstaLogado);
+
     const main = document.createElement('div');
     main.className = 'evento-container';
 
@@ -14,9 +21,33 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     try {
-        const response = await fetch(`${API_URL}/${eventId}`);
+        const response = await fetch(`${API_URL}/eventos/${eventId}`);
         if (!response.ok) throw new Error('Evento não encontrado');
         const evento = await response.json();
+
+        // Verificar inscrições apenas se usuário estiver logado
+        let jaInscrito = false;
+        let numeroInscritos = 0;
+
+        if (usuarioLogado) {
+            const inscricoes = await fetch(`${API_URL}/cadastroDeEventos`);
+            const inscricoesData = await inscricoes.json();
+            
+            jaInscrito = inscricoesData.some(inscricao => 
+                inscricao.idEvento === eventId && 
+                inscricao.idUsuario.includes(usuarioLogado.id)
+            );
+
+            numeroInscritos = inscricoesData
+                .filter(inscricao => inscricao.idEvento === eventId)
+                .reduce((total, inscricao) => total + inscricao.idUsuario.length, 0);
+        }
+
+        // Verificar se há vagas disponíveis
+        const vagasDisponiveis = evento.vagas - numeroInscritos;
+
+        // Adicionar log para debug
+        console.log('Usuario logado:', usuarioLogado);
 
         main.innerHTML = `
             <div class="evento-header">
@@ -30,15 +61,27 @@ document.addEventListener('DOMContentLoaded', async function () {
             </div>
             <div class="evento-status-area">
                 <div>
-                    <h5>Status do pedido</h5>
-                    <span class="evento-status">Cadastro Realizado com Sucesso</span>
+                    <h5>Status do Evento</h5>
+                    <span class="evento-status">
+                        ${vagasDisponiveis > 0 
+                            ? `Vagas disponíveis: ${vagasDisponiveis}` 
+                            : 'Evento Lotado'}
+                    </span>
                 </div>
-                <div class="evento-status-btn">
-                    <div>
-                        <h5>Status do pedido <span class="evento-icone">🎟️</span></h5>
-                        <button class="btn-inscrever" id="btnInscrever">Acessar Inscrição</button>
-                    </div>    
-                    <div class ="IconStatus"><svg width = 100px fill="#25b11b" viewBox="0 0 32 32" enable-background="new 0 0 32 32" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#25b11b" stroke-width="0"> <g id="Approved"> <g> <path d="M16,1C7.729,1,1,7.729,1,16s6.729,15,15,15s15-6.729,15-15S24.271,1,16,1z M16,29C8.832,29,3,23.168,3,16S8.832,3,16,3 s13,5.832,13,13S23.168,29,16,29z"></path> <path d="M23.317,10.27l-10.004,9.36l-4.629-4.332c-0.403-0.377-1.035-0.356-1.413,0.047c-0.377,0.403-0.356,1.036,0.047,1.413 l5.313,4.971c0.192,0.18,0.438,0.27,0.683,0.27s0.491-0.09,0.683-0.27l10.688-10c0.403-0.377,0.424-1.01,0.047-1.413 C24.353,9.913,23.719,9.892,23.317,10.27z"></path> </g> </g> <g id="Approved_1_"></g> <g id="File_Approve"></g> <g id="Folder_Approved"></g> <g id="Security_Approved"></g> <g id="Certificate_Approved"></g> <g id="User_Approved"></g> <g id="ID_Card_Approved"></g> <g id="Android_Approved"></g> <g id="Privacy_Approved"></g> <g id="Approved_2_"></g> <g id="Message_Approved"></g> <g id="Upload_Approved"></g> <g id="Download_Approved"></g> <g id="Email_Approved"></g> <g id="Data_Approved"></g> </g><g id="SVGRepo_iconCarrier"> <g id="Approved"> <g> <path d="M16,1C7.729,1,1,7.729,1,16s6.729,15,15,15s15-6.729,15-15S24.271,1,16,1z M16,29C8.832,29,3,23.168,3,16S8.832,3,16,3 s13,5.832,13,13S23.168,29,16,29z"></path> <path d="M23.317,10.27l-10.004,9.36l-4.629-4.332c-0.403-0.377-1.035-0.356-1.413,0.047c-0.377,0.403-0.356,1.036,0.047,1.413 l5.313,4.971c0.192,0.18,0.438,0.27,0.683,0.27s0.491-0.09,0.683-0.27l10.688-10c0.403-0.377,0.424-1.01,0.047-1.413 C24.353,9.913,23.719,9.892,23.317,10.27z"></path> </g> </g> <g id="Approved_1_"></g> <g id="File_Approve"></g> <g id="Folder_Approved"></g> <g id="Security_Approved"></g> <g id="Certificate_Approved"></g> <g id="User_Approved"></g> <g id="ID_Card_Approved"></g> <g id="Android_Approved"></g> <g id="Privacy_Approved"></g> <g id="Approved_2_"></g> <g id="Message_Approved"></g> <g id="Upload_Approved"></g> <g id="Download_Approved"></g> <g id="Email_Approved"></g> <g id="Data_Approved"></g> </g></svg></div>
+                <div class="evento-status-btns">
+                    ${jaInscrito 
+                        ? `<div class="btn-group">
+                            <button class="btn-inscrito" disabled>Já Inscrito</button>
+                            <a href="qrcodeEvento.html?id=${eventId}" class="btn-qrcode">
+                                <i class="fas fa-qrcode"></i> Ver QR Code
+                            </a>
+                          </div>`
+                        : `<button class="btn-inscrever" id="btnInscrever" ${!usuarioEstaLogado ? 'data-need-login="true"' : ''}>
+                            ${usuarioEstaLogado 
+                                ? (vagasDisponiveis <= 0 ? 'Lotado' : 'Inscrever-se')
+                                : 'Faça login para se inscrever'}
+                           </button>`
+                    }
                 </div>
             </div>
             <div class="evento-info-area">
@@ -55,14 +98,135 @@ document.addEventListener('DOMContentLoaded', async function () {
             </div>
         `;
 
+        // First append the main element
         document.getElementById('main').appendChild(main);
 
-        document.getElementById('btnInscrever').addEventListener('click', function () {
-            window.location.href = 'qrcodeEvento.html?id=' + eventId; 
-        });
+        // Then get the button and add the event listener only if it exists
+        const btnInscrever = document.getElementById('btnInscrever');
+        if (btnInscrever && !jaInscrito) {
+            btnInscrever.addEventListener('click', async function() {
+                const needsLogin = this.getAttribute('data-need-login') === 'true';
+                
+                if (needsLogin) {
+                    localStorage.setItem('returnUrl', window.location.href);
+                    window.location.href = '../login/loginregistro.html';
+                    return;
+                }
+
+                try {
+                    // Verificar novamente se o usuário já está inscrito
+                    const inscricoesCheck = await fetch(`${API_URL}/cadastroDeEventos`);
+                    const inscricoesData = await inscricoesCheck.json();
+                    const jaInscrito = inscricoesData.some(inscricao => 
+                        inscricao.idEvento === eventId && 
+                        inscricao.idUsuario.includes(usuarioLogado.id)
+                    );
+
+                    if (jaInscrito) {
+                        alert('Você já está inscrito neste evento!');
+                        window.location.reload();
+                        return;
+                    }
+
+                    // Verificar novamente se há vagas disponíveis
+                    const numeroAtualInscritos = inscricoesData
+                        .filter(inscricao => inscricao.idEvento === eventId)
+                        .reduce((total, inscricao) => total + inscricao.idUsuario.length, 0);
+
+                    if (numeroAtualInscritos >= evento.vagas) {
+                        alert('Este evento já está lotado!');
+                        window.location.href = 'exibicaoeventos.html';
+                        return;
+                    }
+
+                    // Criar nova inscrição
+                    const inscricaoData = {
+                        id: Date.now().toString(),
+                        idEvento: eventId,
+                        idUsuario: [usuarioLogado.id]
+                    };
+
+                    const response = await fetch(`${API_URL}/cadastroDeEventos`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(inscricaoData)
+                    });
+
+                    if (!response.ok) throw new Error('Erro ao realizar inscrição');
+
+                    // Verificar se atingiu limite de vagas
+                    const novoNumeroInscritos = numeroAtualInscritos + 1;
+                    if (novoNumeroInscritos >= evento.vagas) {
+                        // Desativar evento
+                        evento.status = 'inativo';
+                        await fetch(`${API_URL}/eventos/${eventId}`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(evento)
+                        });
+                    }
+
+                    alert('Inscrição realizada com sucesso!');
+                    window.location.href = 'qrcodeEvento.html?id=' + eventId;
+
+                } catch (error) {
+                    console.error('Erro:', error);
+                    alert('Erro ao realizar inscrição: ' + error.message);
+                }
+            });
+        }
 
     } catch (err) {
         main.innerHTML = `<div class="erro-evento">Erro ao carregar evento: ${err.message}</div>`;
         document.getElementById('main').appendChild(main);
     }
+
+    // Add CSS styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .evento-status-btns {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-inscrito {
+            background: #666;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-qrcode {
+            background: #ff7a00;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-qrcode:hover {
+            background: #ff9a2e;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-qrcode i {
+            font-size: 1.1em;
+        }
+    `;
+    document.head.appendChild(style);
 });
