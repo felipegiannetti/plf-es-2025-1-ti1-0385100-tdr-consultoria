@@ -141,10 +141,10 @@ function adicionarInformacoesEvento(evento) {
             </div>
             <div class="card-body text-center">
                 <h4 class="text-primary mb-3">${evento.titulo}</h4>
-                <p class="text-muted mb-3">
+                <p class="text-mutedd mb-3">
                     <i class="fas fa-map-marker-alt me-2"></i>${evento.local}
                 </p>
-                <p class="text-muted mb-4">
+                <p class="text-mutedd mb-4">
                     <i class="fas fa-calendar-alt me-2"></i>${new Date(evento.data).toLocaleDateString('pt-BR', {
                         day: '2-digit',
                         month: '2-digit',
@@ -155,7 +155,7 @@ function adicionarInformacoesEvento(evento) {
                 </p>
                 
                 <div class="qr-code-container mb-4">
-                    <!-- QR Code será inserido aqui -->
+                    
                 </div>
                 
                 <div class="alert alert-info">

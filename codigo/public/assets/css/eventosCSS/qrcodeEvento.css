@@ -3,10 +3,7 @@ body {
     color: #eee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-}
-
-#navbar {
-    position: relative;
+    margin-top: 120px;
 }
 
 .orangebg {
@@ -79,16 +76,8 @@ h4.text-primary {
     margin-bottom: 20px;
 }
 
-/* Parágrafos e texto */
-p {
-    color: #ccc;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-p.text-muted {
-    color: #999 !important;
+p.text-mutedd {
+    color: #999;
     font-size: 1rem;
 }
 
@@ -181,38 +170,6 @@ p.text-muted {
     text-decoration: none;
 }
 
-.btn-success {
-    background: linear-gradient(145deg, #28a745, #20873a);
-    color: white;
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-}
-
-.btn-success:hover {
-    background: linear-gradient(145deg, #20873a, #1e7e34);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
-    color: white;
-    text-decoration: none;
-}
-
-.btn-danger {
-    background: linear-gradient(145deg, #dc3545, #c82333);
-    color: white;
-    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
-}
-
-.btn-danger:hover {
-    background: linear-gradient(145deg, #c82333, #bd2130);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.6);
-    color: white;
-    text-decoration: none;
-}
-
-/* Ícones */
-.fas {
-    margin-right: 8px;
-}
 
 /* Cards de erro */
 .card .text-center h2 {
@@ -221,31 +178,6 @@ p.text-muted {
     margin-bottom: 20px;
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(255, 122, 0, 0.3);
-}
-
-.text-danger {
-    color: #dc3545 !important;
-}
-
-.text-warning {
-    color: #ffc107 !important;
-}
-
-/* Listas */
-.list-unstyled li {
-    color: #ccc;
-    padding: 8px 0;
-    font-size: 1rem;
-}
-
-/* Código inline */
-code {
-    background: #222 !important;
-    color: #ff7a00 !important;
-    padding: 4px 8px !important;
-    border-radius: 6px !important;
-    font-family: 'Courier New', monospace !important;
-    border: 1px solid #444 !important;
 }
 
 /* Responsividade */
@@ -427,24 +359,92 @@ code {
     }
 }
 
-/* Melhorias visuais específicas */
-.mt-4 {
-    margin-top: 2rem !important;
+/* QR Code specific styles */
+.qrcode-page {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
 }
 
-.mb-4 {
-    margin-bottom: 2rem !important;
+/* Container principal */
+.qrcode-main {
+    padding: 120px 20px 40px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.me-2 {
-    margin-right: 0.5rem !important;
+.qrcode-container {
+    max-width: 700px;
+    width: 100%;
 }
 
-.text-center {
-    text-align: center !important;
+/* Card principal */
+.qrcode-card {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        0 5px 15px rgba(255, 122, 0, 0.1);
+    border: 1px solid #ff7a00;
+    backdrop-filter: blur(10px);
+    color: #eee;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.6s ease-out;
 }
 
-/* Footer spacing */
-#footerimplementador {
-    margin-top: 4rem;
+/* QR Code Container */
+.qr-code-wrapper {
+    background: #201f1f;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 100%;
+    width: fit-content;
+}
+
+.qr-code-image {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .qrcode-main {
+        padding: 100px 15px 30px;
+    }
+
+    .qrcode-card {
+        padding: 20px;
+    }
+
+    .qr-code-wrapper {
+        padding: 15px;
+    }
+
+    .qr-code-image {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .qrcode-card {
+        padding: 15px;
+    }
+
+    .qr-code-wrapper {
+        padding: 10px;
+    }
+
+    .qr-code-image {
+        max-width: 200px;
+    }
 }
