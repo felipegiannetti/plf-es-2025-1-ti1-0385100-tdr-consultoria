@@ -456,15 +456,6 @@
       "data": "10/06/2025, 09:57:41"
     },
     {
-      "id": "41b7",
-      "idavaliacao": 1749561747586,
-      "idevento": "1",
-      "nome": "as",
-      "comentario": "a",
-      "rating": 5,
-      "data": "10/06/2025, 10:22:27"
-    },
-    {
       "id": "7e2a",
       "idavaliacao": 1749564187224,
       "idevento": "3",
@@ -589,14 +580,6 @@
       "comentario": "muito ruim",
       "rating": 4,
       "data": "12/06/2025, 08:52:45"
-    },
-    {
-      "id": "f457",
-      "idevento": 1,
-      "nome": "Felipe Fonseca",
-      "rating": 3,
-      "comentario": "TESTE",
-      "data": "2025-06-17T11:48:04.129Z"
     },
     {
       "id": "9384",

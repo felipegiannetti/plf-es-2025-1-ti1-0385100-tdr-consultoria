@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div>                            <span style="color:gold">${'★'.repeat(av.rating)}${'☆'.repeat(5-av.rating)}</span>
                             <span>(${av.rating}.0)</span>
                         </div>
-                        <strong>${av.nome || 'Anônimo'}</strong>
+                        <strong>${av.nome}</strong>
                         <p class="mb-0">${av.comentario}</p>
                         ${usuarioLogado && av.nome === usuarioLogado.nome ? `
                             <button class="btn btn a.evento-link {text-decoration: none !important;}
