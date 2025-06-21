@@ -3,14 +3,11 @@ body {
     color: #eee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
+    margin-top: 120px;
 }
 
 .orangebg {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-}
-
-#navbar {
-    position: relative;
 }
 
 #cardQuiz{
@@ -19,10 +16,6 @@ body {
     flex-direction: column;
     margin-top: 3rem;
     padding: 0 20px;
-}
-
-.container {
-    max-width: 900px;
 }
 
 .card {
@@ -201,87 +194,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 122, 0, 0.6);
     color: white;
-}
-
-.btn-secondary {
-    background: linear-gradient(145deg, #6c757d, #5a6268);
-    color: white;
-    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
-}
-
-.btn-secondary:hover {
-    background: linear-gradient(145deg, #5a6268, #545b62);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.6);
-    color: white;
-}
-
-.btn-success {
-    background: linear-gradient(145deg, #28a745, #20873a);
-    color: white;
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-}
-
-.btn-success:hover {
-    background: linear-gradient(145deg, #20873a, #1e7e34);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
-    color: white;
-}
-
-.btn-warning {
-    background: linear-gradient(145deg, #ffc107, #e0a800);
-    color: #212529;
-    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
-}
-
-.btn-warning:hover {
-    background: linear-gradient(145deg, #e0a800, #d39e00);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
-    color: #212529;
-}
-
-/* Ícones de status */
-.fas {
-    margin-right: 8px;
-}
-
-.text-success {
-    color: #28a745 !important;
-    text-shadow: 0 1px 2px rgba(40, 167, 69, 0.3);
-}
-
-.text-warning {
-    color: #ffc107 !important;
-    text-shadow: 0 1px 2px rgba(255, 193, 7, 0.3);
-}
-
-.text-primary {
-    color: #ff7a00 !important;
-    text-shadow: 0 1px 2px rgba(255, 122, 0, 0.3);
-}
-
-/* Área de respostas anteriores */
-.bg-light {
-    background: rgba(42, 42, 42, 0.7) !important;
-    border: 1px solid rgba(255, 122, 0, 0.3);
-    color: #eee !important;
-}
-
-.text-start h4 {
-    color: #ff7a00;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.text-start strong {
-    color: #ff9a2e;
-}
-
-/* Footer */
-#footerimplementador {
-    margin-top: 4rem;
 }
 
 /* Responsividade */

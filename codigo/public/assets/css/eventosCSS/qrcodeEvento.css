@@ -19,10 +19,6 @@ body {
     justify-content: center;
 }
 
-.container {
-    max-width: 700px;
-}
-
 /* Card principal */
 .card {
     background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
@@ -155,21 +151,6 @@ p.text-mutedd {
     color: white;
     text-decoration: none;
 }
-
-.btn-secondary {
-    background: linear-gradient(145deg, #6c757d, #5a6268);
-    color: white;
-    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
-}
-
-.btn-secondary:hover {
-    background: linear-gradient(145deg, #5a6268, #545b62);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.6);
-    color: white;
-    text-decoration: none;
-}
-
 
 /* Cards de erro */
 .card .text-center h2 {
