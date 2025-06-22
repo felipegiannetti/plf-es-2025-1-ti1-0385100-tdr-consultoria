@@ -66,10 +66,6 @@
     }
 }
 
-.animate-logo {
-    animation: float 3s ease-in-out infinite;
-}
-
 /* Responsive Styles */
 @media (min-width: 1400px) {
     .bg-footer {

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR Consultoria - Área do Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../assets/css/usuariosCSS/areaperfil.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbarimplementador"></div>
+
+    <div class="container margemtopo">
+        <div class="row">
+            <!-- Sidebar com opções -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-user-circle fa-4x text-primary"></i>
+                            <h5 class="mt-2" id="userName">Carregando...</h5>
+                        </div>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" data-bs-toggle="list" data-target="eventos">
+                                <i class="fas fa-calendar-check me-2"></i>Eventos Inscritos
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list" data-target="senha">
+                                <i class="fas fa-key me-2"></i>Alterar Senha
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action text-danger" data-bs-toggle="list" data-target="deletar">
+                                <i class="fas fa-trash me-2"></i>Deletar Conta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área principal de conteúdo -->
+            <div class="col-md-9">
+                <!-- Meus Eventos -->
+                <div class="content-section active" id="eventos">
+                    <h3>Eventos Inscritos</h3>
+                    <div class="row" id="eventosGrid"></div>
+                </div>
+
+                <!-- Alterar Senha -->
+                <div class="content-section" id="senha">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Alterar Senha</h3>
+                            <form id="changePasswordForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Senha Atual</label>
+                                    <input type="password" class="form-control" id="currentPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nova Senha</label>
+                                    <input type="password" class="form-control" id="newPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirmar Nova Senha</label>
+                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Alterar Senha</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deletar Conta -->
+                <div class="content-section" id="deletar">
+                    <div class="card border-danger">
+                        <div class="card-body">
+                            <h3 class="text-danger">Deletar Conta</h3>
+                            <p class="text-muted">Esta ação não pode ser desfeita. Todos os seus dados serão permanentemente removidos.</p>
+                            <form id="deleteAccountForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Digite sua senha para confirmar</label>
+                                    <input type="password" class="form-control" id="deleteConfirmPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Deletar Minha Conta</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footerimplementador"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
+    <script src="../../assets/js/usuariosjs/areaperfil.js"></script>
+</body>
+</html>

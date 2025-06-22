@@ -1,0 +1,156 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+.margemtopo {
+    margin-top: 120px;
+    margin-bottom: 40px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.list-group-item {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 8px !important;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #555;
+    transform: translateX(5px);
+}
+
+.list-group-item.active {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+}
+
+/* Update card styles */
+.card {
+    background: linear-gradient(145deg, #3a3a3a, #2d2d2d);
+    border: 1px solid rgba(255, 122, 0, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 16px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.text-primary {
+    color: #ff7a00 !important;
+}
+
+.btn-primary {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+}
+
+.btn-primary:hover {
+    background-color: #e66d00;
+    border-color: #e66d00;
+}
+
+/* Add these new styles */
+.animate-card {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideIn 0.5s ease forwards;
+    transition: all 0.3s ease;
+}
+
+.animate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(255, 122, 0, 0.1);
+    border-color: rgba(255, 122, 0, 0.3);
+    background: linear-gradient(145deg, #404040, #323232);
+}
+
+/* Update text colors for better contrast */
+.card-title {
+    color: #ff7a00;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.text-muted {
+    color: #999 !important;
+}
+
+/* Enhance animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+        filter: blur(5px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Add focus state for accessibility */
+.card:focus-within {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.3);
+    outline: none;
+}
+
+/* Add stagger effect for multiple cards */
+.col-md-6:nth-child(1) .animate-card { animation-delay: 0.1s; }
+.col-md-6:nth-child(2) .animate-card { animation-delay: 0.2s; }
+.col-md-6:nth-child(3) .animate-card { animation-delay: 0.3s; }
+.col-md-6:nth-child(4) .animate-card { animation-delay: 0.4s; }
+.col-md-6:nth-child(n+5) .animate-card { animation-delay: 0.5s; }
+
+/* Pagination styles */
+.pagination-container {
+    margin-top: 2rem;
+}
+
+.pagination .page-link {
+    background-color: #444;
+    border-color: #555;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+    color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #333;
+    border-color: #444;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .margemtopo {
+        margin-top: 100px;
+    }
+}

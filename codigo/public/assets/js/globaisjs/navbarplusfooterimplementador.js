@@ -81,7 +81,8 @@ function implementNavbar() {
             noticias: 'public/modulos/noticias/noticias.html',
             cadastroNoticias: 'public/modulos/noticias/cadastro-noticias.html', // Changed to match file name
             quizzes: 'public/modulos/formulario/exibiquizzes.html',
-            areaAdmin: 'public/modulos/adminarea/areaadmin.html'
+            areaAdmin: 'public/modulos/adminarea/areaadmin.html',
+            perfil: 'public/modulos/usuarios/areaperfil.html'
         },
         other: {
             home: '../../../index.html',
@@ -90,7 +91,8 @@ function implementNavbar() {
             noticias: '../noticias/noticias.html',
             cadastroNoticias: '../noticias/cadastro-noticias.html', // Changed path and file name
             quizzes: '../formulario/exibiquizzes.html',
-            areaAdmin: '../adminarea/areaadmin.html'
+            areaAdmin: '../adminarea/areaadmin.html',
+            perfil: '../usuarios/areaperfil.html'
         }
     };
 
@@ -299,7 +301,7 @@ function implementFooter() {
                 <div class="text-center small">
                     <p class="mb-0 text-dark">&copy; 2025 TDR Consultoria. Todos os direitos reservados.</p>
                 </div>
-                <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-right animate-logo">
+                <img src="${logoPath}" alt="Logo TDR" class="footer-logo footer-logo-right">
             </div>
         </footer>
     `;
