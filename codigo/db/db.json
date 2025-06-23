@@ -55,9 +55,9 @@
     {
       "id": "5",
       "titulo": "ESG na Prática Empresarial",
-      "data": "2025-08-22T09:00:00.000Z",
+      "data": "2025-08-22T12:00:00.000Z",
       "descricao": "Seminário sobre implementação de práticas ESG em empresas, com foco em sustentabilidade e governança corporativa.",
-      "categoria": "Seminário",
+      "categoria": "Workshop",
       "local": "CDL-BH - Centro, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=CDL+BH+Centro+Belo+Horizonte",
       "imagem": "assets/img/eventos/esg-empresas.png",
@@ -128,7 +128,7 @@
       "imagem": "assets/img/eventos/1750640226849-AISimposio.png",
       "vagas": 150,
       "preco": 280,
-      "status": "ativo"
+      "status": "inativo"
     },
     {
       "id": "11",

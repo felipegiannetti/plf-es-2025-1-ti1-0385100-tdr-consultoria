@@ -49,12 +49,23 @@ async function handleSubmit(e) {
 
         if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
-        alert(isEditing ? 'Evento atualizado com sucesso!' : 'Evento criado com sucesso!');
+        // Simply clear form and reload events without showing alert
         clearForm();
         loadEvents();
+        
     } catch (error) {
         console.error('Erro ao salvar evento:', error);
-        alert('Erro ao salvar evento: ' + error.message);
+        await Swal.fire({
+            title: 'Erro!',
+            text: 'Erro ao salvar evento: ' + error.message,
+            icon: 'error',
+            background: '#222',
+            color: '#fff',
+            customClass: {
+                popup: 'swal-custom-popup',
+                confirmButton: 'swal-custom-button'
+            }
+        });
     }
 }
 
@@ -169,6 +180,7 @@ async function editEvent(id) {
         const response = await fetch(`${API_URL}/eventos/${id}`);
         const event = await response.json();
 
+        // Preencher formulário com os dados do evento
         document.getElementById('eventId').value = event.id;
         document.getElementById('titulo').value = event.titulo;
         document.getElementById('data').value = event.data.slice(0, 16);
@@ -180,14 +192,27 @@ async function editEvent(id) {
         document.getElementById('localmapa').value = event.localmapa;
         document.getElementById('status').value = event.status;
 
-        // Preservar imagem
+        // Tratar imagem
         document.getElementById('imagem').value = '';
         document.getElementById('imagem').setAttribute('data-current', event.imagem);
-
-        // Exibir nome da imagem atual
         const imagemInfo = document.getElementById('imagem-info');
         const nomeImagem = event.imagem.split('/').pop();
         imagemInfo.textContent = `Imagem atual: ${nomeImagem}`;
+
+        // Add scroll-offset class to form if not present
+        const form = document.getElementById('eventForm');
+        form.classList.add('scroll-offset');
+
+        // Scroll higher up with offset
+        window.scrollTo({ 
+            top: form.offsetTop - 150,
+            behavior: 'smooth'
+        });
+
+        // Highlight effect
+        form.classList.add('highlight-form');
+        setTimeout(() => form.classList.remove('highlight-form'), 1500);
+
     } catch (error) {
         console.error('Erro ao carregar evento:', error);
     }
@@ -195,13 +220,60 @@ async function editEvent(id) {
 
 // Excluir evento
 async function deleteEvent(id) {
-    if (confirm('Tem certeza que deseja excluir este evento?')) {
-        try {
-            await fetch(`${API_URL}/eventos/${id}`, { method: 'DELETE' });
+    try {
+        const result = await Swal.fire({
+            title: 'Tem certeza?',
+            text: "Esta ação não poderá ser revertida!",
+            icon: 'warning',
+            background: '#222',
+            color: '#fff',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, deletar!',
+            cancelButtonText: 'Cancelar',
+            customClass: {
+                popup: 'swal-custom-popup',
+                confirmButton: 'swal-custom-button',
+                cancelButton: 'swal-custom-button'
+            },
+            buttonsStyling: true
+        });
+
+        if (result.isConfirmed) {
+            const response = await fetch(`${API_URL}/eventos/${id}`, { 
+                method: 'DELETE' 
+            });
+
+            if (!response.ok) throw new Error('Erro ao deletar evento');
+
+            await Swal.fire({
+                title: 'Deletado!',
+                text: 'O evento foi removido com sucesso.',
+                icon: 'success',
+                background: '#222',
+                color: '#fff',
+                customClass: {
+                    popup: 'swal-custom-popup',
+                    confirmButton: 'swal-custom-button'
+                },
+                buttonsStyling: true
+            });
+
             loadEvents();
-        } catch (error) {
-            console.error('Erro ao excluir evento:', error);
         }
+    } catch (error) {
+        console.error('Erro ao excluir evento:', error);
+        await Swal.fire({
+            title: 'Erro!',
+            text: 'Não foi possível deletar o evento.',
+            icon: 'error',
+            background: '#222',
+            color: '#fff',
+            customClass: {
+                popup: 'swal-custom-popup',
+                confirmButton: 'swal-custom-button'
+            },
+            buttonsStyling: true
+        });
     }
 }
 
