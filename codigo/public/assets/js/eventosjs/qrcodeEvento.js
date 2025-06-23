@@ -111,11 +111,14 @@ function mostrarErro(mensagem) {
                         <h2 class="text-danger">Erro</h2>
                         <p class="fs-5 mb-4">${mensagem}</p>
                         <div class="mt-4">
+                            <button class="btn btn-secondary me-2" onclick="window.history.back()">
+                                <i class="fas fa-arrow-left me-2"></i>Voltar
+                            </button>
                             <button class="btn btn-primary me-2" onclick="location.reload()">
                                 <i class="fas fa-redo me-2"></i>Tentar Novamente
                             </button>
-                            <a href="../../eventos/exibeeventos.html" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>Voltar para Eventos
+                            <a href="exibicaoeventos.html" class="btn btn-outline-secondary">
+                                <i class="fas fa-list me-2"></i>Lista de Eventos
                             </a>
                         </div>
                     </div>
@@ -164,10 +167,13 @@ function adicionarInformacoesEvento(evento) {
                 </div>
                 
                 <div class="mt-4">
+                    <button class="btn btn-secondary me-2" onclick="window.history.back()">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar
+                    </button>
                     <a href="${evento.localmapa}" target="_blank" class="btn btn-primary me-2">
                         <i class="fas fa-external-link-alt me-2"></i>Abrir no Navegador
                     </a>
-                    <button class="btn btn-secondary" onclick="window.print()">
+                    <button class="btn btn-outline-primary" onclick="window.print()">
                         <i class="fas fa-print me-2"></i>Imprimir QR Code
                     </button>
                 </div>

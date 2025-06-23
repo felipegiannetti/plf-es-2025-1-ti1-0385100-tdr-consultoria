@@ -167,15 +167,61 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // Show loading
                     Swal.fire({
                         title: 'Processando...',
-                        text: 'Realizando sua inscrição',
+                        html: `
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                <div class="loading-spinner"></div>
+                                <p>Realizando sua inscrição</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                        `,
                         allowOutsideClick: false,
                         allowEscapeKey: false,
                         showConfirmButton: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        },
                         customClass: {
                             popup: 'swal2-popup'
+                        },
+                        didOpen: () => {
+                            // Add custom loading styles
+                            const loadingStyle = document.createElement('style');
+                            loadingStyle.innerHTML = `
+                                .loading-spinner {
+                                    width: 40px;
+                                    height: 40px;
+                                    border: 4px solid #f3f3f3;
+                                    border-top: 4px solid #ff7a00;
+                                    border-radius: 50%;
+                                    animation: spin 1s linear infinite;
+                                }
+                                
+                                @keyframes spin {
+                                    0% { transform: rotate(0deg); }
+                                    100% { transform: rotate(360deg); }
+                                }
+                                
+                                .progress-bar {
+                                    width: 200px;
+                                    height: 8px;
+                                    background: #f3f3f3;
+                                    border-radius: 4px;
+                                    overflow: hidden;
+                                }
+                                
+                                .progress-fill {
+                                    height: 100%;
+                                    background: linear-gradient(90deg, #ff7a00, #ff9a2e);
+                                    width: 0%;
+                                    border-radius: 4px;
+                                    animation: fillProgress 8s ease-in-out forwards;
+                                }
+                                
+                                @keyframes fillProgress {
+                                    0% { width: 0%; }
+                                    100% { width: 100%; }
+                                }
+                            `;
+                            document.head.appendChild(loadingStyle);
                         }
                     });
 
@@ -208,21 +254,14 @@ document.addEventListener('DOMContentLoaded', async function () {
                         }
                     }
 
-                    // Close loading and show success
+                    // Wait for 8 seconds to ensure loading animation completes
+                    await new Promise(resolve => setTimeout(resolve, 8000));
+
+                    // Only close loading after the full duration
                     Swal.close();
-                    
-                    await Swal.fire({
-                        title: 'Sucesso!',
-                        text: 'Inscrição realizada com sucesso!',
-                        icon: 'success',
-                        confirmButtonText: 'Ver QR Code',
-                        timerProgressBar: true,
-                        timer: 2000,
-                        customClass: {
-                            popup: 'swal2-popup',
-                            confirmButton: 'swal-custom-button'
-                        }
-                    });
+
+                    // Small delay before redirect to ensure smooth transition
+                    await new Promise(resolve => setTimeout(resolve, 1000));
 
                     // Redirect to QR code page
                     window.location.href = `qrcodeEvento.html?id=${eventId}`;
@@ -269,15 +308,38 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // Show loading
                     Swal.fire({
                         title: 'Processando...',
-                        text: 'Cancelando sua inscrição',
+                        html: `
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                <div class="loading-spinner"></div>
+                                <p>Cancelando sua inscrição</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill-cancel"></div>
+                                </div>
+                            </div>
+                        `,
                         allowOutsideClick: false,
                         allowEscapeKey: false,
                         showConfirmButton: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        },
                         customClass: {
                             popup: 'swal2-popup'
+                        },
+                        didOpen: () => {
+                            const cancelStyle = document.createElement('style');
+                            cancelStyle.innerHTML = `
+                                .progress-fill-cancel {
+                                    height: 100%;
+                                    background: linear-gradient(90deg, #ff3b30, #ff5449);
+                                    width: 0%;
+                                    border-radius: 4px;
+                                    animation: fillProgressCancel 7s ease-in-out forwards;
+                                }
+                                
+                                @keyframes fillProgressCancel {
+                                    0% { width: 0%; }
+                                    100% { width: 100%; }
+                                }
+                            `;
+                            document.head.appendChild(cancelStyle);
                         }
                     });
 
@@ -307,19 +369,25 @@ document.addEventListener('DOMContentLoaded', async function () {
                             });
                         }
 
-                        // Show success message
+                        // Wait for 7 seconds before proceeding
+                        await new Promise(resolve => setTimeout(resolve, 7000));
+
+                        // Show success message with longer timer
                         await Swal.fire({
                             title: 'Inscrição Cancelada!',
                             text: 'Sua inscrição foi cancelada com sucesso.',
                             icon: 'success',
                             confirmButtonText: 'OK',
-                            timer: 2000,
+                            timer: 4000,
                             timerProgressBar: true,
                             customClass: {
                                 popup: 'swal2-popup',
                                 confirmButton: 'swal-custom-button'
                             }
                         });
+
+                        // Small delay before reload
+                        await new Promise(resolve => setTimeout(resolve, 1000));
 
                         // Reload page to update status
                         window.location.reload();
@@ -465,6 +533,79 @@ document.addEventListener('DOMContentLoaded', async function () {
             margin-bottom: 8px;
             font-size: 1.1rem;
             font-weight: 500;
+        }
+    `;
+    style.textContent += `
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cancelar {
+            background: linear-gradient(135deg, #ff3b30 0%, #ff453a 100%);
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(255, 59, 48, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cancelar:hover {
+            background: linear-gradient(135deg, #ff453a 0%, #ff5449 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 59, 48, 0.4);
+        }
+
+        .btn-cancelar:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+        }
+
+        .btn-cancelar i {
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-cancelar:hover i {
+            transform: rotate(90deg);
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-cancelar,
+            .btn-qrcode {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animation for button states */
+        .btn-cancelar:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.3);
+        }
+
+        .btn-cancelar:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
     `;
     document.head.appendChild(style);
