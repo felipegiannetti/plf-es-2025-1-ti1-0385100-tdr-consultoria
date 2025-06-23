@@ -55,8 +55,8 @@ body {
 }
 
 .modal-content {
-    background-color: #333;
-    color: white;
+    background-color: #222;
+    color: #fff;
     border-radius: 8px;
 }
 
@@ -159,13 +159,15 @@ body {
 .nav-tabs .nav-link.active {
     color: #fff;
     background-color: #ff7a00;
-    border: none;
+    border-color: #ff7a00;
 }
 
 .list-group-item {
     background-color: #333;
     border-color: #444;
     color: #fff;
+    margin-bottom: 10px;
+    border-radius: 8px !important;
 }
 
 .accordion-item {
@@ -192,4 +194,16 @@ body {
     background-color: #333;
     border-radius: 0 0 8px 8px;
     padding: 20px;
+}
+
+.border-orange {
+    border: 1px solid #ff7a00 !important;
+}
+
+.text-orange {
+    color: #ff7a00 !important;
+}
+
+.bg-orange {
+    background-color: #ff7a00 !important;
 }

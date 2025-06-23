@@ -221,65 +221,66 @@ async function deleteUser(id) {
 async function viewUserDetails(userId) {
     try {
         // Fetch user details
-        const [user, quizzes, eventos, respostas] = await Promise.all([
-            fetch(`${API_URL}/usuarios/${userId}`).then(r => r.json()),
-            fetch(`${API_URL}/quizzes-realizados?userId=${userId}`).then(r => r.json()),
-            fetch(`${API_URL}/inscricoes-eventos?userId=${userId}`).then(r => r.json()),
-            fetch(`${API_URL}/respostas-quiz?userId=${userId}`).then(r => r.json())
-        ]);
+        const user = await fetch(`${API_URL}/usuarios/${userId}`).then(r => r.json());
+        
+        // Fetch all quizzes to get titles
+        const allQuizzes = await fetch(`${API_URL}/quizzes`).then(r => r.json());
+        
+        // Fetch all eventos
+        const allEventos = await fetch(`${API_URL}/eventos`).then(r => r.json());
+        
+        // Fetch user's event registrations
+        const registrations = await fetch(`${API_URL}/cadastroDeEventos`).then(r => r.json());
+        const userRegistrations = registrations.filter(reg => reg.idUsuario.includes(userId));
 
-        // Render quizzes tab
-        document.getElementById('quizzesContent').innerHTML = quizzes.length ? `
+        // Render quizzes tab with responses
+        document.getElementById('quizzesContent').innerHTML = user.idformulario && user.idformulario.length ? `
             <div class="list-group">
-                ${quizzes.map(q => `
-                    <div class="list-group-item">
-                        <h6 class="mb-1">${q.titulo}</h6>
-                        <p class="mb-1">Realizado em: ${new Date(q.dataRealizacao).toLocaleString()}</p>
-                        <small>Pontuação: ${q.pontuacao}</small>
-                    </div>
-                `).join('')}
+                ${user.idformulario.map(quiz => {
+                    const quizInfo = allQuizzes.find(q => q.id === quiz.idQuiz);
+                    return `
+                        <div class="list-group-item bg-dark text-white border-orange mb-3">
+                            <h6 class="mb-1 text-orange">${quizInfo ? quizInfo.titulo : 'Quiz não encontrado'}</h6>
+                            <p class="mb-1">Realizado em: ${new Date(quiz.dataRealizacao).toLocaleDateString('pt-BR')}</p>
+                            <div class="mt-3">
+                                <strong class="text-orange">Respostas:</strong>
+                                <div class="ms-3 mt-2">
+                                    ${quiz.questions.map((q, index) => `
+                                        <div class="mb-3 p-3 rounded" style="background: rgba(255,255,255,0.1)">
+                                            <strong class="text-orange">Pergunta ${index + 1}:</strong>
+                                            <p class="mb-1 text-white">${q.question}</p>
+                                            <strong class="text-orange">Resposta:</strong>
+                                            <p class="mb-0 text-white">${q.response}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
             </div>
         ` : '<p class="text-muted">Nenhum quiz realizado.</p>';
 
         // Render eventos tab
-        document.getElementById('eventosContent').innerHTML = eventos.length ? `
+        document.getElementById('eventosContent').innerHTML = userRegistrations.length ? `
             <div class="list-group">
-                ${eventos.map(e => `
-                    <div class="list-group-item">
-                        <h6 class="mb-1">${e.titulo}</h6>
-                        <p class="mb-1">Data: ${new Date(e.data).toLocaleString()}</p>
-                        <small>Status: ${e.status}</small>
-                    </div>
-                `).join('')}
+                ${userRegistrations.map(reg => {
+                    const evento = allEventos.find(e => e.id === reg.idEvento);
+                    return `
+                        <div class="list-group-item bg-dark text-white border-orange mb-3">
+                            <h6 class="mb-1 text-orange">${evento ? evento.titulo : 'Evento não encontrado'}</h6>
+                            <p class="mb-1">Data do evento: ${evento ? new Date(evento.data).toLocaleDateString('pt-BR') : 'N/A'}</p>
+                            <p class="mb-1">Local: ${evento ? evento.local : 'N/A'}</p>
+                            <p class="mb-0">
+                                <span class="badge bg-orange">
+                                    ${evento ? evento.categoria : 'N/A'}
+                                </span>
+                            </p>
+                        </div>
+                    `;
+                }).join('')}
             </div>
         ` : '<p class="text-muted">Nenhum evento inscrito.</p>';
-
-        // Render respostas tab
-        document.getElementById('respostasContent').innerHTML = respostas.length ? `
-            <div class="accordion" id="respostasAccordion">
-                ${respostas.map((r, i) => `
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resposta${i}">
-                                ${r.quizTitulo}
-                            </button>
-                        </h2>
-                        <div id="resposta${i}" class="accordion-collapse collapse" data-bs-parent="#respostasAccordion">
-                            <div class="accordion-body">
-                                <ul class="list-unstyled">
-                                    ${r.respostas.map(resp => `
-                                        <li class="mb-3">
-                                            <strong>P: ${resp.pergunta}</strong><br>
-                                            R: ${resp.resposta}
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        ` : '<p class="text-muted">Nenhuma resposta registrada.</p>';
 
         // Show modal
         const modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));

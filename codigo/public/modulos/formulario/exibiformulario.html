@@ -273,58 +273,87 @@
         // Função para finalizar o quiz
         async function finalizarQuiz() {
             try {
-                // Busca os dados atuais do usuário
-                const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
-                const usuario = await response.json();
+                // Buscar dados atuais do usuário
+                const userResponse = await fetch(`http://localhost:3000/usuarios/${userId}`);
+                if (!userResponse.ok) {
+                    throw new Error('Erro ao buscar dados do usuário');
+                }
+                const userData = await userResponse.json();
 
-                // Prepara a estrutura do formulário
-                let idformulario = usuario.idformulario || [];
-                
-                // Remove entrada anterior do mesmo quiz se existir
-                idformulario = idformulario.filter(form => form.idQuiz !== quizId);
-                
-                // Adiciona nova entrada
-                idformulario.push({
+                // Preparar o novo registro do quiz
+                const quizCompleto = {
                     idQuiz: quizId,
                     feito: true,
                     dataRealizacao: new Date().toISOString(),
-                    questions: responses
-                });
+                    questions: responses.map(r => ({
+                        question: r.question,
+                        response: r.response
+                    }))
+                };
 
-                // Atualiza o usuário
+                // Inicializar ou atualizar o array idformulario
+                if (!userData.idformulario) {
+                    userData.idformulario = [];
+                }
+
+                // Verificar se já existe uma entrada para este quiz
+                const quizIndex = userData.idformulario.findIndex(q => q.idQuiz === quizId);
+                if (quizIndex !== -1) {
+                    // Atualizar entrada existente
+                    userData.idformulario[quizIndex] = quizCompleto;
+                } else {
+                    // Adicionar nova entrada
+                    userData.idformulario.push(quizCompleto);
+                }
+
+                // Atualizar dados do usuário no servidor
                 const updateResponse = await fetch(`http://localhost:3000/usuarios/${userId}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ idformulario: idformulario })
+                    body: JSON.stringify({
+                        idformulario: userData.idformulario
+                    })
                 });
 
-                if (updateResponse.ok) {
-                    // Mostra resultado de sucesso
-                    document.getElementById("cardQuiz").innerHTML = `
-                        <div class="container my-5">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <div class="mb-4">
-                                        <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                if (!updateResponse.ok) {
+                    throw new Error('Erro ao atualizar respostas do quiz');
+                }
+
+                // Mostrar mensagem de sucesso
+                document.getElementById("cardQuiz").innerHTML = `
+                    <div class="container my-5">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="mb-4">
+                                    <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                                </div>
+                                <h2 class="text-orange">Quiz Finalizado!</h2>
+                                <p class="text-dark">Obrigado por completar o quiz <strong class="text-orange">"${quizData.titulo}"</strong>!</p>
+                                <div class="mt-4 mb-4">
+                                    <h5 class="text-orange">Suas Respostas:</h5>
+                                    <div class="text-start">
+                                        ${responses.map((r, index) => `
+                                            <div class="mb-3 p-3 bg-light rounded">
+                                                <strong class="text-orange">Pergunta ${index + 1}:</strong> 
+                                                <p class="text-dark mb-1">${r.question}</p>
+                                                <strong class="text-orange">Sua resposta:</strong> 
+                                                <p class="text-dark mb-0">${r.response}</p>
+                                            </div>
+                                        `).join('')}
                                     </div>
-                                    <h2>Quiz Finalizado!</h2>
-                                    <p>Obrigado por completar o quiz <strong>"${quizData.titulo}"</strong>!</p>
-                                    <p>Suas respostas foram salvas com sucesso.</p>
-                                    <div class="mt-4">
-                                        <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary me-2">
-                                            <i class="fas fa-arrow-left me-2"></i>Voltar para Quizzes
-                                        </a>
-                                        <a href="../../../index.html?idUsuario=${userId}" class="btn btn-secondary">
-                                            <i class="fas fa-home me-2"></i>Voltar para Home
-                                        </a>
-                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary me-2">
+                                        <i class="fas fa-arrow-left me-2"></i>Voltar para Quizzes
+                                    </a>
+                                    <a href="../../../index.html?idUsuario=${userId}" class="btn btn-secondary">
+                                        <i class="fas fa-home me-2"></i>Voltar para Home
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    `;
-                } else {
-                    throw new Error('Erro ao salvar respostas');
-                }
+                    </div>
+                `;
 
             } catch (error) {
                 console.error('Erro ao finalizar quiz:', error);
@@ -335,8 +364,8 @@
                                 <div class="mb-4">
                                     <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
                                 </div>
-                                <h2>Erro ao Salvar</h2>
-                                <p>Ocorreu um erro ao salvar suas respostas. Tente novamente.</p>
+                                <h2 class="text-orange">Erro ao Salvar</h2>
+                                <p class="text-dark">Ocorreu um erro ao salvar suas respostas. Tente novamente.</p>
                                 <div class="mt-3">
                                     <button class="btn btn-primary" onclick="location.reload()">
                                         <i class="fas fa-redo me-2"></i>Tentar Novamente
