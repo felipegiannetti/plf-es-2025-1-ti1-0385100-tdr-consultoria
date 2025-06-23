@@ -1,8 +1,10 @@
 const API_URL = 'http://localhost:3000';
 let usuario = null;
 let currentPage = 1;
-const eventsPerPage = 10;
+const eventsPerPage = 4; // Changed from 10 to 4 to match quiz pagination
 let totalEvents = 0;
+const QUIZZES_PER_PAGE = 4; // Changed to 4 quizzes per page
+let currentQuizPage = 1;
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Check if user is logged in
@@ -15,8 +17,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     usuario = JSON.parse(usuarioLogado);
     document.getElementById('userName').textContent = usuario.nome;
 
-    // Load user's events
-    await loadUserEvents();
+    // Load user's data
+    await Promise.all([
+        loadUserEvents(),
+        loadUserQuizzes() // Add this line
+    ]);
 
     // Setup navigation
     setupNavigation();
@@ -45,7 +50,7 @@ async function loadUserEvents(page = 1) {
 
         if (!userInscricoes || userInscricoes.length === 0) {
             eventosGrid.innerHTML = `
-                <div class="col-12 text-center">
+                <div class="col-12">
                     <div class="alert alert-info">
                         <i class="fas fa-info-circle me-2"></i>
                         Você ainda não está inscrito em nenhum evento.
@@ -59,43 +64,70 @@ async function loadUserEvents(page = 1) {
             userInscricoes.some(inscricao => inscricao.idEvento === evento.id)
         );
 
-        totalEvents = userEventos.length;
+        // Calculate pagination
+        const totalEvents = userEventos.length;
         const totalPages = Math.ceil(totalEvents / eventsPerPage);
         const startIndex = (page - 1) * eventsPerPage;
-        const endIndex = startIndex + eventsPerPage;
-        const paginatedEventos = userEventos.slice(startIndex, endIndex);
+        const endIndex = Math.min(startIndex + eventsPerPage, totalEvents);
+        const currentEvents = userEventos.slice(startIndex, endIndex);
 
         eventosGrid.innerHTML = `
-            <div class="row">
-                ${paginatedEventos.map(evento => `
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100 animate-card">
-                            <div class="card-body">
-                                <h5 class="card-title">${evento.titulo}</h5>
-                                <p class="card-text">${evento.descricao}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-primary">${evento.categoria}</span>
-                                    <span class="text-muted">${new Date(evento.data).toLocaleDateString()}</span>
+            <div class="events-container">
+                <div class="debug-info text-muted mb-3">
+                    <small>Total de eventos: ${totalEvents} | Página atual: ${page} de ${totalPages}</small>
+                </div>
+                <ul class="event-list">
+                    ${currentEvents.map((evento, index) => `
+                        <li class="event-list-item">
+                            <div class="event-header" onclick="toggleEventDetails('event-${startIndex + index}')">
+                                <h5 class="event-title">
+                                    <i class="fas fa-calendar-check me-2"></i>
+                                    ${evento.titulo}
+                                </h5>
+                                <span class="event-date">
+                                    <i class="far fa-calendar-alt me-1"></i>
+                                    ${new Date(evento.data).toLocaleDateString('pt-BR')}
+                                </span>
+                            </div>
+                            <div class="event-details" id="event-${startIndex + index}">
+                                <div class="event-info">
+                                    <p class="mb-2">${evento.descricao}</p>
+                                    <div class="event-meta">
+                                        <span class="badge bg-primary">${evento.categoria}</span>
+                                        <span class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>${evento.local}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-            ${totalPages > 1 ? `
-                <div class="pagination-container mt-4 d-flex justify-content-center">
-                    <nav aria-label="Navegação de eventos">
+                        </li>
+                    `).join('')}
+                </ul>
+                ${totalPages > 1 ? `
+                    <div class="pagination-container mt-4">
                         <ul class="pagination">
-                            ${generatePaginationHTML(page, totalPages)}
+                            <li class="page-item ${page === 1 ? 'disabled' : ''}">
+                                <button class="page-link" onclick="changeEventPage(${page - 1})" ${page === 1 ? 'disabled' : ''}>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                            </li>
+                            ${Array.from({length: totalPages}, (_, i) => i + 1).map(num => `
+                                <li class="page-item ${num === page ? 'active' : ''}">
+                                    <button class="page-link" onclick="changeEventPage(${num})">${num}</button>
+                                </li>
+                            `).join('')}
+                            <li class="page-item ${page === totalPages ? 'disabled' : ''}">
+                                <button class="page-link" onclick="changeEventPage(${page + 1})" ${page === totalPages ? 'disabled' : ''}>
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </li>
                         </ul>
-                    </nav>
-                </div>
-            ` : ''}
+                    </div>
+                ` : ''}
+            </div>
         `;
 
     } catch (error) {
         console.error('Erro ao carregar eventos:', error);
-        eventosGrid.innerHTML = `
+        document.getElementById('eventosGrid').innerHTML = `
             <div class="col-12">
                 <div class="alert alert-danger">
                     <i class="fas fa-exclamation-circle me-2"></i>
@@ -169,6 +201,11 @@ function setupNavigation() {
                 section.classList.remove('active'));
             document.getElementById(target).classList.add('active');
         });
+    });
+
+    // Load quizzes when the tab is clicked
+    document.querySelector('[data-target="quizzes"]').addEventListener('click', () => {
+        loadUserQuizzes(currentQuizPage);
     });
 }
 
@@ -253,4 +290,125 @@ function setupDeleteForm() {
             }
         }
     });
+}
+
+async function loadUserQuizzes(page = 1) {
+    try {
+        // First, let's debug the data we're receiving
+        console.log('User data:', usuario);
+        console.log('User quizzes:', usuario.idformulario);
+
+        const quizzesResponse = await fetch(`${API_URL}/quizzes`);
+        const allQuizzes = await quizzesResponse.json();
+        const quizzesGrid = document.getElementById('quizzesGrid');
+
+        if (!usuario.idformulario || usuario.idformulario.length === 0) {
+            quizzesGrid.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Você ainda não realizou nenhum quiz.
+                    </div>
+                </div>`;
+            return;
+        }
+
+        // Calculate pagination
+        const totalQuizzes = usuario.idformulario.length;
+        const totalPages = Math.ceil(totalQuizzes / QUIZZES_PER_PAGE);
+        const startIndex = (page - 1) * QUIZZES_PER_PAGE;
+        const endIndex = Math.min(startIndex + QUIZZES_PER_PAGE, totalQuizzes);
+        const currentQuizzes = usuario.idformulario.slice(startIndex, endIndex);
+
+        // Render the quizzes list
+        quizzesGrid.innerHTML = `
+            <div class="quiz-container">
+                <div class="debug-info text-muted mb-3">
+                    <small>Total de quizzes: ${totalQuizzes} | Página atual: ${page} de ${totalPages}</small>
+                </div>
+                <ul class="quiz-list">
+                    ${currentQuizzes.map((quizResponse, index) => {
+                        const quiz = allQuizzes.find(q => q.id === quizResponse.idQuiz);
+                        return `
+                            <li class="quiz-list-item">
+                                <div class="quiz-header" onclick="toggleQuizAnswers('quiz-${startIndex + index}')">
+                                    <h5 class="quiz-title">
+                                        <i class="fas fa-clipboard-check me-2"></i>
+                                        ${quiz ? quiz.titulo : 'Quiz não encontrado'}
+                                    </h5>
+                                    <span class="quiz-date">
+                                        <i class="far fa-calendar-alt me-1"></i>
+                                        ${new Date(quizResponse.dataRealizacao).toLocaleDateString('pt-BR')}
+                                    </span>
+                                </div>
+                                <div class="quiz-answers" id="quiz-${startIndex + index}">
+                                    ${quizResponse.questions.map((q, qIndex) => `
+                                        <div class="response-item">
+                                            <strong class="d-block mb-1 text-muted">Pergunta ${qIndex + 1}:</strong>
+                                            <p class="mb-1">${q.question}</p>
+                                            <strong class="d-block mb-1 text-muted">Sua resposta:</strong>
+                                            <p class="mb-0 text-primary">${q.response}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </li>
+                        `;
+                    }).join('')}
+                </ul>
+                ${totalPages > 1 ? `
+                    <div class="pagination-container mt-4">
+                        <ul class="pagination">
+                            <li class="page-item ${page === 1 ? 'disabled' : ''}">
+                                <button class="page-link" onclick="changeQuizPage(${page - 1})" ${page === 1 ? 'disabled' : ''}>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                            </li>
+                            ${Array.from({length: totalPages}, (_, i) => i + 1).map(num => `
+                                <li class="page-item ${num === page ? 'active' : ''}">
+                                    <button class="page-link" onclick="changeQuizPage(${num})">${num}</button>
+                                </li>
+                            `).join('')}
+                            <li class="page-item ${page === totalPages ? 'disabled' : ''}">
+                                <button class="page-link" onclick="changeQuizPage(${page + 1})" ${page === totalPages ? 'disabled' : ''}>
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+
+    } catch (error) {
+        console.error('Erro ao carregar quizzes:', error);
+        document.getElementById('quizzesGrid').innerHTML = `
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    Erro ao carregar seus quizzes: ${error.message}
+                </div>
+            </div>`;
+    }
+}
+
+function toggleQuizAnswers(quizId) {
+    const answersDiv = document.getElementById(quizId);
+    answersDiv.classList.toggle('show');
+}
+
+function changeQuizPage(newPage) {
+    currentQuizPage = newPage;
+    loadUserQuizzes(newPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleEventDetails(eventId) {
+    const detailsDiv = document.getElementById(eventId);
+    detailsDiv.classList.toggle('show');
+}
+
+function changeEventPage(newPage) {
+    currentPage = newPage;
+    loadUserEvents(newPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }

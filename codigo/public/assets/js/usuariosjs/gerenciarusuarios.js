@@ -220,66 +220,85 @@ async function deleteUser(id) {
 
 async function viewUserDetails(userId) {
     try {
-        // Fetch user details
-        const user = await fetch(`${API_URL}/usuarios/${userId}`).then(r => r.json());
-        
-        // Fetch all quizzes to get titles
-        const allQuizzes = await fetch(`${API_URL}/quizzes`).then(r => r.json());
-        
-        // Fetch all eventos
-        const allEventos = await fetch(`${API_URL}/eventos`).then(r => r.json());
-        
-        // Fetch user's event registrations
-        const registrations = await fetch(`${API_URL}/cadastroDeEventos`).then(r => r.json());
+        const [user, allQuizzes, allEventos, registrations] = await Promise.all([
+            fetch(`${API_URL}/usuarios/${userId}`).then(r => r.json()),
+            fetch(`${API_URL}/quizzes`).then(r => r.json()),
+            fetch(`${API_URL}/eventos`).then(r => r.json()),
+            fetch(`${API_URL}/cadastroDeEventos`).then(r => r.json())
+        ]);
+
         const userRegistrations = registrations.filter(reg => reg.idUsuario.includes(userId));
 
-        // Render quizzes tab with responses
+        // Render quizzes tab with collapsible responses
         document.getElementById('quizzesContent').innerHTML = user.idformulario && user.idformulario.length ? `
-            <div class="list-group">
-                ${user.idformulario.map(quiz => {
+            <ul class="quiz-list">
+                ${user.idformulario.map((quiz, index) => {
                     const quizInfo = allQuizzes.find(q => q.id === quiz.idQuiz);
                     return `
-                        <div class="list-group-item bg-dark text-white border-orange mb-3">
-                            <h6 class="mb-1 text-orange">${quizInfo ? quizInfo.titulo : 'Quiz não encontrado'}</h6>
-                            <p class="mb-1">Realizado em: ${new Date(quiz.dataRealizacao).toLocaleDateString('pt-BR')}</p>
-                            <div class="mt-3">
-                                <strong class="text-orange">Respostas:</strong>
-                                <div class="ms-3 mt-2">
-                                    ${quiz.questions.map((q, index) => `
-                                        <div class="mb-3 p-3 rounded" style="background: rgba(255,255,255,0.1)">
-                                            <strong class="text-orange">Pergunta ${index + 1}:</strong>
-                                            <p class="mb-1 text-white">${q.question}</p>
-                                            <strong class="text-orange">Resposta:</strong>
-                                            <p class="mb-0 text-white">${q.response}</p>
-                                        </div>
-                                    `).join('')}
+                        <li class="quiz-list-item">
+                            <div class="quiz-header" onclick="toggleQuizAnswers('quiz-${index}')">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="quiz-title text-orange mb-0">
+                                        <i class="fas fa-clipboard-check me-2"></i>
+                                        ${quizInfo ? quizInfo.titulo : 'Quiz não encontrado'}
+                                    </h5>
+                                    <span class="quiz-date text-muted">
+                                        <i class="far fa-calendar-alt me-1"></i>
+                                        ${new Date(quiz.dataRealizacao).toLocaleDateString('pt-BR')}
+                                    </span>
                                 </div>
                             </div>
-                        </div>
+                            <div class="quiz-answers" id="quiz-${index}">
+                                ${quiz.questions.map((q, qIndex) => `
+                                    <div class="response-item p-3">
+                                        <strong class="d-block mb-1 text-orange">Pergunta ${qIndex + 1}:</strong>
+                                        <p class="mb-2">${q.question}</p>
+                                        <strong class="d-block mb-1 text-orange">Resposta:</strong>
+                                        <p class="mb-0">${q.response}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </li>
                     `;
                 }).join('')}
-            </div>
+            </ul>
         ` : '<p class="text-muted">Nenhum quiz realizado.</p>';
 
         // Render eventos tab
         document.getElementById('eventosContent').innerHTML = userRegistrations.length ? `
-            <div class="list-group">
-                ${userRegistrations.map(reg => {
-                    const evento = allEventos.find(e => e.id === reg.idEvento);
+            <ul class="event-list">
+                ${userRegistrations.map((registration, index) => {
+                    const event = allEventos.find(e => e.id === registration.idEvento);
                     return `
-                        <div class="list-group-item bg-dark text-white border-orange mb-3">
-                            <h6 class="mb-1 text-orange">${evento ? evento.titulo : 'Evento não encontrado'}</h6>
-                            <p class="mb-1">Data do evento: ${evento ? new Date(evento.data).toLocaleDateString('pt-BR') : 'N/A'}</p>
-                            <p class="mb-1">Local: ${evento ? evento.local : 'N/A'}</p>
-                            <p class="mb-0">
-                                <span class="badge bg-orange">
-                                    ${evento ? evento.categoria : 'N/A'}
-                                </span>
-                            </p>
-                        </div>
+                        <li class="event-list-item">
+                            <div class="event-header" onclick="toggleEventDetails('event-${index}')">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="event-title">
+                                        <i class="fas fa-calendar-check me-2"></i>
+                                        ${event ? event.titulo : 'Evento não encontrado'}
+                                    </h5>
+                                    <span class="event-date">
+                                        <i class="far fa-calendar-alt me-1"></i>
+                                        ${event ? new Date(event.data).toLocaleDateString('pt-BR') : 'Data não disponível'}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="event-details" id="event-${index}">
+                                <div class="event-info">
+                                    <p class="event-description">${event ? event.descricao : ''}</p>
+                                    <div class="event-meta">
+                                        <span class="badge bg-orange">${event ? event.categoria : ''}</span>
+                                        <span class="event-location">
+                                            <i class="fas fa-map-marker-alt me-1"></i>
+                                            ${event ? event.local : ''}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     `;
                 }).join('')}
-            </div>
+            </ul>
         ` : '<p class="text-muted">Nenhum evento inscrito.</p>';
 
         // Show modal
@@ -299,6 +318,18 @@ async function viewUserDetails(userId) {
             }
         });
     }
+}
+
+// Add this function to handle quiz answers toggle
+function toggleQuizAnswers(quizId) {
+    const answersDiv = document.getElementById(quizId);
+    answersDiv.classList.toggle('show');
+}
+
+// Add this function to handle event details toggle
+function toggleEventDetails(eventId) {
+    const detailsDiv = document.getElementById(eventId);
+    detailsDiv.classList.toggle('show');
 }
 
 // Event Listeners

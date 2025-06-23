@@ -207,3 +207,139 @@ body {
 .bg-orange {
     background-color: #ff7a00 !important;
 }
+
+/* Quiz list styles */
+.quiz-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quiz-list-item {
+    background: linear-gradient(145deg, #3a3a3a, #2d2d2d);
+    border: 1px solid rgba(255, 122, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-list-item:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(255, 122, 0, 0.1);
+    border-color: rgba(255, 122, 0, 0.3);
+    background: linear-gradient(145deg, #404040, #323232);
+}
+
+.quiz-header {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.quiz-answers {
+    display: none;
+    border-top: 1px solid rgba(255, 122, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.quiz-answers.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+.response-item {
+    border-bottom: 1px solid rgba(255, 122, 0, 0.1);
+}
+
+.response-item:last-child {
+    border-bottom: none;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Update quiz date color */
+.quiz-date {
+    color: #fff !important;
+    font-size: 0.9rem;
+}
+
+/* Event list styles */
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-list-item {
+    background: linear-gradient(145deg, #3a3a3a, #2d2d2d);
+    border: 1px solid rgba(255, 122, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.event-list-item:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(255, 122, 0, 0.1);
+    border-color: rgba(255, 122, 0, 0.3);
+    background: linear-gradient(145deg, #404040, #323232);
+}
+
+.event-header {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.event-details {
+    display: none;
+    border-top: 1px solid rgba(255, 122, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+}
+
+.event-details.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+.event-title {
+    color: #ff7a00;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.event-date {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.event-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.event-info {
+    margin-bottom: 1rem;
+}
+
+.event-description {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.event-location {
+    color: #fff;
+    font-size: 0.9rem;
+}
