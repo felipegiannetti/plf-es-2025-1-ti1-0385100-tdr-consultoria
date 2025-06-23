@@ -166,13 +166,6 @@
       ]
     },
     {
-      "id": "1750647399265",
-      "idEvento": "1",
-      "idUsuario": [
-        "1749560312233"
-      ]
-    },
-    {
       "id": "1750649518429",
       "idEvento": "2",
       "idUsuario": [
@@ -278,110 +271,7 @@
       "senha": "admin123",
       "tipo": "admin",
       "id": "1749560312233",
-      "idformulario": [
-        {
-          "idQuiz": "1750635390689",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:24:06.758Z",
-          "questions": [
-            {
-              "question": "Como você lida com riscos?",
-              "response": "Aceito calculadamente"
-            },
-            {
-              "question": "Qual sua maior motivação para empreender?",
-              "response": "Inovação"
-            },
-            {
-              "question": "Como você lida com fracassos?",
-              "response": "Aprendo com os erros"
-            },
-            {
-              "question": "Qual sua abordagem para inovação?",
-              "response": "Sigo tendências"
-            },
-            {
-              "question": "Como você gerencia recursos?",
-              "response": "Planejado"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390691",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:14:38.550Z",
-          "questions": [
-            {
-              "question": "Metodologia preferida?",
-              "response": "Waterfall"
-            },
-            {
-              "question": "Como prioriza tarefas?",
-              "response": "ROI"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390692",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:20:46.749Z",
-          "questions": [
-            {
-              "question": "Uso principal da IA na sua área?",
-              "response": "Automação"
-            },
-            {
-              "question": "Maior benefício da IA?",
-              "response": "Inovação"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390694",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:21:08.051Z",
-          "questions": [
-            {
-              "question": "Prioridade em ESG?",
-              "response": "Social"
-            },
-            {
-              "question": "Maior desafio sustentável?",
-              "response": "Implementação"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390693",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:23:32.958Z",
-          "questions": [
-            {
-              "question": "Estilo de liderança predominante?",
-              "response": "Situacional"
-            },
-            {
-              "question": "Como motiva sua equipe?",
-              "response": "Reconhecimento"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390695",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T22:50:26.368Z",
-          "questions": [
-            {
-              "question": "Abordagem para inovação?",
-              "response": "Incremental"
-            },
-            {
-              "question": "Fonte de criatividade?",
-              "response": "Colaboração"
-            }
-          ]
-        }
-      ]
+      "idformulario": []
     },
     {
       "id": "1749562553755",
@@ -416,6 +306,13 @@
       "email": "usuario@gmail.com.br",
       "tipo": "usuario",
       "id": "1750478148056",
+      "senha": "123456"
+    },
+    {
+      "nome": "teste",
+      "email": "teste@gmail.com",
+      "tipo": "usuario",
+      "id": "1750720057738",
       "senha": "123456"
     }
   ],
@@ -633,7 +530,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Ao tomar decisões empresariais importantes, qual é sua abordagem natural para lidar com riscos?",
+          "texto": "Como você lida com riscos?",
           "respostas": [
             {
               "texto": "Evito ao máximo"
@@ -650,7 +547,7 @@
           ]
         },
         {
-          "texto": "Quando você pensa em criar seu próprio negócio, qual fator mais te motiva a empreender?",
+          "texto": "Qual sua maior motivação para empreender?",
           "respostas": [
             {
               "texto": "Independência financeira"
@@ -667,7 +564,7 @@
           ]
         },
         {
-          "texto": "Quando suas estratégias de negócio não funcionam como esperado, qual é sua reação típica?",
+          "texto": "Como você lida com fracassos?",
           "respostas": [
             {
               "texto": "Evito situações de risco"
@@ -684,7 +581,7 @@
           ]
         },
         {
-          "texto": "Diante de um mercado competitivo, qual estratégia você naturalmente adotaria para se destacar?",
+          "texto": "Qual sua abordagem para inovação?",
           "respostas": [
             {
               "texto": "Sigo tendências"
@@ -701,7 +598,7 @@
           ]
         },
         {
-          "texto": "Quando se trata de alocar recursos financeiros e humanos em seu negócio, como você se definiria?",
+          "texto": "Como você gerencia recursos?",
           "respostas": [
             {
               "texto": "Conservador"
@@ -731,7 +628,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Para avaliar o sucesso de uma estratégia de SEO, qual indicador você considera mais relevante?",
+          "texto": "Qual métrica é mais importante para SEO?",
           "respostas": [
             {
               "texto": "Taxa de rejeição"
@@ -748,7 +645,7 @@
           ]
         },
         {
-          "texto": "Para maximizar o engajamento e alcance nas redes sociais, qual abordagem você considera mais eficaz?",
+          "texto": "Melhor estratégia para redes sociais?",
           "respostas": [
             {
               "texto": "Conteúdo orgânico"
@@ -765,7 +662,7 @@
           ]
         },
         {
-          "texto": "Para monitorar e otimizar o desempenho de campanhas digitais, qual ferramenta você considera indispensável?",
+          "texto": "Ferramenta essencial para análise?",
           "respostas": [
             {
               "texto": "Google Analytics"
@@ -793,7 +690,7 @@
       "perguntas": [
         {
           "id": 1,
-          "texto": "Considerando diferentes contextos e tipos de projetos, qual metodologia de gestão você considera mais adequada para sua forma de trabalhar?",
+          "texto": "Metodologia preferida?",
           "respostas": [
             {
               "id": 1,
@@ -815,7 +712,7 @@
         },
         {
           "id": 2,
-          "texto": "Quando você tem múltiplas demandas competing por sua atenção, qual critério você usa principalmente para definir prioridades?",
+          "texto": "Como prioriza tarefas?",
           "respostas": [
             {
               "id": 1,
@@ -850,7 +747,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Considerando as possibilidades atuais de IA, qual aplicação você vê como mais promissora para transformar seu setor de atuação?",
+          "texto": "Uso principal da IA na sua área?",
           "respostas": [
             {
               "texto": "Automação"
@@ -867,7 +764,7 @@
           ]
         },
         {
-          "texto": "Pensando no futuro dos negócios, qual você acredita ser o principal valor que a IA pode agregar ao seu campo de trabalho?",
+          "texto": "Maior benefício da IA?",
           "respostas": [
             {
               "texto": "Eficiência"
@@ -897,7 +794,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Quando você precisa liderar uma equipe em direção a um objetivo comum, qual abordagem você naturalmente adota?",
+          "texto": "Estilo de liderança predominante?",
           "respostas": [
             {
               "texto": "Autoritário"
@@ -914,7 +811,7 @@
           ]
         },
         {
-          "texto": "Para manter sua equipe engajada e produtiva, qual estratégia você considera mais eficaz?",
+          "texto": "Como motiva sua equipe?",
           "respostas": [
             {
               "texto": "Recompensas"
@@ -944,7 +841,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Ao implementar práticas ESG em uma empresa, qual pilar você considera que deveria receber atenção prioritária?",
+          "texto": "Prioridade em ESG?",
           "respostas": [
             {
               "texto": "Ambiental"
@@ -961,7 +858,7 @@
           ]
         },
         {
-          "texto": "Na sua experiência ou perspectiva, qual é o principal obstáculo para empresas adotarem práticas sustentáveis efetivas?",
+          "texto": "Maior desafio sustentável?",
           "respostas": [
             {
               "texto": "Custos"
@@ -991,7 +888,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Quando você busca inovar em produtos, serviços ou processos, qual estratégia você naturalmente prefere?",
+          "texto": "Abordagem para inovação?",
           "respostas": [
             {
               "texto": "Incremental"
@@ -1008,7 +905,7 @@
           ]
         },
         {
-          "texto": "Para alimentar sua criatividade e gerar ideias inovadoras, de onde você costuma extrair suas maiores inspirações?",
+          "texto": "Fonte de criatividade?",
           "respostas": [
             {
               "texto": "Experiências"
@@ -1038,7 +935,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Avaliando o estágio atual de digitalização da sua empresa ou área de atuação, como você a classificaria?",
+          "texto": "Nível de digitalização?",
           "respostas": [
             {
               "texto": "Iniciante"
@@ -1055,7 +952,7 @@
           ]
         },
         {
-          "texto": "Na jornada de transformação digital, qual aspecto você identifica como o maior obstáculo a ser superado?",
+          "texto": "Principal desafio digital?",
           "respostas": [
             {
               "texto": "Cultura"
@@ -1083,7 +980,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Para estabelecer relacionamentos comerciais duradouros no mercado B2B, qual estratégia de prospecção você considera mais eficaz?",
+          "texto": "Qual a melhor abordagem para prospecção B2B?",
           "respostas": [
             {
               "texto": "Cold calling"
@@ -1100,7 +997,7 @@
           ]
         },
         {
-          "texto": "Ao avaliar a viabilidade de um prospect B2B, qual critério você considera mais determinante para o sucesso da negociação?",
+          "texto": "Como você qualifica leads B2B?",
           "respostas": [
             {
               "texto": "Tamanho da empresa"
@@ -1117,7 +1014,7 @@
           ]
         },
         {
-          "texto": "Em vendas corporativas de alta complexidade, qual aspecto você identifica como o maior desafio para fechar negócios?",
+          "texto": "Principal desafio em vendas complexas?",
           "respostas": [
             {
               "texto": "Ciclo de vendas longo"
@@ -1145,7 +1042,7 @@
       "status": "ativo",
       "perguntas": [
         {
-          "texto": "Para criar um ambiente favorável desde o início de uma negociação complexa, qual abordagem você considera mais estratégica?",
+          "texto": "Melhor estratégia para início de negociação?",
           "respostas": [
             {
               "texto": "Estabelecer rapport"
@@ -1162,7 +1059,7 @@
           ]
         },
         {
-          "texto": "Quando uma negociação chega a um impasse aparentemente intransponível, qual seria sua estratégia preferencial?",
+          "texto": "Como lidar com impasses?",
           "respostas": [
             {
               "texto": "Buscar concessões"
@@ -1179,7 +1076,7 @@
           ]
         },
         {
-          "texto": "Refletindo sobre negociações bem-sucedidas, qual elemento você considera mais crítico para o sucesso?",
+          "texto": "Fator mais importante em negociação?",
           "respostas": [
             {
               "texto": "Preparação"
