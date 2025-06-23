@@ -13,7 +13,8 @@ body {
     background: #111;
     line-height: 1.6;
     min-height: 100vh;
-
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .margemtopo {
@@ -27,6 +28,8 @@ a {
     cursor: pointer;
     opacity: 0.95;
 }
+
+
 
 a:hover {
     opacity: 1;
@@ -370,17 +373,16 @@ a:hover {
 }
 
 #footerimplementador {
-    margin-left: -15px !important;
-    margin-right: -15px !important;
-    width: calc(100% + 30px);
-    position: relative;
+    width: 100%;
+    margin: 0 !important;
 }
 
 /* Update container margins */
 .container-fluid {
-    width: 100%;
-    padding: 0;
+    width: 100vw;
     margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .centralizacontainer {
@@ -413,12 +415,22 @@ a:hover {
 }
 
 .solution_cards_box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px; /* Reduced from 25px */
-    padding: 0 20px; /* Removed top padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 .solution_card {
@@ -538,5 +550,56 @@ a:hover {
     .subtitle-highlight {
         font-size: 1.8rem;
     }
+}
+
+/* Pagination Styles */
+.pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.page-link {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: #ff7a00;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover:not([disabled]) {
+    background-color: #ff7a00;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.page-item.active .page-link {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+    color: #fff;
+}
+
+.page-item.disabled .page-link {
+    background-color: #222;
+    border-color: #333;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.news-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 

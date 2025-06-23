@@ -207,6 +207,21 @@
               "response": "Arrojado"
             }
           ]
+        },
+        {
+          "idQuiz": "1750635390691",
+          "feito": true,
+          "dataRealizacao": "2025-06-23T03:14:38.550Z",
+          "questions": [
+            {
+              "question": "Metodologia preferida?",
+              "response": "Waterfall"
+            },
+            {
+              "question": "Como prioriza tarefas?",
+              "response": "ROI"
+            }
+          ]
         }
       ]
     },
@@ -216,13 +231,6 @@
       "email": "filipejose@gmail.com",
       "senha": "fjb",
       "tipo": "admin"
-    },
-    {
-      "id": "1749563112363",
-      "nome": "blob",
-      "email": "blob@gmail.com",
-      "senha": "blob@123",
-      "tipo": "usuario"
     },
     {
       "id": "1749563422237",
@@ -239,13 +247,6 @@
       "tipo": "admin"
     },
     {
-      "id": "1749660914745",
-      "nome": "Filipe",
-      "email": "filipe@gmail.com",
-      "senha": "fjb",
-      "tipo": "admin"
-    },
-    {
       "nome": "Cesar Sokoli",
       "email": "cesarsokolid@gmail.com",
       "senha": "",
@@ -253,18 +254,11 @@
       "id": "1749587981878"
     },
     {
-      "id": "1750478148056",
       "nome": "usuario",
       "email": "usuario@gmail.com.br",
-      "senha": "123456",
-      "tipo": "usuario"
-    },
-    {
-      "id": "1750640805650",
-      "nome": "felipe giannetti",
-      "email": "usuarioteste@gmail.com",
-      "senha": "123456",
-      "tipo": "usuario"
+      "tipo": "usuario",
+      "id": "1750478148056",
+      "senha": "123456"
     }
   ],
   "avaliacoeseventos": [
@@ -453,6 +447,17 @@
       "categoria": "Tecnologia",
       "imagem": "assets/img/noticias/1750637048190-blockchain.png",
       "data": "2025-06-23T00:04:08.213Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1750648077138",
+      "titulo": "Nova Inteligência Artificial Promete Revolucionar",
+      "descricao_breve": "Uma startup lança uma IA avançada capaz de gerar textos, imagens e vídeos com alta qualidade, prometendo mudar o mercado de marketing digital e mídia.",
+      "texto_completo": "Uma inovadora startup de tecnologia apresentou ao mercado uma nova ferramenta de inteligência artificial capaz de criar conteúdos digitais complexos de forma totalmente autônoma. A IA consegue gerar textos otimizados para SEO, imagens realistas e até vídeos curtos, tudo em questão de minutos. Especialistas acreditam que essa tecnologia pode transformar o setor de marketing digital, reduzindo custos e acelerando processos criativos. Grandes empresas já demonstraram interesse em adotar a solução para automatizar parte de suas campanhas. Apesar do entusiasmo, especialistas alertam para a necessidade de regulamentação, garantindo o uso ético e evitando a disseminação de informações falsas.",
+      "categoria": "Tecnologia",
+      "imagem": "assets/img/noticias/1750648077152-IA.png",
+      "data": "2025-06-23T03:07:57.169Z",
       "autor": "Felipe Giannetti Fontenelle",
       "autorId": "1749560312233"
     }
