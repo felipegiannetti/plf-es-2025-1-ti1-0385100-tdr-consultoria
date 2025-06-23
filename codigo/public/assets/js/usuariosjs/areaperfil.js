@@ -5,6 +5,9 @@ const eventsPerPage = 4; // Changed from 10 to 4 to match quiz pagination
 let totalEvents = 0;
 const QUIZZES_PER_PAGE = 4; // Changed to 4 quizzes per page
 let currentQuizPage = 1;
+let currentInvestmentPage = 1;
+const MONTHS_PER_PAGE = 12;
+let investmentResults = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Check if user is logged in
@@ -29,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Setup form handlers
     setupPasswordForm();
     setupDeleteForm();
+    setupInvestmentCalculator(); // Adicione esta linha
 });
 
 async function loadUserEvents(page = 1) {
@@ -588,4 +592,376 @@ function changeEventPage(newPage) {
     currentPage = newPage;
     loadUserEvents(newPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Adicione esta nova função:
+function setupInvestmentCalculator() {
+    // Adicionar estilos customizados para o botão
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .btn-calculate {
+            background: linear-gradient(135deg, #ff7a00 0%, #ff9a2e 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .btn-calculate:hover {
+            background: linear-gradient(135deg, #ff9a2e 0%, #ffb366 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 122, 0, 0.4);
+            color: white;
+        }
+
+        .btn-calculate:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+        }
+
+        .btn-calculate:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.3);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff7a00;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: #f3f3f3;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Responsivo para mobile */
+        @media (max-width: 768px) {
+            .btn-calculate {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    const form = document.getElementById('investmentForm');
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const valorInicial = parseFloat(document.getElementById('valorInicial').value);
+            const taxaAnual = parseFloat(document.getElementById('taxaAnual').value);
+            const periodoMeses = parseInt(document.getElementById('periodoMeses').value);
+            
+            if (!valorInicial || !taxaAnual || !periodoMeses) {
+                await Swal.fire({
+                    title: 'Erro!',
+                    text: 'Por favor, preencha todos os campos.',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        popup: 'swal2-popup',
+                        confirmButton: 'swal-custom-button'
+                    }
+                });
+                return;
+            }
+
+            if (valorInicial <= 0 || taxaAnual < 0 || periodoMeses <= 0) {
+                await Swal.fire({
+                    title: 'Erro!',
+                    text: 'Por favor, insira valores válidos.',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        popup: 'swal2-popup',
+                        confirmButton: 'swal-custom-button'
+                    }
+                });
+                return;
+            }
+
+            // Show loading
+            Swal.fire({
+                title: 'Calculando...',
+                html: `
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                        <div class="loading-spinner"></div>
+                        <p>Processando seu investimento</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill-investment"></div>
+                        </div>
+                    </div>
+                `,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                customClass: {
+                    popup: 'swal2-popup'
+                },
+                didOpen: () => {
+                    const loadingStyle = document.createElement('style');
+                    loadingStyle.innerHTML = `
+                        .progress-fill-investment {
+                            height: 100%;
+                            background: linear-gradient(90deg, #ff7a00, #ff9a2e);
+                            width: 0%;
+                            border-radius: 4px;
+                            animation: fillProgressInvestment 2s ease-in-out forwards;
+                        }
+                        
+                        @keyframes fillProgressInvestment {
+                            0% { width: 0%; }
+                            100% { width: 100%; }
+                        }
+                    `;
+                    document.head.appendChild(loadingStyle);
+                }
+            });
+
+            // Calculate investment
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            calculateInvestment(valorInicial, taxaAnual, periodoMeses);
+            
+            Swal.close();
+        });
+    }
+}
+
+function calculateInvestment(valorInicial, taxaAnual, periodoMeses) {
+    const taxaMensal = taxaAnual / 12 / 100;
+    investmentResults = [];
+    
+    let valorAtual = valorInicial;
+    
+    for (let mes = 1; mes <= periodoMeses; mes++) {
+        valorAtual = valorAtual * (1 + taxaMensal);
+        const rendimento = valorAtual - valorInicial;
+        
+        investmentResults.push({
+            mes: mes,
+            valorTotal: valorAtual,
+            rendimento: rendimento,
+            percentualGanho: ((valorAtual - valorInicial) / valorInicial) * 100
+        });
+    }
+    
+    // Reset to first page
+    currentInvestmentPage = 1;
+    
+    // Show results
+    displayInvestmentResults(valorInicial, taxaAnual, periodoMeses);
+}
+
+function displayInvestmentResults(valorInicial, taxaAnual, periodoMeses) {
+    const resultsDiv = document.getElementById('investmentResults');
+    const valorFinal = investmentResults[investmentResults.length - 1];
+    const rendimentoTotal = valorFinal.valorTotal - valorInicial;
+    
+    // Calculate pagination
+    const totalPages = Math.ceil(investmentResults.length / MONTHS_PER_PAGE);
+    
+    // Check if table was previously visible
+    const wasTableVisible = sessionStorage.getItem('investmentTableVisible') === 'true';
+    const tableDisplay = wasTableVisible ? 'block' : 'none';
+    const buttonText = wasTableVisible ? 
+        '<i class="fas fa-table me-2"></i>Ocultar Tabela <i class="fas fa-chevron-up ms-2"></i>' : 
+        '<i class="fas fa-table me-2"></i>Ver Tabela Detalhada <i class="fas fa-chevron-down ms-2"></i>';
+
+    resultsDiv.innerHTML = `
+        <div class="investment-summary mb-4 mt-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="summary-card bg-primary">
+                        <h6>Valor Inicial</h6>
+                        <h4 title="R$ ${valorInicial.toLocaleString('pt-BR', {minimumFractionDigits: 2})}">
+                            R$ ${valorInicial.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="summary-card bg-success">
+                        <h6>Valor Final</h6>
+                        <h4 title="R$ ${valorFinal.valorTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}">
+                            R$ ${valorFinal.valorTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="summary-card bg-info">
+                        <h6>Rendimento Total</h6>
+                        <h4 title="R$ ${rendimentoTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}">
+                            R$ ${rendimentoTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="summary-card bg-warning">
+                        <h6>% de Ganho</h6>
+                        <h4 title="${valorFinal.percentualGanho.toFixed(2)}%">
+                            ${valorFinal.percentualGanho.toFixed(2)}%
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-toggle-container">
+            <button class="btn btn-outline-primary btn-block" onclick="toggleInvestmentTable()" id="toggleTableBtn">
+                ${buttonText}
+            </button>
+        </div>
+        
+        <div class="investment-table-container" id="investmentTableContainer" style="display: ${tableDisplay};">
+            <div class="table-responsive mt-3">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Mês</th>
+                            <th>Valor Total</th>
+                            <th>Rendimento</th>
+                            <th>% Ganho</th>
+                        </tr>
+                    </thead>
+                    <tbody id="investmentTableBody">
+                        <!-- Será preenchido pelo JavaScript -->
+                    </tbody>
+                </table>
+                
+                ${totalPages > 1 ? `
+                    <div class="pagination-container mt-3">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item ${currentInvestmentPage === 1 ? 'disabled' : ''}">
+                                <button class="page-link" onclick="changeInvestmentPage(${currentInvestmentPage - 1})" ${currentInvestmentPage === 1 ? 'disabled' : ''}>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                            </li>
+                            ${Array.from({length: totalPages}, (_, i) => i + 1).map(num => `
+                                <li class="page-item ${num === currentInvestmentPage ? 'active' : ''}">
+                                    <button class="page-link" onclick="changeInvestmentPage(${num})">${num}</button>
+                                </li>
+                            `).join('')}
+                            <li class="page-item ${currentInvestmentPage === totalPages ? 'disabled' : ''}">
+                                <button class="page-link" onclick="changeInvestmentPage(${currentInvestmentPage + 1})" ${currentInvestmentPage === totalPages ? 'disabled' : ''}>
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+    
+    // Load current page of table
+    loadInvestmentTablePage(currentInvestmentPage);
+    
+    // Show results section
+    resultsDiv.style.display = 'block';
+}
+
+function loadInvestmentTablePage(page) {
+    const startIndex = (page - 1) * MONTHS_PER_PAGE;
+    const endIndex = Math.min(startIndex + MONTHS_PER_PAGE, investmentResults.length);
+    const pageResults = investmentResults.slice(startIndex, endIndex);
+    
+    const tableBody = document.getElementById('investmentTableBody');
+    if (tableBody) {
+        tableBody.innerHTML = pageResults.map(result => `
+            <tr>
+                <td><strong>${result.mes}º mês</strong></td>
+                <td class="text-success"><strong>R$ ${result.valorTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</strong></td>
+                <td class="text-info">R$ ${result.rendimento.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+                <td class="text-warning">${result.percentualGanho.toFixed(2)}%</td>
+            </tr>
+        `).join('');
+    }
+}
+
+function toggleInvestmentTable() {
+    const tableContainer = document.getElementById('investmentTableContainer');
+    const toggleBtn = document.getElementById('toggleTableBtn');
+    
+    if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+        tableContainer.style.display = 'block';
+        toggleBtn.innerHTML = '<i class="fas fa-table me-2"></i>Ocultar Tabela <i class="fas fa-chevron-up ms-2"></i>';
+        
+        // Store table state
+        sessionStorage.setItem('investmentTableVisible', 'true');
+    } else {
+        tableContainer.style.display = 'none';
+        toggleBtn.innerHTML = '<i class="fas fa-table me-2"></i>Ver Tabela Detalhada <i class="fas fa-chevron-down ms-2"></i>';
+        
+        // Store table state
+        sessionStorage.setItem('investmentTableVisible', 'false');
+    }
+}
+
+function changeInvestmentPage(newPage) {
+    // Check if table is currently visible
+    const tableContainer = document.getElementById('investmentTableContainer');
+    const isTableVisible = tableContainer && tableContainer.style.display !== 'none';
+    
+    currentInvestmentPage = newPage;
+    loadInvestmentTablePage(newPage);
+    
+    // Update only the pagination without recreating the entire results
+    updateInvestmentPagination();
+    
+    // Keep table visible if it was visible before
+    if (isTableVisible && tableContainer) {
+        tableContainer.style.display = 'block';
+        const toggleBtn = document.getElementById('toggleTableBtn');
+        if (toggleBtn) {
+            toggleBtn.innerHTML = '<i class="fas fa-table me-2"></i>Ocultar Tabela <i class="fas fa-chevron-up ms-2"></i>';
+        }
+    }
+}
+
+// Adicione esta nova função para atualizar apenas a paginação:
+function updateInvestmentPagination() {
+    const totalPages = Math.ceil(investmentResults.length / MONTHS_PER_PAGE);
+    const paginationContainer = document.querySelector('.pagination-container');
+    
+    if (paginationContainer && totalPages > 1) {
+        const paginationHTML = `
+            <ul class="pagination justify-content-center">
+                <li class="page-item ${currentInvestmentPage === 1 ? 'disabled' : ''}">
+                    <button class="page-link" onclick="changeInvestmentPage(${currentInvestmentPage - 1})" ${currentInvestmentPage === 1 ? 'disabled' : ''}>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </li>
+                ${Array.from({length: totalPages}, (_, i) => i + 1).map(num => `
+                    <li class="page-item ${num === currentInvestmentPage ? 'active' : ''}">
+                        <button class="page-link" onclick="changeInvestmentPage(${num})">${num}</button>
+                    </li>
+                `).join('')}
+                <li class="page-item ${currentInvestmentPage === totalPages ? 'disabled' : ''}">
+                    <button class="page-link" onclick="changeInvestmentPage(${currentInvestmentPage + 1})" ${currentInvestmentPage === totalPages ? 'disabled' : ''}>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </li>
+            </ul>
+        `;
+        paginationContainer.innerHTML = paginationHTML;
+    }
 }
