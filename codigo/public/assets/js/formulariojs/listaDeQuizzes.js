@@ -43,61 +43,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             quizzesAtivos.forEach(quiz => {
-                // Cria o card
                 const card = document.createElement('div');
                 card.className = 'card mb-3';
-
-                // Imagem do quiz (se houver)
-                if (quiz.imagem) {
-                    const img = document.createElement('img');
-                    img.src = quiz.imagem;
-                    img.className = 'card-img-top';
-                    img.alt = quiz.titulo;
-                    card.appendChild(img);
-                }
-
-                // Corpo do card
-                const cardBody = document.createElement('div');
-                cardBody.className = 'card-body';
-
-                // Título
-                const titulo = document.createElement('h5');
-                titulo.className = 'card-title';
-                titulo.textContent = quiz.titulo;
-                cardBody.appendChild(titulo);
-
-                // Descrição breve
-                if (quiz.descricao_breve) {
-                    const desc = document.createElement('p');
-                    desc.className = 'card-text';
-                    desc.textContent = quiz.descricao_breve;
-                    cardBody.appendChild(desc);
-                }
-
-                // Categoria
-                if (quiz.categoria) {
-                    const categoria = document.createElement('p');
-                    categoria.className = 'card-text';
-                    categoria.innerHTML = `<span class="badge bg-info">${quiz.categoria}</span>`;
-                    cardBody.appendChild(categoria);
-                }
-
-                // Número de perguntas (se disponível)
-                if (quiz.perguntas && quiz.perguntas.length > 0) {
-                    const perguntas = document.createElement('p');
-                    perguntas.className = 'card-text';
-                    perguntas.innerHTML = `<small class="text-muted"><i class="fas fa-question-circle me-1"></i>${quiz.perguntas.length} pergunta${quiz.perguntas.length > 1 ? 's' : ''}</small>`;
-                    cardBody.appendChild(perguntas);
-                }
-
-                // Botão para acessar quiz - MODIFICADO para passar userId e quizId
-                const btn = document.createElement('a');
-                btn.className = 'btn btn-primary';
-                btn.innerHTML = '<i class="fas fa-play me-2"></i>Acessar Quiz';
-                btn.href = `exibiformulario.html?idUsuario=${userId}&idQuiz=${quiz.id}`;
-                cardBody.appendChild(btn);
-
-                card.appendChild(cardBody);
+                
+                // Card HTML structure
+                card.innerHTML = `
+                    <img src="${quiz.imagem}" class="card-img-top" alt="${quiz.titulo}">
+                    <div class="card-body">
+                        <div class="card-content">
+                            <h5 class="card-title">${quiz.titulo}</h5>
+                            ${quiz.descricao_breve ? `
+                                <p class="card-text mb-3">${quiz.descricao_breve}</p>
+                            ` : ''}
+                            ${quiz.perguntas ? `
+                                <p class="card-text mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-question-circle me-1"></i>
+                                        ${quiz.perguntas.length} pergunta${quiz.perguntas.length > 1 ? 's' : ''}
+                                    </small>
+                                </p>
+                            ` : ''}
+                        </div>
+                        <div class="card-footer border-0 bg-transparent">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="category-tag">
+                                    <i class="fas fa-tag me-1"></i>${quiz.categoria || 'Geral'}
+                                </span>
+                            </div>
+                            <a href="exibiformulario.html?idUsuario=${userId}&idQuiz=${quiz.id}" 
+                               class="btn btn-primary w-100">
+                                <i class="fas fa-play me-2"></i>Acessar Quiz
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
                 listaQuizzes.appendChild(card);
             });
         })
