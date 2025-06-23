@@ -133,12 +133,12 @@
     {
       "id": "11",
       "titulo": "Gestão de Crise Empresarial",
-      "data": "2024-09-28T13:30:00.000Z",
+      "data": "2024-09-28T16:30:00.000Z",
       "descricao": "Curso intensivo sobre gestão de crises, comunicação estratégica e tomada de decisão sob pressão.",
       "categoria": "Curso",
       "local": "Sebrae MG - Santa Efigênia, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=Sebrae+MG+Santa+Efigenia+Belo+Horizonte",
-      "imagem": "https://images.unsplash.com/photo-1552664730-d307ca884978",
+      "imagem": "assets/img/eventos/1750640531879-crisemanagement.png",
       "vagas": 40,
       "preco": 350,
       "status": "inativo"
@@ -146,12 +146,12 @@
     {
       "id": "12",
       "titulo": "Fórum de E-commerce",
-      "data": "2024-08-15T09:00:00.000Z",
+      "data": "2024-08-15T12:00:00.000Z",
       "descricao": "Fórum sobre tendências e estratégias em comércio eletrônico e marketplace.",
-      "categoria": "Fórum",
+      "categoria": "Curso",
       "local": "Shopping Diamond Mall - Lourdes, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=Diamond+Mall+Belo+Horizonte",
-      "imagem": "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
+      "imagem": "assets/img/eventos/1750640709481-e-commerce.png",
       "vagas": 120,
       "preco": 250,
       "status": "inativo"
@@ -516,6 +516,13 @@
       "email": "usuario@gmail.com.br",
       "senha": "123456",
       "tipo": "usuario"
+    },
+    {
+      "id": "1750640805650",
+      "nome": "felipe giannetti",
+      "email": "usuarioteste@gmail.com",
+      "senha": "123456",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
@@ -606,6 +613,14 @@
       "rating": 4,
       "comentario": "Olá",
       "data": "2025-06-17T11:57:33.406Z"
+    },
+    {
+      "idevento": 8,
+      "nome": "Felipe Giannetti Fontenelle",
+      "rating": 5,
+      "comentario": "Evento sensacional!",
+      "data": "2025-06-23T01:05:58.415Z",
+      "id": "DWhQM3t"
     }
   ],
   "noticias": [

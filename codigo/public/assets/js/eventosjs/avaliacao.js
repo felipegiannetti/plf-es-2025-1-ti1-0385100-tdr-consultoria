@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            lista.innerHTML = "<h3>Avaliações do evento</h3>" + avaliacoes.map(av => `
-                <div class="card mb-2" data-id="${av.id}">
+            lista.innerHTML = '<h3 class="mb-4">Avaliações do evento</h3>' + avaliacoes.map(av => `
+                <div class="card mb-3" data-id="${av.id}">
                     <div class="card-body text-white">
                         <div>                            <span style="color:gold">${'★'.repeat(av.rating)}${'☆'.repeat(5-av.rating)}</span>
                             <span>(${av.rating}.0)</span>
