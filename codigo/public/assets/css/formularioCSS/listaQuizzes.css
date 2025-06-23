@@ -12,10 +12,19 @@ body {
 #listaQuizzes {
     max-width: 1100px;
     margin: 40px auto 32px auto;
-    display: flex;
-    flex-wrap: wrap;
+    padding: 0 15px;
+}
+
+.content-wrapper {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 32px;
-    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 .card {
@@ -29,8 +38,7 @@ body {
     flex-direction: column;
     transition: transform 0.2s, box-shadow 0.2s;
     animation: fadeIn 0.7s;
-    height: 450px; /* Fixed height for all cards */
-    min-height: 450px;
+    height: 100%;
 }
 
 .card:hover {
@@ -52,12 +60,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(450px - 180px); /* Subtract image height */
-    flex: 1;
+    flex: 1 0 auto;
 }
 
 .card-content {
-    flex: 1;
+    flex: 1 0 auto;
     overflow: hidden;
 }
 
@@ -150,29 +157,52 @@ body {
     letter-spacing: 0.5px;
 }
 
+.pagination-container {
+    margin-top: auto;
+    padding: 1rem 0;
+}
+
+.pagination .page-link {
+    color: #ff7a00;
+    background-color: #2a2a2a;
+    border-color: #444;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 4px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 122, 0, 0.4);
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #222;
+    border-color: #333;
+    color: #666;
+}
+
+.pagination .page-link:hover:not(.disabled) {
+    background-color: #ff8c1a;
+    border-color: #ff8c1a;
+    color: #fff;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 900px) {
-    #listaQuizzes {
+    .cards-grid {
         gap: 18px;
-    }
-    .card {
-        width: 95vw;
-        max-width: 370px;
-    }
-    .info-quizzes {
-        padding: 18px 10px 16px 10px;
-        font-size: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 
 @media (max-width: 600px) {
-    #listaQuizzes {
-        flex-direction: column;
-        align-items: center;
+    .cards-grid {
+        grid-template-columns: 1fr;
         gap: 14px;
-    }
-    .card {
-        width: 98vw;
-        max-width: 99vw;
     }
 }
 

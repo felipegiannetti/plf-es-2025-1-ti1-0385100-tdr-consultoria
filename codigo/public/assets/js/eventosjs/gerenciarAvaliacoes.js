@@ -117,11 +117,16 @@ function confirmDelete(id) {
         title: 'Confirmar exclusão?',
         text: "Esta ação não pode ser desfeita!",
         icon: 'warning',
+        background: '#222',
+        color: '#fff',
         showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
         confirmButtonText: 'Sim, excluir!',
-        cancelButtonText: 'Cancelar'
+        cancelButtonText: 'Cancelar',
+        customClass: {
+            popup: 'swal-custom-popup',
+            confirmButton: 'swal-custom-button',
+            cancelButton: 'swal-custom-button'
+        }
     }).then((result) => {
         if (result.isConfirmed) {
             deleteAvaliacao(id);
@@ -131,7 +136,7 @@ function confirmDelete(id) {
 
 async function deleteAvaliacao(id = currentAvaliacaoId) {
     try {
-        const response = await fetch(`${API_URL}/avaliacoeseventos/${id}`, {
+        const response = await fetch(`${API_URL}/avaliacoeseeventos/${id}`, {
             method: 'DELETE'
         });
 
@@ -174,7 +179,7 @@ function searchAvaliacoes() {
 }
 
 function exportarAvaliacoes() {
-    fetch(`${API_URL}/avaliacoeseventos`)
+    fetch(`${API_URL}/avaliacoeseeventos`)
         .then(response => response.json())
         .then(avaliacoes => {
             const csvContent = "data:text/csv;charset=utf-8," 

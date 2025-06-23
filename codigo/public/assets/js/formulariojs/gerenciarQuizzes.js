@@ -19,7 +19,12 @@ async function loadQuizzes() {
             title: 'Erro!',
             text: 'Não foi possível carregar os quizzes. Verifique se o servidor está rodando.',
             icon: 'error',
-            confirmButtonText: 'OK'
+            background: '#222',
+            color: '#fff',
+            customClass: {
+                popup: 'swal-custom-popup',
+                confirmButton: 'swal-custom-button'
+            }
         });
     }
 }
@@ -219,7 +224,12 @@ async function saveQuiz() {
             title: 'Atenção!',
             text: 'Adicione pelo menos uma pergunta com respostas.',
             icon: 'warning',
-            confirmButtonText: 'OK'
+            background: '#222',
+            color: '#fff',
+            customClass: {
+                popup: 'swal-custom-popup',
+                confirmButton: 'swal-custom-button'
+            }
         });
         return;
     }
@@ -227,14 +237,12 @@ async function saveQuiz() {
     try {
         let response;
         if (editingQuizId) {
-            // Editar quiz existente
             response = await fetch(`http://localhost:3000/quizzes/${editingQuizId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...quizData, id: editingQuizId })
             });
         } else {
-            // Criar novo quiz
             quizData.id = Date.now().toString();
             response = await fetch('http://localhost:3000/quizzes', {
                 method: 'POST',
@@ -244,13 +252,7 @@ async function saveQuiz() {
         }
 
         if (response.ok) {
-            Swal.fire({
-                title: 'Sucesso!',
-                text: `Quiz ${editingQuizId ? 'atualizado' : 'criado'} com sucesso!`,
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-
+            // Just close modal and reload quizzes without showing success alert
             bootstrap.Modal.getInstance(document.getElementById('quizModal')).hide();
             loadQuizzes();
         } else {
@@ -371,13 +373,18 @@ async function deleteQuiz(id) {
 
     const result = await Swal.fire({
         title: 'Tem certeza?',
-        text: `Deseja excluir o quiz "${quiz.titulo}"? Esta ação não pode ser desfeita.`,
+        text: `Deseja excluir o quiz "${quiz.titulo}"?`,
         icon: 'warning',
+        background: '#222',
+        color: '#fff',
         showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
         confirmButtonText: 'Sim, excluir!',
-        cancelButtonText: 'Cancelar'
+        cancelButtonText: 'Cancelar',
+        customClass: {
+            popup: 'swal-custom-popup',
+            confirmButton: 'swal-custom-button',
+            cancelButton: 'swal-custom-button'
+        }
     });
 
     if (result.isConfirmed) {
@@ -391,7 +398,15 @@ async function deleteQuiz(id) {
                     title: 'Excluído!',
                     text: 'Quiz excluído com sucesso.',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    background: '#222',
+                    color: '#fff',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    customClass: {
+                        popup: 'swal-custom-popup',
+                        confirmButton: 'swal-custom-button',
+                        timerProgressBar: 'swal-timer-progress'
+                    }
                 });
                 loadQuizzes();
             } else {

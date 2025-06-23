@@ -879,51 +879,59 @@
       ]
     },
     {
-      "id": "1750635390691",
       "titulo": "Gestão de Projetos",
+      "categoria": "Profissional",
       "descricao_breve": "Avalie suas habilidades em gerenciamento de projetos.",
-      "categoria": "Gestão",
+      "descricao": "",
       "imagem": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000",
-      "data": "2025-06-23T01:45:00.000Z",
-      "autor": "Felipe Giannetti Fontenelle",
-      "autorId": "1749560312233",
       "status": "ativo",
       "perguntas": [
         {
+          "id": 1,
           "texto": "Metodologia preferida?",
           "respostas": [
             {
+              "id": 1,
               "texto": "Waterfall"
             },
             {
+              "id": 2,
               "texto": "Agile"
             },
             {
+              "id": 3,
               "texto": "Scrum"
             },
             {
+              "id": 4,
               "texto": "Kanban"
             }
           ]
         },
         {
+          "id": 2,
           "texto": "Como prioriza tarefas?",
           "respostas": [
             {
+              "id": 1,
               "texto": "Urgência"
             },
             {
+              "id": 2,
               "texto": "Importância"
             },
             {
+              "id": 3,
               "texto": "Matriz SWOT"
             },
             {
+              "id": 4,
               "texto": "ROI"
             }
           ]
         }
-      ]
+      ],
+      "id": "1750635390691"
     },
     {
       "id": "1750635390692",
@@ -1155,6 +1163,130 @@
             },
             {
               "texto": "Pessoas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750645487079",
+      "titulo": "Vendas B2B Avançado",
+      "categoria": "Vendas",
+      "descricao_breve": "Avalie suas habilidades em vendas corporativas e negociação B2B.",
+      "descricao": "Quiz focado em estratégias avançadas de vendas business-to-business",
+      "imagem": "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1000",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Qual a melhor abordagem para prospecção B2B?",
+          "respostas": [
+            {
+              "texto": "Cold calling"
+            },
+            {
+              "texto": "LinkedIn outreach"
+            },
+            {
+              "texto": "Networking em eventos"
+            },
+            {
+              "texto": "Indicações qualificadas"
+            }
+          ]
+        },
+        {
+          "texto": "Como você qualifica leads B2B?",
+          "respostas": [
+            {
+              "texto": "Tamanho da empresa"
+            },
+            {
+              "texto": "Orçamento disponível"
+            },
+            {
+              "texto": "Necessidade imediata"
+            },
+            {
+              "texto": "Processo decisório"
+            }
+          ]
+        },
+        {
+          "texto": "Principal desafio em vendas complexas?",
+          "respostas": [
+            {
+              "texto": "Ciclo de vendas longo"
+            },
+            {
+              "texto": "Múltiplos decisores"
+            },
+            {
+              "texto": "Objeções técnicas"
+            },
+            {
+              "texto": "Negociação de valor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750645589674",
+      "titulo": "Estratégias de Negociação",
+      "categoria": "Negócios",
+      "descricao_breve": "Teste suas habilidades de negociação e resolução de conflitos.",
+      "descricao": "Avaliação completa sobre técnicas e estratégias de negociação empresarial",
+      "imagem": "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Melhor estratégia para início de negociação?",
+          "respostas": [
+            {
+              "texto": "Estabelecer rapport"
+            },
+            {
+              "texto": "Apresentar proposta"
+            },
+            {
+              "texto": "Identificar necessidades"
+            },
+            {
+              "texto": "Definir agenda"
+            }
+          ]
+        },
+        {
+          "texto": "Como lidar com impasses?",
+          "respostas": [
+            {
+              "texto": "Buscar concessões"
+            },
+            {
+              "texto": "Propor alternativas"
+            },
+            {
+              "texto": "Adiar discussão"
+            },
+            {
+              "texto": "Mediar conflito"
+            }
+          ]
+        },
+        {
+          "texto": "Fator mais importante em negociação?",
+          "respostas": [
+            {
+              "texto": "Preparação"
+            },
+            {
+              "texto": "Comunicação"
+            },
+            {
+              "texto": "Flexibilidade"
+            },
+            {
+              "texto": "Resultado"
             }
           ]
         }
