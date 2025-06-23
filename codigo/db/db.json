@@ -90,6 +90,71 @@
       "localmapa": "https://maps.google.com/maps?q=FIEMG+Santa+Efigenia+Belo+Horizonte",
       "status": "ativo",
       "imagem": "assets/img/eventos/vendas-b2b.jpg"
+    },
+    {
+      "id": "8",
+      "titulo": "Conferência de Blockchain",
+      "data": "2024-12-15T09:00:00.000Z",
+      "descricao": "Conferência sobre aplicações de blockchain em negócios tradicionais e novos modelos de negócio.",
+      "categoria": "Conferência",
+      "local": "BH Palace Hotel - Lourdes, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=BH+Palace+Hotel+Lourdes+Belo+Horizonte",
+      "imagem": "https://images.unsplash.com/photo-1639322537228-f710d846310a",
+      "vagas": 200,
+      "preco": 450,
+      "status": "inativo"
+    },
+    {
+      "id": "9",
+      "titulo": "Workshop de Liderança Feminina",
+      "data": "2024-11-20T14:00:00.000Z",
+      "descricao": "Workshop focado em desenvolvimento de liderança e empoderamento feminino no ambiente corporativo.",
+      "categoria": "Workshop",
+      "local": "Impact Hub BH - Serra, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=Impact+Hub+BH+Serra+Belo+Horizonte",
+      "imagem": "https://images.unsplash.com/photo-1573164713988-8665fc963095",
+      "vagas": 30,
+      "preco": 180,
+      "status": "inativo"
+    },
+    {
+      "id": "10",
+      "titulo": "Simpósio de Inteligência Artificial",
+      "data": "2024-10-05T10:00:00.000Z",
+      "descricao": "Simpósio sobre implementações práticas de IA em pequenas e médias empresas.",
+      "categoria": "Simpósio",
+      "local": "UFMG Campus Pampulha - Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=UFMG+Campus+Pampulha",
+      "imagem": "https://images.unsplash.com/photo-1677442136019-21780ecad0f5",
+      "vagas": 150,
+      "preco": 280,
+      "status": "inativo"
+    },
+    {
+      "id": "11",
+      "titulo": "Gestão de Crise Empresarial",
+      "data": "2024-09-28T13:30:00.000Z",
+      "descricao": "Curso intensivo sobre gestão de crises, comunicação estratégica e tomada de decisão sob pressão.",
+      "categoria": "Curso",
+      "local": "Sebrae MG - Santa Efigênia, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=Sebrae+MG+Santa+Efigenia+Belo+Horizonte",
+      "imagem": "https://images.unsplash.com/photo-1552664730-d307ca884978",
+      "vagas": 40,
+      "preco": 350,
+      "status": "inativo"
+    },
+    {
+      "id": "12",
+      "titulo": "Fórum de E-commerce",
+      "data": "2024-08-15T09:00:00.000Z",
+      "descricao": "Fórum sobre tendências e estratégias em comércio eletrônico e marketplace.",
+      "categoria": "Fórum",
+      "local": "Shopping Diamond Mall - Lourdes, Belo Horizonte",
+      "localmapa": "https://maps.google.com/maps?q=Diamond+Mall+Belo+Horizonte",
+      "imagem": "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
+      "vagas": 120,
+      "preco": 250,
+      "status": "inativo"
     }
   ],
   "cadastroDeEventos": [
