@@ -96,6 +96,14 @@ async function loadUserEvents(page = 1) {
                                         <span class="badge bg-primary">${evento.categoria}</span>
                                         <span class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>${evento.local}</span>
                                     </div>
+                                    <div class="event-actions mt-3">
+                                        <a href="../eventos/qrcodeEvento.html?id=${evento.id}" class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-qrcode me-1"></i>Ver QR Code
+                                        </a>
+                                        <button class="btn btn-outline-danger btn-sm ms-2" onclick="cancelInscricao('${evento.id}', '${evento.titulo}')">
+                                            <i class="fas fa-times me-1"></i>Cancelar Inscrição
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -134,6 +142,148 @@ async function loadUserEvents(page = 1) {
                     Erro ao carregar seus eventos: ${error.message}
                 </div>
             </div>`;
+    }
+}
+
+// Adicione esta nova função para cancelar inscrição:
+async function cancelInscricao(eventoId, eventoTitulo) {
+    try {
+        // Confirm cancellation
+        const result = await Swal.fire({
+            title: 'Cancelar Inscrição?',
+            text: `Tem certeza que deseja cancelar sua inscrição no evento "${eventoTitulo}"?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, cancelar',
+            cancelButtonText: 'Não, manter',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal-custom-button',
+                cancelButton: 'swal-custom-button'
+            }
+        });
+
+        if (!result.isConfirmed) return;
+
+        // Show loading with custom styling
+        Swal.fire({
+            title: 'Processando...',
+            html: `
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                    <div class="loading-spinner"></div>
+                    <p>Cancelando sua inscrição</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill-cancel"></div>
+                    </div>
+                </div>
+            `,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            customClass: {
+                popup: 'swal2-popup'
+            },
+            didOpen: () => {
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    .loading-spinner {
+                        width: 40px;
+                        height: 40px;
+                        border: 4px solid #f3f3f3;
+                        border-top: 4px solid #ff7a00;
+                        border-radius: 50%;
+                        animation: spin 1s linear infinite;
+                    }
+                    
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                    
+                    .progress-bar {
+                        width: 200px;
+                        height: 8px;
+                        background: #f3f3f3;
+                        border-radius: 4px;
+                        overflow: hidden;
+                    }
+                    
+                    .progress-fill-cancel {
+                        height: 100%;
+                        background: linear-gradient(90deg, #ff7a00, #ff9a2e);
+                        width: 0%;
+                        border-radius: 4px;
+                        animation: fillProgressCancel 3s ease-in-out forwards;
+                    }
+                    
+                    @keyframes fillProgressCancel {
+                        0% { width: 0%; }
+                        100% { width: 100%; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        });
+
+        // Get current registration
+        const inscricoesRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventoId}`);
+        const inscricoes = await inscricoesRes.json();
+        const inscricao = inscricoes.find(i => i.idUsuario.includes(usuario.id));
+
+        if (inscricao) {
+            // Remove user from registration
+            const updatedUsuarios = inscricao.idUsuario.filter(id => id !== usuario.id);
+            
+            if (updatedUsuarios.length === 0) {
+                // If no users left, delete the registration
+                await fetch(`${API_URL}/cadastroDeEventos/${inscricao.id}`, {
+                    method: 'DELETE'
+                });
+            } else {
+                // Update with remaining users
+                await fetch(`${API_URL}/cadastroDeEventos/${inscricao.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...inscricao,
+                        idUsuario: updatedUsuarios
+                    })
+                });
+            }
+
+            // Wait for animation to complete
+            await new Promise(resolve => setTimeout(resolve, 3000));
+
+            // Show success message with custom styling
+            await Swal.fire({
+                title: 'Inscrição Cancelada!',
+                text: `Sua inscrição no evento "${eventoTitulo}" foi cancelada com sucesso.`,
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'swal2-popup',
+                    confirmButton: 'swal-custom-button',
+                    timerProgressBar: 'swal2-timer-progress-bar'
+                }
+            });
+
+            // Reload events list
+            await loadUserEvents(currentPage);
+        }
+    } catch (error) {
+        console.error('Erro ao cancelar inscrição:', error);
+        await Swal.fire({
+            title: 'Erro!',
+            text: 'Erro ao cancelar inscrição: ' + error.message,
+            icon: 'error',
+            confirmButtonText: 'OK',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal-custom-button'
+            }
+        });
     }
 }
 
@@ -218,12 +368,28 @@ function setupPasswordForm() {
         const confirmPassword = document.getElementById('confirmPassword').value;
 
         if (newPassword !== confirmPassword) {
-            Swal.fire('Erro!', 'As senhas não coincidem.', 'error');
+            Swal.fire({
+                title: 'Erro!',
+                text: 'As senhas não coincidem.',
+                icon: 'error',
+                customClass: {
+                    popup: 'swal2-popup',
+                    confirmButton: 'swal-custom-button'
+                }
+            });
             return;
         }
 
         if (currentPassword !== usuario.senha) {
-            Swal.fire('Erro!', 'Senha atual incorreta.', 'error');
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Senha atual incorreta.',
+                icon: 'error',
+                customClass: {
+                    popup: 'swal2-popup',
+                    confirmButton: 'swal-custom-button'
+                }
+            });
             return;
         }
 
@@ -237,7 +403,15 @@ function setupPasswordForm() {
             if (response.ok) {
                 usuario.senha = newPassword;
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-                Swal.fire('Sucesso!', 'Senha alterada com sucesso.', 'success');
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Senha alterada com sucesso.',
+                    icon: 'success',
+                    customClass: {
+                        popup: 'swal2-popup',
+                        confirmButton: 'swal-custom-button'
+                    }
+                });
                 e.target.reset();
             } else {
                 throw new Error('Erro ao alterar senha');
@@ -264,10 +438,13 @@ function setupDeleteForm() {
             text: "Esta ação não pode ser desfeita!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
             confirmButtonText: 'Sim, deletar!',
-            cancelButtonText: 'Cancelar'
+            cancelButtonText: 'Cancelar',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal-custom-button',
+                cancelButton: 'swal-custom-button'
+            }
         });
 
         if (result.isConfirmed) {
