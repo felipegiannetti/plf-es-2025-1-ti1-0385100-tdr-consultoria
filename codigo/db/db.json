@@ -120,7 +120,7 @@
     {
       "id": "10",
       "titulo": "Simpósio de Inteligência Artificial",
-      "data": "2025-10-05T19:00:00.000Z",
+      "data": "2025-08-06T01:00:00.000Z",
       "descricao": "Simpósio sobre implementações práticas de IA em pequenas e médias empresas.",
       "categoria": "Palestra",
       "local": "UFMG Campus Pampulha - Belo Horizonte",
@@ -128,7 +128,7 @@
       "imagem": "assets/img/eventos/1750640226849-AISimposio.png",
       "vagas": 150,
       "preco": 280,
-      "status": "inativo"
+      "status": "ativo"
     },
     {
       "id": "11",
@@ -621,6 +621,30 @@
       "comentario": "Evento sensacional!",
       "data": "2025-06-23T01:05:58.415Z",
       "id": "DWhQM3t"
+    },
+    {
+      "idevento": 8,
+      "nome": "Felipe Giannetti Fontenelle",
+      "rating": 3,
+      "comentario": "Evento com potencial de melhoria!",
+      "data": "2025-06-23T01:38:56.587Z",
+      "id": "2wpK4Pi"
+    },
+    {
+      "idevento": 2,
+      "nome": "Felipe Giannetti Fontenelle",
+      "rating": 4,
+      "comentario": "Evento bom!",
+      "data": "2025-06-23T01:41:12.725Z",
+      "id": "YslEaK-"
+    },
+    {
+      "idevento": 9,
+      "nome": "Felipe Giannetti Fontenelle",
+      "rating": 3,
+      "comentario": "Evento péssimo!",
+      "data": "2025-06-23T01:48:52.797Z",
+      "id": "-NpwiTV"
     }
   ],
   "noticias": [

@@ -17,36 +17,53 @@ async function loadAvaliacoes() {
     }
 }
 
-function renderAvaliacoes(avaliacoes, eventos) {
+async function renderAvaliacoes(avaliacoes, eventos) {
     const tbody = document.getElementById('avaliacoesTable');
     tbody.innerHTML = '';
 
-    avaliacoes.forEach(avaliacao => {
-        const evento = eventos.find(e => e.id === avaliacao.idevento);
-        const row = document.createElement('tr');
-        
-        row.innerHTML = `
-            <td>${avaliacao.nome}</td>
-            <td>${evento ? evento.titulo : 'Evento não encontrado'}</td>
-            <td>
-                <span style="color: gold">
-                    ${'★'.repeat(avaliacao.rating)}${'☆'.repeat(5-avaliacao.rating)}
-                </span>
-            </td>
-            <td>${avaliacao.comentario.substring(0, 50)}${avaliacao.comentario.length > 50 ? '...' : ''}</td>
-            <td>${new Date(avaliacao.data).toLocaleDateString()}</td>
-            <td class="text-center">
-                <button class="btn btn-sm btn-info" onclick="viewAvaliacao('${avaliacao.id}')">
-                    <i class="fas fa-eye"></i>
-                </button>
-                <button class="btn btn-sm btn-danger" onclick="confirmDelete('${avaliacao.id}')">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        `;
-        
-        tbody.appendChild(row);
-    });
+    // Sort avaliacoes by date, most recent first
+    avaliacoes.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    for (const avaliacao of avaliacoes) {
+        try {
+            // Fetch event details directly if not found in eventos array
+            let evento = eventos.find(e => e.id === avaliacao.idevento);
+            
+            if (!evento) {
+                const eventResponse = await fetch(`${API_URL}/eventos/${avaliacao.idevento}`);
+                if (eventResponse.ok) {
+                    evento = await eventResponse.json();
+                    // Add to eventos array to avoid future fetches
+                    eventos.push(evento);
+                }
+            }
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${avaliacao.nome}</td>
+                <td>${evento ? evento.titulo : `Evento #${avaliacao.idevento}`}</td>
+                <td>
+                    <span style="color: gold">
+                        ${'★'.repeat(avaliacao.rating)}${'☆'.repeat(5-avaliacao.rating)}
+                    </span>
+                </td>
+                <td>${avaliacao.comentario.substring(0, 50)}${avaliacao.comentario.length > 50 ? '...' : ''}</td>
+                <td>${new Date(avaliacao.data).toLocaleDateString()}</td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-info" onclick="viewAvaliacao('${avaliacao.id}')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="confirmDelete('${avaliacao.id}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            
+            tbody.appendChild(row);
+        } catch (error) {
+            console.error(`Erro ao processar avaliação ${avaliacao.id}:`, error);
+        }
+    }
 }
 
 async function viewAvaliacao(id) {
@@ -135,7 +152,7 @@ function searchAvaliacoes() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const starFilter = document.getElementById('filterStars').value;
     
-    fetch(`${API_URL}/avaliacoeseventos`)
+    fetch(`${API_URL}/avaliacoeseeventos`)
         .then(response => response.json())
         .then(avaliacoes => {
             const filtered = avaliacoes.filter(avaliacao => {

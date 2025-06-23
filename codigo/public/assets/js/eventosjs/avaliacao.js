@@ -88,14 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const result = await response.json();
-            console.log('Resposta do servidor:', result);
-
-            alert("Avaliação enviada com sucesso!");
+            // Just clear form and reload evaluations
             document.getElementById('comentario').value = '';
             notaSelecionada = 0;
             document.querySelectorAll('#estrelas .estrela').forEach(e => e.classList.remove('selecionada'));
             await carregarAvaliacoes();
+            
         } catch (error) {
             console.error('Erro ao enviar avaliação:', error);
             alert("Erro ao enviar avaliação. Por favor, tente novamente." + error.message);
@@ -119,36 +117,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             lista.innerHTML = '<h3 class="mb-4">Avaliações do evento</h3>' + avaliacoes.map(av => `
-                <div class="card mb-3" data-id="${av.id}">
+                <div class="card mb-3">
                     <div class="card-body text-white">
-                        <div>                            <span style="color:gold">${'★'.repeat(av.rating)}${'☆'.repeat(5-av.rating)}</span>
+                        <div>
+                            <span style="color:gold">${'★'.repeat(av.rating)}${'☆'.repeat(5-av.rating)}</span>
                             <span>(${av.rating}.0)</span>
                         </div>
                         <strong>${av.nome}</strong>
                         <p class="mb-0">${av.comentario}</p>
-                        ${usuarioLogado && av.nome === usuarioLogado.nome ? `
-                            <button class="btn btn a.evento-link {text-decoration: none !important;}
-                                -sm btn-warning editar-avaliacao">Editar</button>
-                            <button class="btn btn-sm btn-danger excluir-avaliacao">Excluir</button>
-                        ` : ''}
                     </div>
                 </div>
             `).join('');
 
-            // Adiciona eventos aos botões
-            document.querySelectorAll('.excluir-avaliacao').forEach(btn => {
-                btn.onclick = function() {
-                    const id = this.closest('.card').getAttribute('data-id');
-                    excluirAvaliacao(id);
-                };
-            });
-
-            document.querySelectorAll('.editar-avaliacao').forEach(btn => {
-                btn.onclick = function() {
-                    const id = this.closest('.card').getAttribute('data-id');
-                    editarAvaliacao(id);
-                };
-            });
         } catch (error) {
             console.error('Erro ao carregar avaliações:', error);
             document.getElementById('avaliacoes-lista').innerHTML = 
