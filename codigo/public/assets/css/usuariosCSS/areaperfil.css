@@ -1,10 +1,31 @@
 body {
     background-color: #333;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add new wrapper class */
+.page-wrapper {
+    min-height: 130vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.content-wrapper {
+    flex: 1 0 auto;
+    padding-bottom: 60px; /* Adjust based on footer height */
+}
+
+#footerimplementador {
+    margin-top: auto;
+    width: 100%;
 }
 
 .margemtopo {
-    margin-top: 120px;
+    margin-top: 200px;
     margin-bottom: 40px;
 }
 

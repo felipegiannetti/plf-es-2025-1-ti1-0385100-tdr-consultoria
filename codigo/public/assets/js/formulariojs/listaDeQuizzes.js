@@ -65,11 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             ` : ''}
                         </div>
                         <div class="card-footer border-0 bg-transparent">
-                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                <span class="category-tag">
-                                    <i class="fas fa-tag me-1"></i>${quiz.categoria || 'Geral'}
-                                </span>
-                            </div>
                             <a href="exibiformulario.html?idUsuario=${userId}&idQuiz=${quiz.id}" 
                                class="btn btn-primary w-100">
                                 <i class="fas fa-play me-2"></i>Acessar Quiz
