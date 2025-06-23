@@ -345,15 +345,6 @@
       "data": "10/06/2025, 11:20:13"
     },
     {
-      "id": "00d0",
-      "idavaliacao": 1749565279401,
-      "idevento": "5",
-      "nome": "Manuel",
-      "comentario": "O Miguel mente.",
-      "rating": 4,
-      "data": "10/06/2025, 11:21:19"
-    },
-    {
       "id": "3b98",
       "idavaliacao": 1749565483052,
       "idevento": "5",
@@ -372,15 +363,6 @@
       "data": "10/06/2025, 11:29:41"
     },
     {
-      "idavaliacao": 1749588051111,
-      "idevento": "1",
-      "nome": "Cesar Sokoli",
-      "comentario": "Muito bom evento",
-      "rating": 4,
-      "data": "10/06/2025, 17:40:51",
-      "id": "Nc6smye"
-    },
-    {
       "id": "b45d",
       "idavaliacao": 1749729165147,
       "idevento": "1",
@@ -388,22 +370,6 @@
       "comentario": "muito ruim",
       "rating": 4,
       "data": "12/06/2025, 08:52:45"
-    },
-    {
-      "id": "9384",
-      "idevento": 1,
-      "nome": "Felipe Fonseca",
-      "rating": 3,
-      "comentario": "Olá! Eu estou usando Whatsapp.",
-      "data": "2025-06-17T11:52:40.202Z"
-    },
-    {
-      "id": "a57d",
-      "idevento": 1,
-      "nome": "Felipe Fonseca",
-      "rating": 4,
-      "comentario": "Olá",
-      "data": "2025-06-17T11:57:33.406Z"
     },
     {
       "idevento": 8,

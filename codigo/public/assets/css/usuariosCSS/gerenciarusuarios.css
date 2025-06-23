@@ -1,11 +1,17 @@
-.margemtopo {
-    margin-top: 140px;
-    margin-bottom: 60px;
+html {
+    min-height: 120vh;
 }
 
 body {
     background-color: #222;
     color: white;
+    min-height: 120vh; /* Garantir altura mínima sempre */
+}
+
+.margemtopo {
+    margin-top: 140px;
+    margin-bottom: 60px;
+    min-height: calc(120vh - 200px); /* Garantir altura mínima considerando margens */
 }
 
 .table {
@@ -140,6 +146,24 @@ body {
     width: 100%;
 }
 
+/* Garantir espaçamento mínimo para viewport de 120vh */
+.main-content {
+    min-height: 120vh;
+    padding-bottom: 40px;
+}
+
+/* Para páginas específicas que precisam de altura extra */
+.page-wrapper {
+    min-height: 120vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    flex: 1;
+    min-height: calc(120vh - 140px); /* Subtraindo margin-top */
+}
+
 @media (max-width: 600px) {
     .custom-title-container {
         padding: 20px 0 16px 0;
@@ -147,6 +171,19 @@ body {
     }
     .gestao-usuarios-title {
         font-size: 1.5rem;
+    }
+    
+    /* Manter altura mínima em mobile */
+    .margemtopo {
+        min-height: calc(120vh - 160px);
+    }
+    
+    .main-content {
+        min-height: 120vh;
+    }
+    
+    .content-area {
+        min-height: calc(120vh - 120px);
     }
 }
 

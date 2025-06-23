@@ -9,7 +9,7 @@
     <link href="../../assets/css/usuariosCSS/gerenciarusuarios.css" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/sweetalert-custom.css">
 </head>
-<body>
+<body class="main-content">
     <div id="navbarimplementador"></div>
 
     <div class="container margemtopo">
@@ -19,26 +19,36 @@
 
         <!-- Search and Filter Section -->
         <div class="row mb-4">
-            <div class="col-md-6 mt-2">
+            <div class="col-md-5 mt-2">
                 <div class="input-group">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Buscar avaliações...">
+                    <input type="text" id="searchInput" class="form-control" 
+                           placeholder="Buscar por usuário, evento ou comentário..." 
+                           onkeyup="searchAvaliacoes()" 
+                           onkeypress="if(event.key==='Enter') searchAvaliacoes()">
                     <button class="btn btn-primary" type="button" onclick="searchAvaliacoes()">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
+                <!-- Adicione esta div para feedback de busca (opcional) -->
+                <div id="searchInfo" class="mt-1"></div>
             </div>
-            <div class="col-md-4 mt-2">
-                <select class="form-select" id="filterStars">
+            <div class="col-md-3 mt-2">
+                <select class="form-select" id="filterStars" onchange="searchAvaliacoes()">
                     <option value="all">Todas as avaliações</option>
-                    <option value="5">5 estrelas</option>
-                    <option value="4">4 estrelas</option>
-                    <option value="3">3 estrelas</option>
-                    <option value="2">2 estrelas</option>
-                    <option value="1">1 estrela</option>
+                    <option value="5">⭐⭐⭐⭐⭐ (5 estrelas)</option>
+                    <option value="4">⭐⭐⭐⭐ (4 estrelas)</option>
+                    <option value="3">⭐⭐⭐ (3 estrelas)</option>
+                    <option value="2">⭐⭐ (2 estrelas)</option>
+                    <option value="1">⭐ (1 estrela)</option>
                 </select>
             </div>
             <div class="col-md-2 mt-2">
-                <button class="btn btn-success w-100" onclick="exportarAvaliacoes()">
+                <button class="btn btn-secondary w-100" onclick="clearFilters()" title="Limpar filtros">
+                    <i class="fas fa-times"></i> Limpar
+                </button>
+            </div>
+            <div class="col-md-2 mt-2">
+                <button class="btn btn-success w-100" onclick="exportarAvaliacoes()" title="Exportar para CSV">
                     <i class="fas fa-download"></i> Exportar
                 </button>
             </div>
