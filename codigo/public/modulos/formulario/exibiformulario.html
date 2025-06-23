@@ -180,9 +180,9 @@
                             <div class="mb-4">
                                 <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
                             </div>
-                            <h2>Quiz já realizado!</h2>
-                            <p>Você já completou o quiz <strong>"${quizData.titulo}"</strong> anteriormente.</p>
-                            <p><strong>Data da última participação:</strong> ${new Date(quizFeito.dataRealizacao).toLocaleDateString('pt-BR')}</p>
+                            <h2 class="text-orange">Quiz já realizado!</h2>
+                            <p class="text-dark">Você já completou o quiz <strong class="text-orange">"${quizData.titulo}"</strong> anteriormente.</p>
+                            <p class="text-dark"><strong class="text-orange">Data da última participação:</strong> ${new Date(quizFeito.dataRealizacao).toLocaleDateString('pt-BR')}</p>
                             ${respostasHTML}
                             <div class="mt-4">
                                 <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary me-2">

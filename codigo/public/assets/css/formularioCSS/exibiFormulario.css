@@ -19,7 +19,7 @@ body {
 }
 
 .card {
-    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    background: #fff;
     color: #eee;
     border-radius: 20px;
     padding: 40px;
@@ -41,9 +41,19 @@ body {
 }
 
 .card-header {
+    background: linear-gradient(145deg, #fff, #f8f9fa);
+    border-bottom: 2px solid #ff7a00;
     border-radius: 15px;
     padding: 20px;
     margin: -20px -20px 30px -20px;
+}
+
+.card-header h3 {
+    color: #ff7a00;
+}
+
+.card-body {
+    color: #333;
 }
 
 .card-body h2,
@@ -78,7 +88,7 @@ body {
 }
 
 #question {
-    color: #eee;
+    color: #333;
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 2rem;
@@ -97,7 +107,7 @@ body {
 }
 
 .progress-bar {
-    background: linear-gradient(90deg, #ff7a00, #ffa500);
+    background-color: #ff7a00;
     border-radius: 10px;
     transition: width 0.5s ease;
     box-shadow: 0 2px 8px rgba(255, 122, 0, 0.4);
@@ -146,7 +156,7 @@ body {
 }
 
 .form-check-label {
-    color: #eee;
+    color: #444;
     font-size: 1.1rem;
     font-weight: 500;
     cursor: pointer;
@@ -166,6 +176,15 @@ body {
 .form-check:has(.form-check-input:checked) .form-check-label {
     color: #fff;
     font-weight: 700;
+}
+
+/* Previous answers section */
+.mb-3.p-3.bg-light.rounded {
+    border: 1px solid rgba(255, 122, 0, 0.2);
+}
+
+.mb-3.p-3.bg-light.rounded strong {
+    color: #ff7a00;
 }
 
 /* Botões */
@@ -293,3 +312,12 @@ body {
 .form-check:nth-child(3) { animation-delay: 0.3s; }
 .form-check:nth-child(4) { animation-delay: 0.4s; }
 .form-check:nth-child(5) { animation-delay: 0.5s; }
+
+/* Text colors */
+.text-orange {
+    color: #ff7a00 !important;
+}
+
+.text-primary {
+    color: #ff7a00 !important;
+}
