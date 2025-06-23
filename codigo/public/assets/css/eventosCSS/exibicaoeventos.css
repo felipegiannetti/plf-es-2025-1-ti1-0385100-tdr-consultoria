@@ -5,6 +5,20 @@ body {
     background-color: #111;
     color: #eee;
     line-height: 1.6;
+    min-height: 120vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add a wrapper for content */
+.page-content {
+    flex: 1;
+    width: 100%;
+    min-height: 120vw;
+}
+
+#footerimplementador {
+    margin-top: auto;
 }
 
 a {
@@ -487,4 +501,33 @@ hr {
 
 #avaliacoes-lista {
   margin-top: 2rem;
+}
+
+.pagination-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.pagination .page-link {
+    color: #ff7a00;
+    background-color: #2a2a2a;
+    border-color: #444;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ff7a00;
+    border-color: #ff7a00;
+    color: #fff;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #222;
+    border-color: #333;
+    color: #666;
+}
+
+.pagination .page-link:hover {
+    background-color: #ff8c1a;
+    border-color: #ff8c1a;
+    color: #fff;
 }

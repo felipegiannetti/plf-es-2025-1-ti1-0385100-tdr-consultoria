@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchEvents');
     let allEvents = [];
 
+    const EVENTS_PER_PAGE = 8;
+    let currentPage = 1;
+    let totalPages = 0;
+
     async function loadEvents() {
         try {
             const response = await fetch('http://localhost:3000/eventos');
@@ -19,8 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function renderEvents(events) {
+        totalPages = Math.ceil(events.length / EVENTS_PER_PAGE);
+        const startIndex = (currentPage - 1) * EVENTS_PER_PAGE;
+        const endIndex = startIndex + EVENTS_PER_PAGE;
+        const currentEvents = events.slice(startIndex, endIndex);
+
         // Renderiza na tabela (invisível)
-        eventsTable.innerHTML = events.map(event => `
+        eventsTable.innerHTML = currentEvents.map(event => `
             <tr>
                 <td>${event.titulo}</td>
                 <td>${new Date(event.data).toLocaleDateString('pt-BR')}</td>
@@ -32,10 +41,83 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Limpa os cards e adiciona os novos
         cardseventos.innerHTML = '';
-        events.forEach(evento => {
+        currentEvents.forEach(evento => {
             const card = createEventCard(evento);
             cardseventos.appendChild(card);
         });
+
+        // Remove a paginação existente, se presente
+        const existingPagination = document.querySelector('.pagination-container');
+        if (existingPagination) {
+            existingPagination.remove();
+        }
+
+        // Adiciona nova paginação
+        renderPagination(events.length);
+
+        if (events.length === 0) {
+            cardseventos.innerHTML = `
+                <div class="alert alert-warning text-center w-100">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Nenhum evento encontrado com os critérios de busca.
+                </div>
+            `;
+        }
+    }
+
+    function renderPagination(totalEvents) {
+        const paginationContainer = document.createElement('div');
+        paginationContainer.className = 'pagination-container mt-4';
+
+        // Renderiza a paginação apenas se houver mais de uma página
+        if (totalPages > 1) {
+            const pagination = document.createElement('ul');
+            pagination.className = 'pagination justify-content-center';
+
+            // Botão Previous
+            pagination.innerHTML = `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage - 1}" aria-label="Previous">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+            `;
+
+            // Números das páginas
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.innerHTML += `
+                    <li class="page-item ${currentPage === i ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a>
+                    </li>
+                `;
+            }
+
+            // Botão Next
+            pagination.innerHTML += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage + 1}" aria-label="Next">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            `;
+
+            paginationContainer.appendChild(pagination);
+            cardseventos.parentNode.insertBefore(paginationContainer, cardseventos.nextSibling);
+
+            // Adiciona manipuladores de clique
+            paginationContainer.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageLink = e.target.closest('.page-link');
+                if (pageLink) {
+                    const newPage = parseInt(pageLink.dataset.page);
+                    if (newPage >= 1 && newPage <= totalPages) {
+                        currentPage = newPage;
+                        renderEvents(allEvents);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                }
+            });
+        }
     }
 
     function createEventCard(evento) {
@@ -96,10 +178,41 @@ document.addEventListener('DOMContentLoaded', function () {
     searchInput.addEventListener('input', function (e) {
         const searchTerm = e.target.value.toLowerCase();
         const filteredEvents = allEvents.filter(event =>
-            event.titulo.toLowerCase().includes(searchTerm)
+            event.titulo.toLowerCase().includes(searchTerm) ||
+            event.descricao.toLowerCase().includes(searchTerm) ||
+            event.categoria.toLowerCase().includes(searchTerm)
         );
+        
+        // Reset to first page when searching
+        currentPage = 1;
         renderEvents(filteredEvents);
+
+        // Update search results info
+        updateSearchInfo(filteredEvents.length, allEvents.length, searchTerm);
     });
+
+    // Add new function to show search results info
+    function updateSearchInfo(filteredCount, totalCount, searchTerm) {
+        const searchInfo = document.createElement('div');
+        searchInfo.className = 'search-info mb-3';
+        
+        // Remove existing search info if present
+        const existingInfo = document.querySelector('.search-info');
+        if (existingInfo) {
+            existingInfo.remove();
+        }
+
+        if (searchTerm) {
+            searchInfo.innerHTML = `
+                <div class="alert alert-info">
+                    <i class="fas fa-search me-2"></i>
+                    Encontrado${filteredCount !== 1 ? 's' : ''} ${filteredCount} evento${filteredCount !== 1 ? 's' : ''} 
+                    ${filteredCount !== totalCount ? `de ${totalCount} total` : ''}
+                </div>
+            `;
+            searchInput.parentNode.insertBefore(searchInfo, cardseventos);
+        }
+    }
 
     loadEvents(); // Carrega eventos ao iniciar
 });

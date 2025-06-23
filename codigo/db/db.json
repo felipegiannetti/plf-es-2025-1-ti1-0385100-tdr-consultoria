@@ -94,41 +94,41 @@
     {
       "id": "8",
       "titulo": "Conferência de Blockchain",
-      "data": "2024-12-15T09:00:00.000Z",
+      "data": "2025-12-15T18:00:00.000Z",
       "descricao": "Conferência sobre aplicações de blockchain em negócios tradicionais e novos modelos de negócio.",
-      "categoria": "Conferência",
+      "categoria": "Palestra",
       "local": "BH Palace Hotel - Lourdes, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=BH+Palace+Hotel+Lourdes+Belo+Horizonte",
-      "imagem": "https://images.unsplash.com/photo-1639322537228-f710d846310a",
+      "imagem": "assets/img/eventos/1750639504492-blockchainconference.png",
       "vagas": 200,
       "preco": 450,
-      "status": "inativo"
+      "status": "ativo"
     },
     {
       "id": "9",
       "titulo": "Workshop de Liderança Feminina",
-      "data": "2024-11-20T14:00:00.000Z",
+      "data": "2025-11-20T23:00:00.000Z",
       "descricao": "Workshop focado em desenvolvimento de liderança e empoderamento feminino no ambiente corporativo.",
       "categoria": "Workshop",
       "local": "Impact Hub BH - Serra, Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=Impact+Hub+BH+Serra+Belo+Horizonte",
-      "imagem": "https://images.unsplash.com/photo-1573164713988-8665fc963095",
+      "imagem": "assets/img/eventos/1750640127668-femaleleader.png",
       "vagas": 30,
       "preco": 180,
-      "status": "inativo"
+      "status": "ativo"
     },
     {
       "id": "10",
       "titulo": "Simpósio de Inteligência Artificial",
-      "data": "2024-10-05T10:00:00.000Z",
+      "data": "2025-10-05T19:00:00.000Z",
       "descricao": "Simpósio sobre implementações práticas de IA em pequenas e médias empresas.",
-      "categoria": "Simpósio",
+      "categoria": "Palestra",
       "local": "UFMG Campus Pampulha - Belo Horizonte",
       "localmapa": "https://maps.google.com/maps?q=UFMG+Campus+Pampulha",
-      "imagem": "https://images.unsplash.com/photo-1677442136019-21780ecad0f5",
+      "imagem": "assets/img/eventos/1750640226849-AISimposio.png",
       "vagas": 150,
       "preco": 280,
-      "status": "inativo"
+      "status": "ativo"
     },
     {
       "id": "11",
