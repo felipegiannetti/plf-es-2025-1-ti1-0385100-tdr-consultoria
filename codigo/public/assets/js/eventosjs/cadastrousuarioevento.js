@@ -71,10 +71,22 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <div class="evento-status-btns">
                     ${jaInscrito 
                         ? `<div class="btn-group">
-                            <button class="btn-inscrito" disabled>Já Inscrito</button>
-                            <a href="qrcodeEvento.html?id=${eventId}" class="btn-qrcode">
-                                <i class="fas fa-qrcode"></i> Ver QR Code
-                            </a>
+                            <div class="inscrito-info">
+                                <button class="btn-inscrito" disabled>Já Inscrito</button>
+                                <p class="inscrito-message">
+                                    Acesse o QR Code para ver a localização do evento. 
+                                    </br>Seu nome está na lista de entrada. Ao chegar, informe seu nome 
+                                    e realize o pagamento.
+                                </p>
+                            </div>
+                            <div class="action-buttons">
+                                <a href="qrcodeEvento.html?id=${eventId}" class="btn-qrcode">
+                                    <i class="fas fa-qrcode"></i> Ver QR Code
+                                </a>
+                                <button class="btn-cancelar" id="btnCancelar">
+                                    <i class="fas fa-times"></i> Cancelar Inscrição
+                                </button>
+                            </div>
                           </div>`
                         : `<button class="btn-inscrever" id="btnInscrever" ${!usuarioEstaLogado ? 'data-need-login="true"' : ''}>
                             ${usuarioEstaLogado 
@@ -114,64 +126,216 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
 
                 try {
-                    // Verificar novamente se o usuário já está inscrito
-                    const inscricoesCheck = await fetch(`${API_URL}/cadastroDeEventos`);
-                    const inscricoesData = await inscricoesCheck.json();
-                    const jaInscrito = inscricoesData.some(inscricao => 
-                        inscricao.idEvento === eventId && 
-                        inscricao.idUsuario.includes(usuarioLogado.id)
-                    );
-
-                    if (jaInscrito) {
-                        alert('Você já está inscrito neste evento!');
-                        window.location.reload();
-                        return;
-                    }
-
-                    // Verificar novamente se há vagas disponíveis
-                    const numeroAtualInscritos = inscricoesData
-                        .filter(inscricao => inscricao.idEvento === eventId)
-                        .reduce((total, inscricao) => total + inscricao.idUsuario.length, 0);
-
-                    if (numeroAtualInscritos >= evento.vagas) {
-                        alert('Este evento já está lotado!');
-                        window.location.href = 'exibicaoeventos.html';
-                        return;
-                    }
-
-                    // Criar nova inscrição
-                    const inscricaoData = {
-                        id: Date.now().toString(),
-                        idEvento: eventId,
-                        idUsuario: [usuarioLogado.id]
-                    };
-
-                    const response = await fetch(`${API_URL}/cadastroDeEventos`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(inscricaoData)
+                    // Password confirmation prompt
+                    const { value: senha } = await Swal.fire({
+                        title: 'Confirme sua Senha',
+                        input: 'password',
+                        inputLabel: 'Digite sua senha para confirmar a inscrição',
+                        inputPlaceholder: 'Senha',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Confirmar Inscrição',
+                        customClass: {
+                            popup: 'swal2-popup',
+                            confirmButton: 'swal-custom-button',
+                            cancelButton: 'swal-custom-button'
+                        },
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'Digite sua senha para continuar';
+                            }
+                        }
                     });
 
-                    if (!response.ok) throw new Error('Erro ao realizar inscrição');
+                    if (!senha) return;
 
-                    // Verificar se atingiu limite de vagas
-                    const novoNumeroInscritos = numeroAtualInscritos + 1;
-                    if (novoNumeroInscritos >= evento.vagas) {
-                        // Desativar evento
-                        evento.status = 'inativo';
-                        await fetch(`${API_URL}/eventos/${eventId}`, {
-                            method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(evento)
+                    // Verify password
+                    if (senha !== usuarioLogado.senha) {
+                        await Swal.fire({
+                            title: 'Senha Incorreta!',
+                            text: 'A senha informada não está correta.',
+                            icon: 'error',
+                            confirmButtonText: 'Tentar Novamente',
+                            customClass: {
+                                popup: 'swal2-popup',
+                                confirmButton: 'swal-custom-button'
+                            }
                         });
+                        return;
                     }
 
-                    alert('Inscrição realizada com sucesso!');
-                    window.location.href = 'qrcodeEvento.html?id=' + eventId;
+                    // Show loading
+                    Swal.fire({
+                        title: 'Processando...',
+                        text: 'Realizando sua inscrição',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showConfirmButton: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        customClass: {
+                            popup: 'swal2-popup'
+                        }
+                    });
+
+                    // Verificar se já existe uma inscrição para este evento
+                    const cadRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventId}`);
+                    const cadastros = await cadRes.json();
+
+                    if (cadastros.length === 0) {
+                        // Criar nova inscrição
+                        await fetch(`${API_URL}/cadastroDeEventos`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                id: Date.now().toString(),
+                                idEvento: eventId,
+                                idUsuario: [usuarioLogado.id]
+                            })
+                        });
+                    } else {
+                        // Adicionar usuário à inscrição existente
+                        const inscricaoExistente = cadastros[0];
+                        if (!inscricaoExistente.idUsuario.includes(usuarioLogado.id)) {
+                            inscricaoExistente.idUsuario.push(usuarioLogado.id);
+                            
+                            await fetch(`${API_URL}/cadastroDeEventos/${inscricaoExistente.id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(inscricaoExistente)
+                            });
+                        }
+                    }
+
+                    // Close loading and show success
+                    Swal.close();
+                    
+                    await Swal.fire({
+                        title: 'Sucesso!',
+                        text: 'Inscrição realizada com sucesso!',
+                        icon: 'success',
+                        confirmButtonText: 'Ver QR Code',
+                        timerProgressBar: true,
+                        timer: 2000,
+                        customClass: {
+                            popup: 'swal2-popup',
+                            confirmButton: 'swal-custom-button'
+                        }
+                    });
+
+                    // Redirect to QR code page
+                    window.location.href = `qrcodeEvento.html?id=${eventId}`;
 
                 } catch (error) {
+                    Swal.close();
                     console.error('Erro:', error);
-                    alert('Erro ao realizar inscrição: ' + error.message);
+                    await Swal.fire({
+                        title: 'Erro!',
+                        text: 'Erro ao realizar inscrição: ' + error.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            popup: 'swal2-popup',
+                            confirmButton: 'swal-custom-button'
+                        }
+                    });
+                }
+            });
+        }
+
+        // Add the cancellation handler after appending main to the document
+        if (jaInscrito) {
+            const btnCancelar = document.getElementById('btnCancelar');
+            btnCancelar.addEventListener('click', async function() {
+                try {
+                    // Confirm cancellation
+                    const result = await Swal.fire({
+                        title: 'Cancelar Inscrição?',
+                        text: 'Tem certeza que deseja cancelar sua inscrição neste evento?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Sim, cancelar',
+                        cancelButtonText: 'Não, manter',
+                        customClass: {
+                            popup: 'swal2-popup',
+                            confirmButton: 'swal-custom-button',
+                            cancelButton: 'swal-custom-button'
+                        }
+                    });
+
+                    if (!result.isConfirmed) return;
+
+                    // Show loading
+                    Swal.fire({
+                        title: 'Processando...',
+                        text: 'Cancelando sua inscrição',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showConfirmButton: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        customClass: {
+                            popup: 'swal2-popup'
+                        }
+                    });
+
+                    // Get current registration
+                    const inscricoesRes = await fetch(`${API_URL}/cadastroDeEventos?idEvento=${eventId}`);
+                    const inscricoes = await inscricoesRes.json();
+                    const inscricao = inscricoes.find(i => i.idUsuario.includes(usuarioLogado.id));
+
+                    if (inscricao) {
+                        // Remove user from registration
+                        const updatedUsuarios = inscricao.idUsuario.filter(id => id !== usuarioLogado.id);
+                        
+                        if (updatedUsuarios.length === 0) {
+                            // If no users left, delete the registration
+                            await fetch(`${API_URL}/cadastroDeEventos/${inscricao.id}`, {
+                                method: 'DELETE'
+                            });
+                        } else {
+                            // Update with remaining users
+                            await fetch(`${API_URL}/cadastroDeEventos/${inscricao.id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    ...inscricao,
+                                    idUsuario: updatedUsuarios
+                                })
+                            });
+                        }
+
+                        // Show success message
+                        await Swal.fire({
+                            title: 'Inscrição Cancelada!',
+                            text: 'Sua inscrição foi cancelada com sucesso.',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            customClass: {
+                                popup: 'swal2-popup',
+                                confirmButton: 'swal-custom-button'
+                            }
+                        });
+
+                        // Reload page to update status
+                        window.location.reload();
+                    }
+                } catch (error) {
+                    console.error('Erro ao cancelar inscrição:', error);
+                    await Swal.fire({
+                        title: 'Erro!',
+                        text: 'Erro ao cancelar inscrição: ' + error.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            popup: 'swal2-popup',
+                            confirmButton: 'swal-custom-button'
+                        }
+                    });
                 }
             });
         }
@@ -226,6 +390,81 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         .btn-qrcode i {
             font-size: 1.1em;
+        }
+
+        .inscrito-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .inscrito-message {
+            color: #fff;
+            font-size: 0.9em;
+            margin: 0;
+            padding: 8px;
+            background: rgba(255, 122, 0, 0.1);
+            border-left: 3px solid #ff7a00;
+            border-radius: 4px;
+        }
+
+        .evento-status {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 20px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 122, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .evento-status::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: #ff7a00;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.7);
+            }
+            
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(255, 122, 0, 0);
+            }
+            
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0);
+            }
+        }
+
+        .evento-status.lotado {
+            background: rgba(255, 59, 48, 0.1);
+            border-color: rgba(255, 59, 48, 0.3);
+        }
+
+        .evento-status.lotado::before {
+            background: #ff3b30;
+        }
+
+        h5 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
     `;
     document.head.appendChild(style);
