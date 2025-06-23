@@ -612,35 +612,68 @@
   ],
   "noticias": [
     {
-      "id": "1749780802635",
-      "titulo": "Teste",
-      "descricao_breve": "Teste upload",
-      "texto_completo": "UPLOAD ",
-      "categoria": "Tecnologia",
-      "imagem": "assets/img/noticias/1749782279690-teste.jpg",
-      "data": "2025-06-13T02:38:20.510Z",
-      "autor": "Felipe Giannetti",
+      "id": "1750635390683",
+      "titulo": "Ações Tesla",
+      "descricao_breve": "As ações da Tesla são voláteis, refletindo inovação, liderança em veículos elétricos e apostas no crescimento futuro da tecnologia limpa.",
+      "texto_completo": "A Tesla volta a ganhar destaque no mercado com o lançamento piloto de seus robotáxis em Austin, Texas, e planos de expansão na Índia a partir de julho. O novo serviço, baseado no Model Y, opera inicialmente com áreas limitadas e supervisores humanos para garantir segurança. Essa novidade gerou alta de até 3% nas ações, mas logo recuaram 1% devido à volatilidade e à queda nas vendas globais. Analistas veem o robotáxi como aposta de longo prazo, mas alertam para desafios regulatórios e geopolíticos. A entrada no mercado indiano visa compensar desempenho mais fraco na China e na Europa.",
+      "categoria": "Economia",
+      "imagem": "assets/img/noticias/1750635472066-tesla_image_converted.png",
+      "data": "2025-06-22T23:37:52.092Z",
+      "autor": "Felipe Giannetti Fontenelle",
       "autorId": "1749560312233"
     },
     {
-      "id": "1749782463145",
-      "titulo": "teste2",
-      "descricao_breve": "UPLOAD TESTE",
-      "texto_completo": "UPLOAD TESTE AGAIN",
+      "id": "1750635390684",
+      "titulo": "Nova Lei de IA na União Europeia",
+      "descricao_breve": "UE aprova primeira legislação abrangente sobre Inteligência Artificial, estabelecendo padrões globais para regulamentação da tecnologia.",
+      "texto_completo": "A União Europeia aprovou hoje uma legislação histórica sobre Inteligência Artificial, estabelecendo regras rigorosas para o desenvolvimento e uso de IA. O regulamento classifica aplicações de IA em níveis de risco e impõe requisitos específicos para cada categoria. Sistemas de alto risco, como reconhecimento facial em espaços públicos, terão restrições severas. Empresas que violarem as regras podem enfrentar multas de até 6% de seu faturamento global. A indústria tech terá 24 meses para se adequar, com especialistas prevendo impacto global nas práticas de desenvolvimento de IA.",
+      "categoria": "Tecnologia",
+      "imagem": "assets/img/noticias/1750636002308-IA_europeia.png",
+      "data": "2025-06-22T23:46:42.346Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1750635390685",
+      "titulo": "Startups Brasileiras Atraem Investimentos",
+      "descricao_breve": "Ecossistema de startups brasileiro registra recorde de investimentos no primeiro semestre, com foco em fintechs e healthtechs.",
+      "texto_completo": "O mercado de startups brasileiro alcançou marca histórica com R$ 15 bilhões em investimentos no primeiro semestre de 2025. Fintechs e healthtechs lideraram as captações, respondendo por 60% do total. Destaque para a expansão de unicórnios nacionais e interesse crescente de fundos internacionais. Analistas apontam maturidade do ecossistema e ambiente regulatório favorável como fatores-chave. Projeções indicam potencial para dobrar investimentos até o final do ano, consolidando Brasil como hub de inovação na América Latina.",
       "categoria": "Negócios",
-      "imagem": "assets/img/noticias/1749816284245-images.jpeg",
-      "data": "2025-06-13T12:04:44.256Z",
-      "autor": "Felipe Giannetti",
+      "imagem": "assets/img/noticias/1750636127744-startup.png",
+      "data": "2025-06-22T23:48:47.767Z",
+      "autor": "Felipe Giannetti Fontenelle",
       "autorId": "1749560312233"
     },
     {
-      "id": "1750478454112",
-      "titulo": "Vendas B2B Avançado",
-      "descricao_breve": "hgfdhg",
-      "texto_completo": "fdghfdgh",
+      "id": "1750635390686",
+      "titulo": "ESG Impulsiona Transformação Corporativa",
+      "descricao_breve": "Empresas aceleram adoção de práticas ESG com foco em sustentabilidade e governança, impactando decisões de investimento global.",
+      "texto_completo": "Pesquisa global revela que 85% das empresas Fortune 500 aumentaram investimentos em iniciativas ESG em 2025. Destaque para projetos de energia renovável e economia circular. Investidores priorizam companhias com metas claras de redução de carbono e diversidade. No Brasil, grandes corporações anunciam compromissos de neutralidade de carbono até 2040. Especialistas preveem que critérios ESG se tornarão decisivos para acesso a capital e competitividade nos próximos anos.",
+      "categoria": "Negócios",
+      "imagem": "assets/img/noticias/1750636235146-esg.png",
+      "data": "2025-06-22T23:50:35.167Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1750635390687",
+      "titulo": "Revolução no Mercado de Trabalho",
+      "descricao_breve": "Novas tendências de trabalho híbrido e tecnologias emergentes redefinem relações profissionais e competências necessárias.",
+      "texto_completo": "Estudo da McKinsey aponta que 75% das empresas globais adotaram permanentemente modelos híbridos de trabalho. IA e automação criam novas demandas por habilidades digitais e soft skills. Profissionais buscam requalificação em áreas como análise de dados e gestão ágil. Empresas investem em plataformas de colaboração e bem-estar digital. Especialistas preveem que adaptabilidade e aprendizado contínuo serão cruciais para carreira nos próximos anos.",
+      "categoria": "Economia",
+      "imagem": "assets/img/noticias/1750636354406-mercadotrabalho.png",
+      "data": "2025-06-22T23:52:34.432Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233"
+    },
+    {
+      "id": "1750635390688",
+      "titulo": "Blockchain Revoluciona Mercado Financeiro",
+      "descricao_breve": "Instituições financeiras tradicionais adotam tecnologia blockchain para modernizar operações e reduzir custos de transações.",
+      "texto_completo": "Os principais bancos globais anunciam hoje uma iniciativa conjunta para implementar soluções baseadas em blockchain, visando revolucionar o sistema financeiro tradicional. O projeto, estimado em US$ 2 bilhões, promete reduzir custos de transações internacionais em até 60% e o tempo de liquidação para segundos. O consórcio inclui 15 das maiores instituições financeiras do mundo e conta com suporte de reguladores. Especialistas preveem que esta movimentação poderá acelerar a adoção de moedas digitais de bancos centrais (CBDCs) e transformar fundamentalmente o setor bancário nos próximos cinco anos.",
       "categoria": "Tecnologia",
-      "imagem": "assets/img/noticias/1750478454124-imagemperfil.jpg",
-      "data": "2025-06-21T04:00:54.130Z",
+      "imagem": "assets/img/noticias/1750637048190-blockchain.png",
+      "data": "2025-06-23T00:04:08.213Z",
       "autor": "Felipe Giannetti Fontenelle",
       "autorId": "1749560312233"
     }
@@ -651,7 +684,7 @@
       "categoria": "Profissional",
       "descricao_breve": "Teste upload",
       "descricao": "",
-      "imagem": "https://lh3.googleusercontent.com/proxy/wMgCZgQ82QaYXqk13GRyo-xXJStuRWXNU8v989NX-VrcWWFFqU9SvAURSAD0Npfkd-ZmTxTFcUPE9BjK5YK4JjzOpVT3imuofIY",
+      "imagem": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000",
       "status": "inativo",
       "perguntas": [
         {
@@ -914,7 +947,7 @@
       "titulo": "Teste Quiz",
       "descricao_breve": "Teste upload",
       "categoria": "Tecnologia",
-      "imagem": "assets/img/quizzes/1749782279690-teste.jpg",
+      "imagem": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000",
       "data": "2025-06-13T02:38:20.510Z",
       "autor": "Felipe Giannetti",
       "autorId": "1749560312233",
@@ -1036,6 +1069,450 @@
             },
             {
               "texto": "Alto retorno"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390689",
+      "titulo": "Avaliação de Perfil Empreendedor",
+      "descricao_breve": "Descubra seu potencial empreendedor e áreas de desenvolvimento.",
+      "categoria": "Empreendedorismo",
+      "imagem": "assets/img/quizzes/perfil_empreendedor.jpg",
+      "data": "2025-06-23T01:15:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Como você lida com riscos?",
+          "respostas": [
+            {
+              "texto": "Evito ao máximo"
+            },
+            {
+              "texto": "Analiso cuidadosamente"
+            },
+            {
+              "texto": "Aceito calculadamente"
+            },
+            {
+              "texto": "Abraço os desafios"
+            }
+          ]
+        },
+        {
+          "texto": "Qual sua maior motivação para empreender?",
+          "respostas": [
+            {
+              "texto": "Independência financeira"
+            },
+            {
+              "texto": "Impacto social"
+            },
+            {
+              "texto": "Realização pessoal"
+            },
+            {
+              "texto": "Inovação"
+            }
+          ]
+        },
+        {
+          "texto": "Como você lida com fracassos?",
+          "respostas": [
+            {
+              "texto": "Evito situações de risco"
+            },
+            {
+              "texto": "Aprendo com os erros"
+            },
+            {
+              "texto": "Busco novas estratégias"
+            },
+            {
+              "texto": "Vejo como oportunidade"
+            }
+          ]
+        },
+        {
+          "texto": "Qual sua abordagem para inovação?",
+          "respostas": [
+            {
+              "texto": "Sigo tendências"
+            },
+            {
+              "texto": "Adapto ideias existentes"
+            },
+            {
+              "texto": "Crio soluções novas"
+            },
+            {
+              "texto": "Disrupção total"
+            }
+          ]
+        },
+        {
+          "texto": "Como você gerencia recursos?",
+          "respostas": [
+            {
+              "texto": "Conservador"
+            },
+            {
+              "texto": "Planejado"
+            },
+            {
+              "texto": "Estratégico"
+            },
+            {
+              "texto": "Arrojado"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390690",
+      "titulo": "Marketing Digital Avançado",
+      "descricao_breve": "Teste seus conhecimentos em marketing digital e estratégias online.",
+      "categoria": "Marketing",
+      "imagem": "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=1000",
+      "data": "2025-06-23T01:30:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Qual métrica é mais importante para SEO?",
+          "respostas": [
+            {
+              "texto": "Taxa de rejeição"
+            },
+            {
+              "texto": "Tempo na página"
+            },
+            {
+              "texto": "Posição no Google"
+            },
+            {
+              "texto": "Backlinks"
+            }
+          ]
+        },
+        {
+          "texto": "Melhor estratégia para redes sociais?",
+          "respostas": [
+            {
+              "texto": "Conteúdo orgânico"
+            },
+            {
+              "texto": "Anúncios pagos"
+            },
+            {
+              "texto": "Influenciadores"
+            },
+            {
+              "texto": "Mix de estratégias"
+            }
+          ]
+        },
+        {
+          "texto": "Ferramenta essencial para análise?",
+          "respostas": [
+            {
+              "texto": "Google Analytics"
+            },
+            {
+              "texto": "SEMrush"
+            },
+            {
+              "texto": "Ahrefs"
+            },
+            {
+              "texto": "Moz Pro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390691",
+      "titulo": "Gestão de Projetos",
+      "descricao_breve": "Avalie suas habilidades em gerenciamento de projetos.",
+      "categoria": "Gestão",
+      "imagem": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000",
+      "data": "2025-06-23T01:45:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Metodologia preferida?",
+          "respostas": [
+            {
+              "texto": "Waterfall"
+            },
+            {
+              "texto": "Agile"
+            },
+            {
+              "texto": "Scrum"
+            },
+            {
+              "texto": "Kanban"
+            }
+          ]
+        },
+        {
+          "texto": "Como prioriza tarefas?",
+          "respostas": [
+            {
+              "texto": "Urgência"
+            },
+            {
+              "texto": "Importância"
+            },
+            {
+              "texto": "Matriz SWOT"
+            },
+            {
+              "texto": "ROI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390692",
+      "titulo": "Inteligência Artificial nos Negócios",
+      "descricao_breve": "Explore o impacto da IA no ambiente empresarial.",
+      "categoria": "Tecnologia",
+      "imagem": "https://images.unsplash.com/photo-1677442136019-21780ecad0f5?q=80&w=1000",
+      "data": "2025-06-23T02:00:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Uso principal da IA na sua área?",
+          "respostas": [
+            {
+              "texto": "Automação"
+            },
+            {
+              "texto": "Análise de dados"
+            },
+            {
+              "texto": "Atendimento"
+            },
+            {
+              "texto": "Previsões"
+            }
+          ]
+        },
+        {
+          "texto": "Maior benefício da IA?",
+          "respostas": [
+            {
+              "texto": "Eficiência"
+            },
+            {
+              "texto": "Redução de custos"
+            },
+            {
+              "texto": "Inovação"
+            },
+            {
+              "texto": "Precisão"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390693",
+      "titulo": "Liderança e Gestão de Equipes",
+      "descricao_breve": "Avalie seu estilo de liderança e competências gerenciais.",
+      "categoria": "Liderança",
+      "imagem": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000",
+      "data": "2025-06-23T02:15:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Estilo de liderança predominante?",
+          "respostas": [
+            {
+              "texto": "Autoritário"
+            },
+            {
+              "texto": "Democrático"
+            },
+            {
+              "texto": "Liberal"
+            },
+            {
+              "texto": "Situacional"
+            }
+          ]
+        },
+        {
+          "texto": "Como motiva sua equipe?",
+          "respostas": [
+            {
+              "texto": "Recompensas"
+            },
+            {
+              "texto": "Reconhecimento"
+            },
+            {
+              "texto": "Desenvolvimento"
+            },
+            {
+              "texto": "Autonomia"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390694",
+      "titulo": "Sustentabilidade Empresarial",
+      "descricao_breve": "Analise práticas ESG e sustentabilidade corporativa.",
+      "categoria": "ESG",
+      "imagem": "https://images.unsplash.com/photo-1535615615570-3b839f4359be?q=80&w=1000",
+      "data": "2025-06-23T02:30:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Prioridade em ESG?",
+          "respostas": [
+            {
+              "texto": "Ambiental"
+            },
+            {
+              "texto": "Social"
+            },
+            {
+              "texto": "Governança"
+            },
+            {
+              "texto": "Integrado"
+            }
+          ]
+        },
+        {
+          "texto": "Maior desafio sustentável?",
+          "respostas": [
+            {
+              "texto": "Custos"
+            },
+            {
+              "texto": "Implementação"
+            },
+            {
+              "texto": "Mensuração"
+            },
+            {
+              "texto": "Engajamento"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390695",
+      "titulo": "Inovação e Criatividade",
+      "descricao_breve": "Descubra seu potencial inovador e pensamento criativo.",
+      "categoria": "Inovação",
+      "imagem": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000",
+      "data": "2025-06-23T02:45:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Abordagem para inovação?",
+          "respostas": [
+            {
+              "texto": "Incremental"
+            },
+            {
+              "texto": "Disruptiva"
+            },
+            {
+              "texto": "Adaptativa"
+            },
+            {
+              "texto": "Radical"
+            }
+          ]
+        },
+        {
+          "texto": "Fonte de criatividade?",
+          "respostas": [
+            {
+              "texto": "Experiências"
+            },
+            {
+              "texto": "Pesquisas"
+            },
+            {
+              "texto": "Colaboração"
+            },
+            {
+              "texto": "Intuição"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1750635390696",
+      "titulo": "Transformação Digital",
+      "descricao_breve": "Avalie a maturidade digital do seu negócio.",
+      "categoria": "Tecnologia",
+      "imagem": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000",
+      "data": "2025-06-23T03:00:00.000Z",
+      "autor": "Felipe Giannetti Fontenelle",
+      "autorId": "1749560312233",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "Nível de digitalização?",
+          "respostas": [
+            {
+              "texto": "Iniciante"
+            },
+            {
+              "texto": "Em transição"
+            },
+            {
+              "texto": "Avançado"
+            },
+            {
+              "texto": "Nativo digital"
+            }
+          ]
+        },
+        {
+          "texto": "Principal desafio digital?",
+          "respostas": [
+            {
+              "texto": "Cultura"
+            },
+            {
+              "texto": "Tecnologia"
+            },
+            {
+              "texto": "Processos"
+            },
+            {
+              "texto": "Pessoas"
             }
           ]
         }
