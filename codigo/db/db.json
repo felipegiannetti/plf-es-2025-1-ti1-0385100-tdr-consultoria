@@ -269,27 +269,27 @@
         {
           "idQuiz": "1750635390689",
           "feito": true,
-          "dataRealizacao": "2025-06-23T23:41:57.236Z",
+          "dataRealizacao": "2025-06-24T18:48:54.364Z",
           "questions": [
             {
               "question": "Como você lida com riscos?",
-              "response": "Aceito calculadamente"
+              "response": "Abraço os desafios"
             },
             {
               "question": "Qual sua maior motivação para empreender?",
-              "response": "Impacto social"
+              "response": "Realização pessoal"
             },
             {
               "question": "Como você lida com fracassos?",
-              "response": "Evito situações de risco"
+              "response": "Aprendo com os erros"
             },
             {
               "question": "Qual sua abordagem para inovação?",
-              "response": "Disrupção total"
+              "response": "Adapto ideias existentes"
             },
             {
               "question": "Como você gerencia recursos?",
-              "response": "Planejado"
+              "response": "Arrojado"
             }
           ]
         },
@@ -400,6 +400,13 @@
       "tipo": "usuario",
       "id": "1750720057738",
       "senha": "123"
+    },
+    {
+      "id": "1750790972369",
+      "nome": "usuario usuario",
+      "email": "usuarioteste@gmail.com.br",
+      "senha": "123456",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [
