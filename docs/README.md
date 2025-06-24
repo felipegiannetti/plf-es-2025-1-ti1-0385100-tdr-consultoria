@@ -22,7 +22,7 @@ A documentação do projeto é estruturada da seguinte forma:
 6. Solução
 7. Referências Bibliográficas
 
-✅ [Documentação de Design Thinking (MIRO)](files/processo-dt-final.pdf)
+✅ [Documentação de Design Thinking (MIRO)](https://miro.com/app/board/uXjVIRnPJ8M=/?share_link_id=108034316196)
 
 # Contexto
 
@@ -274,7 +274,7 @@ Com base em nossa pesquisa em Belo Horizonte:
 
 Nesse momento, vamos transformar os insights e validações obtidos em soluções tangíveis e utilizáveis. Essa fase envolve a definição de uma proposta de valor, detalhando a prioridade de cada ideia e a consequente criação de wireframes, mockups e protótipos de alta fidelidade, que detalham a interface e a experiência do usuário.
 
-# Histórias de Usuários
+## Histórias de Usuários
 
 | EU COMO...               | QUERO/PRECISO...                                                     | PARA...                                                             |
 | ------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------- |
@@ -440,59 +440,228 @@ O vídeo a seguir traz uma apresentação do problema que a equipe está tratand
 
 Esta seção apresenta as funcionalidades da solução.Info
 
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
+##### Funcionalidade 1 - Cadastro de Usuarios
 
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
+Permite a inclusão, leitura, alteração e exclusão de usuarios para o sistema
 
-* **Estrutura de dados:** [Contatos](#ti_ed_contatos)
+* **Estrutura de dados:** [Usuarios](#ti_ed_usuarios)
 * **Instruções de acesso:**
-  * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
+  * Abra o site 
+  * Efetue o cadastro
+  * Efetue o login
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeLoginRegistro.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
+##### Funcionalidade 2 - Quizzes
+
+Permite a inclusão, leitura, alteração e exclusão de quizzes para o sistema
+
+* **Estrutura de dados:** [Quizzes](#ti_ed_quizzes_e_usuarios)
+* **Instruções de acesso:**
+  * Abra o site 
+  * Efetue o cadastro
+  * Efetue o login
+  * Faca os quizzes na aba de quizzes no site
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDosQuizzes.png)
+
+##### Funcionalidade 3 - Noticias
+
+Permite a inclusão, leitura, alteração e exclusão de noticias para o sistema
+
+* **Estrutura de dados:** [Noticias](#ti_ed_noticias)
+* **Instruções de acesso:**
+  * Abra o site 
+  * Efetue o cadastro
+  * Efetue o login
+  * Leia as noticias presentes no site
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeNoticias.png)
+
+##### Funcionalidade 4 - Eventos
+
+Permite a inclusão, leitura, alteração e exclusão de eventos para o sistema
+
+* **Estrutura de dados:** [Eventos](#ti_ed_eventos)
+* **Instruções de acesso:**
+  * Abra o site 
+  * Efetue o cadastro
+  * Efetue o login
+  * Escolha qual evento quer participar
+  * Se inscreva no evento
+  * Guarde seu QRCode
+  * Avalie o evento
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeEventos.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeDetalhesDeEventos.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeInscricao.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaQRCode.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeAvaliacao.png)
+
+##### Funcionalidade 5 - Perfil de Usuarios
+
+Permite a inclusão, leitura, alteração e exclusão de usuarios para o sistema
+
+* **Estrutura de dados:** [Usuarios](#ti_ed_usuarios)
+* **Instruções de acesso:**
+  * Abra o site 
+  * Efetue o cadastro
+  * Efetue o login
+  * Acesse pagina de perfil
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario.png)
+
+##### Funcionalidade 6 - Gestao de dados
+
+Permite a inclusão, leitura, alteração e exclusão de todos os dados do sistema
+
+* **Estrutura de dados:** [Usuarios](#ti_ed_usuarios)
+* **Estrutura de dados:** [Eventos](#ti_ed_eventos)
+* **Estrutura de dados:** [Noticias](#ti_ed_noticias)
+* **Estrutura de dados:** [Avaliacoes](#ti_ed_avaliacoes)
+* **Instruções de acesso:**
+  * Abra o site 
+  * Efetue o login como adimin
+  * Va para a aba de gestacao
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaADM.png)
 
 ## Estruturas de Dados
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
+##### Estrutura de Dados - Eventos   
 
-Contatos da aplicação
+Eventos da aplicação
 
 ```json
-  {
-    "id": 1,
-    "nome": "Leanne Graham",
-    "cidade": "Belo Horizonte",
-    "categoria": "amigos",
-    "email": "Sincere@april.biz",
-    "telefone": "1-770-736-8031",
-    "website": "hildegard.org"
-  }
+    {
+      "id": "1",
+      "titulo": "Workshop de Gestão Empresarial",
+      "data": "2025-08-21T16:00:00.000Z",
+      "descricao": "Workshop focado em estratégias modernas de gestão empresarial, com cases práticos e networking.",
+      "categoria": "Workshop",
+      "local": "Expominas - Gameleira - Belo Horizonte, Minas Gerais",
+      "localmapa": "https://maps.google.com/maps?q=Expominas+Belo+Horizonte",
+      "imagem": "assets/img/eventos/evento-gestao-empresarial.jpg",
+      "vagas": 50,
+      "preco": 300,
+      "status": "ativo"
+    },
   
 ```
 
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
+##### Estrutura de Dados - Inscricao em Eventos
 
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
+Registro dos usuários inscritos em eventos do sistema
 
 ```json
   {
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    email: "admin@abc.com",
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    login: "admin",
-    nome: "Administrador do Sistema",
-    senha: "123"
+    "id": "1750647398044",
+    "idEvento": "1",
+    "idUsuario": [
+      ""
+    ]
   }
+```
+
+##### Estrutura de Dados - Usuarios
+
+Registro dos usuários do sistema
+
+```json
+  {
+      "nome": "",
+      "email": "",
+      "senha": "",
+      "tipo": "admin",
+      "id": "",
+      "idformulario": [
+        {
+          "idQuiz": "1750635390689",
+          "feito": true,
+          "dataRealizacao": "",
+          "questions": []
+        }
+      ]
+    },
+```
+
+##### Estrutura de Dados - Avaliacoes de Eventos
+
+Registro das avaliacoes de eventos do sistema feitos por usuarios
+
+```json
+   {
+      "id": "",
+      "idavaliacao": ,
+      "idevento": "3",
+      "nome": "",
+      "comentario": "Evento bom.",
+      "rating": 4,
+      "data": ""
+    }
+```
+
+##### Estrutura de Dados - Noticias
+
+Registro das noticas do sistema
+
+```json
+  {
+      "id": "",
+      "titulo": "Ações Tesla",
+      "descricao_breve": "As ações da Tesla são voláteis, refletindo inovação, liderança em veículos elétricos e apostas no crescimento futuro da tecnologia limpa.",
+      "texto_completo": "A Tesla volta a ganhar destaque no mercado com o lançamento piloto de seus robotáxis em Austin, Texas, e planos de expansão na Índia a partir de julho. O novo serviço, baseado no Model Y, opera inicialmente com áreas limitadas e supervisores humanos para garantir segurança. Essa novidade gerou alta de até 3% nas ações, mas logo recuaram 1% devido à volatilidade e à queda nas vendas globais. Analistas veem o robotáxi como aposta de longo prazo, mas alertam para desafios regulatórios e geopolíticos. A entrada no mercado indiano visa compensar desempenho mais fraco na China e na Europa.",
+      "categoria": "Economia",
+      "imagem": "assets/img/noticias/1750635472066-tesla_image_converted.png",
+      "data": "",
+      "autor": "",
+      "autorId": ""
+    },
+```
+
+##### Estrutura de Dados - Quizzes
+
+Registro dos Quizzes do sistema
+
+```json
+    {
+      "id": "",
+      "titulo": "Avaliação de Perfil Empreendedor",
+      "descricao_breve": "Descubra seu potencial empreendedor e áreas de desenvolvimento.",
+      "categoria": "Empreendedorismo",
+      "imagem": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1000",
+      "data": "",
+      "autor": "",
+      "autorId": "",
+      "status": "ativo",
+      "perguntas": [
+        {
+          "texto": "",
+          "respostas": [
+            {
+              "texto": ""
+            },
+            {
+              "texto": ""
+            },
+            {
+              "texto": ""
+            },
+            {
+              "texto": ""
+            }
+          ]
+        }
+      ]
+    },
 ```
 
 > ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
@@ -512,16 +681,20 @@ Esta seção apresenta os módulos e APIs utilizados na solução
 
 **Images**:
 
-* Unsplash - [https://unsplash.com/](https://unsplash.com/) ⚠️ EXEMPLO ⚠️
+* Unsplash - [https://unsplash.com/](https://unsplash.com/)
 
 **Fonts:**
 
-* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) ⚠️ EXEMPLO ⚠️
+* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) 
+* Google Fonts    - [https://fonts.google.com/](https://fonts.google.com/) 
 
 **Scripts:**
 
-* jQuery - [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️
-* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️
+* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) 
+
+**Apis** 
+
+* QR Code Generator - [https://goqr.me/api/](https://goqr.me/api/)
 
 > ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
 >
@@ -531,13 +704,26 @@ Esta seção apresenta os módulos e APIs utilizados na solução
 
 As referências utilizadas no trabalho foram:
 
-* SOBRENOME, Nome do autor. Título da obra. 8. ed. Cidade: Editora, 2000. 287 p ⚠️ EXEMPLO ⚠️
+ * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Sobrevivência das Empresas no Brasil. Brasília: SEBRAE, 2022. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/sobrevivencia-das-empresas-no-brasil. Acesso em: 24 jun. 2025.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
->
-> **Orientações**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+ * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. O Impacto da Pandemia de Coronavírus nos Pequenos Negócios. Brasília: SEBRAE, 2021. Disponível em: https://sebrae.com.br/sites/PortalSebrae/artigos/o-impacto-da-pandemia-de-coronavirus-nos-pequenos-negocios. Acesso em: 24 jun. 2025.
+
+ * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Participação das Micro e Pequenas Empresas na Economia Brasileira. Brasília: SEBRAE, 2022. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/participacao-das-micro-e-pequenas-empresas-na-economia-brasileira. Acesso em: 24 jun. 2025.
+
+ * GLOBAL ENTREPRENEURSHIP MONITOR. Empreendedorismo no Brasil: Relatório Global 2021/2022. Curitiba: IBQP, 2022. Disponível em: https://www.gemconsortium.org/report/gem-brazil-2021-2022-report. Acesso em: 24 jun. 2025.
+
+ * INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Estatísticas do Cadastro Central de Empresas 2022. Rio de Janeiro: IBGE, 2022. Disponível em: https://www.ibge.gov.br/estatisticas/economicas/outras-estatisticas-economicas/9016-estatisticas-do-cadastro-central-de-empresas.html. Acesso em: 24 jun. 2025.
+
+ * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Empreendedorismo Feminino no Brasil. Brasília: SEBRAE, 2021. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/empreendedorismo-feminino-no-brasil. Acesso em: 24 jun. 2025.
+
+ * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Fatores de Sucesso e Insucesso das Micro e Pequenas Empresas. Brasília: SEBRAE, 2021. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/fatores-de-sucesso-e-insucesso-das-micro-e-pequenas-empresas. Acesso em: 24 jun. 2025.
+
+ * PORTAL DO EMPREENDEDOR. Microempreendedor Individual - Estatísticas. Brasília: Governo Federal, 2022. Disponível em: http://www.portaldoempreendedor.gov.br/estatisticas. Acesso em: 24 jun. 2025.
+
+ * BRASIL. Lei Geral de Proteção de Dados Pessoais (LGPD) - Lei nº 13.709/2018. Brasília: Presidência da República, 2018. Disponível em: http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm. Acesso em: 24 jun. 2025.
+
+ * ENDEAVOR BRASIL. Empreendedorismo nas Universidades Brasileiras 2021. São Paulo: Endeavor, 2021. Disponível em: https://endeavor.org.br/pesquisas/empreendedorismo-nas-universidades-brasileiras/. Acesso em: 24 jun. 2025.
+
+ * BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL. Porte de Empresa e Classificação. Rio de Janeiro: BNDES, 2022. Disponível em: https://www.bndes.gov.br/wps/portal/site/home/financiamento/guia/porte-de-empresa. Acesso em: 24 jun. 2025.
+
+ * ASSOCIAÇÃO BRASILEIRA DE STARTUPS. Radiografia do Ecossistema Brasileiro de Startups 2022. São Paulo: ABStartups, 2022. Disponível em: https://abstartups.com.br/radiografia-2022/. Acesso em: 24 jun. 2025.
