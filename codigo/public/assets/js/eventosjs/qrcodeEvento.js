@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     try {
         // Busca os dados do evento no db.json
-        const response = await fetch(`http://localhost:3000/eventos/${eventoId}`);
+        const response = await fetch(`/eventos/${eventoId}`);
         
         if (!response.ok) {
             if (response.status === 404) {

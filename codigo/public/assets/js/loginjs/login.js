@@ -137,7 +137,7 @@ async function handleLogin() {
             return;
         }
 
-        const response = await fetch('http://localhost:3000/usuarios');
+        const response = await fetch('/usuarios');
         const usuarios = await response.json();
 
         const usuario = usuarios.find(u => u.email === email && u.senha === password);
@@ -243,7 +243,7 @@ async function handleRegister() {
             return;
         }
 
-        const checkResponse = await fetch('http://localhost:3000/usuarios');
+        const checkResponse = await fetch('/usuarios');
         const users = await checkResponse.json();
 
         if (users.some(user => user.email === email)) {
@@ -267,7 +267,7 @@ async function handleRegister() {
             tipo: 'usuario'
         };
 
-        const response = await fetch('http://localhost:3000/usuarios', {
+        const response = await fetch('/usuarios', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

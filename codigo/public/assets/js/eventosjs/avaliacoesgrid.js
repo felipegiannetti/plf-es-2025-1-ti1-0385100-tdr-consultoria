@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const gridContainer = document.getElementById("avaliacoes-grid");
     const searchBar = document.getElementById("search-bar");
     const starFilter = document.getElementById("star-filter");
-    const API_URL = "http://localhost:3000";
+    const API_URL = '';
 
     let avaliacoes = [];
     let eventos = [];

@@ -1,7 +1,7 @@
 // URL base do JSON Server
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 // URL base do servidor de upload de imagens
-const IMAGE_URL = 'http://localhost:3000';
+const IMAGE_URL = '';
 const NOTICIAS_PER_PAGE = 6;
 let currentPage = 1;
 

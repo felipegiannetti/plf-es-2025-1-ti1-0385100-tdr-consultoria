@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 let noticiaAtual = null;
 
 async function carregarNoticia() {
@@ -19,7 +19,7 @@ async function carregarNoticia() {
                     <span><i class="far fa-calendar"></i> ${new Date(noticiaAtual.data).toLocaleDateString('pt-BR')}</span>
                     <span><i class="far fa-user"></i> ${noticiaAtual.autor || 'Anônimo'}</span>
                 </div>
-                <img src="http://localhost:3000/${noticiaAtual.imagem}" alt="${noticiaAtual.titulo}" class="noticia-imagem">
+                <img src="/${noticiaAtual.imagem}" alt="${noticiaAtual.titulo}" class="noticia-imagem">
 
                 <hr>
 

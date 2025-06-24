@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function loadEvents() {
         try {
-            const response = await fetch('http://localhost:3000/eventos');
+            const response = await fetch('/eventos');
             allEvents = await response.json();
 
             // Filtra apenas eventos ativos
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         article.className = 'articlehover postcard orangebgcard red';
 
         const detailsPath = 'detalheseventos.html';
-        const imagePath = `http://localhost:3000/${evento.imagem}`;  // Agora usa a porta 3000
+        const imagePath = `/${evento.imagem}`;  // Agora usa a porta 3000
         const usuarioId = 1; // ID fixo para teste
 
         article.innerHTML = `

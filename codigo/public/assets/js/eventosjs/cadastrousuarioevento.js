@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const params = new URLSearchParams(window.location.search);
     const eventId = params.get('id');
-    const API_URL = 'http://localhost:3000';
+    const API_URL = '';
 
     // Improved user login check
     const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado')) || null;
