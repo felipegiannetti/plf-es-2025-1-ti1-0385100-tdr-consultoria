@@ -414,7 +414,7 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | Editor de codigo            | Vs Code    | https://code.visualstudio.com/                                                        |
 | Processo de Design Thinking | Miro       | https://miro.com/app/board/uXjVIRnPJ8M=/?share_link_id=382451119897                   |
 | Repositório de código       | GitHub     | https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-1-ti1-0385100-tdr-consultoria  |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️                                        |
+| Hospedagem do site          | Vercel     | https://vercel.com/                                                                  |
 | Protótipo Interativo        | WIXSite    | https://www.wix.com/                                                                  |
 | QR Code generator           | GoQR.me    | https://goqr.me/api/                                                                  |
 | Banco de dados              | Json Server| https://www.npmjs.com/package/json-server                                             |
@@ -664,17 +664,6 @@ Registro dos Quizzes do sistema
     },
 ```
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
->
-> Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.
->
-> **Orientações:**
->
-> * [JSON Introduction](https://www.w3schools.com/js/js_json_intro.asp)
-> * [Trabalhando com JSON - Aprendendo desenvolvimento web | MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/JSON)
-
 ## Módulos e APIs
 
 Esta seção apresenta os módulos e APIs utilizados na solução
@@ -691,39 +680,22 @@ Esta seção apresenta os módulos e APIs utilizados na solução
 **Scripts:**
 
 * Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) 
+* Node.js     - [https://nodejs.org/pt](https://nodejs.org/pt)
 
 **Apis** 
 
 * QR Code Generator - [https://goqr.me/api/](https://goqr.me/api/)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
+
 
 # Referências
 
 As referências utilizadas no trabalho foram:
 
- * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Sobrevivência das Empresas no Brasil. Brasília: SEBRAE, 2022. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/sobrevivencia-das-empresas-no-brasil. Acesso em: 24 jun. 2025.
-
- * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. O Impacto da Pandemia de Coronavírus nos Pequenos Negócios. Brasília: SEBRAE, 2021. Disponível em: https://sebrae.com.br/sites/PortalSebrae/artigos/o-impacto-da-pandemia-de-coronavirus-nos-pequenos-negocios. Acesso em: 24 jun. 2025.
-
- * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Participação das Micro e Pequenas Empresas na Economia Brasileira. Brasília: SEBRAE, 2022. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/participacao-das-micro-e-pequenas-empresas-na-economia-brasileira. Acesso em: 24 jun. 2025.
-
- * GLOBAL ENTREPRENEURSHIP MONITOR. Empreendedorismo no Brasil: Relatório Global 2021/2022. Curitiba: IBQP, 2022. Disponível em: https://www.gemconsortium.org/report/gem-brazil-2021-2022-report. Acesso em: 24 jun. 2025.
-
  * INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Estatísticas do Cadastro Central de Empresas 2022. Rio de Janeiro: IBGE, 2022. Disponível em: https://www.ibge.gov.br/estatisticas/economicas/outras-estatisticas-economicas/9016-estatisticas-do-cadastro-central-de-empresas.html. Acesso em: 24 jun. 2025.
-
- * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Empreendedorismo Feminino no Brasil. Brasília: SEBRAE, 2021. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/empreendedorismo-feminino-no-brasil. Acesso em: 24 jun. 2025.
-
- * SEBRAE - SERVIÇO BRASILEIRO DE APOIO ÀS MICRO E PEQUENAS EMPRESAS. Fatores de Sucesso e Insucesso das Micro e Pequenas Empresas. Brasília: SEBRAE, 2021. Disponível em: https://sebrae.com.br/sites/PortalSebrae/estudos_pesquisas/fatores-de-sucesso-e-insucesso-das-micro-e-pequenas-empresas. Acesso em: 24 jun. 2025.
-
- * PORTAL DO EMPREENDEDOR. Microempreendedor Individual - Estatísticas. Brasília: Governo Federal, 2022. Disponível em: http://www.portaldoempreendedor.gov.br/estatisticas. Acesso em: 24 jun. 2025.
 
  * BRASIL. Lei Geral de Proteção de Dados Pessoais (LGPD) - Lei nº 13.709/2018. Brasília: Presidência da República, 2018. Disponível em: http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm. Acesso em: 24 jun. 2025.
 
  * ENDEAVOR BRASIL. Empreendedorismo nas Universidades Brasileiras 2021. São Paulo: Endeavor, 2021. Disponível em: https://endeavor.org.br/pesquisas/empreendedorismo-nas-universidades-brasileiras/. Acesso em: 24 jun. 2025.
 
  * BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL. Porte de Empresa e Classificação. Rio de Janeiro: BNDES, 2022. Disponível em: https://www.bndes.gov.br/wps/portal/site/home/financiamento/guia/porte-de-empresa. Acesso em: 24 jun. 2025.
-
- * ASSOCIAÇÃO BRASILEIRA DE STARTUPS. Radiografia do Ecossistema Brasileiro de Startups 2022. São Paulo: ABStartups, 2022. Disponível em: https://abstartups.com.br/radiografia-2022/. Acesso em: 24 jun. 2025.
