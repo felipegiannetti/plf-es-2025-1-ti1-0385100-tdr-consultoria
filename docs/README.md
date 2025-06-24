@@ -259,8 +259,11 @@ Com base em nossa pesquisa em Belo Horizonte:
 
 ## Etapa de Entendimento
 
-**Matriz CSD e Stakeholders:** ![Tela de Funcionalidade](files/MatrizAlinhamento.jpg)
-**Entrevistas qualitativas e highlights de pesquisa:** ![Tela de Funcionalidade](files/EntrevistaQualitativa.jpg)
+#### Matriz CSD e Stakeholders 
+![Tela de Funcionalidade](files/MatrizAlinhamento.jpg)
+
+#### Entrevistas qualitativas
+![Tela de Funcionalidade](files/EntrevistaQualitativa.jpg)
 
 ## Etapa de Definição
 
