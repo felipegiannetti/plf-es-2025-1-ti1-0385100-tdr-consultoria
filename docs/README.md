@@ -390,21 +390,20 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 
 Estes são os protótipos de telas do sistema.
 
-
-https://www.figma.com/design/l7hYLsg3odnHdabNuVVXJZ/Untitled?node-id=0-1&p=f&t=QqqFXmFTULKggifT-0
+  * [WIREFRAME](https://www.figma.com/design/l7hYLsg3odnHdabNuVVXJZ/Untitled?node-id=0-1&p=f&t=QqqFXmFTULKggifT-0)
 
 ##### TELA XPTO 
 
-https://felipefonseca2006.wixsite.com/crie-um
+  * [XPTO](https://felipefonseca2006.wixsite.com/crie-um)
 
 
 ### User Flow
 
-https://felipefonseca2006.wixsite.com/crie-um
+  * [USER FLOW](https://felipefonseca2006.wixsite.com/crie-um)
 
 ### Protótipo Interativo
 
-https://felipefonseca2006.wixsite.com/crie-um
+  * [PROTOTIPO](https://felipefonseca2006.wixsite.com/crie-um)
 
 # Metodologia
 
@@ -419,17 +418,12 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | Editor de codigo            | Vs Code    | https://code.visualstudio.com/                                                        |
 | Processo de Design Thinking | Miro       | https://miro.com/app/board/uXjVIRnPJ8M=/?share_link_id=382451119897                   |
 | Repositório de código       | GitHub     | https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-1-ti1-0385100-tdr-consultoria  |
-| Hospedagem do site          | Vercel     | https://vercel.com/                                                                  |
+| Hospedagem do site          | Replit     | https://replit.com/@felipegiannetti/plf-es-2025-1-ti1-0385100-tdr-consultoria?v=1     |
 | Protótipo Interativo        | WIXSite    | https://www.wix.com/                                                                  |
 | QR Code generator           | GoQR.me    | https://goqr.me/api/                                                                  |
 | Banco de dados              | Json Server| https://www.npmjs.com/package/json-server                                             |
 | Prototipo Wireframe         | Figma      | https://www.figma.com/                                                                |
 
-## Gerenciamento do Projeto
-
-Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
-
-![Exemplo de Kanban](images/exemplo-kanban.png)
 
 # Solução Implementada
 
