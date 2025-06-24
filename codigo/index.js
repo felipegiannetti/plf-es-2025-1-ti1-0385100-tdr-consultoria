@@ -25,7 +25,7 @@ const server = express()
 server.use(cors())
 
 // Configurar JSON Server
-const jsonServerRouter = jsonServer.router('./db/db.json', { readOnly: false })
+const jsonServerRouter = jsonServer.router('./codigo/db/db.json', { readOnly: false })
 const jsonServerMiddlewares = jsonServer.defaults({ noCors: true })
 
 // Configurar pastas para upload
@@ -80,6 +80,15 @@ server.post('/upload-noticia', uploadNoticias.single('imagem'), (req, res) => {
 // Servir arquivos estáticos
 server.use('/assets/img/eventos', express.static(eventosPath))
 server.use('/assets/img/noticias', express.static(noticiasPath))
+
+// Servir arquivos estáticos da pasta public
+server.use(express.static(path.join(__dirname, 'public')))
+server.use(express.static(__dirname));
+
+// Rota para a página inicial
+server.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'))
+})
 
 // Usar middlewares do JSON Server
 server.use(jsonServerMiddlewares)

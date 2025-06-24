@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listaQuizzes.appendChild(contentContainer);
     }
 
-    fetch('http://localhost:3000/quizzes')
+    fetch('/quizzes')
         .then(response => response.json())
         .then(quizzes => {
             const quizzesAtivos = quizzes.filter(quiz => quiz.status === 'ativo');

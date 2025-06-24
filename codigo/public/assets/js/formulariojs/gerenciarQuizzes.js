@@ -6,7 +6,7 @@ let perguntaCounter = 0;
 // Carrega todos os quizzes
 async function loadQuizzes() {
     try {
-        const response = await fetch('http://localhost:3000/quizzes');
+        const response = await fetch('/quizzes');
         if (!response.ok) {
             throw new Error(`Erro HTTP: ${response.status}`);
         }
@@ -237,14 +237,14 @@ async function saveQuiz() {
     try {
         let response;
         if (editingQuizId) {
-            response = await fetch(`http://localhost:3000/quizzes/${editingQuizId}`, {
+            response = await fetch(`/quizzes/${editingQuizId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...quizData, id: editingQuizId })
             });
         } else {
             quizData.id = Date.now().toString();
-            response = await fetch('http://localhost:3000/quizzes', {
+            response = await fetch('/quizzes', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(quizData)
@@ -389,7 +389,7 @@ async function deleteQuiz(id) {
 
     if (result.isConfirmed) {
         try {
-            const response = await fetch(`http://localhost:3000/quizzes/${id}`, {
+            const response = await fetch(`/quizzes/${id}`, {
                 method: 'DELETE'
             });
 

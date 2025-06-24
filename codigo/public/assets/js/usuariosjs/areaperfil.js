@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 let usuario = null;
 let currentPage = 1;
 const eventsPerPage = 4; // Changed from 10 to 4 to match quiz pagination

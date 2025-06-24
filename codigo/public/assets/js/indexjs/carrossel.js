@@ -5,7 +5,7 @@ const indicatorsContainer = document.querySelector('#eventCarousel .carousel-ind
 // Busca eventos do JSON Server
 async function fetchEvents() {
   try {
-    const res = await fetch('http://localhost:3000/eventos');
+    const res = await fetch('/eventos');
     if (!res.ok) throw new Error('Erro ao buscar eventos');
     const data = await res.json();
     return data;
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     try {
         // Fetch events from JSON Server (porta 3000)
-        const response = await fetch('http://localhost:3000/eventos');
+        const response = await fetch('/eventos');
         let events = await response.json();
 
         // Filter active events and sort by closest date
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Create carousel items - Atualizado para usar a porta 3000
         carouselInner.innerHTML = events.map((event, index) => `
         <div class="carousel-item ${index === 0 ? 'active' : ''}">
-          <img src="http://localhost:3000/${event.imagem}" class="d-block w-100" alt="${event.titulo}">
+          <img src="/${event.imagem}" class="d-block w-100" alt="${event.titulo}">
           <div class="carousel-caption d-none d-md-block">
             <h5>${event.titulo}</h5>
             <p>Data: ${new Date(event.data).toLocaleDateString('pt-BR')}</p>

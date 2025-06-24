@@ -188,13 +188,6 @@
       ]
     },
     {
-      "id": "1750649524784",
-      "idEvento": "3",
-      "idUsuario": [
-        "1749560312233"
-      ]
-    },
-    {
       "id": "1750649529859",
       "idEvento": "5",
       "idUsuario": [
@@ -276,34 +269,34 @@
         {
           "idQuiz": "1750635390689",
           "feito": true,
-          "dataRealizacao": "2025-06-23T23:41:57.236Z",
+          "dataRealizacao": "2025-06-24T18:48:54.364Z",
           "questions": [
             {
               "question": "Como você lida com riscos?",
-              "response": "Aceito calculadamente"
+              "response": "Abraço os desafios"
             },
             {
               "question": "Qual sua maior motivação para empreender?",
-              "response": "Impacto social"
+              "response": "Realização pessoal"
             },
             {
               "question": "Como você lida com fracassos?",
-              "response": "Evito situações de risco"
+              "response": "Aprendo com os erros"
             },
             {
               "question": "Qual sua abordagem para inovação?",
-              "response": "Disrupção total"
+              "response": "Adapto ideias existentes"
             },
             {
               "question": "Como você gerencia recursos?",
-              "response": "Planejado"
+              "response": "Arrojado"
             }
           ]
         },
         {
           "idQuiz": "1750635390692",
           "feito": true,
-          "dataRealizacao": "2025-06-23T23:42:35.533Z",
+          "dataRealizacao": "2025-06-24T17:49:00.455Z",
           "questions": [
             {
               "question": "Uso principal da IA na sua área?",
@@ -407,6 +400,13 @@
       "tipo": "usuario",
       "id": "1750720057738",
       "senha": "123"
+    },
+    {
+      "id": "1750790972369",
+      "nome": "usuario usuario",
+      "email": "usuarioteste@gmail.com.br",
+      "senha": "123456",
+      "tipo": "usuario"
     }
   ],
   "avaliacoeseventos": [

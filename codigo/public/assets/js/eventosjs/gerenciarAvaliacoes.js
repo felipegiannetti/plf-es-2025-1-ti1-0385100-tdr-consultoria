@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 let currentAvaliacaoId = null;
 
 // Carregar todas as avaliações e eventos
