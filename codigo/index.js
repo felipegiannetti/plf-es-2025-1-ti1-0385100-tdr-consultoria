@@ -25,7 +25,7 @@ const server = express()
 server.use(cors())
 
 // Configurar JSON Server
-const jsonServerRouter = jsonServer.router('./db/db.json', { readOnly: false })
+const jsonServerRouter = jsonServer.router('./codigo/db/db.json', { readOnly: false })
 const jsonServerMiddlewares = jsonServer.defaults({ noCors: true })
 
 // Configurar pastas para upload
