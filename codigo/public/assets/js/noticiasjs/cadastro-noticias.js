@@ -84,14 +84,24 @@ async function handleSubmit(event) {
 
         if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
-        alert('Notícia salva com sucesso!');
+        // Clear form and reload news without showing success message
         document.getElementById('form-cadastro').reset();
         document.getElementById('noticiaId').value = '';
         document.getElementById('imagem-info').textContent = '';
         loadNews();
+        
     } catch (error) {
         console.error('Erro:', error);
-        alert('Erro ao salvar notícia: ' + error.message);
+        // Keep error alert with SweetAlert
+        await Swal.fire({
+            title: 'Erro!',
+            text: 'Erro ao salvar notícia: ' + error.message,
+            icon: 'error',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal-custom-button'
+            }
+        });
     }
 }
 
@@ -118,18 +128,48 @@ async function editNews(id) {
 }
 
 async function deleteNews(id) {
-    if (confirm('Tem certeza que deseja excluir esta notícia?')) {
-        try {
-            const response = await fetch(`${API_URL}/noticias/${id}`, { method: 'DELETE' });
+    try {
+        // Show confirmation dialog
+        const result = await Swal.fire({
+            title: 'Confirmar exclusão?',
+            text: 'Esta ação não pode ser desfeita!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal-custom-button',
+                cancelButton: 'swal-custom-button'
+            }
+        });
 
-            if (!response.ok) throw new Error('Erro ao excluir notícia');
+        // If user confirmed
+        if (result.isConfirmed) {
+            const response = await fetch(`${API_URL}/noticias/${id}`, { 
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            });
 
-            alert('Notícia excluída com sucesso!');
-            loadNews();
-        } catch (error) {
-            console.error('Erro:', error);
-            alert('Erro ao excluir notícia: ' + error.message);
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            // Reload news list after successful deletion
+            await loadNews();
         }
+    } catch (error) {
+        console.error('Erro:', error);
+        // Show error message if deletion fails
+        await Swal.fire({
+            title: 'Erro!',
+            text: 'Não foi possível excluir a notícia.',
+            icon: 'error',
+            customClass: {
+                popup: 'swal2-popup',
+                confirmButton: 'swal-custom-button'
+            }
+        });
     }
 }
 

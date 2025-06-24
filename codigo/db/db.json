@@ -162,7 +162,8 @@
       "id": "1750647398044",
       "idEvento": "1",
       "idUsuario": [
-        "1"
+        "1",
+        "1749560312233"
       ]
     },
     {
@@ -405,7 +406,7 @@
       "email": "teste@gmail.com",
       "tipo": "usuario",
       "id": "1750720057738",
-      "senha": "123456"
+      "senha": "123"
     }
   ],
   "avaliacoeseventos": [
@@ -553,15 +554,14 @@
       "autorId": "1749560312233"
     },
     {
-      "id": "1750635390688",
       "titulo": "Blockchain Revoluciona Mercado Financeiro",
       "descricao_breve": "Instituições financeiras tradicionais adotam tecnologia blockchain para modernizar operações e reduzir custos de transações.",
       "texto_completo": "Os principais bancos globais anunciam hoje uma iniciativa conjunta para implementar soluções baseadas em blockchain, visando revolucionar o sistema financeiro tradicional. O projeto, estimado em US$ 2 bilhões, promete reduzir custos de transações internacionais em até 60% e o tempo de liquidação para segundos. O consórcio inclui 15 das maiores instituições financeiras do mundo e conta com suporte de reguladores. Especialistas preveem que esta movimentação poderá acelerar a adoção de moedas digitais de bancos centrais (CBDCs) e transformar fundamentalmente o setor bancário nos próximos cinco anos.",
       "categoria": "Tecnologia",
+      "autor": "Admin",
+      "data_publicacao": "2025-06-24T00:15:04.055Z",
       "imagem": "assets/img/noticias/1750637048190-blockchain.png",
-      "data": "2025-06-23T00:04:08.213Z",
-      "autor": "Felipe Giannetti Fontenelle",
-      "autorId": "1749560312233"
+      "id": "1750635390688"
     },
     {
       "id": "1750648077138",
@@ -570,7 +570,7 @@
       "texto_completo": "Uma inovadora startup de tecnologia apresentou ao mercado uma nova ferramenta de inteligência artificial capaz de criar conteúdos digitais complexos de forma totalmente autônoma. A IA consegue gerar textos otimizados para SEO, imagens realistas e até vídeos curtos, tudo em questão de minutos. Especialistas acreditam que essa tecnologia pode transformar o setor de marketing digital, reduzindo custos e acelerando processos criativos. Grandes empresas já demonstraram interesse em adotar a solução para automatizar parte de suas campanhas. Apesar do entusiasmo, especialistas alertam para a necessidade de regulamentação, garantindo o uso ético e evitando a disseminação de informações falsas.",
       "categoria": "Tecnologia",
       "imagem": "assets/img/noticias/1750648077152-IA.png",
-      "data": "2025-06-23T03:07:57.169Z",
+      "data": "2025-06-24T00:29:26.609Z",
       "autor": "Felipe Giannetti Fontenelle",
       "autorId": "1749560312233"
     }
