@@ -136,18 +136,19 @@ function adicionarInformacoesEvento(evento) {
     const infoDiv = document.createElement('div');
     infoDiv.className = 'container my-4';
     infoDiv.innerHTML = `
-        <div class="card mb-4">
-            <div class="card-header text-center">
-                <h3 class="mb-0">
-                    <i class="fas fa-qrcode me-2"></i>QR Code de Localização
-                </h3>
-            </div>
-            <div class="card-body text-center">
-                <h4 class="text-primary mb-3">${evento.titulo}</h4>
-                <p class="text-mutedd mb-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <h3 class="card-title">
+                        <i class="fas fa-qrcode me-2"></i>QR Code de Localização
+                    </h3>
+                </div>
+                
+                <h4 class="text-primary mb-3 text-center">${evento.titulo}</h4>
+                <p class="text-mutedd mb-3 text-center">
                     <i class="fas fa-map-marker-alt me-2"></i>${evento.local}
                 </p>
-                <p class="text-mutedd mb-4">
+                <p class="text-mutedd mb-4 text-center">
                     <i class="fas fa-calendar-alt me-2"></i>${new Date(evento.data).toLocaleDateString('pt-BR', {
                         day: '2-digit',
                         month: '2-digit',
@@ -166,7 +167,7 @@ function adicionarInformacoesEvento(evento) {
                     <strong>Como usar:</strong> Escaneie o QR Code com seu celular para abrir a localização no mapa
                 </div>
                 
-                <div class="mt-4">
+                <div class="mt-4 text-center">
                     <button class="btn btn-secondary me-2" onclick="window.history.back()">
                         <i class="fas fa-arrow-left me-2"></i>Voltar
                     </button>
