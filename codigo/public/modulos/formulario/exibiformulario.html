@@ -9,6 +9,8 @@
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../../assets/css/formularioCSS/exibiFormulario.css" rel="stylesheet">
+    <link href="../../assets/css/sweetalert-custom.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../assets/js/globaisjs/navbarplusfooterimplementador.js"></script>
     <script src="../../assets/js/formulariojs/exibicaoformulario.js"></script>
 
@@ -393,6 +395,19 @@
                     </div>
                 `;
 
+                // Adicione após salvar com sucesso no finalizar quiz (antes de atualizar o HTML):
+                await Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Quiz finalizado com sucesso!',
+                    icon: 'success',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    customClass: {
+                        popup: 'swal2-popup',
+                        confirmButton: 'swal-custom-button'
+                    }
+                });
+
             } catch (error) {
                 console.error('Erro ao finalizar quiz:', error);
                 document.getElementById("cardQuiz").innerHTML = `
@@ -411,14 +426,39 @@
                         </div>
                     </div>
                 `;
+
+                // NOVO: Mostrar mensagem de erro detalhada
+                await Swal.fire({
+                    title: 'Erro!',
+                    text: 'Ocorreu um erro ao salvar suas respostas: ' + error.message,
+                    icon: 'error',
+                    customClass: {
+                        popup: 'swal2-popup',
+                        confirmButton: 'swal-custom-button'
+                    }
+                });
             }
         }
 
         // Função para refazer o quiz
         function refazerQuiz() {
-            if (confirm('Tem certeza que deseja refazer este quiz? Suas respostas anteriores serão substituídas.')) {
-                iniciarQuiz();
-            }
+            Swal.fire({
+    title: 'Confirmar',
+    text: 'Tem certeza que deseja refazer este quiz? Suas respostas anteriores serão substituídas.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sim, refazer',
+    cancelButtonText: 'Cancelar',
+    customClass: {
+        popup: 'swal2-popup',
+        confirmButton: 'swal-custom-button',
+        cancelButton: 'swal-custom-button'
+    }
+}).then((result) => {
+    if (result.isConfirmed) {
+        iniciarQuiz();
+    }
+});
         }
 
         // Inicializa quando a página carregar

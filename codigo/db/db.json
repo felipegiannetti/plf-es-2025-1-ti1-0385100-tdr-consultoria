@@ -188,13 +188,6 @@
       ]
     },
     {
-      "id": "1750649524784",
-      "idEvento": "3",
-      "idUsuario": [
-        "1749560312233"
-      ]
-    },
-    {
       "id": "1750649529859",
       "idEvento": "5",
       "idUsuario": [
@@ -303,7 +296,7 @@
         {
           "idQuiz": "1750635390692",
           "feito": true,
-          "dataRealizacao": "2025-06-23T23:42:35.533Z",
+          "dataRealizacao": "2025-06-24T17:49:00.455Z",
           "questions": [
             {
               "question": "Uso principal da IA na sua área?",

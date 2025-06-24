@@ -81,6 +81,15 @@ server.post('/upload-noticia', uploadNoticias.single('imagem'), (req, res) => {
 server.use('/assets/img/eventos', express.static(eventosPath))
 server.use('/assets/img/noticias', express.static(noticiasPath))
 
+// Servir arquivos estáticos da pasta public
+server.use(express.static(path.join(__dirname, 'public')))
+server.use(express.static(__dirname));
+
+// Rota para a página inicial
+server.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'))
+})
+
 // Usar middlewares do JSON Server
 server.use(jsonServerMiddlewares)
 server.use(jsonServerRouter)
