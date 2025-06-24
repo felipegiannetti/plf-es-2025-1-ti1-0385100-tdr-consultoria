@@ -259,20 +259,22 @@ Com base em nossa pesquisa em Belo Horizonte:
 
 ## Etapa de Entendimento
 
-#### Matriz CSD e Stakeholders 
+### Matriz CSD e Stakeholders 
 ![Tela de Funcionalidade](files/MatrizAlinhamento.jpg)
 
-#### Entrevistas qualitativas
+### Entrevistas qualitativas
 ![Tela de Funcionalidade](files/EntrevistaQualitativa.jpg)
 
 ## Etapa de Definição
 
 ### Personas
 
-
-**Persona 1:** ![Tela de Funcionalidade](files/Persona1.jpg)
-**Persona 2:** ![Tela de Funcionalidade](files/Persona2.jpg)
-**Persona 3:** ![Tela de Funcionalidade](files/Persona3.jpg)
+### Persona 1 
+![Tela de Funcionalidade](files/Persona1.jpg)
+### Persona 2 
+![Tela de Funcionalidade](files/Persona2.jpg)
+### Persona 3
+![Tela de Funcionalidade](files/Persona3.jpg)
 
 # Product Design
 
