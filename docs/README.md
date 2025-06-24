@@ -259,16 +259,17 @@ Com base em nossa pesquisa em Belo Horizonte:
 
 ## Etapa de Entendimento
 
-**Matriz CSD e Stakeholders:**<img src="./files/MatrizAlinhamento.jpg">
-**Entrevistas qualitativas e highlights de pesquisa:** <img src="./files/EntrevistaQualitativa.jpg">
+**Matriz CSD e Stakeholders:** ![Tela de Funcionalidade](files/MatrizAlinhamento.jpg)
+**Entrevistas qualitativas e highlights de pesquisa:** ![Tela de Funcionalidade](files/EntrevistaQualitativa.jpg)
 
 ## Etapa de Definição
 
 ### Personas
 
-**Persona 1:**<img src="./files/Persona1.jpg">
-**Persona 2:**<img src="./files/Persona2.jpg">
-**Persona 3:**<img src="./files/Persona3.jpg">
+
+**Persona 1:** ![Tela de Funcionalidade](files/Persona1.jpg)
+**Persona 2:** ![Tela de Funcionalidade](files/Persona2.jpg)
+**Persona 3:** ![Tela de Funcionalidade](files/Persona3.jpg)
 
 # Product Design
 
@@ -384,7 +385,6 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 
 Estes são os protótipos de telas do sistema.
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/l7hYLsg3odnHdabNuVVXJZ/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 
 https://www.figma.com/design/l7hYLsg3odnHdabNuVVXJZ/Untitled?node-id=0-1&p=f&t=QqqFXmFTULKggifT-0
 
@@ -479,7 +479,7 @@ Permite a inclusão, leitura, alteração e exclusão de noticias para o sistema
   * Leia as noticias presentes no site
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeNoticias.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeNoticias.jpg)
 
 ##### Funcionalidade 4 - Eventos
 
@@ -496,7 +496,7 @@ Permite a inclusão, leitura, alteração e exclusão de eventos para o sistema
   * Avalie o evento
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeEventos.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeEventos.jpg)
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeDetalhesDeEventos.png)
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeInscricao.png)
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaQRCode.png)
@@ -515,6 +515,9 @@ Permite a inclusão, leitura, alteração e exclusão de usuarios para o sistema
 * **Tela da funcionalidade**:
 
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario2.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario3.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario4.jpg)
 
 ##### Funcionalidade 6 - Gestao de dados
 
@@ -531,6 +534,11 @@ Permite a inclusão, leitura, alteração e exclusão de todos os dados do siste
 * **Tela da funcionalidade**:
 
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaADM.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaADMEventos.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaAMDNoticias.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaAMDUsuarios.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaADMAvaliacoes.jpg)
+
 
 ## Estruturas de Dados
 
