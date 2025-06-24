@@ -1,26 +1,39 @@
 body {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: #eee;
+    color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     margin-top: 120px;
+    /* CORREÇÃO: Scroll behavior controlado */
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .orangebg {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
-#cardQuiz{
+/* CORREÇÃO: Container do quiz fixo */
+#cardQuiz {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 3rem;
     padding: 0 20px;
+    /* CORREÇÃO: Posicionamento fixo */
+    position: relative;
+    min-height: calc(100vh - 200px);
+    justify-content: center;
+    /* CORREÇÃO: Prevenir movimento */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
+/* CORREÇÃO: Card com posição estável */
 .card {
     background: #fff;
-    color: #eee;
+    color: #333;
     border-radius: 20px;
     padding: 40px;
     box-shadow: 
@@ -30,164 +43,26 @@ body {
     border: 1px solid #ff7a00;
     backdrop-filter: blur(10px);
     text-align: center;
-    transition: all 0.3s ease;
-    animation: fadeIn 0.6s ease-out;
+    transition: none; /* CORREÇÃO: Remove transições que podem causar movimento */
+    animation: none; /* CORREÇÃO: Remove animações automáticas */
+    /* CORREÇÃO: Posicionamento estável */
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    transform: translateZ(0);
+    will-change: auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .card:hover {
     box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.6),
         0 8px 20px rgba(255, 122, 0, 0.2);
+    /* CORREÇÃO: Remove transform no hover */
 }
 
-.card-header {
-    background: linear-gradient(145deg, #fff, #f8f9fa);
-    border-bottom: 2px solid #ff7a00;
-    border-radius: 15px;
-    padding: 20px;
-    margin: -20px -20px 30px -20px;
-}
-
-.card-header h3 {
-    color: #ff7a00;
-}
-
-.card-body {
-    color: #333;
-}
-
-.card-body h2,
-.card h2 {
-    color: #ff7a00;
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(255, 122, 0, 0.3);
-}
-
-.card p {
-    color: #ccc;
-    font-weight: 400;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-#title {
-    color: #ff9a2e;
-    transition: all 0.3s ease;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(255, 122, 0, 0.3);
-}
-
-#title:hover {
-    color: #ff7a00;
-    text-decoration: none;
-}
-
-#question {
-    color: #333;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    line-height: 1.5;
-    text-align: left;
-}
-
-/* Progress Bar */
-.progress {
-    height: 8px;
-    background: rgba(42, 42, 42, 0.8);
-    border-radius: 10px;
-    margin-top: 15px;
-    overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.progress-bar {
-    background-color: #ff7a00;
-    border-radius: 10px;
-    transition: width 0.5s ease;
-    box-shadow: 0 2px 8px rgba(255, 122, 0, 0.4);
-}
-
-/* Options/Form Checks */
-.form-check {
-    background: rgba(42, 42, 42, 0.7);
-    border: 2px solid #444;
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.form-check:hover {
-    background: rgba(255, 122, 0, 0.1);
-    border-color: #ff7a00;
-    transform: translateX(5px);
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.3),
-        0 4px 15px rgba(255, 122, 0, 0.2);
-}
-
-.form-check-input {
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
-    background: linear-gradient(145deg, #333, #2a2a2a);
-    border: 2px solid #666;
-    border-radius: 50%;
-    cursor: pointer;
-    display:none
-}
-
-.form-check-input:checked {
-    background: linear-gradient(145deg, #ff7a00, #e56b00);
-    border-color: #ff7a00;
-    box-shadow: 0 0 10px rgba(255, 122, 0, 0.5);
-}
-
-.form-check-input:focus {
-    box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.2);
-}
-
-.form-check-label {
-    color: #444;
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
-    line-height: 1.4;
-    display: flex;
-    align-items: center;
-}
-
-.form-check:has(.form-check-input:checked) {
-    background: rgba(255, 122, 0, 0.15);
-    border-color: #ff7a00;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.3),
-        0 0 15px rgba(255, 122, 0, 0.3);
-}
-
-.form-check:has(.form-check-input:checked) .form-check-label {
-    color: #fff;
-    font-weight: 700;
-}
-
-/* Previous answers section */
-.mb-3.p-3.bg-light.rounded {
-    border: 1px solid rgba(255, 122, 0, 0.2);
-}
-
-.mb-3.p-3.bg-light.rounded strong {
-    color: #ff7a00;
-}
-
-/* Botões */
+/* CORREÇÃO: Botões sem movimento */
 .btn {
     padding: 14px 28px;
     border-radius: 12px;
@@ -195,129 +70,122 @@ body {
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease; /* CORREÇÃO: Apenas transições de cor */
     border: none;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     margin: 8px;
     cursor: pointer;
+    /* CORREÇÃO: Prevenir outline e foco */
+    outline: none !important;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3) !important;
+    /* CORREÇÃO: Remove transform no foco/clique */
 }
 
 .btn-primary {
     background: linear-gradient(145deg, #ff7a00, #e56b00);
-    color: white;
+    color: white !important;
     box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
 }
 
 .btn-primary:hover {
     background: linear-gradient(145deg, #e56b00, #cc5e00);
-    transform: translateY(-2px);
+    /* CORREÇÃO: Remove translateY */
     box-shadow: 0 6px 20px rgba(255, 122, 0, 0.6);
-    color: white;
+    color: white !important;
 }
 
-/* Responsividade */
+.btn-primary:active {
+    background: linear-gradient(145deg, #cc5e00, #b35300);
+    /* CORREÇÃO: Remove movimento no clique */
+    box-shadow: 0 2px 10px rgba(255, 122, 0, 0.4);
+}
+
+/* CORREÇÃO: Form checks sem animação de movimento */
+.form-check {
+    background: rgba(42, 42, 42, 0.7);
+    border: 2px solid #444;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 15px;
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* CORREÇÃO: Remove translateX */
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.form-check:hover {
+    background: rgba(255, 122, 0, 0.1);
+    border-color: #ff7a00;
+    /* CORREÇÃO: Remove translateX */
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 15px rgba(255, 122, 0, 0.2);
+}
+
+/* CORREÇÃO: Inputs sem outline problemático */
+.form-check-input:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* CORREÇÃO: Labels sem problemas de foco */
+.form-check-label {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+/* CORREÇÃO: Animações completamente removidas */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CORREÇÃO: Remove todas as animações automáticas */
+.form-check {
+    animation: none !important;
+}
+
+.form-check:nth-child(1),
+.form-check:nth-child(2),
+.form-check:nth-child(3),
+.form-check:nth-child(4),
+.form-check:nth-child(5) { 
+    animation: none !important;
+    animation-delay: 0s !important;
+}
+
+/* CORREÇÃO: Prevenir scroll suave */
+html {
+    scroll-behavior: auto !important;
+}
+
+/* CORREÇÃO: Container estável */
+.container {
+    position: relative;
+    transform: translateZ(0);
+}
+
+/* CORREÇÃO: Responsividade sem movimento */
 @media (max-width: 768px) {
     #cardQuiz {
         margin-top: 2rem;
         padding: 0 15px;
+        min-height: calc(100vh - 160px);
     }
     
-    .card {
-        padding: 30px 20px;
-        width: 100%;
-        max-width: 500px;
+    .btn:hover {
+        transform: none !important; /* CORREÇÃO: Remove transform em mobile */
     }
-    
-    .card-header {
-        margin: -15px -15px 25px -15px;
-        padding: 15px;
-    }
-    
-    #title {
-        font-size: 1.8rem;
-    }
-    
-    .card h2 {
-        font-size: 1.8rem;
-    }
-    
-    #question {
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .form-check {
-        padding: 12px 16px;
-    }
-    
-    .form-check-label {
-        font-size: 1rem;
-    }
-    
-    .btn {
-        width: 100%;
-        margin: 8px 0;
-        padding: 12px 20px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        padding: 25px 15px;
-    }
-    
-    #title {
-        font-size: 1.6rem;
-    }
-    
-    .card h2 {
-        font-size: 1.6rem;
-    }
-    
-    #question {
-        font-size: 1.1rem;
-    }
-}
-
-/* Animações */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.form-check {
-    animation: slideIn 0.3s ease-out;
-}
-
-.form-check:nth-child(1) { animation-delay: 0.1s; }
-.form-check:nth-child(2) { animation-delay: 0.2s; }
-.form-check:nth-child(3) { animation-delay: 0.3s; }
-.form-check:nth-child(4) { animation-delay: 0.4s; }
-.form-check:nth-child(5) { animation-delay: 0.5s; }
-
-/* Text colors */
-.text-orange {
-    color: #ff7a00 !important;
-}
-
-.text-primary {
-    color: #ff7a00 !important;
 }

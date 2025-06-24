@@ -162,13 +162,7 @@
       "id": "1750647398044",
       "idEvento": "1",
       "idUsuario": [
-        "1"
-      ]
-    },
-    {
-      "id": "1750647399265",
-      "idEvento": "1",
-      "idUsuario": [
+        "1",
         "1749560312233"
       ]
     },
@@ -282,7 +276,7 @@
         {
           "idQuiz": "1750635390689",
           "feito": true,
-          "dataRealizacao": "2025-06-23T03:24:06.758Z",
+          "dataRealizacao": "2025-06-23T23:41:57.236Z",
           "questions": [
             {
               "question": "Como você lida com riscos?",
@@ -290,15 +284,15 @@
             },
             {
               "question": "Qual sua maior motivação para empreender?",
-              "response": "Inovação"
+              "response": "Impacto social"
             },
             {
               "question": "Como você lida com fracassos?",
-              "response": "Aprendo com os erros"
+              "response": "Evito situações de risco"
             },
             {
               "question": "Qual sua abordagem para inovação?",
-              "response": "Sigo tendências"
+              "response": "Disrupção total"
             },
             {
               "question": "Como você gerencia recursos?",
@@ -307,62 +301,66 @@
           ]
         },
         {
+          "idQuiz": "1750635390692",
+          "feito": true,
+          "dataRealizacao": "2025-06-23T23:42:35.533Z",
+          "questions": [
+            {
+              "question": "Uso principal da IA na sua área?",
+              "response": "Atendimento"
+            },
+            {
+              "question": "Maior benefício da IA?",
+              "response": "Redução de custos"
+            }
+          ]
+        },
+        {
+          "idQuiz": "1750635390690",
+          "feito": true,
+          "dataRealizacao": "2025-06-23T23:58:21.700Z",
+          "questions": [
+            {
+              "question": "Qual métrica é mais importante para SEO?",
+              "response": "Taxa de rejeição"
+            },
+            {
+              "question": "Melhor estratégia para redes sociais?",
+              "response": "Anúncios pagos"
+            },
+            {
+              "question": "Ferramenta essencial para análise?",
+              "response": "Moz Pro"
+            }
+          ]
+        },
+        {
+          "idQuiz": "1750635390695",
+          "feito": true,
+          "dataRealizacao": "2025-06-24T00:03:11.951Z",
+          "questions": [
+            {
+              "question": "Abordagem para inovação?",
+              "response": "Disruptiva"
+            },
+            {
+              "question": "Fonte de criatividade?",
+              "response": "Colaboração"
+            }
+          ]
+        },
+        {
           "idQuiz": "1750635390691",
           "feito": true,
-          "dataRealizacao": "2025-06-23T03:14:38.550Z",
+          "dataRealizacao": "2025-06-24T00:07:39.117Z",
           "questions": [
             {
               "question": "Metodologia preferida?",
-              "response": "Waterfall"
+              "response": "Kanban"
             },
             {
               "question": "Como prioriza tarefas?",
               "response": "ROI"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390692",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:20:46.749Z",
-          "questions": [
-            {
-              "question": "Uso principal da IA na sua área?",
-              "response": "Automação"
-            },
-            {
-              "question": "Maior benefício da IA?",
-              "response": "Inovação"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390694",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:21:08.051Z",
-          "questions": [
-            {
-              "question": "Prioridade em ESG?",
-              "response": "Social"
-            },
-            {
-              "question": "Maior desafio sustentável?",
-              "response": "Implementação"
-            }
-          ]
-        },
-        {
-          "idQuiz": "1750635390693",
-          "feito": true,
-          "dataRealizacao": "2025-06-23T03:23:32.958Z",
-          "questions": [
-            {
-              "question": "Estilo de liderança predominante?",
-              "response": "Situacional"
-            },
-            {
-              "question": "Como motiva sua equipe?",
-              "response": "Reconhecimento"
             }
           ]
         }
@@ -402,6 +400,13 @@
       "tipo": "usuario",
       "id": "1750478148056",
       "senha": "123456"
+    },
+    {
+      "nome": "teste",
+      "email": "teste@gmail.com",
+      "tipo": "usuario",
+      "id": "1750720057738",
+      "senha": "123"
     }
   ],
   "avaliacoeseventos": [
@@ -433,15 +438,6 @@
       "data": "10/06/2025, 11:20:13"
     },
     {
-      "id": "00d0",
-      "idavaliacao": 1749565279401,
-      "idevento": "5",
-      "nome": "Manuel",
-      "comentario": "O Miguel mente.",
-      "rating": 4,
-      "data": "10/06/2025, 11:21:19"
-    },
-    {
       "id": "3b98",
       "idavaliacao": 1749565483052,
       "idevento": "5",
@@ -460,15 +456,6 @@
       "data": "10/06/2025, 11:29:41"
     },
     {
-      "idavaliacao": 1749588051111,
-      "idevento": "1",
-      "nome": "Cesar Sokoli",
-      "comentario": "Muito bom evento",
-      "rating": 4,
-      "data": "10/06/2025, 17:40:51",
-      "id": "Nc6smye"
-    },
-    {
       "id": "b45d",
       "idavaliacao": 1749729165147,
       "idevento": "1",
@@ -476,22 +463,6 @@
       "comentario": "muito ruim",
       "rating": 4,
       "data": "12/06/2025, 08:52:45"
-    },
-    {
-      "id": "9384",
-      "idevento": 1,
-      "nome": "Felipe Fonseca",
-      "rating": 3,
-      "comentario": "Olá! Eu estou usando Whatsapp.",
-      "data": "2025-06-17T11:52:40.202Z"
-    },
-    {
-      "id": "a57d",
-      "idevento": 1,
-      "nome": "Felipe Fonseca",
-      "rating": 4,
-      "comentario": "Olá",
-      "data": "2025-06-17T11:57:33.406Z"
     },
     {
       "idevento": 8,
@@ -583,15 +554,14 @@
       "autorId": "1749560312233"
     },
     {
-      "id": "1750635390688",
       "titulo": "Blockchain Revoluciona Mercado Financeiro",
       "descricao_breve": "Instituições financeiras tradicionais adotam tecnologia blockchain para modernizar operações e reduzir custos de transações.",
       "texto_completo": "Os principais bancos globais anunciam hoje uma iniciativa conjunta para implementar soluções baseadas em blockchain, visando revolucionar o sistema financeiro tradicional. O projeto, estimado em US$ 2 bilhões, promete reduzir custos de transações internacionais em até 60% e o tempo de liquidação para segundos. O consórcio inclui 15 das maiores instituições financeiras do mundo e conta com suporte de reguladores. Especialistas preveem que esta movimentação poderá acelerar a adoção de moedas digitais de bancos centrais (CBDCs) e transformar fundamentalmente o setor bancário nos próximos cinco anos.",
       "categoria": "Tecnologia",
+      "autor": "Admin",
+      "data_publicacao": "2025-06-24T00:15:04.055Z",
       "imagem": "assets/img/noticias/1750637048190-blockchain.png",
-      "data": "2025-06-23T00:04:08.213Z",
-      "autor": "Felipe Giannetti Fontenelle",
-      "autorId": "1749560312233"
+      "id": "1750635390688"
     },
     {
       "id": "1750648077138",
@@ -600,7 +570,7 @@
       "texto_completo": "Uma inovadora startup de tecnologia apresentou ao mercado uma nova ferramenta de inteligência artificial capaz de criar conteúdos digitais complexos de forma totalmente autônoma. A IA consegue gerar textos otimizados para SEO, imagens realistas e até vídeos curtos, tudo em questão de minutos. Especialistas acreditam que essa tecnologia pode transformar o setor de marketing digital, reduzindo custos e acelerando processos criativos. Grandes empresas já demonstraram interesse em adotar a solução para automatizar parte de suas campanhas. Apesar do entusiasmo, especialistas alertam para a necessidade de regulamentação, garantindo o uso ético e evitando a disseminação de informações falsas.",
       "categoria": "Tecnologia",
       "imagem": "assets/img/noticias/1750648077152-IA.png",
-      "data": "2025-06-23T03:07:57.169Z",
+      "data": "2025-06-24T00:29:26.609Z",
       "autor": "Felipe Giannetti Fontenelle",
       "autorId": "1749560312233"
     }

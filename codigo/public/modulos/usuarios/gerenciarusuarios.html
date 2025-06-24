@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="../../assets/css/usuariosCSS/gerenciarusuarios.css" rel="stylesheet">
+    <link href="../../assets/css/sweetalert-custom.css" rel="stylesheet">
 </head>
 <body>
     <div id="navbarimplementador"></div>
@@ -18,7 +19,7 @@
 
         <!-- Search and Filter Section -->
         <div class="row mb-4">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2">
                 <div class="input-group">
                     <input type="text" id="searchInput" class="form-control" placeholder="Buscar usuários...">
                     <button class="btn btn-primary" type="button" onclick="searchUsers()">
@@ -26,14 +27,14 @@
                     </button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mt-2">
                 <select class="form-select" id="filterType">
                     <option value="all">Todos os tipos</option>
                     <option value="admin">Administradores</option>
                     <option value="usuario">Usuários</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 mt-2">
                 <button class="btn btn-success w-100" onclick="showAddUserModal()">
                     <i class="fas fa-user-plus"></i> Novo
                 </button>

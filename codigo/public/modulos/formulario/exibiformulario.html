@@ -86,19 +86,17 @@
             } catch (error) {
                 console.error('Erro ao carregar quiz:', error);
                 document.getElementById("cardQuiz").innerHTML = `
-                    <div class="container my-5">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <div class="mb-4">
-                                    <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
-                                </div>
-                                <h2>Quiz não encontrado</h2>
-                                <p>O quiz solicitado não foi encontrado no sistema.</p>
-                                <div class="mt-3">
-                                    <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary">
-                                        <i class="fas fa-arrow-left me-2"></i>Voltar para Lista de Quizzes
-                                    </a>
-                                </div>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                            </div>
+                            <h2>Quiz não encontrado</h2>
+                            <p>O quiz solicitado não foi encontrado no sistema.</p>
+                            <div class="mt-3">
+                                <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-left me-2"></i>Voltar para Lista de Quizzes
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -133,19 +131,17 @@
             } catch (error) {
                 console.error('Erro ao verificar usuário:', error);
                 document.getElementById("cardQuiz").innerHTML = `
-                    <div class="container my-5">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <div class="mb-4">
-                                    <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
-                                </div>
-                                <h2>Usuário não encontrado</h2>
-                                <p>O ID do usuário ${userId} não foi encontrado no sistema.</p>
-                                <div class="mt-3">
-                                    <a href="../../../index.html" class="btn btn-primary">
-                                        <i class="fas fa-home me-2"></i>Voltar para Home
-                                    </a>
-                                </div>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                            </div>
+                            <h2>Usuário não encontrado</h2>
+                            <p>O ID do usuário ${userId} não foi encontrado no sistema.</p>
+                            <div class="mt-3">
+                                <a href="../../../index.html" class="btn btn-primary">
+                                    <i class="fas fa-home me-2"></i>Voltar para Home
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -174,24 +170,22 @@
             }
 
             document.getElementById("cardQuiz").innerHTML = `
-                <div class="container my-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="mb-4">
-                                <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
-                            </div>
-                            <h2 class="text-orange">Quiz já realizado!</h2>
-                            <p class="text-dark">Você já completou o quiz <strong class="text-orange">"${quizData.titulo}"</strong> anteriormente.</p>
-                            <p class="text-dark"><strong class="text-orange">Data da última participação:</strong> ${new Date(quizFeito.dataRealizacao).toLocaleDateString('pt-BR')}</p>
-                            ${respostasHTML}
-                            <div class="mt-4">
-                                <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary me-2">
-                                    <i class="fas fa-arrow-left me-2"></i>Voltar para Quizzes
-                                </a>
-                                <button class="btn btn-secondary" onclick="refazerQuiz()">
-                                    <i class="fas fa-redo me-2"></i>Refazer Quiz
-                                </button>
-                            </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                        </div>
+                        <h2 class="text-orange">Quiz já realizado!</h2>
+                        <p class="text-dark">Você já completou o quiz <strong class="text-orange">"${quizData.titulo}"</strong> anteriormente.</p>
+                        <p class="text-dark"><strong class="text-orange">Data da última participação:</strong> ${new Date(quizFeito.dataRealizacao).toLocaleDateString('pt-BR')}</p>
+                        ${respostasHTML}
+                        <div class="mt-4">
+                            <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary me-2">
+                                <i class="fas fa-arrow-left me-2"></i>Voltar para Quizzes
+                            </a>
+                            <button class="btn btn-secondary" onclick="refazerQuiz()">
+                                <i class="fas fa-redo me-2"></i>Refazer Quiz
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -212,46 +206,75 @@
 
         // Função para mostrar a pergunta atual
         function mostrarPergunta() {
+            if (!quizData || !quizData.perguntas || !quizData.perguntas[currentQuestion]) {
+                console.error('Dados da pergunta inválidos');
+                return;
+            }
+
             const pergunta = quizData.perguntas[currentQuestion];
             
+            // Salvar posição atual
+            const scrollY = window.pageYOffset;
+            const scrollX = window.pageXOffset;
+            
             document.getElementById("cardQuiz").innerHTML = `
-                <div class="container my-5">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 id="title">${quizData.titulo}</h3>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: ${((currentQuestion + 1) / quizData.perguntas.length) * 100}%"></div>
-                            </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 id="title">${quizData.titulo}</h3>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: ${((currentQuestion + 1) / quizData.perguntas.length) * 100}%"></div>
                         </div>
-                        <div class="card-body">
-                            <h4 id="question">${pergunta.texto}</h4>
-                            <div id="options" class="mt-4">
-                                ${pergunta.respostas.map(resposta => `
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="option" value="${resposta.texto}" id="option${resposta.texto}">
-                                        <label class="form-check-label" for="option${resposta.texto}">${resposta.texto}</label>
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <div class="mt-4">
-                                <button class="btn btn-primary" onclick="nextQuestion()">
-                                    ${currentQuestion === quizData.perguntas.length - 1 ? 'Finalizar Quiz' : 'Próxima Pergunta'}
-                                    <i class="fas fa-arrow-right ms-2"></i>
-                                </button>
-                            </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 id="question">${pergunta.texto}</h4>
+                        <div id="options" class="mt-4">
+                            ${pergunta.respostas.map((resposta, index) => `
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="option" value="${resposta.texto}" id="option${index}">
+                                    <label class="form-check-label" for="option${index}">${resposta.texto}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary" onclick="nextQuestion(event)" onmousedown="event.preventDefault()" onmouseup="event.preventDefault()">
+                                ${currentQuestion === quizData.perguntas.length - 1 ? 'Finalizar Quiz' : 'Próxima Pergunta'}
+                                <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             `;
+            
+            // CORREÇÃO: Restaurar posição do scroll imediatamente
+            setTimeout(() => {
+                window.scrollTo({
+                    top: scrollY,
+                    left: scrollX,
+                    behavior: 'instant'
+                });
+            }, 0);
         }
 
         // Função para próxima pergunta
-        function nextQuestion() {
+        function nextQuestion(event) {
+            // CORREÇÃO: Prevenir comportamento padrão
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
             const selectedOption = document.querySelector('input[name="option"]:checked');
             if (!selectedOption) {
                 alert('Por favor, selecione uma resposta antes de continuar.');
-                return;
+                return false;
             }
+
+            // CORREÇÃO: Salvar posição atual do scroll
+            const currentScrollY = window.pageYOffset;
+            const currentScrollX = window.pageXOffset;
+            
+            // Flag para prevenir scroll durante transição
+            isTransitioning = true;
 
             // Salva a resposta
             responses.push({
@@ -264,10 +287,27 @@
             if (currentQuestion < quizData.perguntas.length) {
                 // Mostra próxima pergunta
                 mostrarPergunta();
+                
+                // CORREÇÃO: Restaurar posição imediatamente
+                requestAnimationFrame(() => {
+                    window.scrollTo({
+                        top: currentScrollY,
+                        left: currentScrollX,
+                        behavior: 'instant'
+                    });
+                    
+                    // Liberar flag após um tempo
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 100);
+                });
             } else {
                 // Finaliza o quiz
+                isTransitioning = false;
                 finalizarQuiz();
             }
+            
+            return false;
         }
 
         // Função para finalizar o quiz
@@ -321,35 +361,33 @@
 
                 // Mostrar mensagem de sucesso
                 document.getElementById("cardQuiz").innerHTML = `
-                    <div class="container my-5">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <div class="mb-4">
-                                    <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                            </div>
+                            <h2 class="text-orange">Quiz Finalizado!</h2>
+                            <p class="text-dark">Obrigado por completar o quiz <strong class="text-orange">"${quizData.titulo}"</strong>!</p>
+                            <div class="mt-4 mb-4">
+                                <h5 class="text-orange">Suas Respostas:</h5>
+                                <div class="text-start">
+                                    ${responses.map((r, index) => `
+                                        <div class="mb-3 p-3 bg-light rounded">
+                                            <strong class="text-orange">Pergunta ${index + 1}:</strong> 
+                                            <p class="text-dark mb-1">${r.question}</p>
+                                            <strong class="text-orange">Sua resposta:</strong> 
+                                            <p class="text-dark mb-0">${r.response}</p>
+                                        </div>
+                                    `).join('')}
                                 </div>
-                                <h2 class="text-orange">Quiz Finalizado!</h2>
-                                <p class="text-dark">Obrigado por completar o quiz <strong class="text-orange">"${quizData.titulo}"</strong>!</p>
-                                <div class="mt-4 mb-4">
-                                    <h5 class="text-orange">Suas Respostas:</h5>
-                                    <div class="text-start">
-                                        ${responses.map((r, index) => `
-                                            <div class="mb-3 p-3 bg-light rounded">
-                                                <strong class="text-orange">Pergunta ${index + 1}:</strong> 
-                                                <p class="text-dark mb-1">${r.question}</p>
-                                                <strong class="text-orange">Sua resposta:</strong> 
-                                                <p class="text-dark mb-0">${r.response}</p>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary me-2">
-                                        <i class="fas fa-arrow-left me-2"></i>Voltar para Quizzes
-                                    </a>
-                                    <a href="../../../index.html?idUsuario=${userId}" class="btn btn-secondary">
-                                        <i class="fas fa-home me-2"></i>Voltar para Home
-                                    </a>
-                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="exibiquizzes.html?idUsuario=${userId}" class="btn btn-primary me-2">
+                                    <i class="fas fa-arrow-left me-2"></i>Voltar para Quizzes
+                                </a>
+                                <a href="../../../index.html?idUsuario=${userId}" class="btn btn-secondary">
+                                    <i class="fas fa-home me-2"></i>Voltar para Home
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -358,19 +396,17 @@
             } catch (error) {
                 console.error('Erro ao finalizar quiz:', error);
                 document.getElementById("cardQuiz").innerHTML = `
-                    <div class="container my-5">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <div class="mb-4">
-                                    <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
-                                </div>
-                                <h2 class="text-orange">Erro ao Salvar</h2>
-                                <p class="text-dark">Ocorreu um erro ao salvar suas respostas. Tente novamente.</p>
-                                <div class="mt-3">
-                                    <button class="btn btn-primary" onclick="location.reload()">
-                                        <i class="fas fa-redo me-2"></i>Tentar Novamente
-                                    </button>
-                                </div>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                            </div>
+                            <h2 class="text-orange">Erro ao Salvar</h2>
+                            <p class="text-dark">Ocorreu um erro ao salvar suas respostas. Tente novamente.</p>
+                            <div class="mt-3">
+                                <button class="btn btn-primary" onclick="location.reload()">
+                                    <i class="fas fa-redo me-2"></i>Tentar Novamente
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -387,6 +423,111 @@
 
         // Inicializa quando a página carregar
         document.addEventListener('DOMContentLoaded', carregarQuiz);
+
+        // CORREÇÃO: Prevenir movimentação do formulário
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevenir scroll automático
+            const originalScrollIntoView = Element.prototype.scrollIntoView;
+            Element.prototype.scrollIntoView = function(options) {
+                return; // Desabilita completamente scrollIntoView
+            };
+            
+            // Prevenir mudanças de hash
+            window.addEventListener('hashchange', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Manter posição fixa
+            let isTransitioning = false;
+            
+            // Prevenir scroll durante transições
+            function preventScroll(e) {
+                if (isTransitioning) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+            
+            window.addEventListener('scroll', preventScroll, { passive: false });
+            window.addEventListener('wheel', preventScroll, { passive: false });
+            window.addEventListener('touchmove', preventScroll, { passive: false });
+        });
+
+        // CORREÇÃO: Função mostrarPergunta atualizada
+        function mostrarPergunta() {
+            if (!quizData || !quizData.perguntas || !quizData.perguntas[currentQuestion]) {
+                console.error('Dados da pergunta inválidos');
+                return;
+            }
+
+            const pergunta = quizData.perguntas[currentQuestion];
+            
+            // Salvar posição atual
+            const scrollY = window.pageYOffset;
+            const scrollX = window.pageXOffset;
+            
+            document.getElementById("cardQuiz").innerHTML = `
+                <div class="card">
+                    <div class="card-header">
+                        <h3 id="title">${quizData.titulo}</h3>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: ${((currentQuestion + 1) / quizData.perguntas.length) * 100}%"></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 id="question">${pergunta.texto}</h4>
+                        <div id="options" class="mt-4">
+                            ${pergunta.respostas.map((resposta, index) => `
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="option" value="${resposta.texto}" id="option${index}">
+                                    <label class="form-check-label" for="option${index}">${resposta.texto}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary" onclick="nextQuestion(event)" onmousedown="event.preventDefault()" onmouseup="event.preventDefault()">
+                                ${currentQuestion === quizData.perguntas.length - 1 ? 'Finalizar Quiz' : 'Próxima Pergunta'}
+                                <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // CORREÇÃO: Restaurar posição do scroll imediatamente
+            setTimeout(() => {
+                window.scrollTo({
+                    top: scrollY,
+                    left: scrollX,
+                    behavior: 'instant'
+                });
+            }, 0);
+        }
+
+        // CORREÇÃO: Prevenir foco automático em elementos
+        document.addEventListener('focusin', function(e) {
+            if (isTransitioning) {
+                e.preventDefault();
+                e.target.blur();
+                return false;
+            }
+        });
+
+        // CORREÇÃO: Interceptar todos os cliques durante transição
+        document.addEventListener('click', function(e) {
+            if (isTransitioning && !e.target.closest('.btn-primary')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // CORREÇÃO: Prevenir form submission
+        document.addEventListener('submit', function(e) {
+            e.preventDefault();
+            return false;
+        });
     </script>
 
 </body>
