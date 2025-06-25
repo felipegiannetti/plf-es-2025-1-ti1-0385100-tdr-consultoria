@@ -259,16 +259,22 @@ Com base em nossa pesquisa em Belo Horizonte:
 
 ## Etapa de Entendimento
 
-**Matriz CSD e Stakeholders:**<img src="./files/MatrizAlinhamento.jpg">
-**Entrevistas qualitativas e highlights de pesquisa:** <img src="./files/EntrevistaQualitativa.jpg">
+### Matriz CSD e Stakeholders 
+![Tela de Funcionalidade](files/MatrizAlinhamento.jpg)
+
+### Entrevistas qualitativas
+![Tela de Funcionalidade](files/EntrevistaQualitativa.jpg)
 
 ## Etapa de Definição
 
 ### Personas
 
-**Persona 1:**<img src="./files/Persona1.jpg">
-**Persona 2:**<img src="./files/Persona2.jpg">
-**Persona 3:**<img src="./files/Persona3.jpg">
+### Persona 1 
+![Tela de Funcionalidade](files/Persona1.jpg)
+### Persona 2 
+![Tela de Funcionalidade](files/Persona2.jpg)
+### Persona 3
+![Tela de Funcionalidade](files/Persona3.jpg)
 
 # Product Design
 
@@ -384,22 +390,20 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 
 Estes são os protótipos de telas do sistema.
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/l7hYLsg3odnHdabNuVVXJZ/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-
-https://www.figma.com/design/l7hYLsg3odnHdabNuVVXJZ/Untitled?node-id=0-1&p=f&t=QqqFXmFTULKggifT-0
+  * [WIREFRAME](https://www.figma.com/design/l7hYLsg3odnHdabNuVVXJZ/Untitled?node-id=0-1&p=f&t=QqqFXmFTULKggifT-0)
 
 ##### TELA XPTO 
 
-https://felipefonseca2006.wixsite.com/crie-um
+  * [XPTO](https://felipefonseca2006.wixsite.com/crie-um)
 
 
 ### User Flow
 
-https://felipefonseca2006.wixsite.com/crie-um
+  * [USER FLOW](https://felipefonseca2006.wixsite.com/crie-um)
 
 ### Protótipo Interativo
 
-https://felipefonseca2006.wixsite.com/crie-um
+  * [PROTOTIPO](https://felipefonseca2006.wixsite.com/crie-um)
 
 # Metodologia
 
@@ -414,17 +418,12 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | Editor de codigo            | Vs Code    | https://code.visualstudio.com/                                                        |
 | Processo de Design Thinking | Miro       | https://miro.com/app/board/uXjVIRnPJ8M=/?share_link_id=382451119897                   |
 | Repositório de código       | GitHub     | https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-1-ti1-0385100-tdr-consultoria  |
-| Hospedagem do site          | Vercel     | https://vercel.com/                                                                  |
+| Hospedagem do site          | Replit     | https://replit.com/@felipegiannetti/plf-es-2025-1-ti1-0385100-tdr-consultoria?v=1     |
 | Protótipo Interativo        | WIXSite    | https://www.wix.com/                                                                  |
 | QR Code generator           | GoQR.me    | https://goqr.me/api/                                                                  |
 | Banco de dados              | Json Server| https://www.npmjs.com/package/json-server                                             |
 | Prototipo Wireframe         | Figma      | https://www.figma.com/                                                                |
 
-## Gerenciamento do Projeto
-
-Divisão de papéis no grupo e apresentação da estrutura da ferramenta de controle de tarefas (Kanban).
-
-![Exemplo de Kanban](images/exemplo-kanban.png)
 
 # Solução Implementada
 
@@ -434,7 +433,7 @@ Esta seção apresenta todos os detalhes da solução criada no projeto.
 
 O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. ⚠️ EXEMPLO ⚠️
 
-[![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
+[![Vídeo do projeto](https://youtu.be/jin2JyZuZNI)]
 
 ## Funcionalidades
 
@@ -479,7 +478,7 @@ Permite a inclusão, leitura, alteração e exclusão de noticias para o sistema
   * Leia as noticias presentes no site
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeNoticias.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeNoticias.jpg)
 
 ##### Funcionalidade 4 - Eventos
 
@@ -496,7 +495,7 @@ Permite a inclusão, leitura, alteração e exclusão de eventos para o sistema
   * Avalie o evento
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeEventos.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeEventos.jpg)
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeDetalhesDeEventos.png)
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDeInscricao.png)
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaQRCode.png)
@@ -515,6 +514,9 @@ Permite a inclusão, leitura, alteração e exclusão de usuarios para o sistema
 * **Tela da funcionalidade**:
 
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario2.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario3.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaDePerfilUsuario4.jpg)
 
 ##### Funcionalidade 6 - Gestao de dados
 
@@ -531,6 +533,11 @@ Permite a inclusão, leitura, alteração e exclusão de todos os dados do siste
 * **Tela da funcionalidade**:
 
 ![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaADM.png)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaADMEventos.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaAMDNoticias.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaAMDUsuarios.jpg)
+![Tela de Funcionalidade](files/telas%20de%20funcionalidades/TelaADMAvaliacoes.jpg)
+
 
 ## Estruturas de Dados
 
