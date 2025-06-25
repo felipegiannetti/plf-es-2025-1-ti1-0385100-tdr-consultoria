@@ -240,7 +240,7 @@ async function viewAvaliacao(id) {
             <div class="mb-3">
                 <h6><i class="fas fa-comment me-2"></i>Comentário</h6>
                 <div class="ms-3 p-3 bg-light rounded">
-                    <p class="mb-0">${avaliacao.comentario}</p>
+                    <p class="mb-0 text-dark">${avaliacao.comentario}</p>
                 </div>
             </div>
             <div class="mb-3">
